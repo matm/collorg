@@ -1,0 +1,72 @@
+<div id="side_search" style="clear:both;">
+</div>
+<button id="reset_side_search">clear</button>
+<button id="search_button_side_search" class="action" target="#cog_container"
+ data-form-id="side_search_form"
+ title="Select criteria bellow. You can use double clicks.">search</button>
+<form class="hidden" id="side_search_form" method="POST">
+<div class="hidden" id="side_search_form_static">
+<input class="hidden" name="cog_fqtn_" value="collorg.communication.blog.view.by_post" />
+<input class="hidden" name="cog_method" value="w3list" />
+<input class="hidden" name="show_filter" value="true" />
+<input class="hidden" name="target" value="#cog_container" />
+</div>
+<div class="hidden" id="side_search_form_filter"></div>
+</form>
+<script>
+  $( document ).ready( function() {{
+    $('#search_button_side_search').attr('disabled', 'disabled');
+    $('#reset_side_search').attr('disabled', 'disabled');
+    $('.search_tag').on('dblclick', function(evt){{
+      $(this).click();
+      if($(this).hasClass('selected')){{
+        $('#search_button_side_search').click();
+      }}
+    }});
+    $('.search_tag').on('click', function(evt){{
+      if($(this).hasClass('selected')){{
+        $(this).removeClass('selected');
+        $('#side_search_filter').find("." + $(this).attr('id')).remove();
+        $('#side_search_form_filter').find("." + $(this).attr('id')).remove();
+	if($('#side_search_form_filter').is(':empty')){{
+          $('#search_button_side_search').attr('disabled', 'disabled');
+          $('#reset_side_search').attr('disabled', 'disabled');
+	}};
+	return false;
+      }} else {{
+        //console.log('click sur le tag ' + $(this).html());
+        var and = '';
+        if($('#side_search_filter').html()){{
+          and = ' &and; '
+        }}
+        var new_elt = document.createElement('span');
+        $(new_elt).addClass($(this).attr('id')).html(and + $(this).html());
+        $('#side_search_filter').append(new_elt);
+        $(this).addClass('selected');
+	new_input = document.createElement('input')
+	$(new_input).attr('type', 'checkbox').attr('checked', 'checked')
+          .attr('name', 'filter').attr('value', $(this).html())
+          .addClass($(this).attr('id'));
+        $('#side_search_form_filter').append($(new_input));
+        $('#search_button_side_search').removeAttr('disabled');
+        $('#reset_side_search').removeAttr('disabled');
+        return false;
+      }}
+    }});
+    $('#reset_side_search').on('click', function(evt){{
+      evt.preventDefault();
+      $('#side_tags .selected').removeClass('selected');
+      $('#side_search_form_filter').html('');
+      $('#search_button_side_search').attr('disabled', 'disabled');
+      $('#reset_side_search').attr('disabled', 'disabled');
+      return false;
+    }});
+    $('#side_search_button').on('click', function(evt){{
+      evt.preventDefault();
+      var href_plus = new Array();
+      var href = $("#side_search_href").html() + href_plus
+      $(this).attr('href', href);
+      console.log($(this).attr('href'));
+    }});
+  }});
+</script>

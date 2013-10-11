@@ -1,0 +1,12 @@
+#PRAGMA 'roles':['Anonymous user']
+#PRAGMA 'tasks':['Anonymous navigation']
+#PRAGMA 'label':'Post footer display'
+#PRAGMA 'in_menu':False
+# >>>
+author = None
+if self.author_.value:
+    author = self._author_.get()
+    topic = self._author_.root_topic().get()
+    link = html(topic).a(label = author.cog_label())
+    # ---
+    {% self.w3credit(link=link) %}

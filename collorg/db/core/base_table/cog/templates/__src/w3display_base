@@ -1,0 +1,62 @@
+#PRAGMA 'roles':['Anonymous user']
+#PRAGMA 'tasks':['Anonymous navigation']
+#PRAGMA 'label':'Display elt'
+#PRAGMA 'in_menu':False
+# >>>
+nav_up = kwargs.get('nav_up', '')
+header = kwargs.get('header', '')
+footer = kwargs.get('footer', '')
+nav_down = kwargs.get('nav_down', '')
+presentation = kwargs.get('presentation', '')
+article = kwargs.get('article', '')
+no_header_actions = kwargs.get('no_header_actions', False)
+root_topic = None
+topic = None
+try:
+    if self._is_of_type_post:
+        if self.fqtn != 'collorg.web.topic':
+            topic = self.db.table('collorg.web.topic')
+            root_topic = topic.get_root(self).get()
+            #nav_up = root_topic.get_parents()
+            #nav_down = root_topic.get_children()
+        else:
+            if self.cog_oid_.value:
+                topic = self
+except:
+    pass
+id_article = "article_{}".format(html.random_id())
+embedded = kwargs.get('embedded', False)
+data = kwargs.get('data')
+environment = root_topic and self or kwargs.get('environment')
+footer = kwargs.get('footer', '')
+# >>>
+if environment:
+    env = environment
+else:
+    env = self
+header_actions = ''
+if not embedded:
+    if self.fqtn != 'collorg.core.base_table' and not no_header_actions:
+        header_actions = self.w3header_actions(env = env, topic = topic, **kwargs)
+    nav_up = '<nav class="bc">{}</nav>'.format(nav_up)
+    header = ('<header>{} {}</header>').format(header_actions, header)
+    in_nav_actions = ''
+    if topic is not None and topic.path_info_.value in ['', '/']:
+        in_nav_actions = self.w3in_nav_actions(env = env, topic = topic)
+    nav_down = '<nav class="bc navdown">{} {}</nav>'.format(nav_down, in_nav_actions)
+    article = '<article id="{}">{}</article>'.format(id_article, article)
+    footer = '<footer>{}</footer>'.format(footer)
+# ---
+{% nav_up %}
+{% header %}
+{% nav_down %}
+{% presentation %}
+{% article %}
+{% footer %}
+# >>>
+if not 'cog_raw' in kwargs:
+    if not cog_user:
+        # ---
+        <div><div class="anonymous" style="display:none;">anonymous</div></div>
+    # ---
+    <!-- base_table.w3display -->

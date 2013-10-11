@@ -1,0 +1,16 @@
+# >>>
+session_key = self._cog_controller._session_key
+user_oid = self.db._cog_controller.cache.get_("user", session_key)
+
+if user_oid:
+    self.db._cog_controller.get_user()
+    self = self.db._cog_controller._user.get()
+    self.db._cog_controller.set_user(user_oid)
+    html.add_json_res({
+        '#cog_log_link':self.w3logout_link(),
+        '#cog_home_link':self.w3home_link(),
+        '#cog_user_actions':'',
+        '#cog_reload':'reload',
+    })
+else:
+    self._cog_controller.delete_cookie('cog_session')

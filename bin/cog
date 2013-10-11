@@ -1,0 +1,58 @@
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+
+import os
+import sys
+
+CMDS_PATH = 'collorg.cmds'
+CMDS = [
+    ('init', 'init a new collorg application'),
+    ('make', 'make...'),
+    ('patch', 'patch something'),
+    ('struct', 'show database structure'),
+    ('graph', 'draw a graph of the database'),
+    ('dump', 'dumps a table'),
+    ('cache', 'manages the cache'),
+    ]
+
+TODO = [
+    ('config', 'configuration'),
+    ('info', 'show the informations about the collorg application'),
+    ('reset', 'reset an application'),
+    ('test', 'tests'),
+]
+
+def error(msg):
+    help_("%s error: %s" % (os.path.basename(sys.argv[0]), msg))
+    sys.exit(1)
+
+def help_(msg=''):
+    line_format = "   %%-%ds  %%s"
+    longer_cmd_length = 0
+    for cmd in available_cmds:
+        longer_cmd_length = max(longer_cmd_length, len(cmd))
+    line_format = line_format % (longer_cmd_length)
+    if msg:
+        print("%s\n" % (msg))
+    print("usage: %s <subcommand> [-h]\n" % (os.path.basename(sys.argv[0])))
+    for elt in CMDS:
+        print(line_format % (elt))
+
+def dispatch(cmd):
+    module_name = '%s.%s' % (CMDS_PATH, cmd)
+    __import__(module_name)
+    module = sys.modules[module_name]
+    module.Cmd(None, sys.argv[1:])
+
+if __name__ == '__main__':
+    available_cmds = [elt[0] for elt in CMDS]
+    cmd = len(sys.argv) > 1 and sys.argv[1] or None
+    len(sys.argv) > 1 and sys.argv.pop(1)
+    if cmd == '--help' or cmd == '-h':
+        cmd = None
+    if cmd is None:
+        help_()
+        sys.exit(0)
+    if not cmd in available_cmds:
+        error("unknown command: '%s'" % (cmd))
+    dispatch(cmd)

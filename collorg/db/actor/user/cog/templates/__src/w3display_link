@@ -1,0 +1,5 @@
+# >>>
+topic = self.db.table('collorg.web.topic')
+root_topic = topic.get_root(self).get()
+# ---
+{% html(root_topic).a(label=self.cog_label()) %}

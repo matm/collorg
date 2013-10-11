@@ -1,0 +1,1857 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-10 18:25+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: collorg/db/actor/user/cog/templates/w3login_form.py:22
+#: collorg/db/actor/user/cog/templates/w3login_form.py:21
+#: build/lib.linux-x86_64-2.7/collorg/db/actor/user/cog/templates/w3login_form.py:21
+msgid "Connection"
+msgstr "Connexion"
+
+#: collorg/db/actor/user/cog/templates/w3login_form.py:33
+#: collorg/db/actor/user/cog/templates/w3login_form.py:31
+#: build/lib.linux-x86_64-2.7/collorg/db/actor/user/cog/templates/w3login_form.py:31
+msgid "login"
+msgstr "identifiant"
+
+#: collorg/db/actor/user/cog/templates/w3login_form.py:34
+#: collorg/db/actor/user/cog/templates/w3login_form.py:33
+#: build/lib.linux-x86_64-2.7/collorg/db/actor/user/cog/templates/w3login_form.py:33
+msgid "password"
+msgstr "mot de passe"
+
+#: collorg/db/actor/user/cog/templates/w3login_form.py:38
+#: collorg/db/actor/user/cog/templates/w3login_form.py:37
+#: build/lib.linux-x86_64-2.7/collorg/db/actor/user/cog/templates/w3login_form.py:37
+msgid "Connect"
+msgstr "Connectez-vous"
+
+#: collorg/db/actor/user/cog/templates/w3login_link.py:22
+#: collorg/db/actor/user/cog/templates/w3login_link.py:23
+#: build/lib.linux-x86_64-2.7/collorg/db/actor/user/cog/templates/w3login_link.py:23
+#: build/lib.linux-x86_64-2.7/collorg/db/actor/user/cog/templates/w3login_link.py:19
+#: collorg/db/actor/user/cog/templates/w3login_link.py:19
+msgid "connection"
+msgstr "connexion"
+
+#: collorg/db/web/site/cog/templates/w3map_link.py:19
+#: collorg/db/web/site/cog/templates/w3display.py:33
+#: build/lib.linux-x86_64-2.7/collorg/db/web/site/cog/templates/w3map_link.py:19
+#: build/lib.linux-x86_64-2.7/collorg/db/web/site/cog/templates/w3display.py:33
+#: data_files/locale/collorg_fields_i18n.py:293
+msgid "Site map"
+msgstr "Plan du site"
+
+#: collorg/db/core/base_table/cog/templates/w3search_link.py:19
+#: build/lib.linux-x86_64-2.7/collorg/db/core/base_table/cog/templates/w3search_link.py:19
+#: data_files/locale/collorg_fields_i18n.py:285
+msgid "Search"
+msgstr "Recherche"
+
+#: collorg/db/core/base_table/cog/templates/w3list_members.py:23
+#: build/lib.linux-x86_64-2.7/collorg/db/core/base_table/cog/templates/w3list_members.py:23
+msgid "Members"
+msgstr "Membres"
+
+#: collorg/db/core/base_table/cog/templates/w3list_members.py:24
+#: build/lib.linux-x86_64-2.7/collorg/db/core/base_table/cog/templates/w3list_members.py:24
+msgid "Members of"
+msgstr "Membres de"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:21
+#: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:20
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:20
+msgid "Members of this post"
+msgstr "Membres du message"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:22
+#: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:21
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:21
+msgid "This post"
+msgstr "Ce message"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:23
+#: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:22
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:22
+msgid "Your groups or units"
+msgstr "Vos groupes ou unités"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:24
+#: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:23
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:23
+msgid "Other groups in"
+msgstr "Autres groupes dans"
+
+#: collorg/db/communication/blog/post/cog/templates/w3share.py:27
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3share.py:27
+msgid "To"
+msgstr "Destinataire"
+
+#: collorg/db/communication/blog/post/cog/templates/w3share.py:28
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3share.py:28
+msgid "Subject"
+msgstr "Sujet"
+
+#: collorg/db/communication/blog/post/cog/templates/w3share.py:29
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3share.py:29
+msgid "Message"
+msgstr "Message"
+
+#: collorg/db/communication/blog/post/cog/templates/w3share.py:30
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3share.py:30
+msgid "Warning! This post is private. Access will only be granted to members."
+msgstr ""
+"Attention! Ce message est privé. Seuls ses membres y auront accès sur le "
+"site."
+
+#: collorg/db/communication/blog/post/cog/templates/w3share.py:31
+#: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:19
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:19
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3share.py:31
+msgid "Select a recipient"
+msgstr "Sélectionnez un destinatraire"
+
+#: collorg/db/communication/blog/post/cog/templates/w3share.py:32
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3share.py:32
+#: data_files/locale/collorg_fields_i18n.py:289
+msgid "Send mail"
+msgstr "Envoyer le message"
+
+#: collorg/templates/document_type/html.py:358
+#: build/lib.linux-x86_64-2.7/collorg/templates/document_type/html.py:358
+#: collorg/templates/document_type/html.py:359
+msgid "required"
+msgstr "requis"
+
+#: collorg/templates/document_type/html.py:349
+#: build/lib.linux-x86_64-2.7/collorg/templates/document_type/html.py:349
+#: collorg/templates/document_type/html.py:350
+msgid "preview"
+msgstr "prévisualisation"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:27
+#: collorg/db/communication/blog/post/cog/templates/w3edit_tags.py:29
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3edit_tags.py:29
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3new.py:27
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:28
+msgid "comma separated"
+msgstr "séparateur: virgule"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:28
+#: collorg/db/communication/blog/post/cog/templates/w3edit_tags.py:30
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3edit_tags.py:30
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3new.py:28
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:29
+msgid "Tags"
+msgstr "Mots clefs"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:27
+#: collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:28
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:28
+msgid "private"
+msgstr "privé"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:28
+#: collorg/db/communication/file/cog/templates/_w3select_visibility.py:31
+#: collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:29
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/file/cog/templates/_w3select_visibility.py:31
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:29
+msgid "protected"
+msgstr "protégé"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:29
+#: collorg/db/communication/file/cog/templates/_w3select_visibility.py:32
+#: collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:30
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/file/cog/templates/_w3select_visibility.py:32
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:30
+msgid "public"
+msgstr "public"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:23
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:23
+#: data_files/locale/collorg_fields_i18n.py:221
+#: data_files/locale/collorg_fields_i18n.py:226
+msgid "Visibility"
+msgstr "Visibilité"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3access_denied.py:19
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3access_denied.py:19
+msgid "Please connect to access this"
+msgstr "Veuillez vous connecter pour accéder à ce"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3access_denied.py:20
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3access_denied.py:20
+msgid "Sorry. You don't have access to this"
+msgstr "Désolé. Vous n'avez pas accès à ce"
+
+#: collorg/db/communication/file/cog/templates/w3list.py:31
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/file/cog/templates/w3list.py:31
+msgid "Documents attached to"
+msgstr "Documents attachés à"
+
+#: collorg/db/communication/file/cog/templates/w3list.py:32
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/file/cog/templates/w3list.py:32
+msgid "File"
+msgstr "Fichier"
+
+#: collorg/db/communication/file/cog/templates/w3list.py:33
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/file/cog/templates/w3list.py:33
+msgid "is missing"
+msgstr "manquant"
+
+#: collorg/db/communication/file/cog/templates/w3list.py:34
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/file/cog/templates/w3list.py:34
+msgid "protected document"
+msgstr "document protégé"
+
+#: collorg/db/communication/file/cog/templates/w3list.py:35
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/file/cog/templates/w3list.py:35
+msgid "Please connect"
+msgstr "Veuillez vous connecter"
+
+#: collorg/db/communication/attachment/cog/templates/w3attach_link.py:24
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/attachment/cog/templates/w3attach_link.py:24
+msgid "attach a document"
+msgstr "Attacher un document"
+
+#: collorg/db/actor/actor/cog/templates/w3submit_button.py:31
+#: build/lib.linux-x86_64-2.7/collorg/db/actor/actor/cog/templates/w3submit_button.py:31
+msgid "Submit"
+msgstr "Soumettre"
+
+#: collorg/db/communication/attachment/cog/templates/w3attach_form.py:24
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/attachment/cog/templates/w3attach_form.py:24
+#: data_files/locale/collorg_fields_i18n.py:11
+#: data_files/locale/collorg_fields_i18n.py:16
+msgid "Attachment"
+msgstr "Attachement"
+
+#: collorg/db/communication/attachment/cog/templates/w3attach_form.py:25
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/attachment/cog/templates/w3attach_form.py:25
+msgid "Warning! Attachment is only working with the following browsers"
+msgstr ""
+"Attention ! L'attachement de fichiers ne fonctionne que pour les navigateurs "
+"suivants"
+
+#: collorg/db/communication/blog/post/cog/templates/w3edit.py:27
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:29
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3edit.py:27
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3new.py:29
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:30
+#: collorg/db/communication/blog/post/cog/templates/w3edit.py:28
+msgid "Allow comments"
+msgstr "Autoriser les commentaires"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:30
+#: collorg/db/communication/blog/post/cog/templates/w3save_link.py:34
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3new.py:30
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3save_link.py:34
+#: collorg/db/web/topic/cog/templates/_w3new.py:27
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:31
+#: data_files/locale/collorg_fields_i18n.py:284
+msgid "Save"
+msgstr "Enregistrer"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:31
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3new.py:31
+#: collorg/db/web/topic/cog/templates/_w3new.py:28
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:32
+msgid "new"
+msgstr "nouveau"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:75
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:83
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:82
+#: collorg/db/communication/blog/post/cog/templates/w3select_type.py:33
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3new.py:82
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3select_type.py:33
+#: collorg/db/web/topic/cog/templates/_w3new.py:29
+msgid "in"
+msgstr "dans"
+
+#: collorg/db/communication/blog/post/cog/templates/w3reset_button.py:29
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3reset_button.py:29
+msgid "Cancel edit"
+msgstr "Annuler l'édition"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3visibility.py:20
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3visibility.py:20
+msgid "Members only"
+msgstr "Accès restreint aux membres"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3visibility.py:21
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3visibility.py:21
+msgid "Accessible by connected users only"
+msgstr "Visible uniquement pour des utilisateurs connectés"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3visibility.py:22
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3visibility.py:22
+msgid "Public access"
+msgstr "Accès public"
+
+#: collorg/db/web/topic/cog/templates/w3attach_post_drop_zone.py:30
+#: build/lib.linux-x86_64-2.7/collorg/db/web/topic/cog/templates/w3attach_post_drop_zone.py:30
+msgid "Drop a \"post\" here to publish it in this folder"
+msgstr "Déposer le lien d'un \"post\" ici pour le publier dans ce dossier"
+
+#: collorg/controller/web.py:369
+#: build/lib.linux-x86_64-2.7/collorg/controller/web.py:369
+msgid "search"
+msgstr "rechercher"
+
+#: collorg/controller/web.py:370
+#: build/lib.linux-x86_64-2.7/collorg/controller/web.py:370
+msgid "by tag"
+msgstr "par mot clef"
+
+#: collorg/controller/web.py:370
+#: build/lib.linux-x86_64-2.7/collorg/controller/web.py:370
+msgid "by user"
+msgstr "par utilisateur"
+
+#: collorg/controller/web.py:372
+#: build/lib.linux-x86_64-2.7/collorg/controller/web.py:372
+#: collorg/db/actor/user/__init__.py:194
+msgid "Drop your links here<br>for future reference"
+msgstr "Déposez vos liens ici<br>pour un usage ultérieur"
+
+#: collorg/db/communication/blog/post/cog/templates/w3add_see_also_drop_zone.py:26
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3add_see_also_drop_zone.py:26
+#: collorg/db/communication/blog/post/cog/templates/w3add_see_also_drop_zone.py:27
+msgid "Add a reference by dragging a link from the post-it on the bottom-left."
+msgstr ""
+"Ajouter une référence ici en déposant un lien à partir du post-it en bas à "
+"gauche"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:32
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3new.py:32
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:33
+msgid ""
+"File attachement and post references can only be made\n"
+"    once the post is saved."
+msgstr ""
+"L'attachement de fichiers et l'association d'autres posts seront possibles\n"
+"une fois que vous aurez sauvegardé ce post."
+
+#: collorg/db/communication/blog/post/cog/templates/w3new_follow_up.py:23
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3new_follow_up.py:23
+msgid "New follow-up"
+msgstr "Nouvelle réponse"
+
+#: collorg/db/communication/blog/post/cog/templates/w3select_type.py:32
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3select_type.py:32
+msgid "New"
+msgstr "Nouveau"
+
+#: collorg/db/communication/blog/post/cog/templates/w3new_comment.py:24
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3new_comment.py:24
+msgid "New comment"
+msgstr "Nouveau commentaire"
+
+#: collorg/db/communication/blog/post/cog/templates/w3new_follow_up_link.py:22
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3new_follow_up_link.py:22
+msgid "Follow-up"
+msgstr "Réponse"
+
+#: collorg/db/actor/actor/cog/templates/w3submit_button.py:32
+#: build/lib.linux-x86_64-2.7/collorg/db/actor/actor/cog/templates/w3submit_button.py:32
+#: build/lib.linux-x86_64-2.7/collorg/db/core/base_table/cog/templates/w3credit.py:30
+#: collorg/db/core/base_table/cog/templates/w3credit.py:30
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:25
+#: build/lib.linux-x86_64-2.7/collorg/db/core/base_table/cog/templates/w3creat_modif_date.py:32
+#: collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:25
+#: collorg/db/core/base_table/cog/templates/w3creat_modif_date.py:32
+msgid "by"
+msgstr "par"
+
+#: build/lib.linux-x86_64-2.7/collorg/db/actor/user/cog/templates/w3logout_link.py:19
+#: collorg/db/actor/user/cog/templates/w3logout_link.py:19
+msgid "logout"
+msgstr "Déconnexion"
+
+#: build/lib.linux-x86_64-2.7/collorg/db/actor/user/cog/templates/w3home_link.py:22
+#: collorg/db/actor/user/cog/templates/w3home_link.py:22
+msgid "Home page"
+msgstr "Page personnelle"
+
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3select_type.py:34
+#: collorg/db/communication/blog/post/cog/templates/w3select_type.py:34
+#: data_files/locale/collorg_fields_i18n.py:145
+#: data_files/locale/collorg_fields_i18n.py:150
+msgid "Post"
+msgstr "Billet"
+
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3select_type.py:35
+#: collorg/db/communication/blog/post/cog/templates/w3select_type.py:35
+msgid "Folder"
+msgstr "Dossier"
+
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3select_type.py:36
+#: collorg/db/communication/blog/post/cog/templates/w3select_type.py:36
+msgid "Event"
+msgstr "Événement"
+
+#: build/lib.linux-x86_64-2.7/collorg/db/core/base_table/cog/templates/w3creat_modif_date.py:30
+#: collorg/db/core/base_table/cog/templates/w3creat_modif_date.py:30
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:23
+#: collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:23
+msgid "created"
+msgstr "créé"
+
+#: build/lib.linux-x86_64-2.7/collorg/db/core/base_table/cog/templates/w3creat_modif_date.py:31
+#: collorg/db/core/base_table/cog/templates/w3creat_modif_date.py:31
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:24
+#: collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:24
+msgid "last modified"
+msgstr "dernière modification"
+
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/attachment/cog/templates/w3attach_form.py:26
+#: collorg/db/communication/attachment/cog/templates/w3attach_form.py:26
+msgid "Please avoid accents in files names"
+msgstr "Merci d'éviter l'utilisation d'accents dans les noms de fichiers"
+
+#: build/lib.linux-x86_64-2.7/collorg/db/communication/file/cog/templates/w3list.py:36
+#: collorg/db/communication/file/cog/templates/w3list.py:36
+msgid "release"
+msgstr "version"
+
+#: collorg/db/web/topic/cog/templates/w3edit.py:27
+msgid "For edition, please contact"
+msgstr "Pour l'édition, veuillez contacter"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:27
+#: data_files/locale/collorg_fields_i18n.py:105
+#: collorg/db/communication/blog/post/cog/templates/w3edit.py:27
+#: data_files/locale/collorg_fields_i18n.py:110
+msgid "Introductory paragraph"
+msgstr "Accroche"
+
+#: data_files/locale/collorg_fields_i18n.py:1
+#: data_files/locale/collorg_fields_i18n.py:6
+msgid "Access"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:2
+#: data_files/locale/collorg_fields_i18n.py:7
+msgid "Access from"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:3
+#: data_files/locale/collorg_fields_i18n.py:8
+msgid "Access to"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:4
+#: data_files/locale/collorg_fields_i18n.py:9
+msgid "Account"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:5
+#: data_files/locale/collorg_fields_i18n.py:10
+msgid "Acronym"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:6
+#: data_files/locale/collorg_fields_i18n.py:11
+msgid "Action"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:7
+#: data_files/locale/collorg_fields_i18n.py:12
+msgid "Address"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:8
+#: data_files/locale/collorg_fields_i18n.py:13
+msgid "Address id"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:9
+#: data_files/locale/collorg_fields_i18n.py:14
+msgid "Admin"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:10
+#: data_files/locale/collorg_fields_i18n.py:15
+msgid "Advertise"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:12
+#: data_files/locale/collorg_fields_i18n.py:17
+msgid "Author"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:13
+#: data_files/locale/collorg_fields_i18n.py:18
+msgid "Author first name"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:14
+#: data_files/locale/collorg_fields_i18n.py:19
+msgid "Author last name"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:15
+#: data_files/locale/collorg_fields_i18n.py:20
+msgid "Author oid"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:16
+#: data_files/locale/collorg_fields_i18n.py:21
+msgid "Author topic oid"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:17
+#: data_files/locale/collorg_fields_i18n.py:22
+msgid "Base dn"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:18
+#: data_files/locale/collorg_fields_i18n.py:23
+msgid "Begin"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:19
+#: data_files/locale/collorg_fields_i18n.py:24
+msgid "Begin date"
+msgstr "Début"
+
+#: data_files/locale/collorg_fields_i18n.py:20
+#: data_files/locale/collorg_fields_i18n.py:25
+msgid "Birthday"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:21
+#: data_files/locale/collorg_fields_i18n.py:26
+msgid "Broadcast"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:22
+#: data_files/locale/collorg_fields_i18n.py:27
+msgid "Broadcast post"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:23
+#: data_files/locale/collorg_fields_i18n.py:28
+msgid "Building"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:24
+#: data_files/locale/collorg_fields_i18n.py:29
+msgid "Category"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:25
+#: data_files/locale/collorg_fields_i18n.py:30
+msgid "Certificate checks"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:26
+#: data_files/locale/collorg_fields_i18n.py:31
+msgid "Child"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:27
+#: data_files/locale/collorg_fields_i18n.py:32
+msgid "City"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:28
+#: data_files/locale/collorg_fields_i18n.py:33
+msgid "Cog creat date"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:29
+#: data_files/locale/collorg_fields_i18n.py:34
+msgid "Cog environment"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:30
+#: data_files/locale/collorg_fields_i18n.py:35
+msgid "Cog fqtn"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:31
+#: data_files/locale/collorg_fields_i18n.py:36
+msgid "Cog from"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:32
+#: data_files/locale/collorg_fields_i18n.py:37
+msgid "Cog modif date"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:33
+#: data_files/locale/collorg_fields_i18n.py:38
+msgid "Cog oid"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:34
+#: data_files/locale/collorg_fields_i18n.py:39
+msgid "Cog signature"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:35
+#: data_files/locale/collorg_fields_i18n.py:40
+msgid "Cog state"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:36
+#: data_files/locale/collorg_fields_i18n.py:41
+msgid "Cog test"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:37
+#: data_files/locale/collorg_fields_i18n.py:42
+msgid "Cog to"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:38
+#: data_files/locale/collorg_fields_i18n.py:43
+msgid "Comment"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:39
+#: data_files/locale/collorg_fields_i18n.py:44
+msgid "Comment creat date"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:40
+#: data_files/locale/collorg_fields_i18n.py:45
+msgid "Comment modif date"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:41
+#: data_files/locale/collorg_fields_i18n.py:46
+msgid "Comment oid"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:42
+#: data_files/locale/collorg_fields_i18n.py:47
+msgid "Comment text"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:43
+#: data_files/locale/collorg_fields_i18n.py:48
+msgid "Communication object"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:44
+#: data_files/locale/collorg_fields_i18n.py:49
+msgid "Connectivity security"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:45
+#: data_files/locale/collorg_fields_i18n.py:50
+msgid "Count"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:46
+#: data_files/locale/collorg_fields_i18n.py:51
+msgid "Country"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:47
+#: data_files/locale/collorg_fields_i18n.py:52
+msgid "County province"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:48
+#: data_files/locale/collorg_fields_i18n.py:53
+msgid "Creation date"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:49
+#: data_files/locale/collorg_fields_i18n.py:54
+msgid "Data"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:50
+#: data_files/locale/collorg_fields_i18n.py:55
+msgid "Data fqtn"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:51
+#: data_files/locale/collorg_fields_i18n.py:56
+msgid "Data oid"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:52
+#: data_files/locale/collorg_fields_i18n.py:57
+msgid "Data type"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:53
+#: data_files/locale/collorg_fields_i18n.py:58
+msgid "Database"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:54
+#: data_files/locale/collorg_fields_i18n.py:59
+msgid "Date checked"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:55
+#: data_files/locale/collorg_fields_i18n.py:60
+msgid "Default"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:56
+#: data_files/locale/collorg_fields_i18n.py:61
+msgid "Delegable"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:57
+#: data_files/locale/collorg_fields_i18n.py:62
+msgid "Description"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:58
+#: data_files/locale/collorg_fields_i18n.py:63
+msgid "Domain"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:59
+#: data_files/locale/collorg_fields_i18n.py:64
+msgid "Dt description"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:60
+#: data_files/locale/collorg_fields_i18n.py:65
+msgid "E mail attr"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:61
+#: data_files/locale/collorg_fields_i18n.py:66
+msgid "Email"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:62
+#: data_files/locale/collorg_fields_i18n.py:67
+msgid "Encoding"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:63
+#: data_files/locale/collorg_fields_i18n.py:68
+msgid "End"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:64
+#: data_files/locale/collorg_fields_i18n.py:69
+msgid "End date"
+msgstr "Fin"
+
+#: data_files/locale/collorg_fields_i18n.py:65
+#: data_files/locale/collorg_fields_i18n.py:70
+msgid "End state"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:66
+#: data_files/locale/collorg_fields_i18n.py:71
+msgid "Error"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:67
+#: data_files/locale/collorg_fields_i18n.py:72
+msgid "Event begin date"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:68
+#: data_files/locale/collorg_fields_i18n.py:73
+msgid "Expiry date"
+msgstr "Date d'expiration"
+
+#: data_files/locale/collorg_fields_i18n.py:69
+#: data_files/locale/collorg_fields_i18n.py:74
+msgid "Field"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:70
+#: data_files/locale/collorg_fields_i18n.py:75
+msgid "Filter"
+msgstr "Filtre"
+
+#: data_files/locale/collorg_fields_i18n.py:71
+#: data_files/locale/collorg_fields_i18n.py:76
+msgid "First name"
+msgstr "Prénom"
+
+#: data_files/locale/collorg_fields_i18n.py:72
+#: data_files/locale/collorg_fields_i18n.py:77
+msgid "First name attr"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:73
+#: data_files/locale/collorg_fields_i18n.py:78
+msgid "Fname"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:74
+#: data_files/locale/collorg_fields_i18n.py:79
+msgid "Follow up creat date"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:75
+#: data_files/locale/collorg_fields_i18n.py:80
+msgid "Follow up modif date"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:76
+#: data_files/locale/collorg_fields_i18n.py:81
+msgid "Follow up oid"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:77
+#: data_files/locale/collorg_fields_i18n.py:82
+msgid "Follow up text"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:78
+#: data_files/locale/collorg_fields_i18n.py:83
+msgid "Format"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:79
+#: data_files/locale/collorg_fields_i18n.py:84
+msgid "Fqfn"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:80
+#: data_files/locale/collorg_fields_i18n.py:85
+msgid "Fqtn"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:81
+#: data_files/locale/collorg_fields_i18n.py:86
+msgid "Function"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:82
+#: data_files/locale/collorg_fields_i18n.py:87
+msgid "Function advertise"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:83
+#: data_files/locale/collorg_fields_i18n.py:88
+msgid "Function long name"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:84
+#: data_files/locale/collorg_fields_i18n.py:89
+msgid "Function name"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:85
+#: data_files/locale/collorg_fields_i18n.py:90
+msgid "Function oid"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:86
+#: data_files/locale/collorg_fields_i18n.py:91
+msgid "Gender"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:87
+#: data_files/locale/collorg_fields_i18n.py:92
+msgid "Goal"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:88
+#: data_files/locale/collorg_fields_i18n.py:93
+msgid "Goal name"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:89
+#: data_files/locale/collorg_fields_i18n.py:94
+msgid "Granted"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:90
+#: data_files/locale/collorg_fields_i18n.py:95
+msgid "Grants"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:91
+#: data_files/locale/collorg_fields_i18n.py:96
+msgid "Group"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:92
+#: data_files/locale/collorg_fields_i18n.py:97
+msgid "Group name"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:93
+#: data_files/locale/collorg_fields_i18n.py:98
+msgid "Group oid"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:94
+#: data_files/locale/collorg_fields_i18n.py:99
+msgid "Hit"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:95
+#: data_files/locale/collorg_fields_i18n.py:100
+msgid "Host"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:96
+#: data_files/locale/collorg_fields_i18n.py:101
+msgid "Icon"
+msgstr "Icône"
+
+#: data_files/locale/collorg_fields_i18n.py:97
+#: data_files/locale/collorg_fields_i18n.py:102
+msgid "Id"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:98
+#: data_files/locale/collorg_fields_i18n.py:103
+msgid "Important"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:99
+#: data_files/locale/collorg_fields_i18n.py:104
+msgid "Important post"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:100
+#: data_files/locale/collorg_fields_i18n.py:105
+msgid "In header"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:101
+#: data_files/locale/collorg_fields_i18n.py:106
+msgid "In menu"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:102
+#: data_files/locale/collorg_fields_i18n.py:107
+msgid "In nav"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:103
+#: data_files/locale/collorg_fields_i18n.py:108
+msgid "Inst group"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:104
+#: data_files/locale/collorg_fields_i18n.py:109
+msgid "Inst tag"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:106
+#: data_files/locale/collorg_fields_i18n.py:111
+msgid "Ip addr"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:107
+#: data_files/locale/collorg_fields_i18n.py:112
+msgid "Key"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:108
+#: data_files/locale/collorg_fields_i18n.py:113
+msgid "Kind"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:109
+#: data_files/locale/collorg_fields_i18n.py:114
+msgid "Label"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:110
+#: data_files/locale/collorg_fields_i18n.py:115
+msgid "Language"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:111
+#: data_files/locale/collorg_fields_i18n.py:116
+msgid "Last access date"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:112
+#: data_files/locale/collorg_fields_i18n.py:117
+msgid "Last name"
+msgstr "Nom"
+
+#: data_files/locale/collorg_fields_i18n.py:113
+#: data_files/locale/collorg_fields_i18n.py:118
+msgid "Last name attr"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:114
+#: data_files/locale/collorg_fields_i18n.py:119
+msgid "Ldap"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:115
+#: data_files/locale/collorg_fields_i18n.py:120
+msgid "Lease time"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:116
+#: data_files/locale/collorg_fields_i18n.py:121
+msgid "Line 1"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:117
+#: data_files/locale/collorg_fields_i18n.py:122
+msgid "Line 2"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:118
+#: data_files/locale/collorg_fields_i18n.py:123
+msgid "Line 3"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:119
+#: data_files/locale/collorg_fields_i18n.py:124
+msgid "Link"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:120
+#: data_files/locale/collorg_fields_i18n.py:125
+msgid "Location"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:121
+#: data_files/locale/collorg_fields_i18n.py:126
+msgid "Log text"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:122
+#: data_files/locale/collorg_fields_i18n.py:127
+msgid "Login attr"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:123
+#: data_files/locale/collorg_fields_i18n.py:128
+msgid "Long name"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:124
+#: data_files/locale/collorg_fields_i18n.py:129
+msgid "Major"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:125
+#: data_files/locale/collorg_fields_i18n.py:130
+msgid "Manage"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:126
+#: data_files/locale/collorg_fields_i18n.py:131
+msgid "Me"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:127
+#: data_files/locale/collorg_fields_i18n.py:132
+msgid "Minor"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:128
+#: data_files/locale/collorg_fields_i18n.py:133
+msgid "Moderate"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:129
+#: data_files/locale/collorg_fields_i18n.py:134
+msgid "My relation"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:130
+#: data_files/locale/collorg_fields_i18n.py:135
+msgid "Name"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:131
+#: data_files/locale/collorg_fields_i18n.py:136
+msgid "Namespace"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:132
+#: data_files/locale/collorg_fields_i18n.py:137
+msgid "Num"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:133
+#: data_files/locale/collorg_fields_i18n.py:138
+msgid "Order"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:134
+#: data_files/locale/collorg_fields_i18n.py:139
+msgid "Organizational unit"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:135
+#: data_files/locale/collorg_fields_i18n.py:140
+msgid "Other address details"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:136
+#: data_files/locale/collorg_fields_i18n.py:141
+msgid "Other location"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:137
+#: data_files/locale/collorg_fields_i18n.py:142
+msgid "Output"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:138
+#: data_files/locale/collorg_fields_i18n.py:143
+msgid "Parent"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:139
+#: data_files/locale/collorg_fields_i18n.py:144
+msgid "Parent oid"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:140
+#: data_files/locale/collorg_fields_i18n.py:145
+msgid "Password"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:141
+#: data_files/locale/collorg_fields_i18n.py:146
+msgid "Path info"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:142
+#: data_files/locale/collorg_fields_i18n.py:147
+msgid "Permanent"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:143
+#: data_files/locale/collorg_fields_i18n.py:148
+msgid "Photo"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:144
+#: data_files/locale/collorg_fields_i18n.py:149
+msgid "Port"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:146
+#: data_files/locale/collorg_fields_i18n.py:151
+msgid "Post author"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:147
+#: data_files/locale/collorg_fields_i18n.py:152
+msgid "Post creat date"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:148
+#: data_files/locale/collorg_fields_i18n.py:153
+msgid "Post modif date"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:149
+#: data_files/locale/collorg_fields_i18n.py:154
+msgid "Post oid"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:150
+#: data_files/locale/collorg_fields_i18n.py:155
+msgid "Post title"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:151
+#: data_files/locale/collorg_fields_i18n.py:156
+msgid "Post type"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:152
+#: data_files/locale/collorg_fields_i18n.py:157
+msgid "Post visibility"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:153
+#: data_files/locale/collorg_fields_i18n.py:158
+msgid "Pourcentage"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:154
+#: data_files/locale/collorg_fields_i18n.py:159
+msgid "Priority"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:155
+#: data_files/locale/collorg_fields_i18n.py:160
+msgid "Private reference"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:156
+#: data_files/locale/collorg_fields_i18n.py:161
+msgid "Protected"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:157
+#: data_files/locale/collorg_fields_i18n.py:162
+msgid "Pseudo"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:158
+#: data_files/locale/collorg_fields_i18n.py:163
+msgid "Public"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:159
+#: data_files/locale/collorg_fields_i18n.py:164
+msgid "Public post"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:160
+#: data_files/locale/collorg_fields_i18n.py:165
+msgid "Raw"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:161
+#: data_files/locale/collorg_fields_i18n.py:166
+msgid "Ref"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:162
+#: data_files/locale/collorg_fields_i18n.py:167
+msgid "Release"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:163
+#: data_files/locale/collorg_fields_i18n.py:168
+msgid "Required"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:164
+#: data_files/locale/collorg_fields_i18n.py:169
+msgid "Required data type"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:165
+#: data_files/locale/collorg_fields_i18n.py:170
+msgid "Required name"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:166
+#: data_files/locale/collorg_fields_i18n.py:171
+msgid "Required oid"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:167
+#: data_files/locale/collorg_fields_i18n.py:172
+msgid "Requires"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:168
+#: data_files/locale/collorg_fields_i18n.py:173
+msgid "Requires data type"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:169
+#: data_files/locale/collorg_fields_i18n.py:174
+msgid "Requires name"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:170
+#: data_files/locale/collorg_fields_i18n.py:175
+msgid "Requires oid"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:171
+#: data_files/locale/collorg_fields_i18n.py:176
+msgid "Revision"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:172
+#: data_files/locale/collorg_fields_i18n.py:177
+msgid "Role from"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:173
+#: data_files/locale/collorg_fields_i18n.py:178
+msgid "Role to"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:174
+#: data_files/locale/collorg_fields_i18n.py:179
+msgid "Rss"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:175
+#: data_files/locale/collorg_fields_i18n.py:180
+msgid "Scope"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:176
+#: data_files/locale/collorg_fields_i18n.py:181
+msgid "Session key"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:177
+#: data_files/locale/collorg_fields_i18n.py:182
+msgid "Shuffle"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:178
+#: data_files/locale/collorg_fields_i18n.py:183
+msgid "Signature"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:179
+#: data_files/locale/collorg_fields_i18n.py:184
+msgid "Site"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:180
+#: data_files/locale/collorg_fields_i18n.py:185
+msgid "Size"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:181
+#: data_files/locale/collorg_fields_i18n.py:186
+msgid "Source"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:182
+#: data_files/locale/collorg_fields_i18n.py:187
+msgid "Stage"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:183
+#: data_files/locale/collorg_fields_i18n.py:188
+msgid "Start state"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:184
+#: data_files/locale/collorg_fields_i18n.py:189
+msgid "State"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:185
+#: data_files/locale/collorg_fields_i18n.py:190
+msgid "Status"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:186
+#: data_files/locale/collorg_fields_i18n.py:191
+msgid "Sub release"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:187
+#: data_files/locale/collorg_fields_i18n.py:192
+msgid "System account"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:188
+#: data_files/locale/collorg_fields_i18n.py:193
+msgid "Tag"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:189
+#: data_files/locale/collorg_fields_i18n.py:194
+msgid "Task"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:190
+#: data_files/locale/collorg_fields_i18n.py:195
+msgid "Task name"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:191
+#: data_files/locale/collorg_fields_i18n.py:196
+msgid "Task oid"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:192
+#: data_files/locale/collorg_fields_i18n.py:197
+msgid "Task scheduler data"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:193
+#: data_files/locale/collorg_fields_i18n.py:198
+msgid "Text"
+msgstr "Texte"
+
+#: data_files/locale/collorg_fields_i18n.py:194
+#: data_files/locale/collorg_fields_i18n.py:199
+msgid "This application"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:195
+#: data_files/locale/collorg_fields_i18n.py:200
+msgid "Timestamp"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:196
+#: data_files/locale/collorg_fields_i18n.py:201
+msgid "Title"
+msgstr "Titre"
+
+#: data_files/locale/collorg_fields_i18n.py:197
+#: data_files/locale/collorg_fields_i18n.py:202
+msgid "Topic"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:198
+#: data_files/locale/collorg_fields_i18n.py:203
+msgid "Topic oid"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:199
+#: data_files/locale/collorg_fields_i18n.py:204
+msgid "Topic visibility"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:200
+#: data_files/locale/collorg_fields_i18n.py:205
+msgid "Trace"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:201
+#: data_files/locale/collorg_fields_i18n.py:206
+msgid "Trace md5"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:202
+#: data_files/locale/collorg_fields_i18n.py:207
+msgid "Transition"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:203
+#: data_files/locale/collorg_fields_i18n.py:208
+msgid "Translation"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:204
+#: data_files/locale/collorg_fields_i18n.py:209
+msgid "Uploader"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:205
+#: data_files/locale/collorg_fields_i18n.py:210
+msgid "Url"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:206
+#: data_files/locale/collorg_fields_i18n.py:211
+msgid "User"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:207
+#: data_files/locale/collorg_fields_i18n.py:212
+msgid "User comment first name"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:208
+#: data_files/locale/collorg_fields_i18n.py:213
+msgid "User comment last name"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:209
+#: data_files/locale/collorg_fields_i18n.py:214
+msgid "User comment oid"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:210
+#: data_files/locale/collorg_fields_i18n.py:215
+msgid "User first name"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:211
+#: data_files/locale/collorg_fields_i18n.py:216
+msgid "User follow up first name"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:212
+#: data_files/locale/collorg_fields_i18n.py:217
+msgid "User follow up last name"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:213
+#: data_files/locale/collorg_fields_i18n.py:218
+msgid "User follow up oid"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:214
+#: data_files/locale/collorg_fields_i18n.py:219
+msgid "User last name"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:215
+#: data_files/locale/collorg_fields_i18n.py:220
+msgid "User oid"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:216
+#: data_files/locale/collorg_fields_i18n.py:221
+msgid "User pseudo"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:217
+#: data_files/locale/collorg_fields_i18n.py:222
+msgid "Val"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:218
+#: data_files/locale/collorg_fields_i18n.py:223
+msgid "Valid account"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:219
+#: data_files/locale/collorg_fields_i18n.py:224
+msgid "Validation key"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:220
+#: data_files/locale/collorg_fields_i18n.py:225
+msgid "Value"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:222
+#: data_files/locale/collorg_fields_i18n.py:227
+msgid "Vote"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:223
+#: data_files/locale/collorg_fields_i18n.py:228
+msgid "When"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:224
+#: data_files/locale/collorg_fields_i18n.py:229
+msgid "Who"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:225
+#: data_files/locale/collorg_fields_i18n.py:230
+msgid "Write"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:226
+#: data_files/locale/collorg_fields_i18n.py:231
+msgid "Year"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:227
+#: data_files/locale/collorg_fields_i18n.py:232
+msgid "Zip or postcode"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:236
+msgid "Access management"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:237
+msgid "Adding a new entry in blog"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:238
+msgid "Attach a post to a topic"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:239
+msgid "Blog edition"
+msgstr "Éditer"
+
+#: data_files/locale/collorg_fields_i18n.py:240
+msgid "Blog edition (event part)"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:241
+msgid "Blog edition (specialisation part)"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:242
+msgid "Blog edition. add see also entry"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:243
+msgid "Blog edition. remove see also entry"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:244
+msgid "Blog entry update"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:245
+msgid "Bookmark"
+msgstr "Suivre"
+
+#: data_files/locale/collorg_fields_i18n.py:246
+msgid "Comments list"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:247
+msgid "Database admin. page"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:248
+msgid "Display elt"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:249
+msgid "Edit tags"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:250
+msgid "Edit user's rss"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:251
+msgid "File upload link"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:252
+msgid "File visibility management"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:253
+msgid "Grant access"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:254
+msgid "Grant write access"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:255
+msgid "Grant write access link"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:256
+msgid "Group display"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:257
+msgid "List of groups (tag link)"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:258
+msgid "List of members"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:259
+msgid "List posts (by post)"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:260
+msgid "List tables"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:261
+msgid "List tags"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:262
+msgid "Manage roles"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:263
+msgid "My comments"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:264
+msgid "My desk"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:265
+msgid "My posts"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:266
+msgid "New comment form"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:267
+msgid "New event"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:268
+msgid "New post"
+msgstr "Éditer nouveau"
+
+#: data_files/locale/collorg_fields_i18n.py:269
+msgid "New post (sub)"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:270
+msgid "New post (subclass)"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:271
+msgid "New topic"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:272
+msgid "Post core display"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:273
+msgid "Post display"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:274
+msgid "Post footer display"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:275
+msgid "Post header display"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:276
+msgid "Post type selection"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:277
+msgid "Posts list"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:278
+msgid "Rss feed"
+msgstr "Flux RSS"
+
+#: data_files/locale/collorg_fields_i18n.py:279
+msgid "Reset edition"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:280
+msgid "Revoke access"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:281
+msgid "Revoke access link"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:282
+msgid "Revoke write access"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:283
+msgid "Revoke write access link"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:286
+msgid "Search posts with specific tag"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:287
+msgid "Select a user"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:288
+msgid "Select a user to perform an action"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:290
+msgid "Set recipient"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:291
+msgid "Share"
+msgstr "Partager"
+
+#: data_files/locale/collorg_fields_i18n.py:292
+msgid "Sidebar search panel"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:294
+msgid "Submit button"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:295
+msgid "Tag link"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:296
+msgid "User's home link"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:297
+msgid "Visibility selection"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:298
+msgid "Action documentation"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:299
+msgid "Adding a comment"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:300
+msgid "Affichage article"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:301
+msgid "Attachment form"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:302
+msgid "Attachments list"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:303
+msgid "Attacht callback link"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:304
+msgid "Browse database"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:305
+msgid "Comments"
+msgstr "Commentaires"
+
+#: data_files/locale/collorg_fields_i18n.py:306
+msgid "Creation/modification date"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:307
+msgid "Credit + creation/modification date"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:308
+msgid "Database access main"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:309
+msgid "Date delta"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:310
+msgid "List follow-ups"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:311
+msgid "Login"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:312
+msgid "Members list"
+msgstr "Liste des membres"
+
+#: data_files/locale/collorg_fields_i18n.py:313
+msgid "User's information edition"
+msgstr ""
+
+#: data_files/locale/collorg_fields_i18n.py:314
+msgid "User's informations update"
+msgstr ""

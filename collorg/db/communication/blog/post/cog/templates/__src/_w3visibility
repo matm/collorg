@@ -1,0 +1,10 @@
+# >>>
+vis = self.visibility_.value
+i18n_mo = _('Members only')
+i18n_acuo = _('Accessible by connected users only')
+i18n_pa = _('Public access')
+d_message = {
+    'private': i18n_mo, 'protected': i18n_acuo, 'public': i18n_pa
+}
+# ---
+<span title="{% d_message[vis] %}" class="{% vis %}">{% _(vis) %}</span>

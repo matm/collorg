@@ -1,0 +1,17 @@
+# >>>
+target = html.random_id()
+user_oid = self.cog_oid_.val
+assert user_oid
+unit = self.get_granted_data('collorg.organization.unit')
+if unit.exists():
+    pl_unit = unit.count() > 1 and "s" or ""
+    # ---
+    <h5>Unit{% pl_unit %}</h5>
+    {% unit.w3list() %}
+# >>>
+group = self.get_granted_data('collorg.group.group')
+if group.exists():
+    pl_group = group.count() > 1 and "s" or ""
+    # ---
+    <h5>Group{% pl_group %}</h5>
+    {% group.w3list() %}

@@ -1,0 +1,42 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-30 17:35+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: collorg/db/actor/user/cog/templates/w3login_form.py:22
+#: collorg/db/actor/user/cog/templates/w3login_form.py:21
+msgid "Connection"
+msgstr "Connection"
+
+#: collorg/db/actor/user/cog/templates/w3login_form.py:33
+#: collorg/db/actor/user/cog/templates/w3login_form.py:31
+msgid "login"
+msgstr "login"
+
+#: collorg/db/actor/user/cog/templates/w3login_form.py:34
+#: collorg/db/actor/user/cog/templates/w3login_form.py:33
+msgid "password"
+msgstr "password"
+
+#: collorg/db/actor/user/cog/templates/w3login_form.py:38
+#: collorg/db/actor/user/cog/templates/w3login_form.py:37
+msgid "Connect"
+msgstr "Connect"
+
+#: collorg/db/actor/user/cog/templates/w3login_link.py:22
+msgid "connection"
+msgstr ""

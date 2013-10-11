@@ -1,0 +1,1 @@
+CREATE SCHEMA "collorg.i18n";

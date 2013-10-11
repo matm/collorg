@@ -1,0 +1,55 @@
+form.cmxform {
+    color: #333333;
+    font-size: 1em;
+    width: 370px;
+}
+form.cmxform legend {
+    padding-left: 0;
+}
+form.cmxform legend, form.cmxform label {
+    color: #333333;
+}
+form.cmxform fieldset {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    /*background: url("../images/cmxform-fieldset.gif") repeat-x scroll left bottom #F8FDEF;*/
+    border-color: #C9DCA6 -moz-use-text-color -moz-use-text-color;
+    border-right: medium none;
+    border-style: solid none none;
+    border-width: 1px medium medium;
+}
+form.cmxform fieldset fieldset {
+    background: none repeat scroll 0 0 transparent;
+}
+form.cmxform fieldset p, form.cmxform fieldset fieldset {
+    /*background: url("../images/cmxform-divider.gif") repeat-x scroll left bottom transparent;*/
+    padding: 5px 10px 7px;
+}
+form.cmxform label.error, label.error {
+    color: red;
+    font-style: italic;
+}
+div.error {
+    display: none;
+}
+textarea {
+    valign: top;
+}
+input {
+    border: 1px solid black;
+}
+input.checkbox {
+    border: medium none;
+}
+input:focus {
+    border: 1px dotted black;
+}
+input.error {
+    border: 1px dotted red;
+}
+form.cmxform .gray * {
+    color: gray;
+}

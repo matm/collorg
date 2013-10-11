@@ -1,0 +1,18 @@
+<div id="cog_top_nav_ariadne" class="left">
+<img
+ src="/collorg/images/my_places.svg"
+ class="hugeicon ariadne"  alt="loaded pages" title="Loaded pages">
+<ul id="cog_ariadne_menu" class="hidden ui-menu"></ul>
+%s
+</div>
+<script>
+    var ariadne_menu = $('#cog_ariadne_menu');
+    ariadne_menu.hide();
+    var img_trigger = $('#cog_top_nav_ariadne > img.ariadne');
+    img_trigger.hover(function(){{
+        ariadne_menu.menu().show();
+    }});
+    ariadne_menu.bind('click mouseleave', function(){{
+        $(this).hide();
+    }});
+</script>

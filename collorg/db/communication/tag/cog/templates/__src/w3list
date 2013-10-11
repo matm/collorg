@@ -1,0 +1,17 @@
+#PRAGMA 'strip':False
+#PRAGMA 'goals':['Communication']
+#PRAGMA 'functions':['Anonymous user']
+#PRAGMA 'tasks':['Anonymous navigation']
+#PRAGMA 'label':'List tags'
+#PRAGMA 'in_menu':False
+# >>>
+raw = kwargs.pop('raw', True)
+list_ = kwargs.pop('list_', False)
+target=kwargs.pop('target', '#cog_container')
+unordered = kwargs.pop('unordered', False)
+if self.exists():
+    if not unordered:
+        self.order_by(self.tag_)
+    for elt in self:
+        # ---
+        {% elt.w3link(raw = raw, target=target, **kwargs) %}

@@ -1,0 +1,50 @@
+.ui-action_ {
+    background:#e5e3e3 url("/collorg/images/button.png") repeat-x;
+    border-top:1px solid #DDD;
+    border-left:1px solid #c6c6c6;
+    border-right:1px solid #DDD;
+    border-bottom:1px solid #c6c6c6;
+    color:#515151 !important;
+    outline:none;
+    margin:2px;
+    padding-left:4px;
+    -webkit-border-radius: 25px 25px 25px 25px;
+    -khtml-border-radius: 25px 25px 25px 25px;
+    -moz-border-radius: 25px 25px 25px 25px;
+    border-radius: 25px 25px 25px 25px;
+    box-shadow: 0 0px 0 #ececec;
+    cursor: pointer;
+}
+
+.button {
+    text-decoration: none;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    -khtml-border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    border-radius: 4px 4px 4px 4px;
+    background:#e5e3e3 url("/collorg/images/button.png") repeat-x;
+    border-top:1px solid #DDD;
+    border-left:1px solid #c6c6c6;
+    border-right:1px solid #DDD;
+    border-bottom:1px solid #c6c6c6;
+    color:#515151 !important;
+    outline:none;
+    padding:2px 5px;
+    padding-left:5px;
+    margin:0px;
+
+    box-shadow: 0 0px 0 #ececec;
+}
+
+.ui-action_:hover, .button:hover {
+    background:#b4b4b4 url("/collorg/images/button_selected.png") repeat-x;
+    border-top:1px solid #ccc;
+    border-left:1px solid #bebebe;
+    border-right:1px solid #b1b1b1;
+    border-bottom:1px solid #afafaf;
+    cursor: pointer;
+}
+
+.button.small{
+    padding: 1px;
+}

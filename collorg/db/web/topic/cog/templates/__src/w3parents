@@ -1,0 +1,12 @@
+# >>>
+parents = self.get_parents()
+parents.reverse()
+l_links = []
+for parent in parents:
+    if parent.check_visibility(cog_user):
+        l_links.append("{}".format(html(parent).a(css_class="af")))
+    else:
+        break
+if l_links:
+    # ---
+    &rarr; {% " ".join(l_links) %}

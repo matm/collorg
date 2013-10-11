@@ -1,0 +1,26 @@
+#PRAGMA 'label':'login'
+# ---
+<div class="no_required" width="420" title="{% _("Connection") %}">
+# >>>
+id = html().random_id()
+lid="log_%s" % id
+register_link = html().a(
+    cog_method = "w3register_form",
+    label = "register")
+# +++ form_html
+{% html().input( self.cog_oid_, hidden = True ) %}
+<label for="{%lid%}"><b>{% _("login") %}</b></label>
+<input id="{%lid%}" type="text" name="login" value="" /></label>
+{% html().input( self.password_, label=_("password")) %}
+
+<input type="hidden" name="cog_method" value="w3login" />
+<button class="action" target="#login_result" data-form-id="{% id %}">
+{% _("Connect") %}
+</button>
+<div id="login_result"></div>
+{#
+<span class="right"><b>{% register_link %}</b></span>
+#}
+# --- form_html
+{% html().form( css_class = "cmxform", id = id, html = form_html ) %}
+</div>

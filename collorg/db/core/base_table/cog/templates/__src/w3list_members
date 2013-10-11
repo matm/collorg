@@ -1,0 +1,32 @@
+#PRAGMA 'label':'members list'
+#PRAGMA 'icon':'users_list.svg'
+#PRAGMA 'in_header':True
+# >>>
+i18n_m = _("Members")
+i18n_mo = _("Members of")
+embedded = kwargs.get('embedded', True)
+members = self.db.table('collorg.access.view.by_function')
+members.data_oid_.set_intention(self.cog_oid_.value)
+hierarchy = self.db.table('collorg.access.hierarchy')
+hierarchy.parent_.set_intention(self.cog_oid_.value)
+members.data_oid_ += (hierarchy.child_, 'in')
+post = self
+if 'topic_oid' in kwargs:
+    post = self.db.get_elt_by_oid(kwargs['topic_oid'])
+# ---
+# +++ header
+# >>>
+if post.cog_oid_.value != self.cog_oid_.value:
+    i18n_m = "{} {}".format( i18n_mo, html(self).a() )
+# ---
+{% i18n_m %}
+# --- header
+# +++ article
+{% post.w3manage_access(this=self, callback="w3list_members") %}
+{% members.w3list_members(data = self, callback = "w3list_members") %}
+# --- article
+# >>>
+output = self.db.table('collorg.core.base_table').w3display_base(
+    header=header, article=article, footer='', embedded = embedded)
+# ---
+{% output %}

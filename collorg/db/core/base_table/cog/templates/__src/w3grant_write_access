@@ -1,0 +1,13 @@
+#PRAGMA 'goals':['Access management']
+#PRAGMA 'tasks':['Access management']
+#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'label':'Grant write access'
+#PRAGMA 'in_menu':False
+# >>>
+user_oid = kwargs['user_oid']
+if cog_user.cog_oid_.value != user_oid:
+    user = self.db.get_elt_by_oid(user_oid)
+    user.grant_write_access(self)
+callback = eval("self.{}()".format(kwargs['callback']))
+# ---
+{% callback %}

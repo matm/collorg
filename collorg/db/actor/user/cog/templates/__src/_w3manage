@@ -1,0 +1,41 @@
+#PRAGMA 'tasks':['Authenticated navigation']
+#PRAGMA 'label':"Select a user to perform an action"
+#PRAGMA 'in_menu':False
+# >>>
+__doc__ = """
+Live search a user then perform the action passed on the data with the
+user selected
+"""
+method = kwargs['method']
+action = kwargs['action']
+target = kwargs.get('target', '_page_article_')
+data = kwargs['data']
+callback = kwargs['callback']
+id = html.random_id()
+fid = "form_%s" % (id)
+# +++ form_html
+<label><img 
+ class="bigicon" src="/collorg/images/user_add.svg"
+ title="Select a user"
+/>
+<input type="text" placeholder="user name" name="last_name_" title="Last name"/>
+</label>
+# --- form_html
+{% html().form(id = fid, html = form_html) %}
+
+<script type="text/javascript">
+//<!--
+$( document ).ready( function() {
+$('#{% fid %} input[name="last_name_"]').liveSearch(
+{
+id:'{% fid %}',
+cog_method:'{% method %}',
+cog_oid_:'{% data.cog_oid_ %}',
+cog_fqtn_:'{% data.cog_fqtn_ %}',
+target:'{% target %}',
+action:'{% action %}',
+callback:'{% callback %}'
+});
+});
+//-->
+</script>

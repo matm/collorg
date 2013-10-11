@@ -1,0 +1,6 @@
+#PRAGMA 'label': "Edit user's RSS"
+#PRAGMA 'tasks':['Authenticated navigation']
+# >>>
+rss = cog_user._rev_rss_
+# ---
+{% rss.w3edit() %}

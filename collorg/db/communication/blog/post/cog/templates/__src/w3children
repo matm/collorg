@@ -1,0 +1,7 @@
+# >>>
+if not cog_user:
+    children = self.get_not_private_children()
+else:
+    children = self.get_accessible_children(cog_user)
+# ---
+{% children.w3list(cog_separator = ' ', css_class="action af") or "" %}

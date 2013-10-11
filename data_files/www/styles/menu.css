@@ -1,0 +1,175 @@
+/* This was the CSS Style file for sagemath.org...*/
+/* Thanks to his creator Harald Schilly */
+/* (c) 2008; Copyright Sage - harald.schilly@gmail.com */
+/* (c) 2011: Copyright collorg - joel.maizi@lirmm.fr */
+/* License: CC-BY http://creativecommons.org/licenses/by/3.0/ */
+html {
+    margin:0px;
+    padding: 0px;
+    font-family: courrier,sans-serif;
+    /*overflow-y: scroll;*/
+}
+
+.floatRight{
+    float: right;
+    margin-right: 5px;
+}
+.floatLeft{
+    float: left;
+    margin-left: 5px;
+}
+.header_right{
+    position:fixed;
+    display: block;
+    margin-top: -1em;
+    right: 5px;
+}
+li {
+    border-bottom: 1px solid transparent;
+}
+ul.l_lab {
+    margin-left: 1px; /* #!! */
+    padding-left: 1px;
+    padding-bottom: 0.2em;
+}
+ul.l_lab> li {
+    display: block;
+    list-style: none;
+    margin-left: 1px; /* #!! */
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+}
+ul.l_lab> li div {
+    padding-bottom: 0.2em;
+}
+
+ul, ol {
+    margin-left:0px;
+}
+
+a, a:hover, a:visited, a:active {
+    color: #0f0fFF;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: text-bottom;
+}
+a:hover {
+    /*background: #e9e9f9;*/
+    text-decoration: underline;
+    color: #090999;
+}
+.hover{
+    text-decoration: underline;
+    color: #090999;
+}
+a img { /*IE*/
+    border:0px;
+}
+img:hover {
+    background:transparent;
+}
+
+h1, h2, h3, h4, h5 {
+    border-bottom: 1px solid #c6c6c6;
+    color: #008;
+}
+
+.hidden { display:none; }
+.javascript{display:none;}
+.cookies{display:none;}
+
+hr {
+    border: 0;
+    size: 0;
+    border-bottom: 1px solid #c9c9f9;
+}
+
+/* new menu */
+.menu {
+    list-style-type: none;
+    height: 1em;
+    padding: 2px;
+    margin: 0px;
+    position: relative;
+    white-space: nowrap;
+}
+.menu li {
+    float: left;
+    position: relative;
+    padding: 0;
+    line-height: 1em;
+    display: block;
+    border-top:1px solid #DDD;
+    border-left:1px solid #c6c6c6;
+    border-right:1px solid #DDD;
+    border-bottom:1px solid #c6c6c6;
+    -webkit-border-radius: 8px 8px 0px 0px;
+    -khtml-border-radius: 8px 8px 0px 0px;
+    -moz-border-radius: 8px 8px 0px 0px;
+    border-radius: 8px 8px 0px 0px;
+    box-shadow: 0 0px 0 #ececec;
+}
+.menu li a, .menu li span {
+    display: block;
+    padding: 5px 15px 5px 5px;
+    text-decoration: none;
+    background:#e5e3e3 url("/collorg/images/button.png") repeat-x;
+}
+.menu li ul {
+    display: none; opacity: 0; 
+    z-index: 100;
+    position: absolute;
+    left: 0;
+    min-width: 8em;
+    background:#e5e3e3 url("/collorg/images/button.png") repeat-x;
+    border-top:1px solid #DDD;
+    border-left:1px solid #c6c6c6;
+    border-right:1px solid #DDD;
+    border-bottom:1px solid #c6c6c6;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 0px 0; 
+}
+.menu li:hover ul { display: block; opacity: 1;}
+.menu li:hover a {
+    background:#e5e3e3 url("/collorg/images/button.png") repeat-x;
+}
+
+.menu li ul li {
+    display: none;
+    float: none;
+    margin: 0;
+    padding:0;
+    position: static;
+    height: 0;
+    line-height: 0;
+    background: none;
+    border: 0;
+}
+.menu li ul li a { 
+    display: none;
+    line-height: 0;
+    height: 0;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+.menu li:hover ul li { 
+    display: block; 
+    height: 24px; 
+    line-height: 24px; 
+    background: #efefff;
+}
+.menu li:hover ul li a {
+    background: #efefff;
+    border: 0;
+    display: block; 
+    height: 24px; 
+    line-height: 24px; 
+    padding: 0 5px; 
+}
+.menu li ul li a       { background: #efefff; } 
+.menu li ul li a:hover {
+    background:#b4b4b4 url("/collorg/images/button_selected.png") repeat-x;
+}
+.menu li ul li.section { border-top: 1px solid black; }

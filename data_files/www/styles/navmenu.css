@@ -1,0 +1,53 @@
+nav.ariadne{
+    /*font-size: 75%;*/
+    border-bottom: 1px dashed;
+    color: #bbb;
+}
+.navmenu ul{
+    list-style: none;
+    margin-left: 0;
+    padding-left: 1em;
+}
+.underlined-link{
+    border-bottom: 1px solid #aaa;
+}
+#cog_top_nav_ariadne > img.ariadne:hover{
+    cursor:pointer;
+}
+#cog_top_nav_ariadne > img{
+	margin-left: 5px;
+}
+#cog_top_nav_ariadne li{
+    z-index: 110;
+}
+
+#cog_top_nav_map {
+	display: inline-block;
+	position: absolute;
+	left: 37px;
+}
+
+#cog_top_nav_search {
+	display: inline-block;
+	position: absolute;
+	left: 70px;
+}
+
+#header img {
+    display: inline-block;
+    padding-top: 5px;
+}
+
+#cog_top_nav_search > #cog_top_nav_search_inputs {
+	vertical-align: super;
+	display: inline-block;
+}
+
+#cog_home_link{
+    position: absolute;
+    right: 30px;
+}
+#cog_log_link {
+    position: absolute;
+    right: 0px;
+}

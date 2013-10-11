@@ -1,0 +1,15 @@
+.debug {
+    overflow: auto;
+    background: #EEEEEE;
+    margin-top: -2em;
+    max-height:400px;
+}
+.debug_error {
+    background: #FFCCCC;
+}
+h .debug_error{
+    color:red;
+}
+.error{
+    color:red;
+}

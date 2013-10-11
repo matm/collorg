@@ -1,0 +1,9 @@
+#PRAGMA 'strip': True
+# >>>
+if kwargs['topic'].visibility_.value == 'public':
+    if (self._is_cog_folder or 
+        self._is_cog_unit or
+        self._is_cog_user or
+        self._is_cog_group):
+        # ---
+        ok

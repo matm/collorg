@@ -1,0 +1,22 @@
+.inactive {
+    background: url("images/go-previous.svg") no-repeat scroll center center transparent;
+    box-shadow: 0 0 20px 0 #DAE8F5 inset;
+    left: 0;
+    transform: scaleX(-1);
+}
+#prevArrow {
+    background: url("images/go-previous.svg") no-repeat scroll center center transparent;
+    box-shadow: 0 0 20px 0 #DAE8F5 inset;
+    right: 0;
+}
+.arrow {
+    cursor: pointer;
+    height: 100%;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 13%;
+}
+.active .arrow{
+    display: hidden;
+}

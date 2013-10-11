@@ -1,0 +1,82 @@
+# >>>
+target = html.random_id()
+tl_target = "tl_{}".format(target)
+self = self.get(reload_=True)
+if not cog_user:
+    posts = self.get_not_private_posts()
+else:
+    posts = self.get_accessible_posts(cog_user)
+environment = self.db.get_elt_by_oid(self.cog_environment_.value)
+data_type = self.data_type_.val
+action = 'w3list'
+if self.action_.value:
+    action = self.db.get_elt_by_oid(self.action_.value).name_.value
+text = ''
+# +++ nav_up
+{% self.w3parents() %}
+# --- nav_up
+# +++ header
+{% self._w3visibility() %}
+<span class="title">{% html(self).a() %}</span>
+# --- header
+# +++ nav_down
+{% self.w3children() %}
+# --- nav_down
+# +++ presentation
+# >>>
+if self.path_info_.value == '':
+    text = environment.w3presentation(**kwargs)
+# --- presentation
+# +++ article
+# >>>
+if not self.action_.value:
+    tags_list = ''
+    tags = posts._rev_a_tag_post_._tag_ + posts.get_see_also()._rev_a_tag_post_._tag_
+    if tags.exists():
+        has_text = True
+        tags_list = '<div class="bottom_tags">{}</div>'.format(tags.w3list(
+            raw=False, env_oid=self.cog_oid_.val,
+            env_fqtn=self.cog_fqtn_.val, target=tl_target))
+    if self.text_.value is not None:
+        text = "{}{}".format(text, html.display(self.text_, label=''))
+    text = "{}{}".format(tags_list, text)
+    if text:
+        # ---
+        <div class="topic_text">{% text %}</div>
+        <div class="topic_list" id="{% tl_target %}">
+# >>>
+if data_type:
+    data_type_list = self.db.table(data_type).cog_path(environment)
+    if data_type_list is not None:
+        topics_list = self()
+        topics_list.cog_environment_.set_intention(data_type_list.cog_oid_)
+        topics_list.path_info_.set_intention('')
+        if topics_list.exists():
+            a_topics = eval("topics_list.{}(**kwargs)".format(action))
+        else:
+            a_topics = eval("data_type_list.{}(**kwargs)".format(action))
+        # ---
+        {% a_topics %}
+# >>>
+if not self.action_.value:
+    v_posts = self.db.table('collorg.communication.blog.view.by_post')
+    v_posts.cog_oid_.set_intention(posts.cog_oid_)
+    # ---
+    {% self.w3attach_post_drop_zone() %}
+    {% v_posts.w3list(embedded = True) %}
+    # >>>
+    if text:
+        # ---
+        </div>
+# --- article
+# >>>
+article = '<div id="{}">{}</div>'.format(target, article)
+if (self.path_info_.value == '/' and self.site_.value):
+    article = "{}".format(article)
+display = self.w3display_base(
+    nav_up = nav_up, header = header, nav_down = nav_down,
+    presentation = presentation,
+    environment = environment,
+    article = article, embedded = False)
+# ---
+{% display %}

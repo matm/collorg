@@ -1,0 +1,12 @@
+#PRAGMA 'strip':True
+#PRAGMA 'label':'browse database'
+#PRAGMA 'in_menu':True
+#PRAGMA 'description':'Lists the namespaces of the database.'
+#PRAGMA 'keywords':'navigation, modules, namespaces'
+#PRAGMA 'tasks':['Db admin']
+<h1>{% self.long_name_.val or self.name_.val %}</h1>
+# >>>
+namespace = self._rev_namespace_
+# ---
+<h2>namespaces</h2>
+{% namespace.w3list() %}

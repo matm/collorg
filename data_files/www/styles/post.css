@@ -1,0 +1,134 @@
+.filter{
+    z-index: 50;
+    min-height: 1.2em;
+    left: 158px;
+    position:fixed;
+    top: 23px;
+    width: 605px;
+    background-color: #ffc;
+    vertical-align: text-bottom;
+    font-size:50%;
+}
+.small_title, .title, .post_title{
+    display: inline-block;
+}
+.post_title{
+    font-size: 130%;
+}
+.title{
+    font-size: 1.5em;
+}
+.small_title{
+    font-size: 0.8em;
+}
+.post_title{
+    width: 490px; /* relative to width: 570px in vrac:#main_bar */
+    margin-bottom: 1em;
+}
+#cog_container>.post_title{
+    padding: 0em 40px;
+/*    margin-top: 1em;*/
+}
+.post_item {
+    cursor: text;
+}
+.post_item.clicked {
+    background-color: rgb(234, 234, 234);
+}
+.post_item .post_title, .post_item .title{
+    display: inline;
+    border-bottom: 0px;
+}
+#cog_container>.post_title.stuck{
+    margin-top: 0em;
+}
+.comment_item, .post_item, #left_bar_post li{
+    clear: both;
+    padding: 1em 1em;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset;
+/*    font-size: 0.8em; */
+}
+.post_item .title{
+    font-size: 1.3em;
+}
+.focus{
+    box-shadow: 0 0 15px #ddd inset;
+    -moz-box-shadow: 0 0 15px #ddd inset;
+    -webkit-box-shadow: 0 0 15px #ddd inset;
+}
+.comment_item{
+    font-size: 1em;
+}
+.post_item.important.focus{
+    box-shadow: 0 0 15px #55a inset;
+    -moz-box-shadow: 0 0 15px #55a inset;
+    -webkit-box-shadow: 0 0 15px #55a inset;
+}
+.b_important{
+    background-color: #a33;
+}
+#left_bar .post_item{
+    padding: 0.5em 0.5em;
+}
+#left_bar_post li{
+    margin: 0;
+    padding: 0.5em;
+}
+.idx{
+    font-size: 70%;
+    font-weight: bold;
+    color: black;
+    background-color: lightgrey;
+    border-radius: 12px;
+    height: 24px;
+    min-width: 24px;
+    line-height: 24px;
+    text-align: center;
+    vertical-align: middle;
+    opacity: 0.5;
+}
+.overlap{
+    margin-right: -6px;
+}
+.blog_item_footer{
+    padding-bottom: 1em;
+    border-bottom:1px solid #c6c6c6;
+    display: float;
+    clear: both;
+}
+.tag, .inst_tag {
+    background: url("/collorg/images/tag_bg.png")
+        no-repeat scroll left top transparent;
+    /*color: #FFFFFF;*/
+    display: inline-block;
+    /*    font-size: 12px;*/
+    font-weight: normal;
+    line-height: 18px;
+    margin: 0 0.25em 0 0;
+    padding: 0 0.25em 0 10px;
+    /*    text-shadow: 1px 1px 1px #5A5046;*/
+}
+.bottom_tags {
+    text-align: left;
+}
+.inst_tag {
+    font-style: italic;
+}
+.inst_tag>a, .tag>a{
+}
+.tag>a{
+    color: black;
+}
+.group_tag {
+    background-color: #ffb178;
+    border-bottom: 1px solid #bd865d;
+    border-right: 1px solid #de9c6b;
+    color: #825c40;
+    font-size: 90%;
+    margin: 1px 1px 1px 0;
+    padding: 1px 4px;
+    text-decoration: none;
+    vertical-align: top;
+    white-space: nowrap;
+}

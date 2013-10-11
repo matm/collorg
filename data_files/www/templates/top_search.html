@@ -1,0 +1,42 @@
+<div id="cog_top_nav_search">
+	<img
+	 src="/collorg/images/search.svg"
+	 class="hugeicon"  alt="{}" title="{}">
+	 <div id="cog_top_nav_search_inputs">
+		<span id="cog_tag_search" class="javascript">
+		    <input type="text" placeholder="{}" hint="" name="q" />
+		</span>
+		<span id="cog_main_search" class="javascript">
+		    <input type="text" placeholder="{}" 
+		    hint="" name="q" />
+		</span>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	$(document).ready(function()
+	{{
+
+		$('#cog_top_nav_search_inputs').hide();
+
+		$('#cog_top_nav_search > img').click(function()
+		{{
+			$('#cog_top_nav_search_inputs').slideToggle(100);
+		}});
+
+		$('#cog_main_search input[name="q"]').liveSearch({{
+			id:'cog_main_search',
+			cog_fqtn_:'collorg.actor.user',
+			cog_method:'w3live_search'
+		}});
+
+		$('#cog_tag_search input[name="q"]').liveSearch({{
+			id:'cog_tag_search',
+			min_length:3,
+			cog_fqtn_:'collorg.communication.tag',
+			cog_method:'w3live_search'
+		}});
+	}});
+
+</script>

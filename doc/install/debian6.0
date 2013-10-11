@@ -1,0 +1,31 @@
+= Install on debian 6.0 =
+
+* mercurial:i386 (1.6.4-1)
+* python-all:i386 (3.1.3-12)
+* libapache2-mod-wsgi-py3:i386 (3.3-2)
+* python-setuptools:i386 (0.6.14-4)
+* easy_install3 nose
+* libpq-dev:i386 (8.4.8-0squeeze2)
+* python-dev:i386 (3.1.3-12)
+* easy_install3 psycopg2
+* easy_install3 networkx
+
+createuser collorg
+ALTER USER collorg password 'gl,0uArgl' ;
+
+joel@debian:~$ cd collorg/sql/pg/collorg/
+joel@debian:~/collorg/sql/pg/collorg$ createdb db_test
+joel@debian:~/collorg/sql/pg/collorg$ psql db_test -c 'CREATE LANGUAGE plpgsql'
+joel@debian:~/collorg/sql/pg/collorg$ psql db_test -f /usr/share/postgresql/8.4/contrib/_int.sql 
+[...]
+some NOTICEs
+[...]
+joel@debian:~/collorg/sql/pg/collorg$ psql db_test -f /usr/share/postgresql/8.4/contrib/uuid-ossp.sql 
+joel@debian:~/collorg/sql/pg/collorg$ cd ~/tmp
+joel@debian:~/tmp$ cog init -d db_test
+root@debian:/home/joel/collorg# cd ../tmp/cog_db_test/
+root@debian:/home/joel/tmp/cog_db_test# python setup.py install
+
+== WSGI ==
+
+root@debian:~# mkdir /var/www/wsgi-scripts

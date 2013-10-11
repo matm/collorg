@@ -1,0 +1,9 @@
+#PRAGMA 'write':True
+#PRAGMA 'tasks':['Authenticated navigation']
+# >>>
+# access control !!!
+comment = self._rev_comment_
+comment.text_.set_intention(kwargs['text_'])
+self.attach_comment(comment)
+# ---
+{% self.w3list_comments() %}

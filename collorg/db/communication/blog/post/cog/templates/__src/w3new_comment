@@ -1,0 +1,15 @@
+#PRAGMA 'write':True
+#PRAGMA 'tasks':['Authenticated navigation']
+#PRAGMA 'label':'New comment form'
+# >>>
+id = html().random_id()
+i18n_new_comment = _("New comment")
+# ---
+# +++ form_html
+{% html().input(self.text_, label = i18n_new_comment, rows = 6) %}
+<input type="hidden" name="cog_oid_" value="{% self.cog_oid_ %}" />
+<input type="hidden" name="cog_fqtn_" value="{% self.fqtn %}" />
+<input type="hidden" name="cog_method" value="w3save_comment" />
+{% cog_user.w3submit_button(target="_page_article_", form_id=id) %}
+# --- form_html
+{% html().form(tag = 'div', id = id, html = form_html) %}

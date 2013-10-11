@@ -1,0 +1,61 @@
+@page {
+    margin: 0.5cm;
+}
+@media print{
+    body {
+/*        width: auto!important;
+        margin: auto!important;*/
+        font-family: serif;
+        font-size: 12pt;
+        background-color: #fff!important;
+        color: #000!important;
+    }
+    p, h1, h2, h3, h4, h5, h6, blockquote, ul, ol {
+        color: #000!important;
+/*        margin: auto!important;*/
+    }
+    article {
+        display: block; /* affichage des éléments de classe print */
+        height: auto!important;
+    }
+    .page {
+        width: 90%;
+        display: block;
+        padding: 0% 5%;
+        box-shadow: none;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        border-radius: 0px;
+        overflow: visible;
+/*        font-size: 12pt;*/
+    }
+    p, blockquote {
+        orphans: 3; /* pas de ligne seule en bas */
+        widows: 3; /* pas de ligne seule en haut */
+    }
+    blockquote, ul, ol {
+        page-break-inside: avoid; /* pas de coupure dans ces élements */
+    }
+    h1 {
+        page-break-before: always; /* chaque titre commence sur une nouvelle page */
+    }
+    h1, h2, h3, caption {
+        page-break-after: avoid; /* pas de saut après ces éléments */
+    }
+    .title, h1, .title > a { font-size: 24pt!important; }
+    h2 { font-size: 18pt!important;}
+    h3 { font-size: 14pt!important; }
+    a { color: #000!important; }
+    .page.inactive,
+    #header,
+    #footer,
+    #cog_cart,
+    #cog_debug,
+    #cog_footer,
+    #cog_ariadne,
+    #header *,
+    #footer *,
+    .hidden,
+    .header-actions *
+    {display:none; !important}
+}

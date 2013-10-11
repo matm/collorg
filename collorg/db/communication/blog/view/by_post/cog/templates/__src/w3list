@@ -1,0 +1,88 @@
+#PRAGMA 'tasks':['Anonymous navigation']
+#PRAGMA 'label':'List posts (by post)'
+#PRAGMA 'in_menu':False
+# >>>
+i18n_created = _("created")
+i18n_modified = _("last modified")
+i18n_by = _("by")
+
+post = self.db.table('collorg.communication.blog.post')
+bobj = self.db.table('collorg.core.base_table')
+self.cog_light = True
+self.post_creat_date_.set_descending_order()
+self.event_begin_date_.set_descending_order()
+self.order_by(self.event_begin_date_, self.post_creat_date_)
+embedded = kwargs.get('embedded', False)
+data_oid = kwargs.get('data_oid')
+data_fqtn = kwargs.get('data_fqtn')
+if not data_fqtn == 'collorg.web.topic':
+    self.data_oid_.set_intention(data_oid)
+self.cog_fqtn_.set_intention('collorg.web.topic', '!=')
+d_posts = self.dict_by(self.cog_oid_)
+n_posts = len(d_posts.keys())
+pl = n_posts > 1 and "s" or ""
+# +++ article
+# >>>
+post_idx = 0
+itopic = self.db.table('collorg.web.topic')
+for key, elt in d_posts.items():
+    se = elt[0]
+    label = self.get_link_label(se)
+    if not label:
+        continue
+    post_idx += 1
+    important = ""
+    if se.important_post_:
+        important = "important"
+    b_important = important and "b_important" or ""
+    credit = ""
+    if False:#se.author_oid_:
+        itopic.cog_oid_.set_intention(se.author_topic_oid_)
+        link = html(itopic).a(label = "{} {}".format(
+            se.author_first_name_, se.author_last_name_))
+        credit = bobj.w3credit(
+            link = link,
+            creat_date = se.post_creat_date_,
+            modif_date = se.post_modif_date_,
+            i18n_created = i18n_created,
+            i18n_modified = i18n_modified,
+            i18n_by = i18n_by)
+    # ---
+    <div class="post_item follow clickable {% important %}">
+    # >>>
+    attachment = ""
+    if se.attachment_ != 0:
+        attachment = ('<div class="idx right">{}<img class="medicon" '
+            'src="/collorg/images/attachment.svg" /></div>'.format(
+                se.attachment_))
+    comment = ""
+    if se.comment_ != 0:
+        comment = ('<div class="idx right">{}<img class="medicon" '
+            'src="/collorg/images/conversation.svg" /></div>'.format(
+                se.comment_))
+    # ---
+    <div class="right">
+    {% comment %} {% attachment %}
+    </div>
+    <span class="post_title">{% html(se).a(label=label) %}</span>
+    # >>>
+    visibility = se.post_visibility_
+    post.visibility_.set_intention(visibility)
+    if visibility != 'public':
+        # ---
+        {% post._w3visibility() %}
+    # ---
+    <div>{% se.introductory_paragraph_ %}</div>
+    <div class="blog_item_footer">
+{#
+    <div class="right idx {% b_important %}">{% post_idx %}</div>
+#}
+    <div class="right">{% credit %}</div>
+    </div>
+    </div>
+# --- article
+# >>>
+list_ = self.db.table('collorg.core.base_table').w3display_base(
+    article = article, footer = '', embedded = embedded)
+# ---
+{% list_ %}

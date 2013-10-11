@@ -1,0 +1,15 @@
+#PRAGMA 'strip':False
+#PRAGMA 'tasks':['Share']
+#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'label':'Set recipient'
+# >>>
+recipient_oid = kwargs['recipient_oid']
+recipient = self.db.get_elt_by_oid(recipient_oid)
+l_members = []
+members = recipient.members
+members.order_by(members.last_name_, members.first_name_)
+for member in members:
+    l_members.append("{} {}".format(member.first_name_, member.last_name_))
+# ---
+<b>{% recipient.cog_label() %}</b>: {% ", ".join(l_members) %}
+<input type="hidden" name="recipient_oid" value="{% recipient_oid %}" />

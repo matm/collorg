@@ -1,0 +1,51 @@
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+
+### This file is part of collorg
+
+### collorg is free software: you can redistribute it and/or modify
+### it under the terms of the GNU General Public License as published by
+### the Free Software Foundation, either version 3 of the License, or
+### (at your option) any later version.
+
+### This program is distributed in the hope that it will be useful,
+### but WITHOUT ANY WARRANTY; without even the implied warranty of
+### MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+### GNU General Public License for more details.
+
+### You should have received a copy of the GNU General Public License
+### along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+import sys
+from collections import OrderedDict
+
+cog_cmds = OrderedDict( [
+        ( 'help', 'help' ),
+        ( 'init', 'init a collorg repository (cog init -d <db name>)' ),
+        ( 'make',
+          """add new classes from new tables. """
+          """generate methodes for new or modified templates""" )
+        ] )
+
+def help_():
+    print( "cog <cmd> {<options>}" )
+    for key, val in cog_cmds.items():
+        print( " %-8s %s" % ( key, val ) )
+    print( """\ntry "cog help <cmd>" for more information on a command""" )
+
+def run_cmd( cmd, args ):
+    temp = __import__(
+        "collorg.utils.%s" % ( cmd ), globals(), locals(), cmd.capitalize() )
+    eval( "temp.%s( args )" % ( cmd.capitalize() ) )
+    
+if __name__ == '__main__':
+    if len( sys.argv ) == 1:
+        help()
+        sys.exit()
+    cmd = sys.argv[1]
+    if cmd not in cog_cmds.keys():
+        sys.stderr.write(
+            "%s: '%s' unknown command\n" % ( sys.argv[0], cmd ) )
+        help()
+        sys.exit( 1 )
+    run_cmd( cmd, sys.argv[2:] )

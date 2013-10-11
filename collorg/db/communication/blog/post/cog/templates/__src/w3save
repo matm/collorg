@@ -1,0 +1,12 @@
+#PRAGMA 'write':True
+#PRAGMA 'strip':True
+#PRAGMA 'goals':['Blog']
+#PRAGMA 'tasks':['Blog edition']
+#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'label':'Blog entry update'
+#PRAGMA 'in_menu':False
+# >>>
+blog_oid = self.cog_oid_.value
+self.wupdate(**kwargs)
+# ---
+{% self.db.get_elt_by_oid(blog_oid).w3display() %}

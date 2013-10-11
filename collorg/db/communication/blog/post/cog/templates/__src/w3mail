@@ -1,0 +1,9 @@
+#PRAGMA 'strip':False
+#PRAGMA 'goals':['Communication']
+#PRAGMA 'tasks':['Share']
+#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'label':'Send mail'
+# >>>
+self.mail(**kwargs)
+# ---
+{% self.w3display(header = '', footer = '', embedded = True) %}

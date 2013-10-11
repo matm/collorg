@@ -1,0 +1,30 @@
+#PRAGMA 'strip':True
+# >>>
+__doc__ = """
+spécialisation pour traiter le  cas ou l'environnement est un "data_type".
+Dans ce cas il faut générer un lien intégrant l'environnement "effectif".
+"""
+cog_embedded = kwargs.pop('cog_embedded', [])
+bli = '<li>'
+eli = '</li>'
+cog_separator = kwargs.pop('cog_separator', '')
+if cog_separator:
+    bli = ''
+    eli = ''
+tid=html.random_id()
+# +++ embedded
+# >>>
+for tpl in cog_embedded:
+    tpl[1].set_intention(self.cog_oid_.value)
+    tpl[2]['target'] = tid
+    # ---
+    {% tpl[0](cog_ref_oid=self.cog_oid_.value, **tpl[2]) %}
+# --- embedded
+{% bli %}
+{% html(self).a(**kwargs) %}
+# >>>
+if embedded:
+    # ---
+    {% embedded %}<div id="{% tid %}"></div>
+# ---
+{% eli %}

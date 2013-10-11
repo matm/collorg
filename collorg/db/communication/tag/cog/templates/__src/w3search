@@ -1,0 +1,21 @@
+#PRAGMA 'strip':False
+#PRAGMA 'goals':['Communication']
+#PRAGMA 'functions':['Anonymous user']
+#PRAGMA 'tasks':['Anonymous navigation']
+#PRAGMA 'label':'Search posts with specific tag'
+#PRAGMA 'in_menu':False
+# >>>
+posts = self._rev_a_tag_post_._post_
+nb_posts = posts.count()
+if nb_posts:
+    vp = self.db.table('collorg.communication.blog.view.by_post')
+    vp.cog_oid_.set_intention(posts.cog_oid_)
+    vp.data_oid_.set_intention(kwargs.get('env_oid'))
+    l_title_tags = []
+    for tag in self:
+        l_title_tags.append(tag.tag_.value)
+    # ---
+    <span class="title">{% " AND ".join(l_title_tags) %} 
+    ({% nb_posts %} post{% nb_posts > 1 and "s" or "" %})
+    </span>
+    {% vp.w3list() %}

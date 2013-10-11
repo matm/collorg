@@ -1,0 +1,111 @@
+.page nav ul{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.page > nav{
+    margin-top: 4px;
+    margin-bottom: 5px;
+}
+.page, .mini_page {
+    box-shadow: 0 0 5px #d2d2d2;
+    -moz-box-shadow: 0 0 5px #d2d2d2;
+    -webkit-box-shadow: 0 0 5px #d2d2d2;
+    border-radius: 6px 6px 6px 6px;
+    overflow: hidden;
+    font-size: 80%;
+}
+.page{
+    width: 80%;
+    padding: 0 1em;
+    display: inline-block;
+    white-space: normal;
+/*    background: yellowgreen;*/
+}
+.page>article{
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0 1em;
+    margin-bottom: 5px;
+}
+.page table, .page pre{
+    overflow-x: auto;
+}
+.page title{
+    margin-bottom: 1em;
+}
+.page>header{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: -4px;
+}
+.page > header > .title{
+/*    margin-left: 5px;*/
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-image: url("/collorg/images/refresh.svg");
+    background-position: 4px center;
+    display: table;
+}
+.page > .header-actions{
+    float: right;
+}
+.page a.clicked{
+    background-color: rgba(234, 234, 234, 0.7);
+    color: rgb(102, 0, 0);
+}
+#cog_ariadne_menu a.active{
+    background-color: rgba(234, 234, 234, 0.24);
+    color: rgb(102, 0, 0);
+}
+
+.page.inactive {
+    height: 100%;
+    cursor: pointer;
+    background-color: rgba(50,50,50,0.1);
+/*    background-image: url("/collorg/images/right_arrow.svg"),
+    url("/collorg/images/left_arrow.svg");
+    background-repeat: no-repeat;
+    background-position: 90% 50%, 10% 50%;
+    background-size: 18%;*/
+}
+.page.inactive *{
+    overflow:hidden;
+    color: rgba(0,0,0,0.1) !important;
+}
+/* .page.inactive:hover{
+    background-color: rgba(50,50,50,0.2);
+    background-image: url("/collorg/images/right_arrow_hover.svg"),
+    url("/collorg/images/left_arrow_hover.svg");
+}*/
+#cog_container > .page{
+    vertical-align: top;
+}
+.page .topic_text{
+display: inline-block;
+float: right;
+padding: 5px;
+width: 28%;
+background-color: rgba(0,0,0,0.05);
+}
+.page .topic_list{
+display: inline-block;
+vertical-align: top;
+width: 69%;
+}
+.page > footer{
+    margin-bottom: -10px;
+}
+
+/* ----------- article inner elements ------------ */
+
+article *:not(a) > img {
+    max-width: 100%;
+    width: auto;
+    text-align: center;
+/*    display: block;*/
+    margin: auto;
+}
+
+.render_wiki{
+    background-color: #ffb;
+}

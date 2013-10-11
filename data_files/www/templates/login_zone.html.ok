@@ -1,0 +1,6 @@
+<a class="action" href="?cog_fqtn_=collorg.actor.user&cog_method=w3login_form"
+ target="#cog_dialog_modal">
+  <div class="modalInput" rel="#cog_login_modal">
+    <img src="/collorg/images/key.svg" class="hugeicon" title="login" alt="login" />
+  </div>
+</a>

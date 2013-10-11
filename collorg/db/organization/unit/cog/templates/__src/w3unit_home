@@ -1,0 +1,9 @@
+# >>>
+apd = self.db.table('collorg.communication.blog.a_post_data')
+target = html.random_id()
+data = kwargs['data']
+apd._data_ = data
+tag = data._rev_a_post_data_data_._post_._rev_a_tag_post_._tag_
+# ---
+{%tag.w3list(raw=False, env_oid=data.cog_oid_.value, target=target)%}
+<div id="{% target %}">{%apd.w3list()%}</div>

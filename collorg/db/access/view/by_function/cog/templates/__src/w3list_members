@@ -1,0 +1,66 @@
+#PRAGMA 'tasks':['Anonymous navigation']
+#PRAGMA 'in_menu':False
+#PRAGMA 'label':'List of members'
+# >>>
+__doc__ = """
+Displays the list of the members of the group group_oid
+"""
+data_link = (
+    """<a href="?cog_method=w3display&amp;cog_fqtn_=%s&amp;"""
+    """cog_oid_=%s" """
+    """class="action" target="#cog_container">"""
+    """%s</a>""" )
+# ---
+<table>
+# >>>
+data = kwargs['data']
+post = data
+if 'topic_oid' in kwargs.keys():
+    post = self.db.get_elt_by_oid(kwargs['topic_oid'])
+callback = kwargs.get('callback')
+user = self.db.table('collorg.actor.user')
+self.order_by(self.user_last_name_, self.user_first_name_)
+d_users = self.dict_by(self.user_oid_)
+author = False
+if(cog_user and post.is_cog_post and
+   cog_user.cog_oid_.value == post.author_.value):
+    author = True
+for user_oid, vals in d_users.items():
+    elt = vals[0]
+    user.cog_oid_.set_intention(elt.user_oid_.value)
+    user.first_name_.set_intention(elt.user_first_name_.value)
+    user.last_name_.set_intention(elt.user_last_name_.value)
+    # ---
+    <tr>
+    <td>
+    # >>>
+    manage_write_access = '&nbsp;'
+    if(author and cog_user.cog_oid_.value != user.cog_oid_.value):
+        # ---
+        {% post._w3revoke_access_link(user = user, callback = callback) %}
+        # >>>
+        if elt.write_.value:
+            manage_write_access = post._w3revoke_write_access_link(
+                user = user, callback = callback)
+        else:
+            manage_write_access = post._w3grant_write_access_link(
+                user = user, callback = callback)
+        m = elt.manage_.value
+    # ---
+    </td>
+    <td>{% html(user).a() %}</td>
+    <td>{% manage_write_access %}</td>
+    <td>
+    # >>>
+    l_funcs = []
+    for selt in vals:
+        if selt.function_advertise_.value:
+            l_funcs.append(data_link.strip() % (
+                selt.data_fqtn_, selt.data_oid_,
+                selt.function_long_name_))
+    # ---
+    {% ', '.join(l_funcs) %}
+    </td>
+    </tr>
+# ---
+</table>

@@ -1,0 +1,130 @@
+
+/*******************************************
+ *  Navigation and breadcrumbs stylesheets *
+ ******************************************/
+
+nav.bc {
+    display: inline-block;
+/*    margin-bottom: 7px;*/
+}
+
+nav.bc a {
+    text-decoration:none;
+    -webkit-transition: all 0.1s linear 0;
+    -moz-transition: all 0.1s linear 0;
+    -o-transition: all 0.1s linear 0;
+    transition: all 0.1s linear 0;
+    font-family:'Open Sans', sans-serif;
+    line-height: 16px;
+    color: rgb(0, 0, 102);
+    display: inline-block;
+    height: 16px;
+    margin: 0 0px 0 0;
+    padding: 4px 0px 4px 8px;
+    background-color: #fbfbfb;
+    background-repeat: repeat-x;
+/*    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f5f5f5', GradientType=0);*/
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-radius: 4px 0px 0px 4px;
+    vertical-align: top;
+}
+
+nav.bc a:after {
+    border-color: transparent #fbfbfb;
+    border-style: solid;
+    border-width: 12px 0 12px 8px;
+    content: "";
+    display: inline-block;
+    float: right;
+    height: 0;
+    left: 16px;
+    margin-left: 0;
+    position: relative;
+    top: -4px;
+    width: 0;
+}
+
+nav.bc a.clicked:after {
+    border-color: transparent rgb(192, 192, 192);
+}
+
+nav.bc a:empty {
+    content:'Home';
+}
+
+nav.bc a:before {
+    border-color: transparent #DDDDDD;
+    border-style: solid;
+    border-width: 12px 0 12px 8px;
+    content: "";
+    display: inline-block;
+    float: right;
+    height: 0;
+    left: 8px;
+    position: relative;
+    top: -6px;
+    width: 0;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+/* ON HOVER */
+
+nav.bc a:hover {
+    color: white;
+    background-color: rgba(165, 165, 165, 0.69);
+    text-decoration: none;
+    border-color: transparent rgba(165, 165, 165, 0.69);
+}
+
+nav.bc a:hover:after {
+    border-color: transparent rgba(165, 165, 165, 0.69);
+}
+nav.bc.navdown{
+    display: block;
+    background-color: rgba(165, 165, 165, 0.69);
+    padding: 2px;
+    margin-down: -2px;
+    box-shadow: 0px 3px 3px rgb(150, 150, 150);
+}
+nav.bc.navdown a {
+/*    font-weight: bold;*/
+    padding: 0px 10px;
+    border-radius: 4px;
+    border: 1px solid #DDD;
+    margin-top: 2px;
+    padding: 2px;
+}
+
+nav.bc.navdown a:after, nav.bc.navdown a:before {
+    border: none;
+    border-radius: 0px 0px 0px 0px;
+}
+
+.title {
+    display: inline-block;
+    padding: 2px;
+    color: rgb(0, 0, 102);
+    background-color: rgba(91, 91, 91, 0.24);
+    text-decoration:none;
+    -webkit-transition: all 0.1s linear 0;
+    -moz-transition: all 0.1s linear 0;
+    -o-transition: all 0.1s linear 0;
+    transition: all 0.1s linear 0;
+    font-family:'Open Sans', sans-serif;
+/*    line-height: 16px;
+    height: 16px;*/
+    background-repeat: repeat-x;
+/*    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f5f5f5', GradientType=0);*/
+    border: 1px solid #ddd;
+    border-radius: 4px 4px 0px 0px;
+    float: left;
+    text-indent: -20px;
+    padding-left: 25px;
+}
+.title > a {
+    padding: 0px 5px 0px 25px;
+    margin: -5px 0px 0px -5px;
+}

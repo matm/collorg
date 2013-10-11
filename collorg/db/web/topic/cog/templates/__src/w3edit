@@ -1,0 +1,54 @@
+#PRAGMA 'write':True
+#PRAGMA 'goals':['Blog']
+#PRAGMA 'tasks':['Blog edition']
+#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'label':'Blog edition'
+#PRAGMA 'in_header':True
+#PRAGMA 'icon':'edit.svg'
+# >>>
+i18n_for_edit_contact = _("For edition, please contact")
+if 'topic_oid' in kwargs:
+    self = self.db.get_elt_by_oid(kwargs['topic_oid'])
+if cog_user.has_access(self, write = True):
+    id = html.random_id()
+    ip_id = "ip_{}".format(id)
+    target = kwargs.get('cog_target')[1:]
+    fid = html.random_id()
+    comment = public = ''
+    if self.public_.value:
+        public = 'checked="checked"'
+    if self.comment_.value:
+        comment = 'checked="checked"'
+    # +++ form_html
+    {% html(self).input(self.title_, css_class="all_width") %}
+    {% html(self).input(self.text_) %}
+    {% self.w3edit_sub() %}
+    {%html(self).input(self.expiry_date_, css_class="timepicker")%}
+    <input type="hidden" name="cog_oid_" value="{% self.cog_oid_.value %}" />
+    <input type="hidden" name="cog_target" value="_page_" />
+    <input type="hidden" name="cog_method" value="w3save" />
+    <input type="hidden" name="public_" value="True" />
+    <p>{% self._w3select_visibility() %}</p>
+    # --- form_html
+    <article>
+    <div class="topic_list">
+    # >>>
+    if cog_user.cog_oid_.value == self.author_.value:
+        # ---
+        {% html().form(id = fid, html = form_html) %}
+        {% self.w3save_link(data_form_id=fid) %}
+    # >>>
+    else:
+        author = self.db.get_elt_by_oid(self.author_.value)
+        # ---
+        {% i18n_for_edit_contact %} {% html(author).a() %}
+    # ---
+    </div>
+    </article>
+# >>>
+else:
+    # ---
+    <article>
+    You can't edit this folder.
+    </article>
+

@@ -1,0 +1,42 @@
+[database]
+rdbms = postgres
+user = __PG_USER__
+password = __PG_PASSWORD__
+host = __PG_POST__
+port = __PG_PORT__
+
+[application]
+charset = UTF-8
+debug = True
+url = collorg/test
+url_scheme = https
+production = True
+upload_dir = /var/collorg/__DB_NAME__
+#user_photo_url = 
+#site_title = <span class="grey">C</span>oll<span class="grey">o</span>rg
+session_cache_host = localhost
+session_cache_port = 6543
+
+[mail]
+smtp_server = smtp.example.org
+#smtp_port = 
+#smtp_user = 
+#smtp_password = 
+#default_user =
+mail_prefix = [collorg]
+error_report_to = 
+
+[ldap]
+host = ldap.example.org
+port = 389
+account = 
+password = 
+connection_security =
+certificate_checks =
+base_dn = dc\=example,dc\=org
+ldap_filter =
+ldap_search_scope = SUBTREE
+login_attribute = uid
+first_name_attribute = 
+last_name_attribute =
+e_mail_attribute = mail

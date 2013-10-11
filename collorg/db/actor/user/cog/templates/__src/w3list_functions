@@ -1,0 +1,7 @@
+# >>>
+function = self._rev_access_._rev_role_._function_
+function.advertise_.set_intention(True)
+list_functions = function.w3list(
+    cog_method="w3list_data", user_oid=self.cog_oid_.value, target="_after_")
+# ---
+{% list_functions %}

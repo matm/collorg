@@ -1,0 +1,42 @@
+form.cmxform fieldset {
+    margin-bottom: 10px;
+}
+form.cmxform legend {
+    font-weight: bold;
+    padding: 0 2px;
+}
+form.cmxform label {
+    display: inline-block;
+    line-height: 1.8;
+    vertical-align: top;
+}
+form.cmxform fieldset p {
+    list-style: none outside none;
+    margin: 0;
+    padding: 5px;
+}
+form.cmxform fieldset fieldset {
+    border: medium none;
+    margin: 3px 0 0;
+}
+form.cmxform fieldset fieldset legend {
+    font-weight: normal;
+    padding: 0 0 5px;
+}
+form.cmxform fieldset fieldset label {
+    display: block;
+    width: auto;
+}
+form.cmxform label {
+    width: 100px;
+}
+form.cmxform fieldset fieldset label {
+    margin-left: 103px;
+}
+form.cmxform label.error {
+    margin-left: 103px;
+    width: 220px;
+}
+form.cmxform input.submit {
+    margin-left: 103px;
+}

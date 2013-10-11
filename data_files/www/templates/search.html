@@ -1,0 +1,36 @@
+<div id="cog_main_search" class="javascript mini_page">
+  <label>
+    user
+    <input type="text" hint="" name="q" />
+  </label>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){{
+  $('#cog_main_search input[name="q"]').liveSearch({{
+  id:'cog_main_search',
+  position:'fixed',
+  top:68,
+  cog_fqtn_:'collorg.actor.user',
+  cog_method:'w3live_search'
+  }});
+  }});
+</script>
+
+<div id="cog_tag_search" class="javascript mini_page">
+  <label>
+    tag&nbsp;
+    <input type="text" hint="" name="q" />
+  </label>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){{
+  $('#cog_tag_search input[name="q"]').liveSearch({{
+  id:'cog_tag_search',
+  position:'fixed',
+  top:68,
+  min_length:1,
+  cog_fqtn_:'collorg.communication.tag',
+  cog_method:'w3live_search'
+  }});
+  }});
+</script>

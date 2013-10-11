@@ -1,0 +1,46 @@
+<body>
+  <div id="cog_data" class="hidden">
+    {{ "cog_ajax":"True", "cog_web":"True" }}
+  </div>
+  <div id="cog_dialog_modal" class="hidden"></div>
+  <div id="cog_dialog" class="hidden"></div>
+  <div id="cog_main_container">
+    <div id="header">
+      {}<!--site map-->
+      %s<!--ariadne-->
+      %s<!--top-search-->
+      %s<!--header-->
+      %s<!--login_container-->
+    </div>
+    <div id="cog_cart">
+      <ul class="none"><li class="placeholder rotate">{}.</li></ul>
+    </div>
+    <div id="cog_container">
+      %s<!--body_content-->
+    </div>
+    <div id="footer">
+      <span id="cog_duration"></span>
+      <span id="cog_debug_link" class="toggle" to_toggle="#cog_debug"></span>
+      %s<!--footer-->
+      <div id="cog_debug" class="hidden"></div>
+    </div>
+  </div>
+  <section id="cog_new_page" class="hidden"></section>
+  <script type="text/javascript">
+    function ajax_stop(){{
+      $.unblockUI();
+      //$(document).cog_pageHeight();
+    }}
+    $(function() {{
+      $(document).collorg();
+    }});
+  </script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({{
+      "HTML-CSS": {{ linebreaks: {{ automatic: true }} }},
+      tex2jax: {{ inlineMath: [['$','$'],['\\(','\\)']] }}
+    }});
+  </script>
+
+
+</body>

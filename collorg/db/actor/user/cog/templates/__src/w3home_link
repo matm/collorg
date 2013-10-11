@@ -1,0 +1,9 @@
+#PRAGMA 'tasks':['Anonymous navigation']
+#PRAGMA 'label':"User's home link"
+# >>>
+i18n_home = _("Home page")
+topic = self.root_topic().get()
+label = '<img src="/collorg/images/home.svg" class="ui-action bigicon" title="{}" alt="{}" /> {}'.format(
+  i18n_home, i18n_home, self.cog_label())
+# ---
+{% html(topic).a(label = label) %}

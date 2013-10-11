@@ -1,0 +1,17 @@
+#PRAGMA 'goals':['Authenticated navigation']
+#PRAGMA 'tasks':['Authenticated navigation']
+# >>>
+# kwargs: follow_up is a pview object
+follow_up = kwargs['follow_up']
+
+id = html().random_id()
+# ---
+<div>{% html.creole(follow_up.text_.val) %}</div>
+<div class="right">
+ <small>
+ {% self.w3creat_modif_date(creat_date=follow_up.creat_date_.value, modif_date=follow_up.modif_date_.value) %}
+ by <em><b>{% follow_up.first_name_.val %} {% follow_up.last_name_.val %}</b></em>
+ </small>
+</div>
+&nbsp;
+<hr/>

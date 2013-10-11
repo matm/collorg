@@ -1,0 +1,17 @@
+#PRAGMA 'write':True
+#PRAGMA 'tasks':['Authenticated navigation']
+# >>>
+i18n_follow_up = _("Follow-up")
+comment = kwargs['comment']
+comment_oid = comment.cog_oid_.value
+target = kwargs['target']
+
+label='<img class="medicon" src="/collorg/images/reply.svg" alt="{}">{}'.format(
+    i18n_follow_up, i18n_follow_up)
+link = html(self).a(
+    cog_method="w3new_follow_up", css_class="right button",
+    label=label, target="#{}".format(target),
+    partial_list = kwargs.get('partial_list'),
+    comment_oid=comment_oid)
+# ---
+{% link %}

@@ -1,0 +1,4 @@
+# >>>
+new = self.new_account( **kwargs )
+# ---
+{% new.cog_oid_.val %}

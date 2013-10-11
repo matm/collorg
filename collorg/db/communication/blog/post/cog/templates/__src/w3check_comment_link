@@ -1,0 +1,14 @@
+#PRAGMA 'tasks':['Authenticated navigation']
+# >>>
+comment = kwargs['comment']
+comment_oid = comment.cog_oid_.value
+target = kwargs['target']
+
+label='<img class="medicon" src="/collorg/images/eye.svg" title="Mark as read"> Mark as read'
+link = html(self).a(
+    cog_method="w3check_comment", css_class="right button",
+    label=label, target="#comment_{}".format(target),
+    partial_list = kwargs.get('partial_list'),
+    comment_oid=comment_oid)
+# ---
+{% link %}

@@ -1,0 +1,29 @@
+.link {
+    color: #0f0fFF;
+    cursor: pointer;
+}
+.link:hover {
+    background: #e9e9f9;
+    color: #090999;
+}
+.hidden{
+    display:none;
+}
+.flashy{
+    background:yellow;
+}
+.red{
+    background:red;
+}
+.gainsboro{
+    background:rgb(220,220,220);
+}
+.black{
+    color: black;
+}
+.bgblack{
+    background:black;
+}
+.grey{
+    color:grey;
+}
