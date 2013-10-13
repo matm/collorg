@@ -1,5 +1,6 @@
 #-*- coding: UTF-8 -*-
 
+from time import sleep
 from datetime import datetime
 from collorg.db.core.base_table import Base_table
 from collorg.utils.mail import Mail
@@ -179,6 +180,7 @@ class Post(Base_table):
         tag.wsave(data=self, tags=kwargs.get('tag_', ''))
         if kwargs.get('email'):
             self.mail()
+        sleep(0.5) #XXX insert
         return self
 
     def wdelete(self):

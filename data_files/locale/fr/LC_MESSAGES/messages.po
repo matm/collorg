@@ -70,8 +70,8 @@ msgstr "Membres"
 
 #: collorg/db/core/base_table/cog/templates/w3list_members.py:24
 #: build/lib.linux-x86_64-2.7/collorg/db/core/base_table/cog/templates/w3list_members.py:24
-msgid "Members of"
-msgstr "Membres de"
+msgid "Members inherited from"
+msgstr "Membres hérités de"
 
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:21
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:20

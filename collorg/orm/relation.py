@@ -230,7 +230,6 @@ class Relation(object):
         l_fields = []
         for field in self._cog_fields:
             if field.is_constrained:
-#                print("_cog_new_insert XXXXX", field.name)
                 l_fields.append(field)
         req += "(%s)\n" % ",\n".join(
             [ '"%s"' % field.orig_name for field in l_fields ])
@@ -238,8 +237,7 @@ class Relation(object):
         req += "(%s)" % ",\n".join(
             [ field.quoted_val for field in l_fields ])
         if oid_req:
-            req = "%s; --++++\n%s;--+++++\n" % (req, oid_req)
-#        print(">>>\n%s\n<<<"%req)
+            req = "BEGIN\n;%s; --++++\n%s;--+++++\nEND;\n" % (req, oid_req)
         return req, cog_oid
         
     def _cog_get_where(self):

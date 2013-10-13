@@ -207,12 +207,12 @@ class Table(Relation):
             # FORCE DATA RELOAD !!!
             i = 0
             while i < 5:
-                time.sleep(0.1)
+                time.sleep(0.01)
                 i += 1
                 try:
-                    this = self.db.table(
-                        cog_fqtn_ = self.fqtn, cog_oid_ = str(cog_oid))
-                    self = this
+                    this = self.db.table(self.fqtn)
+                    this.cog_oid_.set_intention(cog_oid)
+                    self = this.get()
                     break
                 except:
                     pass

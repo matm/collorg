@@ -7,7 +7,6 @@
 if the object on which the access is granted is a topic, the environment
 associated becomes the topic itself.
 """
-import time
 user_oid = kwargs['user_oid']
 if cog_user.cog_oid_.value != user_oid:
     user = self.db.get_elt_by_oid(user_oid)

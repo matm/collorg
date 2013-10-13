@@ -3,7 +3,7 @@
 #PRAGMA 'in_header':True
 # >>>
 i18n_m = _("Members")
-i18n_mo = _("Members of")
+i18n_mo = _("Members inherited from")
 embedded = kwargs.get('embedded', True)
 members = self.db.table('collorg.access.view.by_function')
 members.data_oid_.set_intention(self.cog_oid_.value)
