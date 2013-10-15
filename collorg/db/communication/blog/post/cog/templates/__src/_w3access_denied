@@ -6,7 +6,7 @@ visibility = self.visibility_.value
 {%self.w3display_header()%}
 # --- header
 # +++ article
-<span class="centered">
+<span class="bigwarning">
 # >>>
 if visibility == 'protected':
     # ---

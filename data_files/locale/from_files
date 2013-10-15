@@ -8,14 +8,6 @@ collorg/utils/deco.py
 collorg/utils/init.py
 collorg/utils/oradb.py
 collorg/utils/mail.py
-collorg/_cog_web_site/__init__.py
-collorg/_cog_web_site/colorg/__init__.py
-collorg/_cog_web_site/colorg/admin/role/__init__.py
-collorg/_cog_web_site/colorg/admin/__init__.py
-collorg/_cog_web_site/colorg/admin/group/__init__.py
-collorg/_cog_web_site/colorg/install/ubuntu/_12_04/__init__.py
-collorg/_cog_web_site/colorg/install/ubuntu/__init__.py
-collorg/_cog_web_site/colorg/install/__init__.py
 collorg/db/auth/__init__.py
 collorg/db/auth/d_ldap/__init__.py
 collorg/db/auth/d_ldap/cog/__init__.py

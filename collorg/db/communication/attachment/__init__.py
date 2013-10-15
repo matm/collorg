@@ -1,5 +1,6 @@
 #-*- coding: UTF-8 -*-
 
+import time
 from collorg.db.core.base_table import Base_table
 
 class Attachment(Base_table):
@@ -39,9 +40,11 @@ class Attachment(Base_table):
         self.ref_.set_intention(elt.cog_oid_.value)
         self._data_ = data
         if self.exists():
+            time.sleep(1)
             return "document alread attached"
         self._author_ = author
         self.description_.set_intention(description)
         self.insert()
+        time.sleep(1)
         return "document attached"
 

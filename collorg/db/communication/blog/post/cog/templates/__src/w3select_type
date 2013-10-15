@@ -26,7 +26,8 @@ l_post_types = post.get_post_types()
 id_ = html.random_id()
 post_type = new_post.cog_type_name
 # ---
-<h2>{% i18n_new %}
+<h2>{% i18n_new %} {% i18n_in %} <em>{% data.cog_label() %}</em></h2>
+<h2>
 <select trigger="True">
 <option>{% _(post_type) %}</option>
 # >>>
@@ -49,6 +50,6 @@ for pt in l_post_types:
     # ---
     <option triggered="#{% link_id %}" name="{% label %}">{% _(label) %}</option>
 # ---
-</select> {% i18n_in %} <em>{% data.cog_label() %}</em>
+</select>
 </h2>
 <div class="hidden">{% links %}</div>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-10 18:25+0200\n"
+"POT-Creation-Date: 2013-10-15 14:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -326,7 +326,7 @@ msgstr "par utilisateur"
 
 #: collorg/controller/web.py:372
 #: build/lib.linux-x86_64-2.7/collorg/controller/web.py:372
-#: collorg/db/actor/user/__init__.py:194
+#: collorg/db/actor/user/__init__.py:194 collorg/db/actor/user/__init__.py:195
 msgid "Drop your links here<br>for future reference"
 msgstr "Déposez vos liens ici<br>pour un usage ultérieur"
 
@@ -1686,7 +1686,7 @@ msgstr ""
 
 #: data_files/locale/collorg_fields_i18n.py:268
 msgid "New post"
-msgstr "Éditer nouveau"
+msgstr "Nouveau post"
 
 #: data_files/locale/collorg_fields_i18n.py:269
 msgid "New post (sub)"
@@ -1854,4 +1854,8 @@ msgstr ""
 
 #: data_files/locale/collorg_fields_i18n.py:314
 msgid "User's informations update"
+msgstr ""
+
+#: collorg/db/communication/blog/post/cog/templates/w3navigation.py:22
+msgid "This post is referenced by:"
 msgstr ""

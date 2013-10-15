@@ -376,10 +376,7 @@ input.all_width{
   transform: rotate(270deg);
 }
 .bigwarning{
-/*  position: relative;
-  margin-top: -(height/2);
-  margin-left: -(width/2);*/
-  font-size: 40px;
+  font-size: 30px;
   color: grey;
 }
 .threeD, .protected, .private, .public
