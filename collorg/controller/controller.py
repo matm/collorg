@@ -295,8 +295,11 @@ class Controller(object):
             required = self._d_check[action_oid]
             for elt in required:
                 check_action = self._d_actions_by_oid[elt]
-                if not eval("kwargs['env'].{}(**kwargs)".format(
-                    check_action.name_)).strip():
+                res = eval("kwargs['env'].{}(**kwargs)".format(
+                    check_action.name_)).strip()
+#                open("/tmp/cog_xxx", "a").write("{}: {}\n".format(
+#                    check_action.name_, res))
+                if not res:
                     ok = False
         return ok
 

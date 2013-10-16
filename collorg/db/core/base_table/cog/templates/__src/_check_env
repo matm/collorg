@@ -1,0 +1,4 @@
+# >>>
+if 'topic' in kwargs and kwargs['topic'].data_type_.value is None:
+    # ---
+    ok

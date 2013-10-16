@@ -1,3 +1,5 @@
 collorg.communication.blog.post.w3list_comments:collorg.communication.blog.post.check_comment
 collorg.core.base_table.w3list_members:collorg.core.base_table._check_members
 collorg.core.base_table.rss:collorg.core.base_table.check_rss
+collorg.core.base_table.w3new_post:collorg.core.base_table._check_env
+collorg.web.topic.w3edit:collorg.core.base_table._check_env

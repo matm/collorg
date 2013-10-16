@@ -6,7 +6,9 @@ if not cog_user:
     posts = self.get_not_private_posts()
 else:
     posts = self.get_accessible_posts(cog_user)
-environment = self.db.get_elt_by_oid(self.cog_environment_.value)
+environment = None
+if self.cog_environment_.value != self.cog_oid_.value:
+    environment = self.db.get_elt_by_oid(self.cog_environment_.value)
 data_type = self.data_type_.val
 action = 'w3list'
 if self.action_.value:
@@ -45,7 +47,7 @@ if not self.action_.value:
         <div class="topic_text">{% text %}</div>
         <div class="topic_list" id="{% tl_target %}">
 # >>>
-if data_type:
+if data_type and environment:
     data_type_list = self.db.table(data_type).cog_path(environment)
     if data_type_list is not None:
         topics_list = self()
