@@ -400,3 +400,15 @@ input.all_width{
     font-weight: bold;
     color: lightgreen;
 }
+.vwiki, .vwiki:hover {
+    background-image: url("/collorg/images/eye.svg");
+    background-size: 16px;
+    background-repeat: no-repeat;
+    padding-left: 20px;
+}
+.ewiki, .ewiki:hover {
+    background-image: url("/collorg/images/edit.svg");
+    background-size: 16px;
+    background-repeat: no-repeat;
+    padding-left: 20px;
+}

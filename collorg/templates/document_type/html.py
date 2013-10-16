@@ -348,7 +348,7 @@ class Html():
         edit_wiki = ''
         if field.sql_type == 'wiki' and not hidden:
             view_wiki = '<span class="button vwiki" target="#{}">{}</span>'.format(rid, _("preview"))
-            edit_wiki = '<span class="button ewiki hidden" target="#{}">edit</span>'.format(rid)
+            edit_wiki = '<span class="button ewiki hidden" target="#{}">{}</span>'.format(rid, _("edit"))
         if field.sql_type in textarea:
             html_input = html_textarea % (
                 field.sql_type == 'wiki' and " (%s)" % wikicreole_link or '',

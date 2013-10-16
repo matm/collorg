@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-15 14:32+0200\n"
+"POT-Creation-Date: 2013-10-16 17:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1859,3 +1859,7 @@ msgstr ""
 #: collorg/db/communication/blog/post/cog/templates/w3navigation.py:22
 msgid "This post is referenced by:"
 msgstr ""
+
+#: collorg/templates/document_type/html.py:351
+msgid "edit"
+msgstr "édition"
