@@ -1,0 +1,21 @@
+# >>>
+# TO BE MOVED IN collorg.application.action
+
+env = kwargs['env']
+action = self._cog_controller.get_action(env, self.name_.value)
+topic_oid = kwargs.get('topic_oid')
+icon = ''
+kw = {}
+ok = True
+if topic_oid:
+    ok = False
+    kw['topic_oid'] = topic_oid
+    topic = self.db.table('collorg.web.topic', cog_oid_ = topic_oid)
+    if action.is_granted(topic):
+        ok = True
+if ok:
+    link = html(env).a(
+        cog_method=action.name_.value, label=_(action.label_.value.capitalize()),
+        target = '_page_article_', **kw)
+# ---
+{% link %}

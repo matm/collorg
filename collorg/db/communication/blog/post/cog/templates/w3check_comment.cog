@@ -1,0 +1,6 @@
+#PRAGMA 'tasks':['Authenticated navigation']
+# >>>
+# access control !!!
+comment_oid = kwargs['comment_oid']
+comment = self.db.get_elt_by_oid(comment_oid)
+self._check_comment(comment, cog_user)

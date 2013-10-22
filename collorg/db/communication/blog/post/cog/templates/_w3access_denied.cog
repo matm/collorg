@@ -1,0 +1,26 @@
+# >>>
+i18n_pca = _("Please connect to access this")
+i18n_sydha = _("Sorry. You don't have access to this")
+visibility = self.visibility_.value
+# +++ header
+{%self.w3display_header()%}
+# --- header
+# +++ article
+<span class="bigwarning">
+# >>>
+if visibility == 'protected':
+    # ---
+    <br><p>{% i18n_pca %} {% _(self.cog_type_name) %}.</p>
+# >>>
+if cog_user and visibility == 'private':
+    # ---
+    <br><p>{% i18n_sydha %} {% _(self.cog_type_name) %}.</p>
+# ---
+</span>
+# --- article
+# >>>
+display = self.w3display_base(
+    header = header, article = article, 
+    embedded = False, no_header_actions = True)
+# ---
+{% display %}

@@ -29,8 +29,8 @@ else:
     # ---
     <article>
     <div class="topic_list">
-    {% post_choice %}
     # +++ form_html
+    <h2>{% post_choice %}{% self._w3select_visibility() %}</h2>
     {% html(self).input(self.title_, css_class="all_width") %}
     {% html(self).input(self.text_) %}
     <input type="hidden" name="data_oid" value="{% data_oid %}" />
@@ -38,8 +38,6 @@ else:
     <input type="hidden" name="cog_fqtn_" value="{% fqtn %}" />
     <input type="hidden" name="cog_method" value="w3insert" />
     <input type="hidden" name="public_" value="True" />
-    <p>
-    {% self._w3select_visibility() %}
     </p>
     <p>
     <button class="action" target="_page_" data-form-id="{% form_id %}">

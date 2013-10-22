@@ -160,26 +160,6 @@ def _rev_attachment_(self):
     return elt
 
 @property
-def _rev_see_also_post_(self):
-    elt = self.db.table('collorg.communication.blog.see_also')
-    elt._post_ = self
-    if 'cog_oid_' in self.__dict__ and self.cog_oid_.value:
-        if not '_cog_direct_refs' in elt.__dict__.keys():
-            elt._cog_direct_refs = []
-        elt._cog_direct_refs.append(self.cog_oid_.value)
-    return elt
-
-@property
-def _rev_see_also_data_(self):
-    elt = self.db.table('collorg.communication.blog.see_also')
-    elt._data_ = self
-    if 'cog_oid_' in self.__dict__ and self.cog_oid_.value:
-        if not '_cog_direct_refs' in elt.__dict__.keys():
-            elt._cog_direct_refs = []
-        elt._cog_direct_refs.append(self.cog_oid_.value)
-    return elt
-
-@property
 def _rev_a_post_data_post_(self):
     elt = self.db.table('collorg.communication.blog.a_post_data')
     elt._post_ = self

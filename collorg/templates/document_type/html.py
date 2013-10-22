@@ -100,9 +100,9 @@ class Html():
 
     def a(
         self,
-        cog_method = 'w3display', cog_fqtn = False, target = '#cog_container',
-        label = None, css_class = None, id_ = "", page_ref = "",
-        a_attrs = (), href = None, just_href = False, **kwargs):
+        cog_method='w3display', cog_fqtn=False, target='#cog_container',
+        label=None, title='', css_class=None, id_="", page_ref="",
+        a_attrs=(), href=None, just_href=False, **kwargs):
         """
         iterates if cog_fqtn is False.
         """
@@ -150,11 +150,12 @@ class Html():
         if the_target == '_blank':
             std_href = self.__href(**kw)
         target = the_target and ' target="%s"' % (the_target) or ''
-        html.append("""<a %s %s %s %s %s %s %s>%s</a>""" % (
+        title = title and ' title="{}"'.format(title)
+        html.append("""<a %s %s %s %s %s %s %s %s>%s</a>""" % (
             'href="{}"'.format(std_href),
             'data-href="{}"'.format(href or self.__href(**kw)),
             " ".join([elt for elt in a_attrs]),
-            target, css_class, id_, page_ref, label))
+            target, css_class, id_, page_ref, title, label))
         if html:
             try:
                 self.__html = self.__html % tuple(html)
@@ -166,7 +167,7 @@ class Html():
 
     def absolute_link(self, just_href = False):
         href = "{}/{}".format(
-            self.__elt._cog_controller._url, 
+            self.__elt._cog_controller._url,
             self.__elt.cog_oid_)
         if just_href:
             return href

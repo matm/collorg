@@ -146,7 +146,6 @@ d_tables = {
         'communication/blog/sch.sql',
         'communication/blog/post.sql',
         'communication/blog/a_post_data.sql',
-        'communication/blog/see_also.sql',
         'communication/tag.sql',
         'communication/a_tag_post.sql',
         'communication/view/sch.sql',

@@ -1,0 +1,47 @@
+#PRAGMA 'functions':['Authenticated user']
+#PRAGMA 'tasks':['Authenticated navigation']
+#PRAGMA 'label':'attachment form'
+#PRAGMA 'in_menu':False
+# >>>
+i18n_at = _("Attachment")
+i18n_wm = _("Warning! Attachment is only working with the following browsers")
+i18n_warning_accent = _("Please avoid accents in files names")
+uploader = self.db._cog_params['uploader']
+data_oid = kwargs['data_oid']
+target = kwargs['target']
+attacht = self.db.table('collorg.communication.attachment')
+id = html().random_id()
+form_id = "form_%s" % (id)
+session_id = self.db._cog_controller._session_key
+# ---
+<div id="{% id %}" width="420" title="{% i18n_at %}">
+{% attacht.w3list(data_oid = data_oid, target=target) %}
+# +++ form
+<input type="file" name="file" />
+# >>>
+if kwargs.get('description'):
+    # ---
+    {% html(attacht).input(attacht.description_) %}
+# ---
+<input type="hidden" name="cog_oid_" value="{% data_oid %}" />
+<input type="hidden" name="cog_target" value="{% target %}" />
+<input type="hidden" name="cog_session" value="{% session_id %}" />
+<input type="hidden" name="db_name" value="{% self.db.name %}" />
+# --- form
+<div class="small"><b>{% i18n_warning_accent %}.</b></div>
+{% html().form(id = form_id, html = form, enctype="multipart/form-data", action=uploader) %}
+{% cog_user.w3submit_button(target=target, form_id = form_id, css_class = "attachment", show_name=False) %}
+<div class="small">
+<b>{% i18n_wm %}:</b>
+<table class="bordered">
+<tr>
+<th>Chrome</th><th>Firefox (Gecko)</th><th>Internet Explorer</th><th>Opera</th><th>Safari</th>
+</tr>
+<tr>
+<td>7+</td><td>4.0 (2.0)</td><td>10+</td><td>12+</td><td>5+</td>
+</tr>
+</table>
+</div>
+</div>
+{% attacht.w3callback_link(target=target, data_oid=data_oid) %}
+

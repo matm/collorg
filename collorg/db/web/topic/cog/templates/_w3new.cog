@@ -1,0 +1,50 @@
+#PRAGMA 'write':True
+#PRAGMA 'strip':True
+#PRAGMA 'goals':['Blog']
+#PRAGMA 'tasks':['Blog edition']
+#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'label':'New topic'
+#PRAGMA 'in_menu':False
+# >>>
+i18n_save = _("Save")
+i18n_new  =_("new")
+i18n_in = _("in")
+form_id = html.random_id()
+ip_id = "ip_{}".format(form_id)
+env_oid = kwargs['data_oid']
+data_oid = kwargs.get('topic_oid') or kwargs.get('data_oid')
+if data_oid == 'None' or data_oid is None:
+    raise ValueError("!!!")
+data = self.db.get_elt_by_oid(data_oid)
+if data.fqtn == "collorg.web.topic" and data.post_type_.value:
+    new_post = self.db.table(data.post_type_.value)
+    # ---
+    {% new_post._w3new(**kwargs) %}
+# >>>
+else:
+    post_choice = self.w3select_type(data = data, **kwargs)
+    tag = self.db.table('collorg.communication.tag')
+    fqtn = kwargs['post_fqtn']
+    sub = self.db.table(kwargs['post_fqtn'])
+    # ---
+    <article>
+    <div class="topic_list">
+    # +++ form_html
+    <h2>{% post_choice %}</h2>
+    {% html(self).input(self.title_, css_class="all_width") %}
+    {% html(self).input(self.text_) %}
+    <input type="hidden" name="data_oid" value="{% data_oid %}" />
+    <input type="hidden" name="env_oid" value="{% env_oid %}" />
+    <input type="hidden" name="cog_fqtn_" value="{% fqtn %}" />
+    <input type="hidden" name="cog_method" value="w3insert" />
+    <input type="hidden" name="public_" value="True" />
+    </p>
+    <p>{% self._w3select_visibility() %}
+    <button class="action" target="_page_" data-form-id="{% form_id %}">
+    {% i18n_save %}
+    </button> {% i18n_new %} {% _(self.cog_type_name) %} {% i18n_in %} {% data.cog_label() %}
+    </p>
+    # --- form_html
+    {% html().form(id = form_id, html = form_html) %}
+    </div>
+    </article>

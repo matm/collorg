@@ -1,0 +1,13 @@
+#PRAGMA 'tasks': ['Blog edition']
+#PRAGMA 'label': 'My comments'
+# >>>
+assert self.cog_oid_.value == cog_user.cog_oid_.value
+my_follow_ups = self.db.table('collorg.communication.follow_up')
+my_follow_ups.author_.set_intention(self.cog_oid_.value)
+mcomment = self.db.table('collorg.communication.comment')
+mcomment.author_.set_intention(self.cog_oid_.value)
+mcomment += my_follow_ups._comment_
+cv = self.db.table('collorg.communication.view.comment')
+cv.comment_oid_.set_intention(mcomment.cog_oid_)
+# ---
+{% cv.w3list(link_to_post = True, partial_list = True) %}

@@ -1,0 +1,8 @@
+# >>>
+i18n_sm = _("Site map")
+label = '''<img
+ src="/collorg/images/map.svg"
+ class="hugeicon ariadne"  alt="{}" title="{}">'''.format(i18n_sm, i18n_sm)
+link = html(self).a(label = label, css_class="left")
+# ---
+<div id="cog_top_nav_map">{% link %}</div>

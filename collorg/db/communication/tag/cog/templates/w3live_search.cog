@@ -1,0 +1,17 @@
+#PRAGMA 'strip':True
+#PRAGMA 'functions':['Anonymous user']
+#PRAGMA 'tasks':['Anonymous navigation']
+#PRAGMA 'label':'Search'
+#PRAGMA 'in_menu':False
+# >>>
+query = kwargs['q']
+if query is not None and query.find('%'):
+    query = query.replace('%', '')
+self.tag_.set_intention('%%%s%%' % query, 'ilike')
+self.tag_.unaccent = True
+self.order_by(self.tag_)
+base_link = '<ul class="none"><li>{}</li></ul>'.format(self.w3link(raw=True))
+# ---
+<small><small>
+{% self.w3list(list_=True) %}
+</small></small>

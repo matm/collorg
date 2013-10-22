@@ -1,0 +1,14 @@
+# >>>
+embedded = kwargs.get('embedded', False)
+# ---
+# +++ header
+<span class="title">Groups</span>
+# --- header
+# +++ article
+{% self.groups.w3list() %}
+# --- article
+# >>>
+output = self.db.table('collorg.core.base_table').w3display_base(
+    header=header, article=article, footer='', embedded = embedded)
+# ---
+{% output %}

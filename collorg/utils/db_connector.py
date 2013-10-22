@@ -60,7 +60,7 @@ def ini_connect(config_file_name):
     params['url'] = config.get('application', 'url')
     params['url_scheme'] = config.get('application', 'url_scheme')
     params['charset'] = config.get(
-        'application', 'charset', fallback = 'utf-8')        
+        'application', 'charset', fallback = 'utf-8')
     params['upload_dir'] = config.get(
         'application', 'uplodad_dir',
         fallback = '/var/collorg/%s' % (config_file_name))

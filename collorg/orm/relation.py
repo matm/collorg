@@ -347,6 +347,31 @@ class Relation(object):
         self.db.set_auto_commit(auto_commit)
         return exists
 
+    def __min_max(self, min_max, field):
+        req = []
+        req.append('select {}(array["{}"])'.format(min_max, field.name))
+        req.append('from {}'.format(self._cog_get_from()))
+        req.append(self._cog_get_where())
+        sql_req = "\n".join(req)
+        res = self.db.get_query_res(sql_req)[0][0][0]
+        return res
+
+    def min(self, field):
+        return self.__min_max('min', field)
+
+    def max(self, field):
+        return self.__min_max('max', field)
+
+    def increment(self, field, value = 1):
+        assert float(value)
+        req = []
+        req.append('update {} set "{}" = "{}" + {}'.format(
+            self._cog_get_from(), field.name, field.name, value))
+        req.append(self._cog_get_where())
+        sql_req = "\n".join(req)
+        self.db.raw_sql(sql_req)
+        return self
+        
 #    def __len__(self):
 #        return self.count()
 

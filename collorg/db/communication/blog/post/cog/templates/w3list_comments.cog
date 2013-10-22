@@ -1,0 +1,9 @@
+#PRAGMA 'in_header': True
+#PRAGMA 'icon': 'conversation.svg'
+#PRAGMA 'label': 'comments'
+#PRAGMA 'check': 'check_comment'
+# >>>
+vc = self.db.table('collorg.communication.view.comment')
+vc.post_oid_.set_intention(self.cog_oid_)
+# ---
+{% vc.w3list(**kwargs) %}

@@ -1,0 +1,17 @@
+#PRAGMA 'strip':True
+# >>>
+cog_limit = kwargs.pop('cog_limit', None)
+cog_offset = kwargs.pop('cog_offset', None)
+self._cog_limit = cog_limit
+self._cog_offset = cog_offset
+i = 0
+l_items = []
+for elt in self:
+    ok = True
+    if cog_user and 'visibility_' in elt.__dict__:
+        ok = elt.check_visibility(cog_user)
+    if ok:
+        l_items.append(elt.w3display_item(**kwargs).strip())
+separator = kwargs.get('cog_separator', '')
+# ---
+{% separator.join([elt.strip() for elt in l_items]) %}

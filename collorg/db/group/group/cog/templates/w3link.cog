@@ -1,0 +1,6 @@
+# >>>
+target = kwargs.get('target', "#cog_container")
+method = "w3list_members"
+label = '<img src="/collorg/images/all_users.svg" class="hugeicon" title="people" alt="people" />'
+# ---
+{% html(self).a(cog_method = method, target = target, label = label) %}

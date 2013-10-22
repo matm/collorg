@@ -1,0 +1,7 @@
+#PRAGMA 'write':True
+#PRAGMA 'goals':['Blog']
+#PRAGMA 'tasks':['Blog edition']
+#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'label':'File visibility management'
+# >>>
+self.update_visibility(kwargs['visibility_'])

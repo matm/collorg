@@ -1,0 +1,26 @@
+#PRAGMA 'tasks':['Collaborative docuemtation']
+#PRAGMA 'label':'action documentation'
+#PRAGMA 'in_menu':False
+# >>>
+from collorg.db.communication.comment import Comment
+goals = self._task__s_._goal__s_
+functions = self._task__s_._function__s_
+# ---
+<div width="600" title="Action: {% self.label_.val %}">
+<ul>
+# >>>
+for goal in goals:
+    # ---
+    <li>
+    {% html(goal).a(css_class="action", target="#cog_container") %}:
+    {% functions.w3list() %}
+    </li>
+# ---
+</ul>
+{% html.display(self.description_) %}
+This is a collaborative application. If you have any need, suggestion, ...
+concerning the action "<b>{% self.label_.val %}</b>", please fill a comment
+bellow.
+<hr/>
+{% Comment(self.db).w3list_link(data=self, fqfn=None, follow_up="ok") %}
+</div>

@@ -1,0 +1,23 @@
+#PRAGMA 'label':"Select a user"
+# >>>
+callback = kwargs['callback']
+action = kwargs['action']
+target = kwargs['target']
+user = self.db.table('collorg.actor.user')
+user.last_name_.set_intention('%s%%' % kwargs['q'], 'ilike')
+user.last_name_.unaccent = True
+user.system_account_.set_intention(False)
+user.order_by(user.last_name_)
+# +++ liste
+<ul class="none">
+# >>>
+for elt in user:
+    list_elt = html(self).a(
+        label = elt.cog_label(), cog_method=action,
+        user_oid=elt.cog_oid_.value, target=target, callback=callback)
+    # ---
+    <li>{% list_elt %}</li>
+# ---
+</ul>
+# --- liste
+<small><small>{% liste %}</small></small>

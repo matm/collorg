@@ -1,0 +1,36 @@
+#PRAGMA 'functions':['Anonymous user']
+#PRAGMA 'tasks':['Anonymous navigation']
+#PRAGMA 'label':'date delta'
+#PRAGMA 'in_menu':False
+# >>>
+import datetime
+__doc__ = """
+any_object.w3delta_date(date, max_days = 7)
+
+Gives the delta between the date transmitted as argument and now.
+* If delta < 1 hour, the delta is in minutes
+* If delta > 1 hour and < 1 day, the format is in hour mins
+* The delta is shown in days if it's <= max_days
+* Otherwise, the date is displayed
+"""
+now = datetime.datetime.now()
+date = kwargs['date']
+max_days = kwargs.get('max_days', 7)
+
+delta_d = int((now - date).days)
+delta_s = int((now - date).seconds)
+minute = 60
+hour = 3600
+day = hour * 24
+if delta_d <= 0 and delta_s < hour:
+    mins = delta_s / minute
+    delta = "%s minute%s ago" % (mins, mins > 1 and "s" or "")
+elif delta_d == 0:
+    hours = delta_s / hour
+    delta = "%s hour%s ago" % (hours, hours > 1 and "s" or "")
+elif delta_d <= max_days:
+    delta = "%s day%s ago" % (delta_d, delta_d > 1 and 's' or '')
+else:
+    delta = "%s-%02d-%02d" % (date.year, date.month, date.day)
+# ---
+{% delta %}

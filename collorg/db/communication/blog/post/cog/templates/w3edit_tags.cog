@@ -1,0 +1,25 @@
+#PRAGMA 'write':True
+#PRAGMA 'strip':True
+#PRAGMA 'tasks':['Blog edition']
+#PRAGMA 'label':'Edit tags'
+#PRAGMA 'in_menu':False
+# >>>
+__doc__ = """
+A tag can be associated to any data, if this template is
+included to the edit template of the data.
+"""
+i18n_cs = _("comma separated")
+i18n_tags = _("Tags")
+tag = self.db.table('collorg.communication.tag')
+tags = ''
+atp = self._rev_a_tag_post_
+atp.data_type_.set_null()
+atp.order_by(atp.order_)
+l_tags = [elt.tag_.value for elt in atp.select()]
+tags = ''
+if len(l_tags):
+    tags = ", ".join(l_tags)
+# ---
+<label><b>{% i18n_tags %}</b> ({% i18n_cs %})<br/>
+<input class="all_width" type="text" name="tag_" value="{% tags %}" />
+</label>

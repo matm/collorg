@@ -1,0 +1,15 @@
+#PRAGMA 'strip':True
+#PRAGMA 'label':'Database admin. page'
+#PRAGMA 'in_menu':False
+#PRAGMA 'description':'Lists the modules (AKA schemas) of the database.'
+#PRAGMA 'keywords':'navigation, modules, schemas'
+#PRAGMA 'tasks':['Db admin']
+<h1>{% self.long_name_.val or self.name_.val %} database management</h1>
+<ul class="none">
+# >>>
+target = '#cog_container'
+method = 'w3structure'
+label = 'Browse the database'
+# ---
+<li>{% html().a( cog_method = method, label = label, target = target ) %}</li>
+</ul>

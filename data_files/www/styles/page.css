@@ -99,10 +99,8 @@ width: 69%;
 /* ----------- article inner elements ------------ */
 
 article *:not(a) > img {
-    max-width: 100%;
-    width: auto;
-    text-align: center;
-/*    display: block;*/
+    max-width: 80%;
+    display: block;
     margin: auto;
 }
 

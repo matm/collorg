@@ -36,8 +36,8 @@ else:
     {% i18n_instructions %}
     </div>
     <div class="topic_list">
-    {% post_choice %}
     # +++ form_html
+    <h2>{% post_choice %}{% self._w3select_visibility() %}</h2>
     {% html(self).input(self.title_, css_class="all_width") %}
     <p><label for="{% ip_id %}"><b>{% i18n_introductory_paragraph %}</b></label></p>
     <textarea id="{% ip_id %}" name="introductory_paragraph_"
@@ -54,7 +54,6 @@ else:
     <b>{% i18n_tags %}</b> ({% i18n_cs %})
     <input class="all_width" type="text" name = "tag_" />
     <p>
-    {% self._w3select_visibility() %}
     <label>{% i18n_ac %} <input type="checkbox" name="comment_" /></label>
     </p>
     <p>

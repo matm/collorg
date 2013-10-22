@@ -1,0 +1,32 @@
+#PRAGMA 'strip':True
+#PRAGMA 'goals':['Blog']
+#PRAGMA 'tasks':['Blog edition']
+#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'label':'Blog edition. add see also entry'
+#PRAGMA 'in_menu':False
+# >>>
+i18n_add_see_also = _(
+    "Add a reference by dragging a link from the post-it on the bottom-left.")
+id = html.random_id()
+a_id = "a_{}".format(id)
+hidden_link = html(self).a(
+    cog_method="w3add_see_also", target="_page_",
+    id_=a_id, css_class="action hidden")
+# ---
+<div class="see_also">{% i18n_add_see_also %}.</div>
+{%hidden_link%}
+<script>
+ function add_see_also_{% id %}(item){
+	    var data_oid = $(item).getOidFromUrl();
+    var ohref=$("#{%a_id%}").attr("data-href");
+    var href = ohref + "&data_oid=" + data_oid;
+    $("#{%a_id%}").attr("data-href", href).trigger("click").attr("data-href", ohref);
+ }
+	$( ".see_also" ).droppable({
+	    activeClass: "ui-state-default",
+	    hoverClass: "ui-state-hover",
+	    tolerance: "touch",
+	    accept: ".d_see_also",
+	    drop: function( event, ui ) {add_see_also_{% id %}(ui.draggable);}
+	})
+</script>

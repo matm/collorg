@@ -1,0 +1,17 @@
+#PRAGMA 'goals':['Access management']
+#PRAGMA 'tasks':['Access management']
+#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'label':'Revoke access link'
+# >>>
+i18n_revoke_user_access = _("Revoke user access")
+callback = kwargs['callback']
+label = """<img 
+ class="bigicon" src="/collorg/images/user_del.svg"
+ title="{}"
+/>""".format(i18n_revoke_user_access)
+user = kwargs['user']
+link = html(self).a(
+    cog_method="w3revoke_access", label=label, target="_page_article_",
+    user_oid = user.cog_oid_.value, callback = callback)
+# ---
+{% link %}

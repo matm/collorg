@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-16 17:20+0200\n"
+"POT-Creation-Date: 2013-10-20 11:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,24 +20,28 @@ msgstr ""
 #: collorg/db/actor/user/cog/templates/w3login_form.py:22
 #: collorg/db/actor/user/cog/templates/w3login_form.py:21
 #: build/lib.linux-x86_64-2.7/collorg/db/actor/user/cog/templates/w3login_form.py:21
+#: collorg/db/actor/user/cog/templates/w3login_form.py:20
 msgid "Connection"
 msgstr "Connexion"
 
 #: collorg/db/actor/user/cog/templates/w3login_form.py:33
 #: collorg/db/actor/user/cog/templates/w3login_form.py:31
 #: build/lib.linux-x86_64-2.7/collorg/db/actor/user/cog/templates/w3login_form.py:31
+#: collorg/db/actor/user/cog/templates/w3login_form.py:30
 msgid "login"
 msgstr "identifiant"
 
 #: collorg/db/actor/user/cog/templates/w3login_form.py:34
 #: collorg/db/actor/user/cog/templates/w3login_form.py:33
 #: build/lib.linux-x86_64-2.7/collorg/db/actor/user/cog/templates/w3login_form.py:33
+#: collorg/db/actor/user/cog/templates/w3login_form.py:32
 msgid "password"
 msgstr "mot de passe"
 
 #: collorg/db/actor/user/cog/templates/w3login_form.py:38
 #: collorg/db/actor/user/cog/templates/w3login_form.py:37
 #: build/lib.linux-x86_64-2.7/collorg/db/actor/user/cog/templates/w3login_form.py:37
+#: collorg/db/actor/user/cog/templates/w3login_form.py:36
 msgid "Connect"
 msgstr "Connectez-vous"
 
@@ -46,6 +50,7 @@ msgstr "Connectez-vous"
 #: build/lib.linux-x86_64-2.7/collorg/db/actor/user/cog/templates/w3login_link.py:23
 #: build/lib.linux-x86_64-2.7/collorg/db/actor/user/cog/templates/w3login_link.py:19
 #: collorg/db/actor/user/cog/templates/w3login_link.py:19
+#: collorg/db/actor/user/cog/templates/w3login_link.py:18
 msgid "connection"
 msgstr "connexion"
 
@@ -54,66 +59,79 @@ msgstr "connexion"
 #: build/lib.linux-x86_64-2.7/collorg/db/web/site/cog/templates/w3map_link.py:19
 #: build/lib.linux-x86_64-2.7/collorg/db/web/site/cog/templates/w3display.py:33
 #: data_files/locale/collorg_fields_i18n.py:293
+#: collorg/db/web/site/cog/templates/w3map_link.py:18
+#: collorg/db/web/site/cog/templates/w3display.py:32
 msgid "Site map"
 msgstr "Plan du site"
 
 #: collorg/db/core/base_table/cog/templates/w3search_link.py:19
 #: build/lib.linux-x86_64-2.7/collorg/db/core/base_table/cog/templates/w3search_link.py:19
 #: data_files/locale/collorg_fields_i18n.py:285
+#: collorg/db/core/base_table/cog/templates/w3search_link.py:18
 msgid "Search"
 msgstr "Recherche"
 
 #: collorg/db/core/base_table/cog/templates/w3list_members.py:23
 #: build/lib.linux-x86_64-2.7/collorg/db/core/base_table/cog/templates/w3list_members.py:23
+#: collorg/db/core/base_table/cog/templates/w3list_members.py:22
 msgid "Members"
 msgstr "Membres"
 
 #: collorg/db/core/base_table/cog/templates/w3list_members.py:24
 #: build/lib.linux-x86_64-2.7/collorg/db/core/base_table/cog/templates/w3list_members.py:24
+#: collorg/db/core/base_table/cog/templates/w3list_members.py:23
 msgid "Members inherited from"
 msgstr "Membres hérités de"
 
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:21
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:20
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:20
+#: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:19
 msgid "Members of this post"
 msgstr "Membres du message"
 
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:22
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:21
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:21
+#: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:20
 msgid "This post"
 msgstr "Ce message"
 
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:23
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:22
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:22
+#: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:21
 msgid "Your groups or units"
 msgstr "Vos groupes ou unités"
 
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:24
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:23
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:23
+#: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:22
 msgid "Other groups in"
 msgstr "Autres groupes dans"
 
 #: collorg/db/communication/blog/post/cog/templates/w3share.py:27
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3share.py:27
+#: collorg/db/communication/blog/post/cog/templates/w3share.py:26
 msgid "To"
 msgstr "Destinataire"
 
 #: collorg/db/communication/blog/post/cog/templates/w3share.py:28
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3share.py:28
+#: collorg/db/communication/blog/post/cog/templates/w3share.py:27
 msgid "Subject"
 msgstr "Sujet"
 
 #: collorg/db/communication/blog/post/cog/templates/w3share.py:29
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3share.py:29
+#: collorg/db/communication/blog/post/cog/templates/w3share.py:28
 msgid "Message"
 msgstr "Message"
 
 #: collorg/db/communication/blog/post/cog/templates/w3share.py:30
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3share.py:30
+#: collorg/db/communication/blog/post/cog/templates/w3share.py:29
 msgid "Warning! This post is private. Access will only be granted to members."
 msgstr ""
 "Attention! Ce message est privé. Seuls ses membres y auront accès sur le "
@@ -123,12 +141,15 @@ msgstr ""
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:19
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:19
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3share.py:31
+#: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:18
+#: collorg/db/communication/blog/post/cog/templates/w3share.py:30
 msgid "Select a recipient"
 msgstr "Sélectionnez un destinatraire"
 
 #: collorg/db/communication/blog/post/cog/templates/w3share.py:32
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3share.py:32
 #: data_files/locale/collorg_fields_i18n.py:289
+#: collorg/db/communication/blog/post/cog/templates/w3share.py:31
 msgid "Send mail"
 msgstr "Envoyer le message"
 
@@ -149,6 +170,7 @@ msgstr "prévisualisation"
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3edit_tags.py:29
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3new.py:27
 #: collorg/db/communication/blog/post/cog/templates/_w3new.py:28
+#: collorg/db/communication/blog/post/cog/templates/w3edit_tags.py:28
 msgid "comma separated"
 msgstr "séparateur: virgule"
 
@@ -157,6 +179,7 @@ msgstr "séparateur: virgule"
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3edit_tags.py:30
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3new.py:28
 #: collorg/db/communication/blog/post/cog/templates/_w3new.py:29
+#: collorg/db/communication/blog/post/cog/templates/w3edit_tags.py:29
 msgid "Tags"
 msgstr "Mots clefs"
 
@@ -171,14 +194,16 @@ msgstr "privé"
 #: collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:29
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/file/cog/templates/_w3select_visibility.py:31
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:29
+#: collorg/db/communication/file/cog/templates/_w3select_visibility.py:30
 msgid "protected"
-msgstr "protégé"
+msgstr "intranet"
 
 #: collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:29
 #: collorg/db/communication/file/cog/templates/_w3select_visibility.py:32
 #: collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:30
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/file/cog/templates/_w3select_visibility.py:32
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:30
+#: collorg/db/communication/file/cog/templates/_w3select_visibility.py:31
 msgid "public"
 msgstr "public"
 
@@ -186,51 +211,61 @@ msgstr "public"
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:23
 #: data_files/locale/collorg_fields_i18n.py:221
 #: data_files/locale/collorg_fields_i18n.py:226
+#: collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:22
 msgid "Visibility"
 msgstr "Visibilité"
 
 #: collorg/db/communication/blog/post/cog/templates/_w3access_denied.py:19
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3access_denied.py:19
+#: collorg/db/communication/blog/post/cog/templates/_w3access_denied.py:18
 msgid "Please connect to access this"
 msgstr "Veuillez vous connecter pour accéder à ce"
 
 #: collorg/db/communication/blog/post/cog/templates/_w3access_denied.py:20
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3access_denied.py:20
+#: collorg/db/communication/blog/post/cog/templates/_w3access_denied.py:19
 msgid "Sorry. You don't have access to this"
 msgstr "Désolé. Vous n'avez pas accès à ce"
 
 #: collorg/db/communication/file/cog/templates/w3list.py:31
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/file/cog/templates/w3list.py:31
+#: collorg/db/communication/file/cog/templates/w3list.py:30
 msgid "Documents attached to"
 msgstr "Documents attachés à"
 
 #: collorg/db/communication/file/cog/templates/w3list.py:32
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/file/cog/templates/w3list.py:32
+#: collorg/db/communication/file/cog/templates/w3list.py:31
 msgid "File"
 msgstr "Fichier"
 
 #: collorg/db/communication/file/cog/templates/w3list.py:33
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/file/cog/templates/w3list.py:33
+#: collorg/db/communication/file/cog/templates/w3list.py:32
 msgid "is missing"
 msgstr "manquant"
 
 #: collorg/db/communication/file/cog/templates/w3list.py:34
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/file/cog/templates/w3list.py:34
+#: collorg/db/communication/file/cog/templates/w3list.py:33
 msgid "protected document"
 msgstr "document protégé"
 
 #: collorg/db/communication/file/cog/templates/w3list.py:35
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/file/cog/templates/w3list.py:35
+#: collorg/db/communication/file/cog/templates/w3list.py:34
 msgid "Please connect"
 msgstr "Veuillez vous connecter"
 
 #: collorg/db/communication/attachment/cog/templates/w3attach_link.py:24
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/attachment/cog/templates/w3attach_link.py:24
+#: collorg/db/communication/attachment/cog/templates/w3attach_link.py:23
 msgid "attach a document"
 msgstr "Attacher un document"
 
 #: collorg/db/actor/actor/cog/templates/w3submit_button.py:31
 #: build/lib.linux-x86_64-2.7/collorg/db/actor/actor/cog/templates/w3submit_button.py:31
+#: collorg/db/actor/actor/cog/templates/w3submit_button.py:30
 msgid "Submit"
 msgstr "Soumettre"
 
@@ -238,11 +273,13 @@ msgstr "Soumettre"
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/attachment/cog/templates/w3attach_form.py:24
 #: data_files/locale/collorg_fields_i18n.py:11
 #: data_files/locale/collorg_fields_i18n.py:16
+#: collorg/db/communication/attachment/cog/templates/w3attach_form.py:23
 msgid "Attachment"
 msgstr "Attachement"
 
 #: collorg/db/communication/attachment/cog/templates/w3attach_form.py:25
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/attachment/cog/templates/w3attach_form.py:25
+#: collorg/db/communication/attachment/cog/templates/w3attach_form.py:24
 msgid "Warning! Attachment is only working with the following browsers"
 msgstr ""
 "Attention ! L'attachement de fichiers ne fonctionne que pour les navigateurs "
@@ -264,6 +301,8 @@ msgstr "Autoriser les commentaires"
 #: collorg/db/web/topic/cog/templates/_w3new.py:27
 #: collorg/db/communication/blog/post/cog/templates/_w3new.py:31
 #: data_files/locale/collorg_fields_i18n.py:284
+#: collorg/db/communication/blog/post/cog/templates/w3save_link.py:33
+#: collorg/db/web/topic/cog/templates/_w3new.py:26
 msgid "Save"
 msgstr "Enregistrer"
 
@@ -271,6 +310,7 @@ msgstr "Enregistrer"
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3new.py:31
 #: collorg/db/web/topic/cog/templates/_w3new.py:28
 #: collorg/db/communication/blog/post/cog/templates/_w3new.py:32
+#: collorg/db/web/topic/cog/templates/_w3new.py:27
 msgid "new"
 msgstr "nouveau"
 
@@ -281,31 +321,39 @@ msgstr "nouveau"
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3new.py:82
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3select_type.py:33
 #: collorg/db/web/topic/cog/templates/_w3new.py:29
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:80
+#: collorg/db/communication/blog/post/cog/templates/w3select_type.py:32
+#: collorg/db/web/topic/cog/templates/_w3new.py:28
 msgid "in"
 msgstr "dans"
 
 #: collorg/db/communication/blog/post/cog/templates/w3reset_button.py:29
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3reset_button.py:29
+#: collorg/db/communication/blog/post/cog/templates/w3reset_button.py:28
 msgid "Cancel edit"
 msgstr "Annuler l'édition"
 
 #: collorg/db/communication/blog/post/cog/templates/_w3visibility.py:20
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3visibility.py:20
+#: collorg/db/communication/blog/post/cog/templates/_w3visibility.py:19
 msgid "Members only"
 msgstr "Accès restreint aux membres"
 
 #: collorg/db/communication/blog/post/cog/templates/_w3visibility.py:21
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3visibility.py:21
+#: collorg/db/communication/blog/post/cog/templates/_w3visibility.py:20
 msgid "Accessible by connected users only"
 msgstr "Visible uniquement pour des utilisateurs connectés"
 
 #: collorg/db/communication/blog/post/cog/templates/_w3visibility.py:22
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3visibility.py:22
+#: collorg/db/communication/blog/post/cog/templates/_w3visibility.py:21
 msgid "Public access"
 msgstr "Accès public"
 
 #: collorg/db/web/topic/cog/templates/w3attach_post_drop_zone.py:30
 #: build/lib.linux-x86_64-2.7/collorg/db/web/topic/cog/templates/w3attach_post_drop_zone.py:30
+#: collorg/db/web/topic/cog/templates/w3attach_post_drop_zone.py:29
 msgid "Drop a \"post\" here to publish it in this folder"
 msgstr "Déposer le lien d'un \"post\" ici pour le publier dans ce dossier"
 
@@ -350,21 +398,25 @@ msgstr ""
 
 #: collorg/db/communication/blog/post/cog/templates/w3new_follow_up.py:23
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3new_follow_up.py:23
+#: collorg/db/communication/blog/post/cog/templates/w3new_follow_up.py:22
 msgid "New follow-up"
 msgstr "Nouvelle réponse"
 
 #: collorg/db/communication/blog/post/cog/templates/w3select_type.py:32
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3select_type.py:32
+#: collorg/db/communication/blog/post/cog/templates/w3select_type.py:31
 msgid "New"
 msgstr "Nouveau"
 
 #: collorg/db/communication/blog/post/cog/templates/w3new_comment.py:24
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3new_comment.py:24
+#: collorg/db/communication/blog/post/cog/templates/w3new_comment.py:23
 msgid "New comment"
 msgstr "Nouveau commentaire"
 
 #: collorg/db/communication/blog/post/cog/templates/w3new_follow_up_link.py:22
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3new_follow_up_link.py:22
+#: collorg/db/communication/blog/post/cog/templates/w3new_follow_up_link.py:21
 msgid "Follow-up"
 msgstr "Réponse"
 
@@ -376,16 +428,21 @@ msgstr "Réponse"
 #: build/lib.linux-x86_64-2.7/collorg/db/core/base_table/cog/templates/w3creat_modif_date.py:32
 #: collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:25
 #: collorg/db/core/base_table/cog/templates/w3creat_modif_date.py:32
+#: collorg/db/actor/actor/cog/templates/w3submit_button.py:31
+#: collorg/db/core/base_table/cog/templates/w3creat_modif_date.py:31
+#: collorg/db/core/base_table/cog/templates/w3credit.py:29
 msgid "by"
 msgstr "par"
 
 #: build/lib.linux-x86_64-2.7/collorg/db/actor/user/cog/templates/w3logout_link.py:19
 #: collorg/db/actor/user/cog/templates/w3logout_link.py:19
+#: collorg/db/actor/user/cog/templates/w3logout_link.py:18
 msgid "logout"
 msgstr "Déconnexion"
 
 #: build/lib.linux-x86_64-2.7/collorg/db/actor/user/cog/templates/w3home_link.py:22
 #: collorg/db/actor/user/cog/templates/w3home_link.py:22
+#: collorg/db/actor/user/cog/templates/w3home_link.py:21
 msgid "Home page"
 msgstr "Page personnelle"
 
@@ -393,16 +450,19 @@ msgstr "Page personnelle"
 #: collorg/db/communication/blog/post/cog/templates/w3select_type.py:34
 #: data_files/locale/collorg_fields_i18n.py:145
 #: data_files/locale/collorg_fields_i18n.py:150
+#: collorg/db/communication/blog/post/cog/templates/w3select_type.py:33
 msgid "Post"
 msgstr "Billet"
 
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3select_type.py:35
 #: collorg/db/communication/blog/post/cog/templates/w3select_type.py:35
+#: collorg/db/communication/blog/post/cog/templates/w3select_type.py:34
 msgid "Folder"
 msgstr "Dossier"
 
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3select_type.py:36
 #: collorg/db/communication/blog/post/cog/templates/w3select_type.py:36
+#: collorg/db/communication/blog/post/cog/templates/w3select_type.py:35
 msgid "Event"
 msgstr "Événement"
 
@@ -410,6 +470,7 @@ msgstr "Événement"
 #: collorg/db/core/base_table/cog/templates/w3creat_modif_date.py:30
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:23
 #: collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:23
+#: collorg/db/core/base_table/cog/templates/w3creat_modif_date.py:29
 msgid "created"
 msgstr "créé"
 
@@ -417,20 +478,24 @@ msgstr "créé"
 #: collorg/db/core/base_table/cog/templates/w3creat_modif_date.py:31
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:24
 #: collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:24
+#: collorg/db/core/base_table/cog/templates/w3creat_modif_date.py:30
 msgid "last modified"
 msgstr "dernière modification"
 
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/attachment/cog/templates/w3attach_form.py:26
 #: collorg/db/communication/attachment/cog/templates/w3attach_form.py:26
+#: collorg/db/communication/attachment/cog/templates/w3attach_form.py:25
 msgid "Please avoid accents in files names"
 msgstr "Merci d'éviter l'utilisation d'accents dans les noms de fichiers"
 
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/file/cog/templates/w3list.py:36
 #: collorg/db/communication/file/cog/templates/w3list.py:36
+#: collorg/db/communication/file/cog/templates/w3list.py:35
 msgid "release"
 msgstr "version"
 
 #: collorg/db/web/topic/cog/templates/w3edit.py:27
+#: collorg/db/web/topic/cog/templates/w3edit.py:26
 msgid "For edition, please contact"
 msgstr "Pour l'édition, veuillez contacter"
 
@@ -438,6 +503,8 @@ msgstr "Pour l'édition, veuillez contacter"
 #: data_files/locale/collorg_fields_i18n.py:105
 #: collorg/db/communication/blog/post/cog/templates/w3edit.py:27
 #: data_files/locale/collorg_fields_i18n.py:110
+#: collorg/db/communication/blog/post/cog/templates/w3edit.py:26
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:26
 msgid "Introductory paragraph"
 msgstr "Accroche"
 
@@ -1629,8 +1696,9 @@ msgid "Grant access"
 msgstr ""
 
 #: data_files/locale/collorg_fields_i18n.py:254
+#: collorg/db/core/base_table/cog/templates/_w3grant_write_access_link.py:23
 msgid "Grant write access"
-msgstr ""
+msgstr "Donner le droit d'écriture"
 
 #: data_files/locale/collorg_fields_i18n.py:255
 msgid "Grant write access link"
@@ -1734,15 +1802,16 @@ msgstr ""
 
 #: data_files/locale/collorg_fields_i18n.py:280
 msgid "Revoke access"
-msgstr ""
+msgstr "Supprimer l'accès"
 
 #: data_files/locale/collorg_fields_i18n.py:281
 msgid "Revoke access link"
 msgstr ""
 
 #: data_files/locale/collorg_fields_i18n.py:282
+#: collorg/db/core/base_table/cog/templates/_w3revoke_write_access_link.py:23
 msgid "Revoke write access"
-msgstr ""
+msgstr "Supprimer le droit d'écriture"
 
 #: data_files/locale/collorg_fields_i18n.py:283
 msgid "Revoke write access link"
@@ -1753,8 +1822,9 @@ msgid "Search posts with specific tag"
 msgstr ""
 
 #: data_files/locale/collorg_fields_i18n.py:287
+#: collorg/db/actor/user/cog/templates/_w3manage.py:27
 msgid "Select a user"
-msgstr ""
+msgstr "Choisir une personne"
 
 #: data_files/locale/collorg_fields_i18n.py:288
 msgid "Select a user to perform an action"
@@ -1857,9 +1927,38 @@ msgid "User's informations update"
 msgstr ""
 
 #: collorg/db/communication/blog/post/cog/templates/w3navigation.py:22
+#: collorg/db/communication/blog/post/cog/templates/w3navigation.py:21
 msgid "This post is referenced by:"
-msgstr ""
+msgstr "Ce post est référencé par :"
 
 #: collorg/templates/document_type/html.py:351
 msgid "edit"
 msgstr "édition"
+
+#: collorg/db/actor/user/cog/templates/_w3manage.py:26
+msgid "user last name"
+msgstr "nom de la personne"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3remove_link.py:27
+msgid "remove from this list"
+msgstr "supprimer de cette liste"
+
+#: collorg/db/core/base_table/cog/templates/_w3revoke_access_link.py:23
+msgid "Revoke user access"
+msgstr "Supprimer l'accès pour la personne"
+
+#: collorg/db/core/base_table/cog/templates/_w3revoke_write_access_link.py:24
+msgid "write access"
+msgstr "accès en écriture"
+
+#: collorg/db/core/base_table/cog/templates/_w3grant_write_access_link.py:24
+msgid "read only"
+msgstr "accès en lecture seule"
+
+#: collorg/db/actor/user/cog/templates/_w3manage.py:27
+msgid "Grant access to a user"
+msgstr "Donner l'accès à une personne"
+
+#: collorg/db/actor/user/cog/templates/_w3manage.py:28
+msgid "Add a member"
+msgstr "Ajouter un membre"

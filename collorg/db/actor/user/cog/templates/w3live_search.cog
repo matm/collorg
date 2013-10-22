@@ -1,0 +1,34 @@
+#PRAGMA 'strip':True
+#PRAGMA 'functions':['Anonymous user']
+#PRAGMA 'tasks':['Anonymous navigation']
+#PRAGMA 'label':'Search'
+#PRAGMA 'in_menu':False
+# >>>
+self.last_name_.unaccent = True
+fn = self()
+fn.first_name_.unaccent = True
+self.system_account_.set_intention(False)
+fn.system_account_.set_intention(False)
+query = kwargs['q']
+if len(query.split()) <= 2:
+    if not ' '  in query:
+        first_name = '%%%s%%' % query
+        last_name = '%%%s%%' % query
+    else:
+        first_name, last_name = query.split()
+        first_name = '%%%s%%' % first_name
+        last_name = '%%%s%%' % last_name
+    self.last_name_.set_intention(last_name, 'ilike')
+    fn.first_name_.set_intention(first_name, 'ilike')
+    if not ' ' in query:
+        self = self + fn
+    else:
+        self = self * fn
+    self.order_by(self.last_name_, self.first_name_)
+    # ---
+    <small><small>{% self.w3list() %}</small></small>
+# >>>
+else:
+    # ---
+    <small><small>only one space to separate first name from last name
+    </small></small>

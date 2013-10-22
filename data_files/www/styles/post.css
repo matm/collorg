@@ -92,9 +92,7 @@
     margin-right: -6px;
 }
 .blog_item_footer{
-    padding-bottom: 1em;
     border-bottom:1px solid #c6c6c6;
-    display: float;
     clear: both;
 }
 .tag, .inst_tag {

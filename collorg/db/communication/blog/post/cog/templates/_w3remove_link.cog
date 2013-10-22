@@ -1,0 +1,16 @@
+#PRAGMA 'write':True
+#PRAGMA 'strip':True
+#PRAGMA 'goals':['Blog']
+#PRAGMA 'tasks':['Blog edition']
+#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'label':'Remove post'
+#PRAGMA 'in_menu':False
+# >>>
+label = '<img src="/collorg/images/trashcan.svg" class="medicon" />'
+title = _("remove from this list")
+elt_oid = kwargs['elt_oid']
+link = html(self).a(
+    cog_method="w3remove", 
+    label=label, target='_page_', elt_oid=elt_oid, title=title)
+# ---
+{% link %}

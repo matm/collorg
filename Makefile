@@ -12,7 +12,6 @@ clean_all: clean clean_templates clean_install clean_share
 
 clean: restart_apache
 	sudo rm -rf build/ dist/ collorg.egg-info/ collorg/collorg.egg-info/
-	find collorg/_cog_web_site -name w3display.py -exec rm -f {} \;
 	find $(DIRS) -name "*.orig" -exec rm -f {} \;
 	find $(DIRS) -name "*.pyc" -exec rm -f {} \;
 	find collorg/db -regextype sed -regex ".*cog/templates/[a-z].*.py" -exec rm -f {} \;

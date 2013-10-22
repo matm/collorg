@@ -1,0 +1,7 @@
+#PRAGMA 'tasks':['Anonymous navigation']
+#PRAGMA 'label':'Sidebar search panel'
+#PRAGMA 'in_menu':False
+{% self.w3home_link(method="w3unit_home", target="#unit_%s" % id) %}
+{% self.w3calendar_link(target="#unit_%s" % id) %}
+{% self.w3list_groups_link(target="#unit_%s" % id) %}
+{% self.w3search_link(target="#unit_%s" % id) %}

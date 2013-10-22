@@ -17,6 +17,7 @@ class By_post(Table):
         fields list:
         * cog_oid_ : c_oid
         * cog_fqtn_ : c_fqtn
+        * post_order_ : int4
         * post_creat_date_ : timestamp
         * event_begin_date_ : timestamp
         * post_modif_date_ : timestamp

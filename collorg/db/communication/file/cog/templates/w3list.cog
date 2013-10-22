@@ -1,0 +1,78 @@
+#PRAGMA 'functions':['Authenticated user']
+#PRAGMA 'tasks':['Authenticated navigation']
+#PRAGMA 'label':'attachments list'
+#PRAGMA 'in_menu':False
+# >>>
+__doc__ = """
+If a file name is present more than once, we deduce that there are more
+than one version of the file. We only present the last version (ie the
+first seen due to the ordering).
+TODO: give the opportunity to retrieve the other versions with a select
+right to the filename.
+"""
+i18n_doc_attach_to = _("Documents attached to")
+i18n_file = _("File")
+i18n_is_missing = _("is missing")
+i18n_protected_doc = _("protected document")
+i18n_please_connect = _("Please connect")
+i18n_release = _("release")
+nb_doc = self.count()
+{#
+if nb_doc and 'data' in kwargs:
+    # ---
+    <hr>
+    {% i18n_doc_attach_to %} <em>{% kwargs['data'].cog_label() %}</em>
+# >>>
+#}
+if nb_doc:
+    # +++ msg
+    # >>>
+    self.cog_creat_date_.set_descending_order()
+    self.order_by(self.cog_creat_date_)
+    deja_vus = []
+    not_visible = 0
+    for file_ in self:
+        if file_.name_.value in deja_vus:
+            continue
+        deja_vus.append(file_.name_.value)
+        href = file_._grant_access()
+        if href is None:
+            not_visible += 1
+            continue
+        # ---
+        <li>
+        # >>>
+        if cog_user and file_.uploader_.value == cog_user.cog_oid_.value:
+            # ---
+            {% file_._w3select_visibility() %}
+        # >>>
+        if href != -1:
+            # ---
+            <a href="{% href %}" target="blank_">{% file_.name_ %}</a>
+        # >>>
+        else:
+            # ---
+            {% i18n_file %} {% file_.name_ %} {% i18n_is_missing %}!
+        # >>>
+        same_file = file_()
+        same_file.name_.set_intention(file_.name_.value)
+        nb_same_file = (same_file * self).count()
+        if nb_same_file > 1:
+            # ---
+            {% self.w3date_delta(date=file_.cog_creat_date_.value) %}
+            {% i18n_release %} {% nb_same_file %}
+        # ---
+        </li>
+    # ---
+    # >>>
+    if not_visible:
+        # ---
+        <li>
+        {% i18n_protected_doc %}. {% i18n_please_connect %}.
+        </li>
+    # --- msg
+    <div class="attach">
+    <ul>
+    {% msg %}
+    </ul>
+    </div>

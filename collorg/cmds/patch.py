@@ -63,7 +63,7 @@ class Cmd():
         # is the patch config file accessible
         self.__patch_dir = "%s/patches/%s/%s/%s" % (
             self.db._cog_params['application_basedir'],
-            self.__major, self.__minor, self.__revision) 
+            self.__major, self.__minor, self.__revision)
         self.__cfg_file = "%s/patch.cfg" % (self.__patch_dir)
         # all the files mentioned in the ini file must be accessible
         self.__config.read(self.__cfg_file)
@@ -216,8 +216,6 @@ class Cmd():
                     module.insert()
                 if not os.path.exists("%s/__init__.py" % (tablename)):
                     print("+ adding package %s.%s" % (schema.name, tablename))
-                    os.makedirs("%s/%s/__src" % (
-                        tablename, glob.templates_dir))
                     fd = open("%s/__init__.py" % (tablename), "w")
                     inh_classes, import_statment = self.__get_inh_infos(fqtn)
                     fd.write(glob.module_template % (
@@ -230,7 +228,5 @@ class Cmd():
                     fd.close()
                     open("%s/cog/__init__.py" % (tablename), "w")
                     open("%s/%s/__init__.py" % (
-                            tablename, glob.templates_dir), "w")
-                    open("%s/%s/__src/.readme" % (
                             tablename, glob.templates_dir), "w")
         Make(self.__ctrl, self.__db_name)

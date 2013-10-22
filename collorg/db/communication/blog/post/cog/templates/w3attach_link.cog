@@ -1,0 +1,11 @@
+#PRAGMA 'write':True
+#PRAGMA 'tasks':['Blog edition']
+#PRAGMA 'functions':["Collorg actor"]
+#PRAGMA 'label':"File upload link"
+#PRAGMA 'in_menu':False
+# >>>
+attacht = self.db.table('collorg.communication.attachment')
+attacht._data_ = self
+target=kwargs['target']
+# ---
+{% attacht.w3attach_link(data = self, target=target) %}

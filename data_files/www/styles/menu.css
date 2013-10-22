@@ -64,11 +64,19 @@ a:hover {
 }
 a img { /*IE*/
     border:0px;
+    outline: 0px;
 }
 img:hover {
     background:transparent;
 }
-
+a img:hover {
+    z-index: 20;
+    transform:scale(1.5);
+    -ms-transform:scale(1.5); /* IE 9 */
+    -moz-transform:scale(1.5); /* Firefox */
+    -webkit-transform:scale(1.5); /* Safari and Chrome */
+    -o-transform:scale(1.5); /* Opera */
+}
 h1, h2, h3, h4, h5 {
     border-bottom: 1px solid #c6c6c6;
     color: #008;

@@ -1,0 +1,7 @@
+#PRAGMA 'roles':['Anonymous user']
+#PRAGMA 'tasks':['Anonymous navigation']
+#PRAGMA 'label':'Post header display'
+#PRAGMA 'in_menu':False
+
+{% self._w3visibility() %}
+<div class="title">{% html(self).a() %}</div>

@@ -1,0 +1,13 @@
+# >>>
+i18n_logout = _("logout")
+method = "w3logout"
+target = "_reset_"
+label = '<img src="/collorg/images/logout.svg" class="ui-action hugeicon gainsboro" style="z-index: 20" title="{}" alt="{}" />'.format(i18n_logout, i18n_logout)
+# ---
+{% html(self).a(cog_method = method, target = target, label = label, css_class="logout_link") %}
+{#}
+<script>
+    $(".logout_link").on('click', function(){
+    $.removeCookie("cog_session")
+    })
+</script>

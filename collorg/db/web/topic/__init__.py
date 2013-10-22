@@ -75,10 +75,10 @@ class Topic(Post):
         return [label]
 
     def __get_parent(self):
-        tg = self.db.table('collorg.web.topic_graph')
-        tg._topic_ = self
-        tg.link_.set_intention(False)
-        parent = tg._parent_
+        tg = self.db.table('collorg.communication.blog.a_post_data')
+        tg._post_ = self
+        tg.see_also_.set_intention(False)
+        parent = tg._data_
         if parent.exists():
             return parent.get() # 1 and only 1 parent
         return None
@@ -117,11 +117,12 @@ class Topic(Post):
         return self
 
     def link_to(self, parent):
-        tg = self._rev_topic_graph_
-        tg._parent_ = parent
+        tg = self._rev_a_post_data_
+        tg._data_ = parent
         tg.insert()
 
     def __get_rel_path_info(self):
+        raise NotImplementedError
         return self.path_info_.value.split("/")[-1:][0]
 
     def insert_in(self, parent, sub_path_info):
@@ -138,6 +139,7 @@ class Topic(Post):
         """
         attach self to parent
         """
+        raise NotImplementedError
         assert self.exists()
         assert self.site_.value == parent.site_.value
         old_path_info = self.path_info_.value
@@ -194,9 +196,9 @@ class Topic(Post):
         return posts
 
     def set_parent(self, data, link = False):
-        tg = self._rev_topic_graph_
-        tg._parent_ = data
-        tg.link_.set_intention(link)
+        tg = self._rev_a_post_data_post_
+        tg._data_ = data
+        tg.see_also_.set_intention(link)
         tg.insert()
 
     def winsert(self, user, **kwargs):
@@ -210,11 +212,9 @@ class Topic(Post):
                 path_info = "{}/{}".format(data.path_info_, kwargs['title_'])
                 if data.path_info_.value and data.path_info_.value[-1:] == '/':
                     path_info = "{}{}".format(data.path_info_, kwargs['title_'])
-
         self.path_info_.set_intention(path_info)
         self.cog_environment_.set_intention(kwargs['env_oid'])
         super(self.__class__, self).winsert(user, **kwargs)
-        self.set_parent(data)
         self._cog_controller.site._d_topics = None
         self._cog_controller.site.load_topics()
         return data.w3display()

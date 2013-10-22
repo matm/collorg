@@ -1,0 +1,16 @@
+#PRAGMA 'write':True
+#PRAGMA 'tasks':['Blog edition']
+#PRAGMA 'label':'New post (subclass)'
+#PRAGMA 'in_menu':False
+# >>>
+next_oid = kwargs.get('next_oid')
+prev_oid = kwargs.get('prev_oid')
+elt_oid = kwargs['elt_oid']
+assert prev_oid or next_oid
+next_ = next_oid and self.db.get_elt_by_oid(next_oid)
+prev_ = prev_oid and self.db.get_elt_by_oid(prev_oid)
+elt_ = self.db.get_elt_by_oid(elt_oid)
+self.sort_attached_posts(elt_, prev_, next_)
+v_posts = self.db.table('collorg.communication.blog.view.by_post')
+# ---
+{% v_posts.w3list_attached_posts(post=self) %}

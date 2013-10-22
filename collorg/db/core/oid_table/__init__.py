@@ -41,8 +41,6 @@ class Oid_table( TClass ):
     _rev_user_check_ = cog_r._rev_user_check_
     _rev_bookmark_ = cog_r._rev_bookmark_
     _rev_attachment_ = cog_r._rev_attachment_
-    _rev_see_also_post_ = cog_r._rev_see_also_post_
-    _rev_see_also_data_ = cog_r._rev_see_also_data_
     _rev_a_post_data_post_ = cog_r._rev_a_post_data_post_
     _rev_a_post_data_data_ = cog_r._rev_a_post_data_data_
     _rev_topic_graph_ = cog_r._rev_topic_graph_

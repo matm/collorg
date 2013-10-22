@@ -130,10 +130,15 @@ class Post(Base_table):
         data must be a topic or a post
         """
         self.get()
-        apd = self._rev_a_post_data_post_
-        apd._data_ = data
+        apd = data._rev_a_post_data_data_
+        order = 0
+        if apd.exists():
+            order = apd.max(apd.order_) + 1
+        apd._post_ = self
         apd._who_ = self._cog_controller.user
+        apd.order_.set_intention(order)
         apd.insert()
+        apd.get()
         return self
 
     def unlink_from_data(self, data):
@@ -189,7 +194,6 @@ class Post(Base_table):
         access._rev_role_.delete()
         access.delete()
         self._rev_a_post_data_post_.delete()
-        self._rev_see_also_post_.delete()
         self._rev_a_tag_post_.delete()
         group = self.db.table('collorg.group.group')
         group._data_ = self
@@ -236,20 +240,16 @@ class Post(Base_table):
         return Post.__post_types
 
     def add_see_also(self, **kwargs):
-        sa = self._rev_see_also_post_
-        data = self.db.get_elt_by_oid(kwargs['data_oid'])
-        if data.cog_fqtn_.value == 'collorg.web.topic':
-            data.set_parent(self, link = True)
-        else:
-            sa._data_ = data
-            if not sa.exists():
-                sa.insert()
-
-    def delete_see_also(self, data):
-        sa = self._rev_see_also_post_
-        sa._data_ = data
-        assert sa.count() == 1
-        sa.delete()
+        apd = self._rev_a_post_data_data_
+        order = 0
+        if apd.exists():
+            order = apd.max(apd.order_)
+        post = self.db.get_elt_by_oid(kwargs['data_oid'])
+        apd._post_ = post
+        if not apd.exists():
+            apd.order_.set_intention(order + 1)
+            apd.see_also_.set_intention(True)
+            apd.insert()
 
     def attach_comment(self, comment):
         assert self.comment_.value
@@ -304,13 +304,35 @@ class Post(Base_table):
             return cog_user.has_access(self)
         return False
 
+    def get_see_also(self):
+        """
+        returns None if no see_also.
+        otherwise returns the set of posts attach to self.
+        """
+        apd = self.db.table('collorg.communication.blog.a_post_data')
+        apd._data_ = self
+        see_also = self()
+        see_also.cog_oid_.set_null()
+        if apd.exists():
+            see_also.cog_oid_.set_intention(apd._post_.cog_oid_)
+            user = self._cog_controller.user
+            if user:
+                p_see_also = see_also()
+                p_see_also.cog_oid_.set_intention(apd._post_.cog_oid_)
+                see_also += (p_see_also * user.get_granted_data())
+            else:
+                pub_see_also = see_also()
+                pub_see_also.visibility_.set_intention('private', '!=')
+                see_also *= pub_see_also
+        return see_also
+
     def get_children(self):
-        tg = self._rev_topic_graph_()
-        tg._parent_ = self
-        return tg._topic_
+        children = self.db.table('collorg.web.topic')
+        children.cog_oid_.set_intention(
+            self._rev_a_post_data_data_._post_.cog_oid_)
+        return children
 
     def get_accessible_children(self, user):
-        return self.get_children()
         topics = self.get_not_private_children()
         topics += self.get_private_children(user)
         return topics
@@ -332,30 +354,32 @@ class Post(Base_table):
         priv_posts.cog_oid_ *= accessible_posts.cog_oid_
         return priv_posts
 
-    def get_see_also(self):
+    def sort_attached_posts(self, elt_, prev_, next_):
         """
-        returns None if no see_also.
-        otherwise returns the set of posts attach to self.
+        Sort the attached posts.
+        elt_ is the moved element. It's just been moved between prev_ and
+        next_.
+        We renumber all a_post_data with data = self and post not of
+        type 'collorg.web.topic'.
         """
-        apd = self.db.table('collorg.communication.blog.a_post_data')
-        apd._data_ = self
-        see_also = self()
-        see_also.cog_oid_.set_null()
-        if apd.exists() or self._rev_see_also_post_._data_.exists():
-            data = self._rev_see_also_post_._data_
-            see_also = self.db.table('collorg.communication.blog.post')
-            see_also.cog_oid_.set_intention(data.cog_oid_)
-            see_also.cog_fqtn_.set_intention('collorg.web.topic', '!=')
-            if apd.exists():
-                sub_posts = self.db.table('collorg.communication.blog.post')
-                sub_posts.cog_oid_.set_intention(apd._post_.cog_oid_)
-                sub_posts.cog_fqtn_.set_intention('collorg.web.topic', '!=')
-                see_also += sub_posts
-            see_also.visibility_.set_intention('private', '!=')
-            user = self._cog_controller.user
-            if user:
-                p_see_also = see_also()
-                p_see_also.cog_oid_.set_intention(data.cog_oid_)
-                p_see_also.cog_fqtn_.set_intention('collorg.web.topic', '!=')
-                see_also += (p_see_also * user.get_granted_data())
-        return see_also
+        apd_elt = self._rev_a_post_data_data_
+        apd_elt._post_ = elt_
+        if next_:
+            #  We increment by 1 everything from next_
+            apd_next = self._rev_a_post_data_data_
+            apd_next._post_ = next_
+            next_position = apd_next.get().order_.value
+            apd = self._rev_a_post_data_data_
+            apd.order_.set_intention(next_position, '>=')
+            apd.increment(apd.order_)
+            apd = self._rev_a_post_data_data_
+            apd._post_ = elt_
+            napd = apd()
+            napd.order_.set_intention(next_position)
+            apd.update(napd)
+        else:
+            apd = self._rev_a_post_data_data_
+            napd = apd()
+            napd.order_.set_intention(apd.max(apd.order_) + 1)
+            apd_elt.update(napd)
+                        

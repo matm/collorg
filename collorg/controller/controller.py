@@ -172,6 +172,8 @@ class Controller(object):
                     fqtn = pfqtn
                     break
         if not (method_name, fqtn) in self._d_actions:
+            raise RuntimeError("{} {} not found\n{}\n".format(
+                fqtn, method_name, self._d_actions))
             return None
         return self._d_actions[(method_name, fqtn)]
 

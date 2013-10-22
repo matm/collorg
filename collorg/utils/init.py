@@ -106,7 +106,7 @@ class Init():
             name = self.db_name,
             user = user, password = password, host = host, port = port,
             charset = charset)
-        open("/etc/collorg/%s" % (self.db_name), "w").write(file_) 
+        open("/etc/collorg/%s" % (self.db_name), "w").write(file_)
 
 
 

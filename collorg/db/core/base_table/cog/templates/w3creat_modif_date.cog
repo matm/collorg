@@ -1,0 +1,28 @@
+#PRAGMA 'functions':['Anonymous user']
+#PRAGMA 'tasks':['Anonymous navigation']
+#PRAGMA 'label':'creation/modification date'
+#PRAGMA 'in_menu':False
+# >>>
+__doc__ = """
+w3creat_modif_date(creat_date = None, modif_date = None, max_days = 7)
+
+displays the creation date using w3date_delta methode
+if no creat_date/modif_date given, the dates a taken from the self object
+"""
+i18n_created = kwargs.get('i18n_created', _("created"))
+i18n_modified = kwargs.get('i18n_modified', _("last modified"))
+i18n_by = kwargs.get('i18n_by', _("by"))
+creat_date = kwargs.get('creat_date', self.cog_creat_date_.value)
+modif_date = kwargs.get('modif_date', self.cog_modif_date_.value)
+max_days = kwargs.get('max_days', 7)
+text = kwargs.get('text', '')
+create_string = self.w3date_delta(date=creat_date, max_days=max_days).strip()
+# ---
+{% i18n_created %}: {% create_string %}
+{% text %}
+# >>>
+if modif_date > creat_date:
+    modif_string = self.w3date_delta(date=modif_date, max_days=max_days, i18n_by = i18n_by).strip()
+    if modif_string != create_string:
+        # ---
+        &#151;&nbsp;{% i18n_modified %}: {% modif_string %}

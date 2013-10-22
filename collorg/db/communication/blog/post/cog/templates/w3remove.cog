@@ -1,0 +1,15 @@
+#PRAGMA 'write':True
+#PRAGMA 'strip':True
+#PRAGMA 'goals':['Blog']
+#PRAGMA 'tasks':['Blog edition']
+#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'label':'Remove post'
+#PRAGMA 'in_menu':False
+# >>>
+elt = self.db.get_elt_by_oid(kwargs['elt_oid'])
+apd = self._rev_a_post_data_data_
+apd._post_ = elt
+apd.get()
+apd.delete()
+# ---
+{% self.w3display() %}

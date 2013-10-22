@@ -1,0 +1,54 @@
+#PRAGMA 'label': 'RSS feed'
+#PRAGMA 'in_header': True
+#PRAGMA 'icon': 'rss.png'
+#PRAGMA 'raw': True
+# >>>
+from pytz import timezone
+import datetime
+import cgi
+ctrl = self._cog_controller
+tz = timezone(open('/etc/timezone').read().strip())
+topic = self.db.get_elt_by_oid(kwargs['topic_oid'])
+url = cgi.escape("{}?{}".format(ctrl._url, ctrl._environ['QUERY_STRING']))
+# ---
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+ <title>{% topic.title_.value or self.cog_label() %}</title>
+ <description>{% topic.text_ %}</description>
+ <link>{% url %}</link>
+ <atom:link href="{% url %}" rel="self" type="application/rss+xml"/>
+{#
+ <lastBuildDate>Mon, 06 Sep 2010 00:01:00 +0000 </lastBuildDate>
+ <pubDate>Mon, 06 Sep 2009 16:45:00 +0000 </pubDate>
+#}
+ <ttl>600</ttl>
+# >>>
+if topic.visibility_.value == 'public':
+    posts = topic.get_not_private_posts()
+    vp = self.db.table('collorg.communication.blog.view.by_post')
+    vp.cog_light = True
+    vp.cog_oid_.set_intention(posts.cog_oid_)
+    vp.post_modif_date_.set_descending_order()
+    vp.post_modif_date_ *= (datetime.datetime.now() - datetime.timedelta(30), '>')
+    vp.order_by(vp.post_modif_date_)
+    # posts can appear in more than one topic
+    l_posts = []
+    for elt in vp:
+        if elt.cog_oid_ in l_posts:
+            continue
+        l_posts.append(elt.cog_oid_)
+        abs_link = html(elt).absolute_link(just_href = True)
+        creat_date = tz.localize(elt.post_creat_date_)
+        # ---
+        <item>
+        <link>{% abs_link %}</link>
+        <title>{% elt.post_title_ %}</title>
+        <description>{% cgi.escape(elt.introductory_paragraph_) %}</description>
+        <guid isPermaLink="true">{% abs_link %}</guid>
+        <pubDate>{% creat_date.strftime('%a, %d %b %Y %H:%M:%S %z') %}</pubDate>
+        <author>{% elt.author_first_name_ %} {% elt.author_last_name_ %}</author>
+        </item>
+    # ---
+    </channel>
+    </rss>

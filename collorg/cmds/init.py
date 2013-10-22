@@ -36,13 +36,6 @@ def _input(question, default_val):
 sql_version = "SELECT version()"
 sql_db_exists = "SELECT datname FROM pg_catalog.pg_database WHERE datname = %s"
 
-default_home_page = """
-<h1>Welcome to collorg</h1>
-This is a default page. You can modify it by editing the file<br/>
-<pre>collorg_app/{% self.db.name %}/_cog_web_site/__src/Home</pre>
-in your <em>{% self.db.name %}</em> collorg repo.
-"""
-
 app_ini_file = """[database]
 user = {user}
 password = {password}
@@ -57,19 +50,19 @@ url = collorg/{db_name}
 url_scheme = http
 production = True
 upload_dir = /var/collorg/{db_name}
-#user_photo_url = 
+#user_photo_url =
 #site_title = <span class="grey">C</span>oll<span class="grey">o</span>rg
 session_cache_host = localhost
 session_cache_port = 6543
 
 [mail]
 smtp_server = smtp.example.org
-#smtp_port = 
-#smtp_user = 
-#smtp_password = 
+#smtp_port =
+#smtp_user =
+#smtp_password =
 #default_user =
 mail_prefix = [collorg]
-error_report_to = 
+error_report_to =
 """
 
 cog_config_file = """[core]
@@ -239,7 +232,7 @@ class Cmd():
             "export PGPASSWORD={password};"
             "createdb {db_name} -O {user} -U {user} "
             "-T collorg_db -h {host}".format(
-                password = self.password, db_name = self.db_name, 
+                password = self.password, db_name = self.db_name,
                 user = self.user, host = self.host))
         if exit_status != 0:
             sys.stderr.write("unable to create database %s\n%s\n" % (
@@ -279,43 +272,6 @@ class Cmd():
                 open("%s/%s/__init__.py" % (cog_app_pkg_dir, dir_), "w")
         open("%s/__init__.py" % (cog_app_pkg_dir), "w")
         os.chdir(cog_app_pkg_dir)
-        for schema in self.db.schemas:
-            if schema.name.find("collorg.") == 0:
-                continue
-            if not os.path.exists(schema.name):
-                os.mkdir(schema.name)
-                open("%s/__init__.py" % (schema.name), "w")
-                os.makedirs("%s/%s" % (schema.name, glob.templates_dir))
-                open("%s/%s/__init__.py" % (
-                        schema.name, glob.templates_dir), "w")
-            os.chdir(schema.name)
-            for tablename in schema.tables:
-                fqtn = "%s.%s" % (schema.name, tablename)
-                module = self.db.table(
-                    'collorg.core.data_type',
-                    fqtn_ = fqtn,
-                    name_ = tablename)
-                if not module.exists():
-                    module.insert()
-                if not os.path.exists("%s.py" % (tablename)):
-                    print("+ %s.%s" % (schema.name, tablename))
-                    fd = open("__init__.py", "w")
-                    fd.write(glob.module_template % (
-                            self.charset,
-                            tablename.capitalize(),
-                            schema.name, tablename,
-                            tablename.capitalize()))
-                    fd.close()
-                if not os.path.exists("%s/%s" % (
-                        glob.templates_dir, tablename)):
-                    os.makedirs("%s/%s" % (
-                            glob.templates_dir, tablename))
-                    open("%s/%s/__init__.py" % (
-                            glob.templates_dir, tablename), "w")
-                    open("%s/cog/__init__.py" % (tablename), "w")
-                    os.makedirs("%s/__src/%s" % (
-                            glob.templates_dir, tablename))
-            os.chdir('..')
         self.post_init()
 
     def add_user(self):
@@ -377,6 +333,10 @@ class Cmd():
         #db.set_auto_commit(False)
         user = self.add_user()
         assert user.count() == 1
+        db = table('collorg.core.database').get()
+        ndb = db()
+        ndb.name_.set_intention(self.db.name)
+        db.update(ndb)
         site = table('collorg.web.site')
         site.url_.set_intention('{}/collorg'.format(self.db.name))
         if not site.exists():

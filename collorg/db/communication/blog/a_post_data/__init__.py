@@ -32,6 +32,8 @@ class A_post_data(Base_table):
         * who_ : c_oid, FK
         * when_ : timestamp
         * private_reference_ : bool
+        * order_ : int4
+        * see_also_ : bool
         """
         #<<< AUTO_COG DOC. Your code goes after
         super(A_post_data, self).__init__(db, **kwargs)

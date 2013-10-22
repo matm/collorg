@@ -1,0 +1,9 @@
+# >>>
+i18n_connection = _("connection")
+user = self()
+method = "w3login_form"
+target = "#cog_dialog_modal"
+label = '<img src="/collorg/images/login.svg" class="ui-action hugeicon" title="{}" alt="{}" /> {}'.format(
+  i18n_connection, i18n_connection, i18n_connection)
+# ---
+{% html(user).a(cog_method = method, target = target, label = label) %}

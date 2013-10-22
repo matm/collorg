@@ -1,0 +1,81 @@
+#PRAGMA 'functions': ["Administrator user"]
+#PRAGMA 'language':'html'
+# >>>
+package = self._namespace_
+package_link = html( package ).a( cog_method = 'w3listModules' )
+# ---
+<h3>{% package_link %}.{% self.name_.val %}
+# >>>
+obj = self.db.table( self.fqtn_.val )
+inherits_from = obj._cog_inherits
+{#
+if inherits_from.exists():
+    links_inherited = []
+    for elt in inherits_from:
+        # ---
+        inherited = self.db.table(
+            'collorg.core.data_type', fqtn_ = elt.fqtn ).get()
+        links_inherited.append( "%s" % ( html( inherited ).a() ) )
+    # ---
+    (inherits: {% ", ".join( links_inherited ) %})
+#}
+# ---
+</h3>
+<div>{% self.cog_presentation_.val or "" %}</div>
+<table>
+# >>>
+for field in obj._cog_fields:
+    val = field.val or ""
+    flashy = ""
+    if field.spec['pkey']:
+        flashy = 'class="flashy"'
+    # ---
+    <tr {% flashy %}>
+    # >>>
+    caption = "%s"
+    for key, val in field.spec.items():
+        if key == 'f_table':
+            continue
+        if key == 'fkeyname' and val:
+            val = "%s" % ( html( field.spec['f_table'].cog_table ).a() )
+        if key == 'pkey' and val:
+            caption = "<i>%s</i>"
+        if key in ( 'pkey', 'fkey' ):
+            val = "<b>%s</b>" % caption % val
+        else:
+            val = caption % val
+        # ---
+        <td>{% val %}</td>
+    # ---
+    </tr>
+# ---
+</table>
+# >>>
+action = self._rev_action_
+actions = action.count()
+if actions:
+    link_actions = html( self ).a(
+        cog_method = "w3listActions", label = "%s actions" % actions,
+        target = '#cog_container' )
+    # ---
+    <h4>Actions</h4>
+    <div>
+    {% link_actions %}
+    </div>
+# >>>
+nb_obj = obj.count()
+# ---
+<h4>Data</h4>
+# >>>
+if not nb_obj:
+    # ---
+    no data
+# >>>
+else:
+    plur = nb_obj > 1 and "s" or ""
+    cog_label = "%s tuple%s" % ( nb_obj, plur )
+    link_list_data = html( self ).a(
+        label = cog_label, cog_method = "w3listData",
+        target = '#cog_container' )
+    # ---
+    {% link_list_data %}

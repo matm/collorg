@@ -1,0 +1,12 @@
+#PRAGMA 'label':'Manage roles'
+#PRAGMA 'in_menu':True
+#PRAGMA 'tasks':['Db admin']
+
+<h1>Roles management</h1>
+# >>>
+namespace = self.db.table('collorg.core.namespace')
+namespace.name_.set_('collorg.%', 'not like')
+# ---
+The roles are attached to the tables.<br/>
+Select a namespace in the following list, then a data type inside that namespace.<hr/>
+{% namespace.w3list() %}

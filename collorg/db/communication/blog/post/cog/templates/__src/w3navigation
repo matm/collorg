@@ -1,15 +1,19 @@
 #PRAGMA 'roles':['Anonymous user']
 
 # >>>
+i18n_referenced_by = _("This post is referenced by:")
 ok = False
 ok_rb = False
+sortable = False
+if cog_user and cog_user.cog_oid_.value == self.author_.value:
+    sortable = True
 see_also = self.get_see_also()
 if see_also.exists():
     ok = True
-if self._rev_see_also_data_.exists():
+if False:#self._rev_a_post_data_data_.exists():
     ok_rb = True
     ref_by = self.db.table('collorg.communication.blog.post')
-    ref_by.cog_oid_.set_intention(self._rev_see_also_data_._post_.cog_oid_)
+    ref_by.cog_oid_.set_intention(self._rev_a_post_data_post_._post_.cog_oid_)
     if not cog_user:
         ref_by.visibility_.set_intention('private', '!=')
     else:
@@ -22,13 +26,16 @@ if ok or ok_rb:
 if ok:
     v_posts.cog_oid_.set_intention(see_also.cog_oid_)
     # ---
-    {% v_posts.w3list(embedded = True) %}
+    {% v_posts.w3list(post_oid = self.cog_oid_.value, sortable = sortable, embedded = True) %}
 # >>>
 if ok_rb:
     v_posts_rb = v_posts()
     v_posts_rb.cog_oid_.set_intention(ref_by.cog_oid_)
-    # ---
-    {% v_posts_rb.w3list(embedded = True) %}
+    rb_list = v_posts_rb.w3list(embedded = True).strip()
+    if rb_list:
+        # ---
+        {% i18n_referenced_by %}
+        {% rb_list %}
 # >>>
 if ok or ok_rb:
     # ---

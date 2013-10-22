@@ -22,9 +22,8 @@ import re
 
 do_not_edit_msg = (
     '##\n'
-    '## Do not edit this code!\n'
-    '## It has been generated from the source file:\n'
-    '## \'%s\'.\n'
+    '## DO NOT EDIT THIS CODE!\n'
+    '## It has been generated from the source file: %s\n'
     '##\n' )
 
 class Parser( object ):
@@ -192,7 +191,7 @@ class Parser( object ):
 #        result.append('         return')
 #        result.append('        ok = self.cog_pre(cog_charset, cog_user, cog_environment, **kwargs)')
 #        result.append('        if not ok: return')
-        result.append('    html = Html( self )')
+        result.append('    html = Html(self)')
         result.append(
             "    self._cog_html_id = html.set_html_id(self, '{}')".format(
             self.__template_name))

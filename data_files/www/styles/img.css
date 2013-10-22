@@ -1,12 +1,16 @@
 .icon {
     width: 10px;
+    display: inline;
 }
 .medicon {
     width: 16px;
+    display: inline;
 }
 .bigicon {
     width: 20px;
+    display: inline;
 }
 .hugeicon {
     width: 30px;
+    display: inline;
 }

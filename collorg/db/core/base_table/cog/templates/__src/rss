@@ -43,7 +43,7 @@ if topic.visibility_.value == 'public':
         # ---
         <item>
         <link>{% abs_link %}</link>
-        <title>{% elt.post_title_ %} {% elt.event_begin_date_ or "" %}</title>
+        <title>{% elt.post_title_ %}</title>
         <description>{% cgi.escape(elt.introductory_paragraph_) %}</description>
         <guid isPermaLink="true">{% abs_link %}</guid>
         <pubDate>{% creat_date.strftime('%a, %d %b %Y %H:%M:%S %z') %}</pubDate>

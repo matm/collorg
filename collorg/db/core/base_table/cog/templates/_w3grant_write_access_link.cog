@@ -1,0 +1,18 @@
+#PRAGMA 'goals':['Access management']
+#PRAGMA 'tasks':['Access management']
+#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'label':'Grant write access link'
+# >>>
+i18n_grant_write_access = _("Grant write access")
+i18n_read_only = _("read only")
+callback = kwargs['callback']
+label = """<img
+ class="bigicon" src="/collorg/images/grant_write_access.svg"
+ title="{}"
+/>""".format(i18n_grant_write_access)
+user = kwargs['user']
+link = html(self).a(
+    cog_method="w3grant_write_access", label=label, target="_page_article_",
+    user_oid = user.cog_oid_.value, callback = callback)
+# ---
+<small>({% i18n_read_only %})</small> {% link %}

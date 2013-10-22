@@ -1,0 +1,139 @@
+#PRAGMA 'tasks':['Anonymous navigation']
+#PRAGMA 'label':'List posts (by post)'
+#PRAGMA 'in_menu':False
+# >>>
+def remove_link_f(post, elt_oid):
+    label = '<img src="/collorg/images/trashcan.svg" class="medicon" />'
+    title = _("remove from this list")
+    link = html(post).a(
+        cog_method="w3remove", 
+        label=label, target='_page_', elt_oid=elt_oid, title=title)
+    return link
+
+# >>>
+post = self.db.table('collorg.communication.blog.post')
+bobj = self.db.table('collorg.core.base_table')
+self.cog_light = True
+if not kwargs.get('natural_order'):
+    self.post_creat_date_.set_descending_order()
+    self.event_begin_date_.set_descending_order()
+    self.order_by(self.event_begin_date_, self.post_creat_date_)
+embedded = kwargs.get('embedded', False)
+data_oid = kwargs.get('data_oid')
+# post_oid is used as reference object for sort
+post_oid = kwargs.get('post_oid')
+this_post = None
+if post_oid:
+    this_post = self.db.get_elt_by_oid(post_oid)
+data_fqtn = kwargs.get('data_fqtn')
+if not data_fqtn == 'collorg.web.topic':
+    self.data_oid_.set_intention(data_oid)
+self.cog_fqtn_.set_intention('collorg.web.topic', '!=')
+d_posts = self.dict_by(self.cog_oid_)
+n_posts = len(d_posts.keys())
+sortable = kwargs.get('sortable') and n_posts > 1
+if len(d_posts):
+    # +++ article
+    # >>>
+    itopic = self.db.table('collorg.web.topic')
+    for key, elt in d_posts.items():
+        se = elt[0]
+        if se.post_visibility_ == 'private' and cog_user:
+            ch_post = post()
+            ch_post.cog_oid_.set_intention(se.cog_oid_)
+            ch_post = ch_post.get()
+            if not ch_post.check_visibility(cog_user):
+                continue
+        remove_link = ''
+{#
+        # ---
+        {% post_oid %}<br>{% se.data_oid_ %}<br>{% se.cog_oid_ %}
+        # >>>
+        if cog_user and this_post:
+            # ---
+            {% this_post.author_ %} {% cog_user.cog_oid_ %}
+        # >>>
+#}
+        if (cog_user and (this_post and
+            this_post.author_.value == cog_user.cog_oid_.value) or
+            cog_user and (post_oid == se.data_oid_ and
+             se.author_oid_ == cog_user.cog_oid_.value)):
+            remove_link = remove_link_f(this_post, se.cog_oid_)
+        label = self.get_link_label(se)
+        if not label:
+            continue
+        important = ""
+        if se.important_post_:
+            important = "important"
+        b_important = important and "b_important" or ""
+        hidden_link = html(se).a(label=label, css_class="hidden")
+        elt_link = html(se).a(label=label)
+        # ---
+        <li class="post_item follow clickable {% important %}"
+            data-post_oid="{% post_oid %}"
+            data-elt_oid="{% se.cog_oid_ %}"
+        >
+        {% hidden_link %}
+        <div class="right">
+        {% remove_link %}
+        # >>>
+        if sortable:
+            # ---
+            <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+        # ---
+        </div>
+        <div>
+        # >>>
+        attachment = ""
+        if se.attachment_ != 0:
+            attachment = ('<div class="idx right">{}<img class="medicon" '
+                'src="/collorg/images/attachment.svg" /></div>'.format(
+                    se.attachment_))
+        comment = ""
+        if se.comment_ != 0:
+            comment = ('<div class="idx right">{}<img class="medicon" '
+                'src="/collorg/images/conversation.svg" /></div>'.format(
+                    se.comment_))
+        # ---
+        <div class="right">
+        {% comment %} {% attachment %}
+        </div>
+        <span class="post_title">{% elt_link %}</span>
+        # >>>
+        visibility = se.post_visibility_
+        post.visibility_.set_intention(visibility)
+        if visibility != 'public':
+            # ---
+            {% post._w3visibility() %}
+        # >>>
+        if sortable:
+            # ---
+            xxx {% se.post_order_ %}
+        # ---
+        <div>{% se.introductory_paragraph_ %}</div>
+        <div class="blog_item_footer"></div>
+        </div>
+        </li>
+    # --- article
+    # >>>
+    if article:
+        article = '<ul class="none {}">{}</ul><hr>'.format(
+            sortable and "sortable", article)
+    list_ = self.db.table('collorg.core.base_table').w3display_base(
+        article = article, footer = '', embedded = embedded)
+    # ---
+    {% list_ %}
+    # >>>
+    if sortable:
+        # ---
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $('.sortable').sortable({
+                update: function(event, ui){
+                    var elt = $(event.target);
+                    var cog_oid = elt.find('li').first().attr('data-post_oid');
+                    var elt_oid = elt.find('li').first().attr('data-elt_oid');
+                }
+            });
+        });
+        </script>
