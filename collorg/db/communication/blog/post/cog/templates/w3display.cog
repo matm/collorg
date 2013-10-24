@@ -25,6 +25,7 @@ if header is None:
 # +++ article
 <div id="{% id %}" class="post">
 <div class="topic_text">
+{% self.w3display_right() %}
 # >>>
 tags = self._rev_a_tag_post_._tag_ + self.get_see_also()._rev_a_tag_post_._tag_
 # ---
@@ -34,9 +35,9 @@ tags = self._rev_a_tag_post_._tag_ + self.get_see_also()._rev_a_tag_post_._tag_
 </div>
 </div>
 <div id="{% content_id %}" class="topic_list">
-{% self.w3add_see_also_drop_zone() %}
 {%self.w3display_core()%}
 {%self.w3display_core_sub()%}
+{% self.w3add_see_also_drop_zone() %}
 </div>
 </div>
 # --- article

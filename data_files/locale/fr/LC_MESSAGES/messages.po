@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-20 11:03+0200\n"
+"POT-Creation-Date: 2013-10-24 13:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -156,12 +156,14 @@ msgstr "Envoyer le message"
 #: collorg/templates/document_type/html.py:358
 #: build/lib.linux-x86_64-2.7/collorg/templates/document_type/html.py:358
 #: collorg/templates/document_type/html.py:359
+#: collorg/templates/document_type/html.py:364
 msgid "required"
 msgstr "requis"
 
 #: collorg/templates/document_type/html.py:349
 #: build/lib.linux-x86_64-2.7/collorg/templates/document_type/html.py:349
 #: collorg/templates/document_type/html.py:350
+#: collorg/templates/document_type/html.py:354
 msgid "preview"
 msgstr "prévisualisation"
 
@@ -1932,6 +1934,7 @@ msgid "This post is referenced by:"
 msgstr "Ce post est référencé par :"
 
 #: collorg/templates/document_type/html.py:351
+#: collorg/templates/document_type/html.py:356
 msgid "edit"
 msgstr "édition"
 
@@ -1940,6 +1943,7 @@ msgid "user last name"
 msgstr "nom de la personne"
 
 #: collorg/db/communication/blog/post/cog/templates/_w3remove_link.py:27
+#: collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:24
 msgid "remove from this list"
 msgstr "supprimer de cette liste"
 
@@ -1962,3 +1966,7 @@ msgstr "Donner l'accès à une personne"
 #: collorg/db/actor/user/cog/templates/_w3manage.py:28
 msgid "Add a member"
 msgstr "Ajouter un membre"
+
+#: collorg/templates/document_type/html.py:203
+msgid "select an entry"
+msgstr "sélectionnez une entrée"

@@ -382,4 +382,3 @@ class Post(Base_table):
             napd = apd()
             napd.order_.set_intention(apd.max(apd.order_) + 1)
             apd_elt.update(napd)
-                        

@@ -66,12 +66,12 @@ if self.exists():
         {% hidden_link %}
         <div class="right">
         {% remove_link %}
+        </div>
         # >>>
         if sortable:
             # ---
             <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
         # ---
-        </div>
         <div>
         # >>>
         attachment = ""

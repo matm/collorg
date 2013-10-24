@@ -59,18 +59,18 @@ cog_config = """[core]
 database = %s
 """
 
-module_template = """#-*- coding: %s -*-
+module_template = """#-*- coding: {} -*-
 
-%s
+{}
 
-class %s(%s):
+class {}({}):
     #>>> AUTO_COG REL_PART. DO NOT EDIT!
-    _cog_schemaname = '%s'
-    _cog_tablename = '%s'
+    _cog_schemaname = '{}'
+    _cog_tablename = '{}'
     _cog_templates_loaded = False
     #<<< AUTO_COG REL_PART. Your code goes after
     def __init__(self, db, **kwargs):
-        super(%s, self).__init__(db, **kwargs)
+        super({}, self).__init__(db, **kwargs)
 
 """
 

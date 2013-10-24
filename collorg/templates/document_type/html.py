@@ -44,6 +44,7 @@ class Html():
         self.__elt = elt
         self.__html = '%s'
         self.__charset = self.__elt._cog_controller._charset
+        self._ = self.__elt._cog_controller.i18n.gettext
 
     def __call__(self, elt = None):
         if elt:
@@ -186,7 +187,7 @@ class Html():
 
     def select(
         self, name, value_field, label_field=None, default=None,
-        message = 'select an entry',
+        message = None,
         live=False,
         trigger_elt=None,
         trigger_method="w3display",
@@ -198,6 +199,8 @@ class Html():
         label_field: optional (_cog_label) if not provided
         trigger_elt: a hidden html().a() elt that will be triggered
         """
+        if message is None:
+            message = self._('select an entry')
         live_html = ''
         live_class = ''
         if live:
@@ -306,7 +309,6 @@ class Html():
         Dependencies:
         * works with the plugin jquery.validate.js
         """
-        _ = self.__elt._cog_controller.i18n.gettext
         comments = ""
 #        if not hidden and field.table.cog_oid_.val:
 #            comments = Comment(field.table.db).w3list_link(
@@ -328,7 +330,7 @@ class Html():
         required = field.is_required and ' required="required"' or ''
         rid = id_ or self.random_id(name)
         label = label or field.name.replace('_', ' ').capitalize().strip()
-        label = _(label)
+        label = self._(label)
         value = kwargs.get('value', None)
         if value is None:
             value = field.value
@@ -348,8 +350,10 @@ class Html():
         view_wiki = ''
         edit_wiki = ''
         if field.sql_type == 'wiki' and not hidden:
-            view_wiki = '<span class="button vwiki" target="#{}">{}</span>'.format(rid, _("preview"))
-            edit_wiki = '<span class="button ewiki hidden" target="#{}">{}</span>'.format(rid, _("edit"))
+            view_wiki = '<span class="button vwiki" target="#{}">{}</span>'\
+                .format(rid, self._("preview"))
+            edit_wiki = ('<span class="button ewiki hidden" '
+                'target="#{}">{}</span>').format(rid, self._("edit"))
         if field.sql_type in textarea:
             html_input = html_textarea % (
                 field.sql_type == 'wiki' and " (%s)" % wikicreole_link or '',
@@ -357,7 +361,7 @@ class Html():
             type_ = ''
         if required and not hidden:
             label = '{} <span class="required"><em>{}</em></span>'.\
-                format(label, _("required"))
+                format(label, self._("required"))
         self.__html = "%s%s %s" % (label and html_label % (rid, label),
                     directive,
                     html_input % (
@@ -437,10 +441,13 @@ class Html():
                 label = '<h5>%s</h5>' % label
             if field.sql_type == 'wiki':
                 value = self.creole(value)
+            else:
+                value = value.replace('>', '&gt;').replace('<', '&lt;')
             return '<div %s>%s%s%s</div>' % (
                 css_class, label, value, comments)
         if label != "":
             label = "<b>%s</b>:" % (label)
+        value = value.replace('>', '&gt;').replace('<', '&lt;')
         return '<div %s>%s %s %s</div>' % (
             css_class, label, value, comments)
 
