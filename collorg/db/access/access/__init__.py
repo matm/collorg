@@ -96,9 +96,9 @@ class Access( Base_table ):
         #!! The granter shoud be registered
         """
         self.db.set_auto_commit(False)
-        if data:
+        if data is not None:
             self._data_ = data
-        if user:
+        if user is not None:
             self._user_ = user
         self.write_.set_intention(write)
         if not self.is_granted():
@@ -152,7 +152,8 @@ class Access( Base_table ):
         Internal checker for granted access.
         self.user_ and self.data_ must be constrained.
         """
-        assert self.user_.is_constrained and self.data_.is_constrained
+        assert self.user_.is_constrained
+        assert self.data_.is_constrained
         access = self()
         access.cog_oid_.set_intention(self.cog_oid_)
         access.granted()

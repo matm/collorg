@@ -133,7 +133,10 @@ class Post(Base_table):
         apd = data._rev_a_post_data_data_
         order = 0
         if apd.exists():
-            order = apd.max(apd.order_) + 1
+            try:
+                order = apd.max(apd.order_) + 1
+            except:
+                order = 0
         apd._post_ = self
         apd._who_ = self._cog_controller.user
         apd.order_.set_intention(order)
@@ -157,6 +160,16 @@ class Post(Base_table):
         apd.update(napd)
 
     def winsert(self, user, **kwargs):
+        """
+        data_oid
+        title_
+        text_
+        introductory_paragraph_
+        public_
+        comment_
+        important_
+        visibility_
+        """
         data_oid = kwargs['data_oid']
         data = kwargs.get('data', self.db.get_elt_by_oid(data_oid))
         data_fqtns = [data.fqtn] + data.parents_fqtns()
