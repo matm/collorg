@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-24 13:27+0200\n"
+"POT-Creation-Date: 2013-10-29 13:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1930,8 +1930,8 @@ msgstr ""
 
 #: collorg/db/communication/blog/post/cog/templates/w3navigation.py:22
 #: collorg/db/communication/blog/post/cog/templates/w3navigation.py:21
-msgid "This post is referenced by:"
-msgstr "Ce post est référencé par :"
+msgid "Referenced by"
+msgstr "Référencé par"
 
 #: collorg/templates/document_type/html.py:351
 #: collorg/templates/document_type/html.py:356
@@ -1944,6 +1944,7 @@ msgstr "nom de la personne"
 
 #: collorg/db/communication/blog/post/cog/templates/_w3remove_link.py:27
 #: collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:24
+#: collorg/db/communication/blog/view/by_post/cog/templates/w3list_attached_posts.py:24
 msgid "remove from this list"
 msgstr "supprimer de cette liste"
 
@@ -1970,3 +1971,15 @@ msgstr "Ajouter un membre"
 #: collorg/templates/document_type/html.py:203
 msgid "select an entry"
 msgstr "sélectionnez une entrée"
+
+#: collorg/db/event/event/cog/templates/w3display_header_sub.py:18
+msgid "from"
+msgstr "de"
+
+#: collorg/db/event/event/cog/templates/w3display_header_sub.py:19
+msgid "to"
+msgstr "à"
+
+#: collorg/db/communication/blog/post/cog/templates/w3navigation.py:22
+msgid "See also"
+msgstr "Voir aussi"

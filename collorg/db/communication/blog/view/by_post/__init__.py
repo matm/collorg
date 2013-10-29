@@ -44,12 +44,13 @@ class By_post(Table):
         list_elt is a cog_light elt...
         """
         begin_date = list_elt.event_begin_date_ or ""
+        create_date = list_elt.post_creat_date_
         link = list_elt.post_title_
-        if list_elt.cog_fqtn_ == 'collorg.event.event':
+        if begin_date and begin_date != create_date:
             link = ('<img src="/collorg/images/alarm.svg" '
                 'class="medicon" alt="event" /> {}<br>{}'.format(
                     list_elt.post_title_,
-                    begin_date.strftime("%Y-%m-%d at %H:%M")))
+                    begin_date.strftime("%Y-%m-%d @ %H:%M")))
         elif list_elt.cog_fqtn_ == 'collorg.web.topic':
             link = ('<img src="/collorg/images/folder.png" /> {}'.format(
                 list_elt.post_title_))

@@ -1,4 +1,9 @@
-<span>
-<b>from</b> {%self.begin_date_.value.strftime("%Y-%m-%d at %H:%M")%}
-<b>to</b> {%self.end_date_.value.strftime("%Y-%m-%d at %H:%M")%}
-</span>
+# >>>
+i18n_from = _("from")
+i18n_to = _("to")
+# ---
+<div style="display: inline-block;">
+<b>{% i18n_from %}</b> {%self.begin_date_.value.strftime("%Y-%m-%d @ %H:%M")%}
+<br>
+<b>{% i18n_to %}</b> {%self.end_date_.value.strftime("%Y-%m-%d @ %H:%M")%}
+</div>

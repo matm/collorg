@@ -1,1 +1,1 @@
-__all__ = ["w3list", "w3list_attached_posts"]
+__all__ = ["w3list", "w3list_attached_posts", "w3list_ref"]

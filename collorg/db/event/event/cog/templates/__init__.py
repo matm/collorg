@@ -1,1 +1,1 @@
-__all__ = ["w3display_header_sub", "w3edit_sub", "w3new_post_sub"]
+__all__ = ["_w3new_post_sub", "w3display_header_sub", "w3edit_sub", "w3new_post_sub"]

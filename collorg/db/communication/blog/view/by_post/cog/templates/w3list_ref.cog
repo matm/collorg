@@ -1,0 +1,78 @@
+#PRAGMA 'tasks':['Anonymous navigation']
+#PRAGMA 'label':'List posts (by post)'
+#PRAGMA 'in_menu':False
+# >>>
+the_post = kwargs['post']
+sortable = False
+self.cog_oid_.set_intention(the_post.cog_oid_.value)
+
+self.cog_fqtn_.set_intention('collorg.web.topic', '!=')
+self.order_by(self.post_order_)
+post = self.db.table('collorg.communication.blog.post')
+self.cog_light = True
+self.cog_distinct = True
+l_refs = []
+if self.exists():
+    # +++ article
+    # >>>
+    for se in self:
+        if se.cog_oid_ in l_refs:
+            continue
+        l_refs.append(se.cog_oid_)
+        if se.post_visibility_ == 'private':
+            if cog_user:
+                ch_post = post()
+                ch_post.cog_oid_.set_intention(se.cog_oid_)
+                ch_post = ch_post.get()
+                if not ch_post.check_visibility(cog_user):
+                    continue
+            else:
+                continue
+        label = self.get_link_label(se)
+        if not label:
+            continue
+        important = ""
+        if se.important_post_:
+            important = "important"
+        b_important = important and "b_important" or ""
+        hidden_link = html(se).a(label=label, css_class="hidden")
+        elt_link = html(se).a(label=label)
+        # ---
+        <li class="post_item follow clickable {% important %}">
+        {% hidden_link %}
+        # >>>
+        attachment = ""
+        if se.attachment_ != 0:
+            attachment = ('<div class="idx right">{}<img class="medicon" '
+                'src="/collorg/images/attachment.svg" /></div>'.format(
+                    se.attachment_))
+        comment = ""
+        if se.comment_ != 0:
+            comment = ('<div class="idx right">{}<img class="medicon" '
+                'src="/collorg/images/conversation.svg" /></div>'.format(
+                    se.comment_))
+        if attachment or comment:
+            # ---
+            <div class="right">
+            {% comment %} {% attachment %}
+            </div>
+        # ---
+        <span class="post_title">{% elt_link %}</span>
+        # >>>
+        visibility = se.post_visibility_
+        post.visibility_.set_intention(visibility)
+        if visibility != 'public':
+            # ---
+            {% post._w3visibility() %}
+        # ---
+        <div>{% se.introductory_paragraph_ %}</div>
+        <div class="blog_item_footer"></div>
+        </li>
+    # --- article
+    # >>>
+    article = '<ul class="none">{}</ul>'.format(article)
+    list_ = self.db.table('collorg.core.base_table').w3display_base(
+        article = article, footer = '', embedded = True)
+    # ---
+    {% list_ %}
+

@@ -12,13 +12,14 @@ def remove_link_f(post, elt_oid):
 # >>>
 the_post = kwargs['post']
 sortable = False
-if cog_user and cog_user.cog_oid_.value == the_post.author_.value:
+if (cog_user and 'author_' in the_post.__dict__ and
+    cog_user.cog_oid_.value == the_post.author_.value):
     sortable = True
 data_oid = the_post.cog_oid_.value
 self.data_oid_.set_intention(data_oid)
 self.cog_fqtn_.set_intention('collorg.web.topic', '!=')
 self.order_by(self.post_order_)
-post = the_post()
+post = self.db.table('collorg.communication.blog.post')
 self.cog_light = True
 # data_oid is used as reference object for sort
 if self.exists():
@@ -39,15 +40,15 @@ if self.exists():
         # ---
         {% data_oid %}<br>{% se.data_oid_ %}<br>{% se.cog_oid_ %}
         # >>>
-        if cog_user and the_post:
+        if cog_user and the_post and 'author_' in the_post.__dict__:
             # ---
             {% the_post.author_ %} {% cog_user.cog_oid_ %}
         # >>>
 #}
-        if (cog_user and (the_post and
+        if ('author_' in the_post.__dict__ and (cog_user and (the_post and
             the_post.author_.value == cog_user.cog_oid_.value) or
             cog_user and (data_oid == se.data_oid_ and
-             se.author_oid_ == cog_user.cog_oid_.value)):
+             se.author_oid_ == cog_user.cog_oid_.value))):
             remove_link = remove_link_f(the_post, se.cog_oid_)
         label = self.get_link_label(se)
         if not label:
@@ -103,7 +104,7 @@ if self.exists():
     # --- article
     # >>>
     if article:
-        article = '<ul class="none {}">{}</ul><hr>'.format(
+        article = '<ul class="none {}">{}</ul>'.format(
             sortable and "sortable", article)
     list_ = self.db.table('collorg.core.base_table').w3display_base(
         article = article, footer = '', embedded = True)
@@ -137,7 +138,7 @@ if self.exists():
         <script type="text/javascript">
         $(document).ready(function(){
             $('.sortable').sortable({
-                axis: "y",
+// buggy with webkit               axis: "y",
                 update: function(event, ui){
                     var elt = ui.item.attr('data-elt_oid');
                     var prev = ui.item.prev().attr('data-elt_oid');

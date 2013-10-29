@@ -128,3 +128,10 @@ nav.bc.navdown a:after, nav.bc.navdown a:before {
     padding: 0px 5px 0px 25px;
     margin: -5px 0px 0px -5px;
 }
+
+.related {
+    color: rgb(173, 167, 159);
+}
+.related_posts{
+    background-color: rgb(245, 245, 245);
+}

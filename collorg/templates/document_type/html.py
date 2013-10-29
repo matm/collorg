@@ -249,7 +249,7 @@ class Html():
         if live_html:
             live_html = '<div class="hidden">%s</div>' % (live_html)
         html += '</select>'
-        self.__html = self.__html % ("<div>%s</div>%s" % (html, live_html))
+        self.__html = self.__html % ("%s%s" % (html, live_html))
         return self
 
     def radio_checkbox(
