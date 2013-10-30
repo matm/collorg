@@ -58,5 +58,3 @@ if not 'cog_raw' in kwargs:
     if not cog_user:
         # ---
         <div><div class="anonymous" style="display:none;">anonymous</div></div>
-    # ---
-    <!-- base_table.w3display -->

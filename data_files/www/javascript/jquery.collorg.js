@@ -87,11 +87,15 @@
     function _cog_reloadAnonymousPage()
     {
         var active_page = $(".page.active");
-        active_page.find(".anonymous").each(function(){
-            if(_cog_connected()) {
-                active_page.find("header > .title > a").first().click();
+        if(_cog_connected()) {
+	    var is_anonymous = active_page.find(".anonymous").length;
+	    if(is_anonymous){
+		active_page.find(".anonymous").each(function(){
+		    $(this).remove();
+		});
+		active_page.find("header > .title > a").first().click();
             }
-        });
+        }
     }
 
     $.fn.referencePage = function(page_ref)
