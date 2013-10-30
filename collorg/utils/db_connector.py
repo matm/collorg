@@ -21,12 +21,10 @@ def get_cog_infos():
         os.chdir('..')
     raise RuntimeError("no collorg repository found here\n")
 
-def connect(
-    dbname, user = 'collorg', password = '', host = 'localhost', port = '5432'):
-    password = password and "password=%s" % (password.replace("'", "\'")) or ""
-    dsn = "dbname=%s user=%s host=%s port=%s %s" % (
-        dbname, user, host, port, password)
-    db = psycopg2.connect(dsn)
+def connect(dbname,
+            user='collorg', password='', host='localhost', port='5432'):
+    db = psycopg2.connect(
+        database=dbname, user=user, host=host, port=port, password=password)
     cursor = db.cursor(cursor_factory = psycopg2.extras.DictCursor)
     return db, cursor
 

@@ -283,7 +283,8 @@ class Relation(object):
             extension = self.db.get_query_res(sql_req)
         except Exception as e:
             self.db.rollback()
-            raise CustomError("select error: %s\n%s" % (e, sql_req))
+            raise CustomError("select error: %s, %s\n%s" % (
+                e.diag.severity, e.diag.message_primary, sql_req))
         if expected != -1:
             try:
                 assert len(extension) == expected
@@ -305,7 +306,7 @@ class Relation(object):
                 if field.name != 'cog_oid':
                     self.__dict__[field.pyname].set_intention(None)
         #!! offset ?
-        res = self.get_extent(
+        res = self.select(
             expected = 1, fields = fields, just_return_sql = just_return_sql)
         if just_return_sql:
             return res
@@ -377,7 +378,7 @@ class Relation(object):
 
     def __iter__(self):
         if len(self.__extension) == 0:
-            self.get_extent()
+            self.select()
         for elt in self.__extension:
 #            if 'cog_ref_obj' in self.__class__.__dict__:
 #                oid = elt['cog_oid']

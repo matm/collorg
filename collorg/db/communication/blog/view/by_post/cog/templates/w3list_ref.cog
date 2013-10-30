@@ -70,9 +70,10 @@ if self.exists():
         </li>
     # --- article
     # >>>
-    article = '<ul class="none">{}</ul>'.format(article)
-    list_ = self.db.table('collorg.core.base_table').w3display_base(
-        article = article, footer = '', embedded = True)
-    # ---
-    {% list_ %}
+    if article.strip():
+        article = '<ul class="none">{}</ul>'.format(article)
+        list_ = self.db.table('collorg.core.base_table').w3display_base(
+            article = article, footer = '', embedded = True)
+        # ---
+        {% list_ %}
 

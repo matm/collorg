@@ -117,7 +117,7 @@ class Topic(Post):
         return self
 
     def link_to(self, parent):
-        tg = self._rev_a_post_data_
+        tg = self._rev_a_post_data_post_
         tg._data_ = parent
         tg.insert()
 
