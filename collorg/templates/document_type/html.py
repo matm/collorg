@@ -447,7 +447,7 @@ class Html():
                 css_class, label, value, comments)
         if label != "":
             label = "<b>%s</b>:" % (label)
-        value = value.replace('>', '&gt;').replace('<', '&lt;')
+        value = str(value).replace('>', '&gt;').replace('<', '&lt;')
         return '<div %s>%s %s %s</div>' % (
             css_class, label, value, comments)
 
