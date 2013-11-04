@@ -50,7 +50,7 @@ class Relation(object):
         self.__sql_req_loaded = False
         self.__sql_req = ""
         self._cog_controller = self.db._cog_controller
-        self.cog_distinct = True
+        self.cog_distinct = False
         self.__id = "r_%s" % id(self)
         self.__extension = []
         self.__retrieved = False
@@ -161,6 +161,8 @@ class Relation(object):
         """
         if fields is None:
             fields = self._cog_fields
+        else:
+            self.cog_distinct = True
         req = ["SELECT"]
         l_fields_names = []
         l_fields = []

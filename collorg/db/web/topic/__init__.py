@@ -171,8 +171,15 @@ class Topic(Post):
             topics = self()
             topics.path_info_.set_intention(
                 "{}%".format(self.path_info_), 'like')
+            ptopics = self()
+            ptopics.path_info_.set_intention(
+                "{}%/".format(self.path_info_), 'not like')
+#            pptopics = self()
+#            pptopics.path_info_.set_intention(
+#                "{}%//%".format(self.path_info_), 'not like')
+            topics = topics * (ptopics) #* pptopics)
             topics.site_.set_intention(self.site_.value)
-        if self.path_info_.value == "" or self.path_info_.value[0] != '/':
+        if self.site_.value is None:
             topics.cog_environment_.set_intention(self.cog_environment_.value)
         return topics
 
