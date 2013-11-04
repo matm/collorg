@@ -28,7 +28,6 @@ class By_post(Table):
         * important_post_ : bool
         * broadcast_post_ : bool
         * expiry_date_ : timestamp
-        * author_topic_oid_ : c_oid
         * author_oid_ : c_oid
         * author_first_name_ : string
         * author_last_name_ : string
