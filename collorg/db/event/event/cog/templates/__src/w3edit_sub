@@ -1,6 +1,0 @@
-#PRAGMA 'write':True
-#PRAGMA 'tasks':['Blog edition']
-#PRAGMA 'functions':['Collorg actor']
-#PRAGMA 'label':'Blog edition (event part)'
-#PRAGMA 'in_menu':False
-{% self.w3new_post_sub(obj_ref = self) %}

@@ -1,9 +1,0 @@
-#PRAGMA 'strip':True
-#PRAGMA 'tasks':['Group browse']
-#PRAGMA 'label':'Group display'
-#PRAGMA 'in_menu':False
-# >>>
-topic = self.db.table('collorg.web.topic')
-root_topic = topic.get_root(self).get()
-# ---
-{% root_topic.w3display(**kwargs) %}

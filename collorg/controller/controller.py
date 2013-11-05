@@ -37,7 +37,7 @@ def _template(func):
         res = []
         if 'cog_first_call' in kwargs.keys() and self._is_of_type_post:
             if not ctrl.check_visibility(self):
-                return self._w3access_denied()
+                return self.w3access_denied()
         kw.pop('cog_first_call', None)
         #? wma
         if not ctrl.check(self, func):
@@ -220,7 +220,7 @@ class Controller(object):
     @property
     def repos_path(self):
         return self.__repos_path
-        
+
     def process(self):
         raise NotImplementedError
 

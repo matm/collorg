@@ -1,6 +1,0 @@
-# >>>
-label = """
-<img class="hugeicon" src="/collorg/images/group.svg"
- title="functions" alt="functions" />"""
-# ---
-{%html(self).a(cog_method="w3list_functions", label=label)%}

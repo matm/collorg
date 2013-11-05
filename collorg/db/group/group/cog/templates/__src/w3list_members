@@ -1,6 +1,0 @@
-# >>>
-assert self.count() == 1
-ms = self.db.table('collorg.group.view.membership')
-ms.group_oid_.set_intention(self.cog_oid_.value)
-# ---
-{% ms.w3list() %}

@@ -1,5 +1,0 @@
-#PRAGMA 'strip':True
-# >>>
-action = self._rev_action_
-# ---
-{% action.w3list() %}

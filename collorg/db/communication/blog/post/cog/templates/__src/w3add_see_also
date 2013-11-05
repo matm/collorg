@@ -1,9 +1,0 @@
-#PRAGMA 'goals':['Blog']
-#PRAGMA 'tasks':['Blog edition']
-#PRAGMA 'functions':['Collorg actor']
-#PRAGMA 'label':'Blog edition. add see also entry'
-#PRAGMA 'in_menu':False
-# >>>
-self.add_see_also(**kwargs)
-# ---
-{% self.w3display() %}

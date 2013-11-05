@@ -1,6 +1,0 @@
-#PRAGMA 'label':'Posts list'
-# >>>
-vp = self.db.table('collorg.communication.blog.view.by_post')
-vp.cog_oid_.set_intention(self.cog_oid_)
-# ---
-{% vp.w3list() %}

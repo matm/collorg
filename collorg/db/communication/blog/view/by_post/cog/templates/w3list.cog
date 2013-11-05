@@ -2,12 +2,30 @@
 #PRAGMA 'label':'List posts (by post)'
 #PRAGMA 'in_menu':False
 # >>>
+apd = self.db.table('collorg.communication.blog.a_post_data')
 def remove_link_f(post, elt_oid):
     label = '<img src="/collorg/images/trashcan.svg" class="medicon" />'
     title = _("remove from this list")
     link = html(post).a(
         cog_method="w3remove", 
         label=label, target='_page_', elt_oid=elt_oid, title=title)
+    return link
+
+def remove_link_from(post, data_oid):
+    label = '<img src="/collorg/images/trashcan.svg" class="medicon" />'
+    title = _("remove from this list")
+    link = html(post).a(
+        cog_method="w3remove_from", 
+        label=label, target='_page_', data_oid=data_oid, title=title)
+    return link
+
+def apd_remove_link(post_oid, data_oid):
+    label = '<img src="/collorg/images/trashcan.svg" class="medicon" />'
+    title = _("remove from this list")
+    link = html(apd).a(
+        cog_method="w3remove", 
+        label=label, target='_page_',
+        post_oid=post_oid, data_oid=data_oid, title=title)
     return link
 
 # >>>
@@ -54,11 +72,17 @@ if len(d_posts):
             {% this_post.author_ %} {% cog_user.cog_oid_ %}
         # >>>
 #}
-        if (cog_user and (this_post and
-            this_post.author_.value == cog_user.cog_oid_.value) or
-            cog_user and (post_oid == se.data_oid_ and
-             se.author_oid_ == cog_user.cog_oid_.value)):
-            remove_link = remove_link_f(this_post, se.cog_oid_)
+        if cog_user:
+            if (this_post and
+            this_post.author_.value == cog_user.cog_oid_.value):
+                remove_link = remove_link_f(this_post, se.cog_oid_)
+            elif(post_oid and
+                 se.author_oid_ == cog_user.cog_oid_.value):
+                 post.visibility_.set_intention(None)
+                 post.cog_oid_.set_intention(se.cog_oid_)
+                 remove_link = remove_link_from(post, post_oid)
+            elif(post_oid and se.who_attached_ == cog_user.cog_oid_.value):
+                 remove_link = apd_remove_link(se.cog_oid_, post_oid)
         label = self.get_link_label(se)
         if not label:
             continue

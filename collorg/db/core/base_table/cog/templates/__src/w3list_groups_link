@@ -1,6 +1,0 @@
-# >>>
-target = kwargs.get('target', "#cog_dialog_modal")
-method = "w3list_groups"
-label = '<img src="/collorg/images/group.svg" class="hugeicon" title="groups" alt="groups" />'
-# ---
-{% html(self).a(cog_method=method, css_class="ui-action", target = target, label = label) %}

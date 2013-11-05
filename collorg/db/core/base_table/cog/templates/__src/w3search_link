@@ -1,7 +1,0 @@
-# >>>
-i18n_s = _("Search")
-target = kwargs.get('target', "#cog_dialog_modal")
-label = '<img src="/collorg/images/search.svg" class="hugeicon" title="{}" alt="{}" />'.format(i18n_s, i18n_s)
-method = 'w3search'
-# ---
-{% html(self).a(cog_method=method, label = label, css_class="ui-action", target = target) %}

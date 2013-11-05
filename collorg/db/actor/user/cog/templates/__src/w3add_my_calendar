@@ -1,8 +1,0 @@
-# >>>
-user = self._cog_controller.user
-my_calendar = user.my_calendar
-event_oid = kwargs['event']
-event = self.db.get_elt_by_oid(event_oid)
-event.add_to_calendar(my_calendar)
-# ---
-ok

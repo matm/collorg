@@ -1,7 +1,0 @@
-#PRAGMA 'write':True
-#PRAGMA 'strip':True
-#PRAGMA 'goals':['Blog']
-#PRAGMA 'tasks':['Blog edition']
-#PRAGMA 'functions':['Collorg actor']
-#PRAGMA 'label':'New post (sub)'
-#PRAGMA 'in_menu':False
