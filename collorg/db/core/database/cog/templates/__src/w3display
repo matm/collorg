@@ -1,3 +1,0 @@
-#PRAGMA 'functions':["Administrator user"]
-#PRAGMA 'label':"database access main"
-{% self.w3admin() %}

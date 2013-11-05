@@ -165,29 +165,10 @@ class Topic(Post):
     def get_a_topic_function(self):
         return self._rev_a_topic_function_
 
-    def get_sub_topics(self):
-        topics = self
-        if self.path_info_.value:
-            topics = self()
-            topics.path_info_.set_intention(
-                "{}%".format(self.path_info_), 'like')
-            ptopics = self()
-            ptopics.path_info_.set_intention(
-                "{}%/".format(self.path_info_), 'not like')
-#            pptopics = self()
-#            pptopics.path_info_.set_intention(
-#                "{}%//%".format(self.path_info_), 'not like')
-            topics = topics * (ptopics) #* pptopics)
-            topics.site_.set_intention(self.site_.value)
-        if self.site_.value is None:
-            topics.cog_environment_.set_intention(self.cog_environment_.value)
-        return topics
-
     def get_not_private_posts(self):
         posts = self.db.table('collorg.communication.blog.post')
-        topics = self.get_sub_topics()
         posts.cog_oid_.set_intention(
-            topics._rev_a_post_data_data_._post_.cog_oid_)
+            self._rev_a_post_data_data_._post_.cog_oid_)
         posts.visibility_.set_intention('private', '!=')
         return posts
 
@@ -195,9 +176,8 @@ class Topic(Post):
         posts = self.get_not_private_posts()
         accessible_data = user.get_granted_data()
         other_posts = posts()
-        topics = self.get_sub_topics()
         other_posts.cog_oid_.set_intention(
-            (topics._rev_a_post_data_data_._post_ * accessible_data).cog_oid_)
+            (self._rev_a_post_data_data_._post_ * accessible_data).cog_oid_)
         posts += other_posts
 
         return posts

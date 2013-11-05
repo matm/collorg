@@ -1,8 +1,0 @@
-#PRAGMA 'functions':['Authenticated user']
-#PRAGMA 'tasks':['Authenticated navigation']
-#PRAGMA 'label':'attachments list'
-#PRAGMA 'in_menu':False
-# >>>
-href = self._grant_access()
-# ---
-<a href="{% href %}" target="blank_">{% self.name_ %}</a>

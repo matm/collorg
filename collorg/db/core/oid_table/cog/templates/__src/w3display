@@ -1,3 +1,0 @@
-<h1>oid_table</h1>
-cog_oid_: {% self.cog_oid_.val %}<br/>
-cog_fqtn_: {% self.cog_fqtn_.val %}<br/>

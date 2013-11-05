@@ -6,10 +6,10 @@
 #PRAGMA 'label':'Remove post'
 #PRAGMA 'in_menu':False
 # >>>
-elt = self.db.get_elt_by_oid(kwargs['elt_oid'])
-apd = self._rev_a_post_data_data_
-apd._post_ = elt
+data = self.db.get_elt_by_oid(kwargs['data_oid'])
+apd = self._rev_a_post_data_post_
+apd._data_ = data
 apd.get()
 apd.delete()
 # ---
-{% self.w3display() %}
+{% data.w3display() %}

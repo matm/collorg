@@ -1,7 +1,0 @@
-# >>>
-posts = self._post_
-by_post = self.db.table('collorg.communication.blog.view.by_post')
-by_post.cog_oid_.set_intention(posts.cog_oid_)
-by_post.order_by(by_post.post_creat_date_)
-# ---
-{%by_post.w3list(embedded=True)%}

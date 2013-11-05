@@ -260,7 +260,7 @@ class User(Actor, Groupable):
         data_base.cog_oid_.set_intention(data.cog_oid_)
         data_env = data_base()
         access = self.db.table('collorg.access.access')
-        access._user_ = self
+        access.user_.set_intention(self.cog_oid_.value)
         data_env.cog_oid_.set_intention(data_base.cog_environment_)
         access.data_.set_intention(data.cog_oid_)
         access.data_ += (data_env.cog_oid_, '=')

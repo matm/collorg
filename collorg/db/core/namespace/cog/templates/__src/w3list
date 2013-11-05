@@ -1,2 +1,0 @@
-#PRAGMA 'strip':True
-{% html( self ).ul( css_class = "none" ).li().a( target = '#cog_container', cog_method = "w3listModules" ) %}

@@ -1,5 +1,0 @@
-# >>>
-forbid = ['collorg.actor.user']
-if self.cog_fqtn_.value not in forbid:
-    # ---
-    ok

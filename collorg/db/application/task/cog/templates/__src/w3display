@@ -1,3 +1,0 @@
-<h5>task {% self.name_.val %}</h5>
-{% self.cog_presentation_.val or "no presentation" %}
-{% self._action__s_.w3list() %}

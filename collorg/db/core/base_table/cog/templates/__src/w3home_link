@@ -1,8 +1,0 @@
-# >>>
-assert self.cog_oid_.val
-image = "/collorg/images/home.svg"
-label = kwargs.get('label', 'home')
-method = kwargs.get("method", "w3display")
-target = kwargs.get("target", "#cog_container")
-# ---
-{% html(self).a(cog_method=method, target=target, label=label, css_class="ui-action") %}

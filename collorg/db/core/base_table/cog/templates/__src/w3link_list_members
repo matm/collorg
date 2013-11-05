@@ -1,9 +1,0 @@
-#PRAGMA 'roles':['Anonymous user']
-# >>>
-__doc__ = """
-Link to the list of the members of the group...
-"""
-icon = """<img class="hugeicon" alt="group members"
- title="group members" src="/collorg/images/users_list.svg">"""
-# ---
-{%html(self).a(cog_method="w3list_members", label=icon, target="#cog_container")%}

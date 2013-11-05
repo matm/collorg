@@ -1,5 +1,0 @@
-# >>>
-topic = self.db.table('collorg.web.topic')
-root_topic = topic.get_root(self).get()
-# ---
-{% root_topic.w3display(cog_first_call = True, **kwargs) %}
