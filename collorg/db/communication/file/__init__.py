@@ -49,7 +49,7 @@ class File(Base_table):
         self.charset = self._cog_controller._charset
 
     @property
-    def _storage_path(self):
+    def _storage_path(self, base_path):
         if not self.__storage_path:
             self.__storage_path = '%s/uploaded_files/%s/%s' % (
                 self.db._cog_params['upload_dir'],

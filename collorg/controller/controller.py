@@ -32,7 +32,13 @@ def _template(func):
         kw = kwargs
         begin = datetime.datetime.now()
         ctrl = self._cog_controller
+        cog_user = ctrl.user
+        if 'no_cog_user' in kwargs:
+            cog_user = None
+        cog_charset = ctrl._charset
         cog_environment = ctrl.cog_exec_env
+        func_name = func.func_name
+#        cog_environment = None
         cog_reminder = kw.pop('cog_reminder', "")
         res = []
         if 'cog_first_call' in kwargs.keys() and self._is_of_type_post:
@@ -45,17 +51,17 @@ def _template(func):
         if 'cog_alt_target' in kw:
             kw['target'] = kw['cog_alt_target']
         f_res = func(
-            self, cog_charset = ctrl._charset, cog_user = ctrl.user,
-            cog_environment = cog_environment, **kw)
+            self, cog_charset=cog_charset, cog_user=cog_user,
+            cog_environment=cog_environment, **kw)
         begin_funct = datetime.datetime.now()
         if ctrl.cog_trace:
             res.append("<!-- begin %s.%s (prep: %ss) -->" % (
-                self.__class__.__name__, func.func_name, begin_funct - begin))
+                self.__class__.__name__, func_name, begin_funct - begin))
         res.append(f_res.strip())
         duration = datetime.datetime.now() - begin_funct
         if ctrl.cog_trace:
             res.append("<!-- end %s.%s (duration: %ss)-->" % (
-                self.__class__.__name__, func.func_name, duration))
+                self.__class__.__name__, func_name, duration))
         res.append(cog_reminder.encode(ctrl._charset))
         return "\n".join(res)
     return wrapper

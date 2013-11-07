@@ -17,6 +17,9 @@
 
 from collorg.db.core.oid_table import Oid_table
 from collorg.orm.table import Table as TClass
+import os
+import shutil
+import qrcode
 
 class Base_table(Oid_table):
     #>>> AUTO_COG REL_PART. DO NOT EDIT!
@@ -53,6 +56,7 @@ class Base_table(Oid_table):
         #<<< AUTO_COG DOC. Your code goes after
         self._cog_order_by = []
         TClass.__init__( self, db, **kwargs )
+        self.__cache_path = ''
 
     def get( self, fields = None, just_return_sql = False, recurse = True,
             reload_ = False):
@@ -110,6 +114,34 @@ class Base_table(Oid_table):
         except KeyError:
             raise RuntimeError("Missing path between {} and {}".format(
                 data.fqtn, self.fqtn))
+
+    @property
+    def _cache_path(self):
+        if not self.__cache_path:
+            self.__cache_path = '{}/{}/{}/{}'.format(
+                self.db._cog_params['cache_path'],
+                self.cog_oid_.value[0:2], self.cog_oid_.value[2:4],
+                self.cog_oid_)
+        return self.__cache_path
+
+    def _wipe_cache(self):
+        """
+        The cache is wiped when there is a modification. It'll be re-generated
+        at first none connected access.
+        """
+        shutil.rmtree(self._cache_path)
+
+    def _cog_get_cache(self, func_name):
+        assert (func_name == 'w3display' and self._is_cog_post and
+            self.visibility_.value == 'public')
+        if not os.path.exists(self._cache_path):
+            os.makedirs(self._cache_path)
+        file_ = "{}/w3display".format(self._cache_path)
+        if not os.path.exists(file_):
+            open(file_, 'w').write(str(self.w3display(no_cog_user=True)))
+        if os.path.exists(self._cache_path):
+            return open('{}/{}'.format(self._cache_path, func_name)).read()
+        return None
 
     # RELATIONAL
 

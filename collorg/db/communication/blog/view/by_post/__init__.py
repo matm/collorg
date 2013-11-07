@@ -18,7 +18,6 @@ class By_post(Table):
         * cog_oid_ : c_oid
         * cog_fqtn_ : c_fqtn
         * post_order_ : int4
-        * who_attached_ : c_oid
         * post_creat_date_ : timestamp
         * event_begin_date_ : timestamp
         * post_modif_date_ : timestamp
