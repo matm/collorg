@@ -51,7 +51,6 @@ url_scheme = http
 production = True
 upload_dir = /var/collorg/{db_name}
 #user_photo_url =
-#site_title = <span class="grey">C</span>oll<span class="grey">o</span>rg
 session_cache_host = localhost
 session_cache_port = 6543
 

@@ -11,6 +11,7 @@ next_ = next_oid and self.db.get_elt_by_oid(next_oid)
 prev_ = prev_oid and self.db.get_elt_by_oid(prev_oid)
 elt_ = self.db.get_elt_by_oid(elt_oid)
 self.sort_attached_posts(elt_, prev_, next_)
+self._wipe_cache()
 v_posts = self.db.table('collorg.communication.blog.view.by_post')
 # ---
 {% v_posts.w3list_attached_posts(post=self) %}

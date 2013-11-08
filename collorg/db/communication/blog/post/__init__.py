@@ -1,5 +1,6 @@
 #-*- coding: UTF-8 -*-
 
+import os
 from time import sleep
 from datetime import datetime
 from collorg.db.core.base_table import Base_table
@@ -17,7 +18,7 @@ class Post(Base_table):
     _author_ = cog_r._author_
     #<<< AUTO_COG REL_PART. Your code goes after
     _is_of_type_post = True
-    __is_cog_post = True
+    _is_cog_post = True
     __post_types = None
     __cog_type_name = 'Post'
     def __init__(self, db, **kwargs):
@@ -103,28 +104,6 @@ class Post(Base_table):
         owner = self._author_.get()
         return owner.cog_oid_.value == user.cog_oid_.value
 
-    def wupdate(self, n_elt = None, **kwargs):
-        """
-        update a post. Invoked by template w3save
-        """
-        n_post = n_elt or self()
-        n_post.title_.set_intention(kwargs['title_'].strip() or None)
-        n_post.introductory_paragraph_.set_intention(
-            kwargs.get('introductory_paragraph_'))
-        n_post.text_.set_intention(kwargs['text_'].strip() or None)
-        n_post.public_.set_intention(kwargs.get('public_', False))
-        n_post.comment_.set_intention(kwargs.get('comment_', False))
-        n_post.visibility_.set_intention(kwargs.get('visibility_', None))
-        expiry_date = kwargs.get('expiry_date_')
-        if expiry_date:
-            n_post.expiry_date_.set_intention(expiry_date)
-        else:
-            n_post.expiry_date_.set_null()
-        self.update(n_post)
-        tag = self.db.table('collorg.communication.tag')
-        tag.wsave(data=self, tags=kwargs.get('tag_', ''))
-        return self
-
     def link_to_data(self, data):
         """
         data must be a topic or a post
@@ -199,7 +178,35 @@ class Post(Base_table):
         if kwargs.get('email'):
             self.mail()
         sleep(0.5) #XXX insert
+        self.get()
+        self._wipe_cache()
         return self
+
+    def wupdate(self, n_elt = None, **kwargs):
+        """
+        update a post. Invoked by template w3save
+        """
+        n_post = n_elt or self()
+        n_post.title_.set_intention(kwargs['title_'].strip() or None)
+        n_post.introductory_paragraph_.set_intention(
+            kwargs.get('introductory_paragraph_'))
+        n_post.text_.set_intention(kwargs['text_'].strip() or None)
+        n_post.public_.set_intention(kwargs.get('public_', False))
+        n_post.comment_.set_intention(kwargs.get('comment_', False))
+        n_post.visibility_.set_intention(kwargs.get('visibility_', None))
+        expiry_date = kwargs.get('expiry_date_')
+        if expiry_date:
+            n_post.expiry_date_.set_intention(expiry_date)
+        else:
+            n_post.expiry_date_.set_null()
+        self.update(n_post)
+        tag = self.db.table('collorg.communication.tag')
+        tag.wsave(data=self, tags=kwargs.get('tag_', ''))
+        new = self()
+        new.cog_oid_.set_intention(self.cog_oid_.value)
+        new.get()
+        new._wipe_cache('update')
+        return new
 
     def wdelete(self):
         assert self.count() == 1
@@ -216,6 +223,7 @@ class Post(Base_table):
         topic.delete()
         group._rev_calendar_.delete()
         group.delete()
+        self._wipe_cache('delete')
         self.delete()
 
     def set_mail_subject(self, mail, subject = None):

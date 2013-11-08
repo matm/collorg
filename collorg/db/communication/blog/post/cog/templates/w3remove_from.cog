@@ -11,5 +11,6 @@ apd = self._rev_a_post_data_post_
 apd._data_ = data
 apd.get()
 apd.delete()
+data._wipe_cache()
 # ---
 {% data.w3display() %}

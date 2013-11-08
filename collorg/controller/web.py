@@ -174,6 +174,12 @@ class WebController(Controller):
             obj.get()
         self.check_action(obj, self._cog_method)
         self.cog_exec_env = obj.get_environment()
+        if (self._user is None and obj._is_cog_post and
+            obj.visibility_.value == 'public' and
+            self._cog_method == 'w3display'):
+                cache = obj._cog_get_cache('w3display')
+                if cache is not None:
+                    return cache
         return eval("obj.{}(**kwargs)".format(self._cog_method))
 
     def __fqtn_req(self, **kwargs):

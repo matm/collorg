@@ -62,6 +62,7 @@ def ini_connect(config_file_name):
     params['upload_dir'] = config.get(
         'application', 'uplodad_dir',
         fallback = '/var/collorg/%s' % (config_file_name))
+    params['cache_path'] = '{}/cache/'.format(params['upload_dir'])
     params['application_basedir'] = config.get(
         'application', 'basedir', fallback = '/usr/share/collorg')
     params['templates_path'] = config.get(
@@ -76,9 +77,6 @@ def ini_connect(config_file_name):
         'application', 'download_prefix', fallback = '/download')
     params['user_photo_url'] = config.get(
         'application', 'user_photo_url', fallback = "")
-    params['site_title'] = config.get(
-        'application', 'site_title',
-        fallback = '<span class="grey">C</span>oll<span class="grey">o</span>rg')
     params['session_cache_host'] = config.get(
         'application', 'session_cache_host')
     params['session_cache_port'] = config.get(

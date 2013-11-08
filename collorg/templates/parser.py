@@ -195,6 +195,7 @@ class Parser( object ):
         result.append(
             "    self._cog_html_id = html.set_html_id(self, '{}')".format(
             self.__template_name))
+        result.append("    if kwargs.get('no_cog_user'): cog_user = None")
         result.append('    {} = []'.format(self.out_var))
         for line in template_code:
             result.append("    {}".format(line))
