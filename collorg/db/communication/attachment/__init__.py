@@ -42,6 +42,7 @@ class Attachment(Base_table):
         if self.exists():
             time.sleep(1)
             return "document already attached"
+        data._wipe_cache()
         self._author_ = author
         self.description_.set_intention(description)
         self.insert()

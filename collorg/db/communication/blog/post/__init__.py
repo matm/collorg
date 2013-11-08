@@ -1,6 +1,9 @@
 #-*- coding: UTF-8 -*-
 
 import os
+import shutil
+import qrcode
+
 from time import sleep
 from datetime import datetime
 from collorg.db.core.base_table import Base_table
@@ -47,10 +50,11 @@ class Post(Base_table):
         """
         #<<< AUTO_COG DOC. Your code goes after
         super(Post, self).__init__(db, **kwargs)
+        self.__cache_path = ''
 
     @property
     def is_cog_post(self):
-        return self.__is_cog_post
+        return self._is_cog_post
 
     @property
     def _cog_label(self):
@@ -121,6 +125,7 @@ class Post(Base_table):
         apd.order_.set_intention(order)
         apd.insert()
         apd.get()
+        data._wipe_cache()
         return self
 
     def unlink_from_data(self, data):
@@ -129,6 +134,7 @@ class Post(Base_table):
         apd = self._rev_a_post_data_post_
         apd._data_ = data
         apd.delete()
+        data._wipe_cache()
         return self
 
     def move(self, from_, to_):
@@ -205,7 +211,7 @@ class Post(Base_table):
         new = self()
         new.cog_oid_.set_intention(self.cog_oid_.value)
         new.get()
-        new._wipe_cache('update')
+        new._wipe_cache()
         return new
 
     def wdelete(self):
@@ -223,7 +229,7 @@ class Post(Base_table):
         topic.delete()
         group._rev_calendar_.delete()
         group.delete()
-        self._wipe_cache('delete')
+        self._wipe_cache()
         self.delete()
 
     def set_mail_subject(self, mail, subject = None):
@@ -256,7 +262,7 @@ class Post(Base_table):
             Post.__post_types = []
             for fqtn in self.db.fqtns:
                 obj = self.db.table(fqtn)
-                if hasattr(obj, '_Post__is_cog_post'):
+                if hasattr(obj, '_is_cog_post'):
                     Post.__post_types.append(obj)
         return Post.__post_types
 
@@ -403,3 +409,36 @@ class Post(Base_table):
             napd = apd()
             napd.order_.set_intention(apd.max(apd.order_) + 1)
             apd_elt.update(napd)
+        self._wipe_cache()
+
+    @property
+    def _cache_path(self):
+        if not self.__cache_path:
+            self.__cache_path = '{}/{}/{}/{}'.format(
+                self.db._cog_params['cache_path'],
+                self.cog_oid_.value[0:2], self.cog_oid_.value[2:4],
+                self.cog_oid_)
+        return self.__cache_path
+
+    def _wipe_cache(self):
+        """
+        The cache is wiped when there is a modification. It'll be re-generated
+        at first none connected access.
+        """
+        if os.path.exists(self._cache_path):
+            shutil.rmtree(self._cache_path)
+
+    def _cog_get_cache(self, func_name):
+        assert (func_name == 'w3display' and self._is_cog_post and
+            self.visibility_.value == 'public')
+        if self.fqtn == 'collorg.web.topic' and self.data_type_.value:
+            return None
+        if not os.path.exists(self._cache_path):
+            os.makedirs(self._cache_path)
+        file_ = "{}/w3display".format(self._cache_path)
+        if not os.path.exists(file_):
+            open(file_, 'w').write(str(self.w3display(no_cog_user=True)))
+        if os.path.exists(self._cache_path):
+            return open('{}/{}'.format(
+                self._cache_path, func_name)).read()
+        return None

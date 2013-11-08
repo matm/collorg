@@ -285,8 +285,7 @@ class Relation(object):
             extension = self.db.get_query_res(sql_req)
         except Exception as e:
             self.db.rollback()
-            raise CustomError("select error: %s, %s\n%s" % (
-                e.diag.severity, e.diag.message_primary, sql_req))
+            raise CustomError("select error: %s\n%s" % (e, sql_req))
         if expected != -1:
             try:
                 assert len(extension) == expected

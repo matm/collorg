@@ -12,7 +12,7 @@ class Event(Post):
     # DIRECT
     _location_ = cog_r._location_
     #<<< AUTO_COG REL_PART. Your code goes after
-    __is_cog_event = True
+    _is_cog_event = True
     __event_types = None
     __cog_type_name = 'Event'
     def __init__(self, db, **kwargs):
@@ -58,7 +58,7 @@ class Event(Post):
         self._Event__event_types = []
         for fqtn in self.db.fqtns:
             obj = self.db.table(fqtn)
-            if hasattr(obj, '_Event__is_cog_event'):
+            if hasattr(obj, '_is_cog_event'):
                 self._Event__event_types.append(obj)
         return self._Event__event_types
 
