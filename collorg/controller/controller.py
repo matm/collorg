@@ -116,7 +116,8 @@ class Controller(object):
             except:
                 pass
         if not self._d_actions:
-            self.__set_app_path()
+            if self.db_name != 'collorg_db':
+                self.__set_app_path()
             self.__get_aa_tasks()
             self.__get_ca_tasks()
             self.__load_actions()

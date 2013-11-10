@@ -239,7 +239,8 @@ class Relation(object):
         req += "(%s)" % ",\n".join(
             [ field.quoted_val for field in l_fields ])
         if oid_req:
-            req = "BEGIN\n;%s; --++++\n%s;--+++++\nEND;\n" % (req, oid_req)
+            self.db.set_auto_commit(False)
+            req = "%s; --++++\n%s;--+++++\n" % (req, oid_req)
         return req, cog_oid
         
     def _cog_get_where(self):
