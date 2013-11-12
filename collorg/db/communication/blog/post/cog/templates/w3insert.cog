@@ -8,6 +8,6 @@
 import time
 data = self.db.get_elt_by_oid(kwargs['data_oid'])
 self.winsert(user = cog_user, data = data, **kwargs)
-#time.sleep(0.5)
+time.sleep(0.5)
 # ---
 {% data.w3display() %}
