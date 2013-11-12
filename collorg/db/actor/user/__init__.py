@@ -15,7 +15,7 @@
 ### You should have received a copy of the GNU General Public License
 ### along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#from time import sleep
+from time import sleep
 from collorg.db.actor.actor import Actor
 from collorg.db.group._groupable import Groupable
 import uuid
@@ -300,7 +300,7 @@ class User(Actor, Groupable):
             self, write = write,
             begin_date = begin_date, end_date = end_date,
             pourcentage = pourcentage)
-        #sleep(0.5)
+        sleep(0.5)
 
     def revoke_access(self, data):
         access = self._rev_access_
