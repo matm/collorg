@@ -91,8 +91,11 @@ class Oid_table( TClass ):
 
     @property
     def is_cog_post(self):
-        return hasattr(self, '_Post__is_cog_post')
+        return hasattr(self, '_is_cog_post')
 
     @property
     def is_cog_event(self):
-        return hasattr(self, '_Event__is_cog_event')
+        return hasattr(self, '_is_cog_event')
+
+    def _wipe_cache(self):
+        return self.get()._wipe_cache()

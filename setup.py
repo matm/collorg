@@ -9,7 +9,8 @@ install_requires = [
     "networkx>=1.7",
     "python-creole>=1.0",
     "webob>=1.2",
-    "chardet>=2.1"]
+    "chardet>=2.1",
+    "qrcode"]
 
 if python_version < (3, 0):
     install_requires += ["configparser>=3.2"]

@@ -38,3 +38,20 @@ class A_post_data(Base_table):
         #<<< AUTO_COG DOC. Your code goes after
         super(A_post_data, self).__init__(db, **kwargs)
 
+    def insert(self, **kwargs):
+        try:
+            super(self.__class__, self).insert(**kwargs)
+            self._data_.get()._wipe_cache()
+            self._post_.get()._wipe_cache()
+        except Exception as e:
+            raise RuntimeError(e)
+
+    def delete(self, **kwargs):
+        try:
+            if self._data_.cog_oid_.value:
+                self._data_.get()._wipe_cache()
+            if self._post_.cog_oid_.value:
+                self._post_.get()._wipe_cache()
+            super(self.__class__, self).delete(**kwargs)
+        except Exception as e:
+            raise RuntimeError(e)

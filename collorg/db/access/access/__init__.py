@@ -95,7 +95,7 @@ class Access( Base_table ):
         until it's revoked.
         #!! The granter shoud be registered
         """
-        self.db.set_auto_commit(False)
+        #self.db.set_auto_commit(False)
         if data is not None:
             self._data_ = data
         if user is not None:
@@ -111,7 +111,7 @@ class Access( Base_table ):
             role._function_ = function
             if not role.exists():
                 role.insert()
-        self.db.commit()
+        #self.db.commit()
 
     def revoke(self, end_date = None):
         """

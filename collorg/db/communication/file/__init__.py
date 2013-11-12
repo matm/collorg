@@ -49,7 +49,7 @@ class File(Base_table):
         self.charset = self._cog_controller._charset
 
     @property
-    def _storage_path(self, base_path):
+    def _storage_path(self):
         if not self.__storage_path:
             self.__storage_path = '%s/uploaded_files/%s/%s' % (
                 self.db._cog_params['upload_dir'],
@@ -150,6 +150,8 @@ class File(Base_table):
             self.make_public_link()
         nself = self()
         nself.visibility_.set_intention(visibility)
+        for post in self._rev_attachment_._data_:
+            post._wipe_cache()
         self.update(nself)
 
     def __grant_public_access(self):

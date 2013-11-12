@@ -239,7 +239,8 @@ class Relation(object):
         req += "(%s)" % ",\n".join(
             [ field.quoted_val for field in l_fields ])
         if oid_req:
-            req = "BEGIN\n;%s; --++++\n%s;--+++++\nEND;\n" % (req, oid_req)
+            self.db.set_auto_commit(False)
+            req = "%s; --++++\n%s;--+++++\n" % (req, oid_req)
         return req, cog_oid
         
     def _cog_get_where(self):
@@ -285,8 +286,7 @@ class Relation(object):
             extension = self.db.get_query_res(sql_req)
         except Exception as e:
             self.db.rollback()
-            raise CustomError("select error: %s, %s\n%s" % (
-                e.diag.severity, e.diag.message_primary, sql_req))
+            raise CustomError("select error: %s\n%s" % (e, sql_req))
         if expected != -1:
             try:
                 assert len(extension) == expected

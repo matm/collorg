@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="84.694717"
+   height="49.356632"
+   id="svg4805"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="add_calendar.svg">
+  <defs
+     id="defs4807" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7"
+     inkscape:cx="25.83757"
+     inkscape:cy="24.714279"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:grid-bbox="true"
+     inkscape:document-units="px"
+     inkscape:window-width="1301"
+     inkscape:window-height="744"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     fit-margin-top="2"
+     fit-margin-bottom="2"
+     fit-margin-left="8"
+     fit-margin-right="8" />
+  <metadata
+     id="metadata4810">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     transform="translate(1.83757,0.64235)">
+    <g
+       transform="translate(-125.38857,-354.35535)"
+       id="My_calendar">
+      <g
+         id="g1231">
+        <path
+           style="fill:#4f5433"
+           inkscape:connector-curvature="0"
+           d="m 154.052,387.417 h 1.463 c -0.779,-0.425 -1.66,-0.707 -2.617,-0.707 -0.215,0 -0.223,-0.121 -0.223,-0.424 0,-0.374 0.049,-0.578 0.049,-0.578 0.643,0 1.613,-1.07 1.924,-2.054 0.176,-0.554 1.172,-0.654 1.172,-2.122 0,-1.287 -0.572,-0.93 -0.572,-1.026 0,-0.096 0,-1.399 0,-2.164 0,-1.42 -1.273,-4.22 -5.285,-4.22 -4.014,0 -5.284,2.8 -5.284,4.22 0,0.765 0,2.067 0,2.164 0,0.097 -0.572,-0.261 -0.572,1.026 0,1.468 0.993,1.568 1.169,2.122 0.313,0.983 1.283,2.054 1.924,2.054 0,0 0.051,0.204 0.051,0.578 0,0.303 -0.009,0.424 -0.224,0.424 -3.486,0 -6.013,3.673 -6.013,4.846 0,1.498 0,3.021 0,3.021 h 8.949 4.09 v -7.16 z"
+           id="path1233" />
+        <path
+           style="fill:#4f5433"
+           inkscape:connector-curvature="0"
+           d="m 167.347,362.872 h -8.182 v -5.113 c 0,-1.125 -0.92,-2.046 -2.045,-2.046 h -2.045 c -1.125,0 -2.045,0.921 -2.045,2.046 v 5.113 h -6.138 v -5.113 c 0,-1.125 -0.92,-2.046 -2.046,-2.046 h -2.045 c -1.125,0 -2.045,0.921 -2.045,2.046 v 5.113 h -8.182 c -0.563,0 -1.023,0.461 -1.023,1.022 v 6.137 c 0,0.562 0.461,1.022 1.023,1.022 v 27.613 c 0,1.125 0.92,2.046 2.045,2.046 h 21.477 l 11.25,-11.25 v -18.409 c 0.563,0 1.023,-0.461 1.023,-1.022 v -6.137 c 0.001,-0.561 -0.46,-1.022 -1.022,-1.022 z m -4.09,26.591 h -7.16 v 7.159 h -19.432 v -25.568 h 26.592 v 18.409 z"
+           id="path1235" />
+      </g>
+    </g>
+    <g
+       transform="matrix(0.90793652,0,0,0.90793652,-408.41749,-427.66984)"
+       id="Add"
+       style="fill:#71c837">
+      <path
+         style="fill:#71c837;fill-rule:evenodd"
+         inkscape:connector-curvature="0"
+         clip-rule="evenodd"
+         d="m 509.778,477.486 c -12.426,0 -22.5,10.072 -22.5,22.5 0,12.426 10.074,22.5 22.5,22.5 12.428,0 22.5,-10.074 22.5,-22.5 0,-12.427 -10.072,-22.5 -22.5,-22.5 z m 11.5,25 c 0,0.549 -0.451,1 -1,1 h -6 c -0.551,0 -1.001,0.449 -1.001,1 v 6 c 0,0.549 -0.45,1 -1,1 h -5 c -0.55,0 -1,-0.451 -1,-1 v -6 c 0,-0.551 -0.45,-1 -1,-1 h -6 c -0.55,0 -1,-0.451 -1,-1 v -5 c 0,-0.551 0.45,-1 1,-1 h 6 c 0.55,0 1,-0.451 1,-1 v -6 c 0,-0.551 0.45,-1 1,-1 h 5 c 0.55,0 1,0.449 1,1 v 6 c 0,0.549 0.45,1 1.001,1 h 6 c 0.549,0 1,0.449 1,1 v 5 z"
+         id="path7552" />
+    </g>
+  </g>
+</svg>

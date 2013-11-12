@@ -22,9 +22,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="-276.25013"
-     inkscape:cy="-58.371598"
+     inkscape:zoom="2.8"
+     inkscape:cx="29.988847"
+     inkscape:cy="58.477482"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -32,11 +32,11 @@
      fit-margin-left="5"
      fit-margin-right="5"
      fit-margin-bottom="5"
-     inkscape:window-width="1855"
-     inkscape:window-height="1000"
-     inkscape:window-x="65"
+     inkscape:window-width="1073"
+     inkscape:window-height="971"
+     inkscape:window-x="789"
      inkscape:window-y="24"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="0" />
   <defs
      id="defs4" />
   <metadata
@@ -55,40 +55,30 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-202.7486,-243.56503)">
-    <text
-       xml:space="preserve"
+    <g
        style="font-size:244px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#cfcbbe;fill-opacity:1;stroke:none;font-family:TeX Gyre Bonum;-inkscape-font-specification:TeX Gyre Bonum"
-       x="199.99998"
-       y="383.79077"
-       id="text2985"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan2987"
-         x="199.99998"
-         y="383.79077"
-         style="font-size:244px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:TeX Gyre Bonum;-inkscape-font-specification:TeX Gyre Bonum">c</tspan></text>
-    <text
-       xml:space="preserve"
+       id="text2985">
+      <path
+         d="m 321.51198,357.43877 -7.076,-4.392 c -13.66398,17.07998 -23.66801,23.18 -38.552,23.18 -25.13197,0 -41.968,-20.25203 -41.968,-50.508 0,-23.66797 7.07603,-52.704 35.624,-52.704 12.68799,0 24.156,7.56401 24.156,16.104 l -0.244,8.54 c 0,7.07599 5.36801,12.444 12.444,12.444 7.076,0 12.444,-5.85601 12.444,-13.42 0,-13.41999 -16.10403,-33.428 -49.776,-33.428 -47.57995,0 -59.536,39.52802 -59.536,61.488 0,36.35597 24.15604,61.244 60.024,61.244 23.42398,0 39.77202,-8.78402 52.46,-28.548"
+         style="line-height:125%;font-family:TeX Gyre Bonum;-inkscape-font-specification:TeX Gyre Bonum"
+         id="path3071" />
+    </g>
+    <g
+       transform="matrix(-0.005822,-0.99998305,0.99998305,-0.005822,0,0)"
        style="font-size:144px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#7f8c88;fill-opacity:1;stroke:none;font-family:TeX Gyre Bonum;-inkscape-font-specification:TeX Gyre Bonum"
-       x="-361.88574"
-       y="322.34793"
-       id="text3761"
-       sodipodi:linespacing="125%"
-       transform="matrix(-0.005822,-0.99998305,0.99998305,-0.005822,0,0)"><tspan
-         sodipodi:role="line"
-         id="tspan3763"
-         x="-361.88574"
-         y="322.34793">g</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:48px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#aba7ab;fill-opacity:1;stroke:none;font-family:TeX Gyre Bonum;-inkscape-font-specification:TeX Gyre Bonum;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr"
-       x="264.28571"
-       y="332.36215"
-       id="text3769"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3771"
-         x="264.28571"
-         y="332.36215">o</tspan></text>
+       id="text3761">
+      <path
+         d="m -283.83774,247.46793 c 0,-3.6 -3.16801,-6.192 -7.776,-6.192 -10.51199,0 -15.12,8.20801 -17.568,12.816 -5.76,-2.16 -9.07201,-2.88 -13.536,-2.88 -16.41599,0 -29.664,11.37602 -29.664,25.632 0,8.35199 3.88801,15.12001 11.664,20.448 -9.64799,3.168 -14.112,7.63201 -14.112,14.4 0,5.76 3.16801,9.504 10.512,12.096 -10.65599,4.032 -15.12,8.64001 -15.12,15.696 0,10.51199 15.26402,17.568 36.576,17.568 23.32797,0 38.448,-9.21601 38.448,-23.328 0,-14.25598 -12.52801,-16.416 -21.744,-17.712 l -27.504,-3.744 c -6.48,-0.864 -9.36,-2.592 -9.36,-5.904 0,-2.592 2.448,-5.472 6.624,-7.632 5.75999,1.872 8.64,2.304 13.536,2.304 23.75997,0 30.24,-14.83201 30.24,-24.192 0,-7.91999 -4.46401,-15.408 -11.952,-20.448 2.87999,-4.31999 5.184,-6.192 7.632,-6.192 2.736,0 3.888,2.736 7.632,2.736 3.16799,0 5.472,-2.304 5.472,-5.472 m -23.472,28.656 c 0,11.08799 -3.02401,20.304 -15.12,20.304 -10.22399,0 -15.264,-6.62401 -15.264,-20.448 0,-12.67199 5.76001,-20.16 15.696,-20.16 9.93599,0 14.688,6.62401 14.688,20.304 m 12.816,62.208 c 0,5.328 -5.90402,13.392 -28.368,13.392 -16.55999,0 -27.936,-5.61601 -27.936,-13.68 0,-5.47199 4.17601,-10.08 11.952,-12.96 l 29.52,3.6 c 10.65599,1.296 14.832,4.03201 14.832,9.648"
+         style=""
+         id="path3074" />
+    </g>
+    <g
+       style="font-size:48px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#aba7ab;fill-opacity:1;stroke:none;font-family:TeX Gyre Bonum;-inkscape-font-specification:TeX Gyre Bonum"
+       id="text3769">
+      <path
+         d="m 289.53371,320.89015 c 0,-4.41599 -2.35201,-12.24 -11.856,-12.24 -9.312,0 -11.616,7.82401 -11.616,12.144 0,7.24799 4.656,12 11.808,12 6.95999,0 11.664,-4.80001 11.664,-11.904 m -4.896,0.24 c 0,6.096 -2.49601,9.744 -6.72,9.744 -4.416,0 -6.96,-3.696 -6.96,-10.176 0,-6.14399 2.688,-10.128 6.768,-10.128 4.31999,0 6.912,3.98401 6.912,10.56"
+         style=""
+         id="path3077" />
+    </g>
   </g>
 </svg>
