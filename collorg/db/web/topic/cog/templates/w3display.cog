@@ -48,7 +48,10 @@ if not self.action_.value:
         <div class="topic_list" id="{% tl_target %}">
 # >>>
 if data_type and environment:
-    data_type_list = self.db.table(data_type).cog_path(environment)
+    try:
+        data_type_list = self.db.table(data_type).cog_path(environment)
+    except:
+        data_type_list = self.db.table(data_type)
     if data_type_list is not None:
         topics_list = self()
         topics_list.cog_environment_.set_intention(data_type_list.cog_oid_)

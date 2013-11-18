@@ -36,7 +36,7 @@ else:
     env = self
 header_actions = ''
 if not embedded:
-    if self.fqtn != 'collorg.core.base_table' and not no_header_actions:
+    if topic and self.fqtn != 'collorg.core.base_table' and not no_header_actions:
         header_actions = self.w3header_actions(env = env, topic = topic, **kwargs)
     nav_up = '<nav class="bc">{}</nav>'.format(nav_up)
     header = ('<header>{} {}</header>').format(header_actions, header)

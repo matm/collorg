@@ -81,19 +81,16 @@ class Base_table(Oid_table):
 
     @property
     def cog_label_fields(self):
-        if '_cog_label' in self.__class__.__dict__:
-            return self._cog_label[1:]
-        else:
-            l_fields = []
-            for field in self._cog_fields:
-                if( field.name != 'cog_oid' and field.pkey and
-                    field.sql_type != 'c_oid' ):
-                    l_fields.append(field)
-            return l_fields
+        l_fields = []
+        for field in self._cog_fields:
+            if( field.name != 'cog_oid' and field.pkey and
+                field.sql_type != 'c_oid' ):
+                l_fields.append(field)
+        return l_fields
 
     def cog_label(self):
         if '_cog_label' in self.__class__.__dict__:
-            label = self._cog_label[0].format(*self.cog_label_fields)
+            label = self._cog_label[0].format(*self._cog_label[1:])
         else:
             label = ' '.join([field.value for field in self.cog_label_fields])
         return label.strip()

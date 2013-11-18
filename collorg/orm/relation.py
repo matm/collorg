@@ -249,7 +249,10 @@ class Relation(object):
             req = ["(%s) %s (%s)" % (
                 "\n".join(req), elt[0], elt[1]._cog_get_where_inner(self.id))]
         req.insert(0, "WHERE")
-        return "\n".join(req)
+        req = "\n".join(req)
+        if req.strip() == "WHERE":
+            return ""
+        return req
 
     def _cog_get_where_inner(self, rel_id=None):
         """
