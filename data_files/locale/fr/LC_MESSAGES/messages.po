@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-29 13:56+0100\n"
+"POT-Creation-Date: 2013-11-18 10:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,6 +87,7 @@ msgstr "Membres hérités de"
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:20
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:20
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:19
+#: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:22
 msgid "Members of this post"
 msgstr "Membres du message"
 
@@ -94,6 +95,7 @@ msgstr "Membres du message"
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:21
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:21
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:20
+#: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:23
 msgid "This post"
 msgstr "Ce message"
 
@@ -101,6 +103,7 @@ msgstr "Ce message"
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:22
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:22
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:21
+#: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:24
 msgid "Your groups or units"
 msgstr "Vos groupes ou unités"
 
@@ -108,6 +111,7 @@ msgstr "Vos groupes ou unités"
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:23
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:23
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:22
+#: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:25
 msgid "Other groups in"
 msgstr "Autres groupes dans"
 
@@ -220,12 +224,14 @@ msgstr "Visibilité"
 #: collorg/db/communication/blog/post/cog/templates/_w3access_denied.py:19
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3access_denied.py:19
 #: collorg/db/communication/blog/post/cog/templates/_w3access_denied.py:18
+#: collorg/db/communication/blog/post/cog/templates/w3access_denied.py:19
 msgid "Please connect to access this"
 msgstr "Veuillez vous connecter pour accéder à ce"
 
 #: collorg/db/communication/blog/post/cog/templates/_w3access_denied.py:20
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3access_denied.py:20
 #: collorg/db/communication/blog/post/cog/templates/_w3access_denied.py:19
+#: collorg/db/communication/blog/post/cog/templates/w3access_denied.py:20
 msgid "Sorry. You don't have access to this"
 msgstr "Désolé. Vous n'avez pas accès à ce"
 
@@ -326,6 +332,7 @@ msgstr "nouveau"
 #: collorg/db/communication/blog/post/cog/templates/_w3new.py:80
 #: collorg/db/communication/blog/post/cog/templates/w3select_type.py:32
 #: collorg/db/web/topic/cog/templates/_w3new.py:28
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:81
 msgid "in"
 msgstr "dans"
 
@@ -361,22 +368,26 @@ msgstr "Déposer le lien d'un \"post\" ici pour le publier dans ce dossier"
 
 #: collorg/controller/web.py:369
 #: build/lib.linux-x86_64-2.7/collorg/controller/web.py:369
+#: collorg/controller/web.py:375
 msgid "search"
 msgstr "rechercher"
 
 #: collorg/controller/web.py:370
 #: build/lib.linux-x86_64-2.7/collorg/controller/web.py:370
+#: collorg/controller/web.py:376
 msgid "by tag"
 msgstr "par mot clef"
 
 #: collorg/controller/web.py:370
 #: build/lib.linux-x86_64-2.7/collorg/controller/web.py:370
+#: collorg/controller/web.py:376
 msgid "by user"
 msgstr "par utilisateur"
 
 #: collorg/controller/web.py:372
 #: build/lib.linux-x86_64-2.7/collorg/controller/web.py:372
 #: collorg/db/actor/user/__init__.py:194 collorg/db/actor/user/__init__.py:195
+#: collorg/controller/web.py:378
 msgid "Drop your links here<br>for future reference"
 msgstr "Déposez vos liens ici<br>pour un usage ultérieur"
 
@@ -1699,6 +1710,7 @@ msgstr ""
 
 #: data_files/locale/collorg_fields_i18n.py:254
 #: collorg/db/core/base_table/cog/templates/_w3grant_write_access_link.py:23
+#: collorg/db/core/base_table/cog/templates/_w3grant_write_access_link.py:24
 msgid "Grant write access"
 msgstr "Donner le droit d'écriture"
 
@@ -1812,6 +1824,7 @@ msgstr ""
 
 #: data_files/locale/collorg_fields_i18n.py:282
 #: collorg/db/core/base_table/cog/templates/_w3revoke_write_access_link.py:23
+#: collorg/db/core/base_table/cog/templates/_w3revoke_write_access_link.py:24
 msgid "Revoke write access"
 msgstr "Supprimer le droit d'écriture"
 
@@ -1939,32 +1952,43 @@ msgid "edit"
 msgstr "édition"
 
 #: collorg/db/actor/user/cog/templates/_w3manage.py:26
+#: collorg/db/actor/user/cog/templates/_w3manage.py:27
 msgid "user last name"
 msgstr "nom de la personne"
 
 #: collorg/db/communication/blog/post/cog/templates/_w3remove_link.py:27
 #: collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:24
 #: collorg/db/communication/blog/view/by_post/cog/templates/w3list_attached_posts.py:24
+#: collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:26
+#: collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:34
+#: collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:42
+#: collorg/db/communication/blog/view/by_post/cog/templates/w3list_attached_posts.py:25
+#: collorg/db/communication/blog/post/cog/templates/_w3remove_link.py:28
 msgid "remove from this list"
 msgstr "supprimer de cette liste"
 
 #: collorg/db/core/base_table/cog/templates/_w3revoke_access_link.py:23
+#: collorg/db/core/base_table/cog/templates/_w3revoke_access_link.py:24
 msgid "Revoke user access"
 msgstr "Supprimer l'accès pour la personne"
 
 #: collorg/db/core/base_table/cog/templates/_w3revoke_write_access_link.py:24
+#: collorg/db/core/base_table/cog/templates/_w3revoke_write_access_link.py:25
 msgid "write access"
 msgstr "accès en écriture"
 
 #: collorg/db/core/base_table/cog/templates/_w3grant_write_access_link.py:24
+#: collorg/db/core/base_table/cog/templates/_w3grant_write_access_link.py:25
 msgid "read only"
 msgstr "accès en lecture seule"
 
 #: collorg/db/actor/user/cog/templates/_w3manage.py:27
+#: collorg/db/actor/user/cog/templates/_w3manage.py:28
 msgid "Grant access to a user"
 msgstr "Donner l'accès à une personne"
 
 #: collorg/db/actor/user/cog/templates/_w3manage.py:28
+#: collorg/db/actor/user/cog/templates/_w3manage.py:29
 msgid "Add a member"
 msgstr "Ajouter un membre"
 
@@ -1973,13 +1997,24 @@ msgid "select an entry"
 msgstr "sélectionnez une entrée"
 
 #: collorg/db/event/event/cog/templates/w3display_header_sub.py:18
+#: collorg/db/event/event/cog/templates/w3display_header_sub.py:19
 msgid "from"
 msgstr "de"
 
 #: collorg/db/event/event/cog/templates/w3display_header_sub.py:19
+#: collorg/db/event/event/cog/templates/w3display_header_sub.py:20
 msgid "to"
 msgstr "à"
 
 #: collorg/db/communication/blog/post/cog/templates/w3navigation.py:22
+#: collorg/db/communication/blog/post/cog/templates/w3navigation.py:23
 msgid "See also"
 msgstr "Voir aussi"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:20
+msgid "Other recipients"
+msgstr "Autres destinataires"
+
+#: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:21
+msgid "emails, comma separated"
+msgstr "emails, séparés par des virgules"

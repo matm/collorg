@@ -1,4 +1,4 @@
-#-*- coding: UTF-8 -*-
+#-*- coding: utf-8 -*-
 
 import os
 import shutil
@@ -249,10 +249,15 @@ class Post(Base_table):
     def mail(self, **kwargs):
         exp = self._cog_controller.user.email_.value
         recipient = self.db.get_elt_by_oid(kwargs['recipient_oid']).members
+        emails = [exp]
+        emails += [elt.email_.value for elt in recipient]
+        other_recipient = kwargs.get('other_recipient', [])
+        other_emails = [elt.strip() for elt in other_recipient.split(',')]
+        emails += other_emails
         mail = Mail(self.db)
         mail.set_from(exp)
 #        mail.set_to([exp])
-        mail.set_to([elt.email_.value for elt in recipient]) # was bcc
+        mail.set_to(emails)
         self.set_mail_subject(mail, kwargs.get('title_'))
         self.set_mail_body(mail, kwargs.get('text_'))
         mail.send()

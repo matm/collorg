@@ -11,6 +11,8 @@ i18n_sub = _("Subject")
 i18n_mes = _("Message")
 i18n_wp = _("Warning! This post is private. Access will only be granted to members.")
 i18n_sr = _("Select a recipient")
+i18n_or = _("Other recipients")
+i18n_or_help = _("emails, comma separated")
 i18n_sm = _("Send mail")
 cog_ref_oid = cog_user.cog_oid_.value
 target = kwargs.get('cog_target')[1:]
@@ -23,6 +25,9 @@ self.text_.set_intention('')
 # ---
 <h5>{% i18n_to %} {% self._w3get_recipient(target = recipient_id) %}</h5>
 # +++ form_html
+<h5><label>{% i18n_or %}
+<input type="text" placeholder="{% i18n_or_help %}" class="all_width" name="other_recipient" />
+</h5>
 <div id="{% recipient_id %}"></div>
 {% html(self).input(self.title_, label = i18n_sub, css_class="all_width") %}
 {% html(self).input(self.text_, label = i18n_mes, rows = 4) %}
