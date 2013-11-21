@@ -18,4 +18,4 @@ if nb_posts:
     <span class="title">{% " AND ".join(l_title_tags) %} 
     ({% nb_posts %} post{% nb_posts > 1 and "s" or "" %})
     </span>
-    {% vp.w3list() %}
+    {% vp.w3list(embedded=True) %}
