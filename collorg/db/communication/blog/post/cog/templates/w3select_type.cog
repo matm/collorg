@@ -18,8 +18,7 @@ i18n_folder = _("Folder")
 i18n_event = _("Event")
 data = kwargs['data']
 enabled_posts = ('Post', 'Event')
-if self.cog_type_name == 'Folder' or not self._is_cog_post:
-    enabled_posts = ('Post', 'Event', 'Folder')
+enabled_posts = ('Post', 'Event', 'Folder')
 post = self.db.table('collorg.communication.blog.post')
 new_post = self.db.table(kwargs['post_fqtn'])
 l_post_types = post.get_post_types()
