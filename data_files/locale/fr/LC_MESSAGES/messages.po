@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-18 10:24+0100\n"
+"POT-Creation-Date: 2013-11-20 14:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -154,6 +154,7 @@ msgstr "Sélectionnez un destinatraire"
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3share.py:32
 #: data_files/locale/collorg_fields_i18n.py:289
 #: collorg/db/communication/blog/post/cog/templates/w3share.py:31
+#: collorg/db/communication/blog/post/cog/templates/w3share.py:34
 msgid "Send mail"
 msgstr "Envoyer le message"
 
@@ -388,8 +389,8 @@ msgstr "par utilisateur"
 #: build/lib.linux-x86_64-2.7/collorg/controller/web.py:372
 #: collorg/db/actor/user/__init__.py:194 collorg/db/actor/user/__init__.py:195
 #: collorg/controller/web.py:378
-msgid "Drop your links here<br>for future reference"
-msgstr "Déposez vos liens ici<br>pour un usage ultérieur"
+msgid "Drag & drop your links here<br>for future reference"
+msgstr "Glissez - déposez vos liens ici<br>pour un usage ultérieur"
 
 #: collorg/db/communication/blog/post/cog/templates/w3add_see_also_drop_zone.py:26
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3add_see_also_drop_zone.py:26
@@ -2012,9 +2013,11 @@ msgid "See also"
 msgstr "Voir aussi"
 
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:20
+#: collorg/db/communication/blog/post/cog/templates/w3share.py:32
 msgid "Other recipients"
 msgstr "Autres destinataires"
 
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:21
+#: collorg/db/communication/blog/post/cog/templates/w3share.py:33
 msgid "emails, comma separated"
 msgstr "emails, séparés par des virgules"

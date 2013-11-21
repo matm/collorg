@@ -375,7 +375,7 @@ class WebController(Controller):
                 _("search"), _("search"),
                 _("by tag"), _("by user"),
                 actor.w3login_link(),
-                _("Drop your links here<br>for future reference").decode(
+                _("Drag & drop your links here<br>for future reference").decode(
                     self._charset))
             page = self._cog_cmd(**self._kwargs)
             if self._cog_raw:
