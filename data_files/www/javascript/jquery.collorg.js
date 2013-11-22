@@ -755,10 +755,19 @@
             hoverClass: "ui-state-hover",
             tolerance: "touch",
             accept: ".action",
+	    activate: function(event, ui)
+	    {
+                $('#cog_cart').addClass('extend');
+	    },
             drop: function( event, ui )
             {
                 __follow(ui.draggable);
-            }
+		$('#cog_cart').removeClass('extend');
+            },
+	    deactivate: function(event, ui)
+	    {
+                $('#cog_cart').removeClass('extend');
+	    },
         });
     }
 
@@ -771,7 +780,8 @@
                 cursorAt: { top: 0, left: 0 },
                 distance: 30,
                 helper: function( event ) {
-                    return $( '<img src="collorg/images/eye.svg">' );
+                    return $( '<img src="collorg/images/eye.svg">' ).css(
+			'z-index', '30');
                 }
             });
         $('.wiki > textarea').droppable({
