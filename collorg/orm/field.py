@@ -70,7 +70,7 @@ class Field(object):
         @comp: the comparator used for this intention (defaults to '=')
         """
         self.__intention.set_(val, comp)
-        return self
+        return self.value or self
 
     set_ = set_intention
 

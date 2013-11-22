@@ -258,11 +258,23 @@ class Relation(object):
         """
         @return: SQL form of where condition
         """
+        def _just_cog_oid(self):
+            for field in self._cog_fields:
+                if field.name == 'cog_oid' and field.value:
+                    return field
         l_where = []
+        cog_oid = _just_cog_oid(self)
+        if cog_oid:
+            l_where.append(cog_oid._sql_where_repr(rel_id))
         for field in self._cog_fields:
-            sql_where_repr = field._sql_where_repr(rel_id)
-            if sql_where_repr:
-                l_where.append(sql_where_repr)
+            ok = True
+            if cog_oid:
+                ok = field.name != 'cog_oid' and (
+                    field.comp != '=' or field.name == 'cog_fqtn')
+            if ok:
+                sql_where_repr = field._sql_where_repr(rel_id)
+                if sql_where_repr:
+                    l_where.append(sql_where_repr)
         return  " AND\n".join(l_where)
 
     def _cog_is_constrained(self):
@@ -476,7 +488,6 @@ class Relation(object):
             self._cog_schemaname, self._cog_tablename)
 
     def cog_restrict_to_type(self, fqtn):
-        print(fqtn)
         obj = self.db.table(fqtn)
         self.cog_fqtn_ += (fqtn, '=')
         for fqtn in obj.children_fqtns():
