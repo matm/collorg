@@ -192,7 +192,7 @@ class User(Actor, Groupable):
         site = self._cog_controller.load_site()
         home_site_link = ""
         cart_msg = self._cog_controller.i18n.gettext(
-            'Drop your links here<br>for future reference')
+            'Drag & drop your links here<br>for future reference')
         reset_cart = ('<li class="placeholder rotate">{}.</li></ul>').format(
             cart_msg)
         site._cog_controller.add_json_res({
