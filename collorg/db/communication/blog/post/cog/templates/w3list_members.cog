@@ -26,6 +26,28 @@ if post.cog_oid_.value != self.cog_oid_.value:
 # +++ article
 {% post.w3manage_access(this=self, callback="w3list_members") %}
 {% members.w3list_members(data = self, callback = "w3list_members") %}
+# >>>
+groups_accesses = self._rev_group_access_accessed_data_
+groups_accesses.order_by(groups_accesses.cog_creat_date_)
+groups = self.db.table('collorg.group.group')
+groups.cog_oid_.set_intention(
+    self._rev_group_access_accessed_data_._group_data_.cog_oid_)
+for ga in groups_accesses:
+    group = ga._group_data_.get()
+    revoke_link = ''
+    wa_link = ''
+    if cog_user and cog_user.cog_oid_.value == self.author_.value:
+        revoke_link = self._w3revoke_group_access_link(
+            group=group, callback="w3list_members")
+        if not ga.write_.value:
+            wa_link =  self._w3grant_group_write_access_link(
+                group=group, callback="w3list_members")
+        else:
+            wa_link = self._w3revoke_group_write_access_link(
+                group=group, callback="w3list_members")
+    # ---
+    <h3>{% revoke_link %} {% group.cog_label() %} {% wa_link %}</h3>
+    {% group.w3list_members() %}
 # --- article
 # >>>
 output = self.db.table('collorg.core.base_table').w3display_base(

@@ -10,6 +10,8 @@ required is a template that is considered True if anything is printed,
 False otherwise.
 """
 
+import sys
+
 class Action_requirement(object):
     def __init__(self, controller):
         self.__ctrl = controller
@@ -67,7 +69,12 @@ class Action_requirement(object):
             mrs = self.__table(
                 'collorg.application.action',
                 name_ = method_requires, data_type_ = fqtn_requires)
-            mrs.get()
+            try:
+                mrs.get()
+            except:
+                print("Check requires MISSING!\n\t{}.{}".format(
+                    fqtn_requires, method_requires))
+                sys.exit(1)
             mrd = self.__table(
                 'collorg.application.action',
                 name_ = method_required, data_type_ = fqtn_required)

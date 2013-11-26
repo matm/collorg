@@ -1,5 +1,6 @@
 #-*- coding: UTF-8 -*-
 
+from datetime import datetime
 from collorg.db.core.base_table import Base_table
 from collorg.db.time.duration import Duration
 
@@ -11,8 +12,8 @@ class Group_access(Base_table, Duration):
 
     from .cog import relational as cog_r
     # DIRECT
-    _data_ = cog_r._data_
-    _group_ = cog_r._group_
+    _group_data_ = cog_r._group_data_
+    _accessed_data_ = cog_r._accessed_data_
     #<<< AUTO_COG REL_PART. Your code goes after
     def __init__(self, db, **kwargs):
         #>>> AUTO_COG DOC. DO NOT EDIT
@@ -27,14 +28,19 @@ class Group_access(Base_table, Duration):
         * cog_modif_date_ : timestamp, inherited
         * cog_environment_ : c_oid, inherited
         * cog_state_ : text, inherited
-        * cog_from_ : timestamp, inherited, PK, not null
+        * cog_from_ : timestamp, inherited
         * cog_to_ : timestamp, inherited
-        * group_ : c_oid, PK, not null, FK
-        * data_ : c_oid, PK, not null, FK
+        * group_data_ : c_oid, PK, not null, FK
+        * accessed_data_ : c_oid, PK, not null, FK
+        * begin_date_ : timestamp, PK, not null
+        * end_date_ : timestamp
         * write_ : bool
-        * manage_ : bool
-        * description_ : wiki
         """
         #<<< AUTO_COG DOC. Your code goes after
         super(Group_access, self).__init__(db, **kwargs)
 
+    def granted( self ):
+        self.begin_date_.set_intention( datetime.now(), '<' )
+        self.end_date_.set_null()
+        self.end_date_ += ( datetime.now(), '>' )
+        return self

@@ -1,0 +1,12 @@
+#PRAGMA 'goals':['Access management']
+#PRAGMA 'tasks':['Access management']
+#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'label':'Revoke group write access'
+#PRAGMA 'in_menu':False
+# >>>
+group_oid = kwargs['group_oid']
+group = self.db.get_elt_by_oid(group_oid)
+group.revoke_write_access(self)
+callback = eval("self.{}()".format(kwargs['callback']))
+# ---
+{% callback %}

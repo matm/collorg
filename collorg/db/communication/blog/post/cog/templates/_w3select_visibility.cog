@@ -2,6 +2,9 @@
 #PRAGMA 'label':'Visibility selection'
 #PRAGMA 'strip':True
 # >>>
+rid = html.random_id()
+sel_id = "select_{}".format(rid)
+im_id = "image_{}".format(rid)
 i18n_visibility = _("Visibility")
 visibility = self.visibility_.value
 if visibility is None:
@@ -10,12 +13,11 @@ visibilities = (
     (_("private"), 'private'),
     (_("protected"), 'protected'),
     (_("public"), 'public'))
-red = """<span style="background-color: red;">&nbsp;</span>"""
-orange = """<span style="background-color: orange;">&nbsp;</span>"""
-green = """<span style="background-color: lightgreen;">&nbsp;</span>"""
-rog = red + orange + green
+image = """<img height="20px" src="/collorg/images/{}.svg">"""
 # ---
-<label>{%rog%} {% i18n_visibility %}: <select name="visibility_">
+<label>{% i18n_visibility %}
+<div class="left" id="{% im_id %}">{% image.format(visibility) %}</div> :
+ <select name="visibility_" id="{% sel_id %}">
 # >>>
 for i18n_vis, vis in visibilities:
     selected = ''
@@ -26,3 +28,13 @@ for i18n_vis, vis in visibilities:
 # ---
 </select>
 </label>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#{% sel_id %}").on('change', function(){
+        var image = '<img height="20px" src="/collorg/images/' +
+            $(this).val() + '.svg" />';
+        $('#{% im_id %}').html(image);
+    });
+});
+</script>
+

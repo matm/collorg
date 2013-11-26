@@ -1,5 +1,4 @@
 # >>>
-forbid = ['collorg.actor.user']
-if self.cog_fqtn_.value not in forbid:
+if self._is_cog_post:
     # ---
     ok

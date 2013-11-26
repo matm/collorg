@@ -1,0 +1,9 @@
+#PRAGMA 'write':True
+#PRAGMA 'strip':True
+#PRAGMA 'goals':['Blog']
+#PRAGMA 'tasks':['Blog edition']
+#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'label':'New post'
+#PRAGMA 'in_header':True
+#PRAGMA 'icon':'compose.svg'
+{% super(self.__class__, self).w3new_post(**kwargs) %}

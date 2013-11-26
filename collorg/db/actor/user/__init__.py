@@ -264,14 +264,25 @@ class User(Actor, Groupable):
         data_env.cog_oid_.set_intention(data_base.cog_environment_)
         access.data_.set_intention(data.cog_oid_)
         access.data_ += (data_env.cog_oid_, '=')
-        if write:
+        if write: #XXX ??? Do not remove (weird)
             access.write_.set_intention(write)
-        return access.is_granted()
+        if access.is_granted():
+            return True
+        group_access = self.db.table('collorg.access.group_access')
+        if write:
+            group_access.write_.set_intention(write)
+        group_access.accessed_data_.set_intention(data.cog_oid_.value)
+        return group_access.exists() and self.has_access(
+            group_access._group_data_, write)
 
     def get_granted_data(self, fqtn = None):
         data = self._rev_access_.granted()._data_
+        data1 = self._rev_access_.granted()._data_
+        gdata = data1._rev_group_access_group_data_.granted()._accessed_data_
         if fqtn:
             data.cog_restrict_to_type(fqtn)
+            gdata.cog_restrict_to_type(fqtn)
+        data += gdata
         return data
 
     def has_function(self, function_long_name):

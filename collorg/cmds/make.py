@@ -403,6 +403,8 @@ class Cmd():
                         if os.path.exists(file_):
                             os.popen("sudo rm -f {}".format(file_))
                             print("-{}".format(file_))
+                act._rev_check_requires_.delete()
+                act._rev_check_required_.delete()
                 act._rev_a_action_task_.delete()
                 act.delete()
                 print("- action removed")

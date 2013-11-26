@@ -37,12 +37,14 @@ class Oid_table( TClass ):
     _rev_rss_ = cog_r._rev_rss_
     _rev_group_ = cog_r._rev_group_
     _rev_access_ = cog_r._rev_access_
-    _rev_translation_ = cog_r._rev_translation_
+    _rev_group_access_group_data_ = cog_r._rev_group_access_group_data_
+    _rev_group_access_accessed_data_ = cog_r._rev_group_access_accessed_data_
     _rev_user_check_ = cog_r._rev_user_check_
     _rev_bookmark_ = cog_r._rev_bookmark_
     _rev_attachment_ = cog_r._rev_attachment_
     _rev_a_post_data_post_ = cog_r._rev_a_post_data_post_
     _rev_a_post_data_data_ = cog_r._rev_a_post_data_data_
+    _rev_translation_ = cog_r._rev_translation_
     _rev_topic_graph_ = cog_r._rev_topic_graph_
     _rev_comment_ = cog_r._rev_comment_
     #<<< AUTO_COG REL_PART. Your code goes after

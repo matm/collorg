@@ -1,21 +1,21 @@
 # DIRECT
-def _get_data(self):
-    data_ = self.db.table('collorg.core.oid_table')
-    data_.cog_oid_.set_intention(self.data_)
-    return data_
-def _set_data(self, data_):
-    self.data_.set_intention(data_.cog_oid_)
+def _get_group_data(self):
+    group_data_ = self.db.table('collorg.core.oid_table')
+    group_data_.cog_oid_.set_intention(self.group_data_)
+    return group_data_
+def _set_group_data(self, group_data_):
+    self.group_data_.set_intention(group_data_.cog_oid_)
 
-_data_ = property(
-    _get_data, _set_data)
+_group_data_ = property(
+    _get_group_data, _set_group_data)
 
-def _get_group(self):
-    group_ = self.db.table('collorg.group.group')
-    group_.cog_oid_.set_intention(self.group_)
-    return group_
-def _set_group(self, group_):
-    self.group_.set_intention(group_.cog_oid_)
+def _get_accessed_data(self):
+    accessed_data_ = self.db.table('collorg.core.oid_table')
+    accessed_data_.cog_oid_.set_intention(self.accessed_data_)
+    return accessed_data_
+def _set_accessed_data(self, accessed_data_):
+    self.accessed_data_.set_intention(accessed_data_.cog_oid_)
 
-_group_ = property(
-    _get_group, _set_group)
+_accessed_data_ = property(
+    _get_accessed_data, _set_accessed_data)
 

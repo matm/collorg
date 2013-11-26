@@ -60,7 +60,7 @@ if len(d_posts):
             ch_post = post()
             ch_post.cog_oid_.set_intention(se.cog_oid_)
             ch_post = ch_post.get()
-            if not ch_post.check_visibility(cog_user):
+            if not cog_user.has_access(ch_post):#ch_post.check_visibility(cog_user):
                 continue
         remove_link = ''
 {#

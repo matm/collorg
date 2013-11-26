@@ -14,13 +14,16 @@ if cog_user:
 
     target = kwargs['target']
     link_id = html.random_id()
-    links = [html().a(id_=link_id, recipient_oid=self.cog_oid_.value, cog_method="w3set_recipient", target=target)]
+    links = [html().a(
+        id_=link_id, recipient_oid=self.cog_oid_.value,
+        cog_method="w3set_recipient", target=target)]
     # ---
     <optgroup label="{% i18n_tp %}">
     <option triggered="#{% link_id %}">{% i18n_motp %}</options>
     </optgroup>
     # >>>
-    if self.visibility_.value != 'private' or cog_user.cog_oid_.value == self.author_.value:
+    if (self.visibility_.value != 'private' or
+        cog_user.cog_oid_.value == self.author_.value):
         # ---
         <optgroup label="{% i18n_ygou %}">
         # >>>
@@ -30,7 +33,9 @@ if cog_user:
         for group in groups:
             label = group.cog_label()
             link_id = html.random_id()
-            links.append(html().a(id_=link_id, recipient_oid=group.cog_oid_.value, cog_method="w3set_recipient", target=target))
+            links.append(html().a(
+                id_=link_id, recipient_oid=group.cog_oid_.value,
+                cog_method="w3set_recipient", target=target))
             # ---
             <option triggered="#{% link_id %}">{% label %}</option>
         # >>>
@@ -39,13 +44,16 @@ if cog_user:
             unit = unit.get()
             label = unit.cog_label()
             link_id = html.random_id()
-            links.append(html().a(id_=link_id, recipient_oid=unit.cog_oid_.value, cog_method="w3set_recipient", target=target))
+            links.append(html().a(
+                id_=link_id, recipient_oid=unit.cog_oid_.value,
+                cog_method="w3set_recipient", target=target))
             # ---
             <option triggered="#{% link_id %}">{% label %}</option>
         # ---
         </optgroup>
         # >>>
-        main_environment = self.db._cog_controller.main_topic._cog_environment_.get(reload_=True)
+        main_environment = self.db._cog_controller.\
+            main_topic._cog_environment_.get(reload_=True)
         groups = self.db.table('collorg.group.group')
         groups._data_ = main_environment
         # ---
@@ -54,7 +62,9 @@ if cog_user:
         for group in groups:
             label = group.cog_label()
             link_id = html.random_id()
-            links.append(html().a(id_=link_id, recipient_oid=group.cog_oid_.value, cog_method="w3set_recipient", target=target))
+            links.append(html().a(
+                id_=link_id, recipient_oid=group.cog_oid_.value,
+                cog_method="w3set_recipient", target=target))
             # ---
             <option triggered="#{% link_id %}">{% label %}</option>
         # ---

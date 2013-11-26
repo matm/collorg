@@ -2,10 +2,14 @@
 target = html.random_id()
 tl_target = "tl_{}".format(target)
 self = self.get(reload_=True)
+posts = self.db.table('collorg.communication.blog.post')
+posts.cog_oid_.set_intention(self._rev_a_post_data_data_._post_.cog_oid_)
 if not cog_user:
-    posts = self.get_not_private_posts()
-else:
-    posts = self.get_accessible_posts(cog_user)
+    posts.visibility_.set_intention('private', '!=')
+#    posts = self.get_not_private_posts()
+#else:
+#    posts = self.get_accessible_posts(cog_user)
+# w3list does the job
 environment = None
 if self.cog_environment_.value != self.cog_oid_.value:
     environment = self.db.get_elt_by_oid(self.cog_environment_.value)

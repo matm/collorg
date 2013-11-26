@@ -54,3 +54,33 @@ class Group( Base_table ):
         """
         return self._rev_calendar_._rev_a_event_calendar_._event_
 
+    def __set_group_access(self, data):
+        assert self.count() == 1 and data.count() == 1
+        ga = self.db.table('collorg.access.group_access')
+        ga._accessed_data_ = data
+        ga._group_data_ = self
+        return ga
+
+    def grant_access(self, data):
+        ga = self.__set_group_access(data)
+        if not ga.exists():
+            ga.insert()
+
+    def revoke_access(self, data):
+        ga = self.__set_group_access(data)
+        if ga.exists():
+            ga.delete()
+
+    def grant_write_access(self, data):
+        ga = self.__set_group_access(data)
+        nga = ga()
+        nga.write_.set_intention(True)
+        if ga.exists():
+            ga.update(nga)
+
+    def revoke_write_access(self, data):
+        ga = self.__set_group_access(data)
+        nga = ga()
+        nga.write_.set_intention(False)
+        if ga.exists():
+            ga.update(nga)

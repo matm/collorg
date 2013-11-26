@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-20 14:25+0100\n"
+"POT-Creation-Date: 2013-11-26 13:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,12 +74,14 @@ msgstr "Recherche"
 #: collorg/db/core/base_table/cog/templates/w3list_members.py:23
 #: build/lib.linux-x86_64-2.7/collorg/db/core/base_table/cog/templates/w3list_members.py:23
 #: collorg/db/core/base_table/cog/templates/w3list_members.py:22
+#: collorg/db/communication/blog/post/cog/templates/w3list_members.py:23
 msgid "Members"
 msgstr "Membres"
 
 #: collorg/db/core/base_table/cog/templates/w3list_members.py:24
 #: build/lib.linux-x86_64-2.7/collorg/db/core/base_table/cog/templates/w3list_members.py:24
 #: collorg/db/core/base_table/cog/templates/w3list_members.py:23
+#: collorg/db/communication/blog/post/cog/templates/w3list_members.py:24
 msgid "Members inherited from"
 msgstr "Membres hérités de"
 
@@ -1712,6 +1714,7 @@ msgstr ""
 #: data_files/locale/collorg_fields_i18n.py:254
 #: collorg/db/core/base_table/cog/templates/_w3grant_write_access_link.py:23
 #: collorg/db/core/base_table/cog/templates/_w3grant_write_access_link.py:24
+#: collorg/db/core/base_table/cog/templates/_w3grant_group_write_access_link.py:24
 msgid "Grant write access"
 msgstr "Donner le droit d'écriture"
 
@@ -1826,6 +1829,7 @@ msgstr ""
 #: data_files/locale/collorg_fields_i18n.py:282
 #: collorg/db/core/base_table/cog/templates/_w3revoke_write_access_link.py:23
 #: collorg/db/core/base_table/cog/templates/_w3revoke_write_access_link.py:24
+#: collorg/db/core/base_table/cog/templates/_w3revoke_group_write_access_link.py:24
 msgid "Revoke write access"
 msgstr "Supprimer le droit d'écriture"
 
@@ -1975,11 +1979,13 @@ msgstr "Supprimer l'accès pour la personne"
 
 #: collorg/db/core/base_table/cog/templates/_w3revoke_write_access_link.py:24
 #: collorg/db/core/base_table/cog/templates/_w3revoke_write_access_link.py:25
+#: collorg/db/core/base_table/cog/templates/_w3revoke_group_write_access_link.py:25
 msgid "write access"
 msgstr "accès en écriture"
 
 #: collorg/db/core/base_table/cog/templates/_w3grant_write_access_link.py:24
 #: collorg/db/core/base_table/cog/templates/_w3grant_write_access_link.py:25
+#: collorg/db/core/base_table/cog/templates/_w3grant_group_write_access_link.py:25
 msgid "read only"
 msgstr "accès en lecture seule"
 
@@ -1990,6 +1996,7 @@ msgstr "Donner l'accès à une personne"
 
 #: collorg/db/actor/user/cog/templates/_w3manage.py:28
 #: collorg/db/actor/user/cog/templates/_w3manage.py:29
+#: collorg/db/group/group/cog/templates/_w3manage.py:29
 msgid "Add a member"
 msgstr "Ajouter un membre"
 
@@ -2021,3 +2028,15 @@ msgstr "Autres destinataires"
 #: collorg/db/communication/blog/post/cog/templates/w3share.py:33
 msgid "emails, comma separated"
 msgstr "emails, séparés par des virgules"
+
+#: collorg/db/group/group/cog/templates/_w3manage.py:27
+msgid "group name"
+msgstr "nom du groupe"
+
+#: collorg/db/group/group/cog/templates/_w3manage.py:28
+msgid "Grant access to a group"
+msgstr "Donner accès à un groupe"
+
+#: collorg/db/core/base_table/cog/templates/_w3revoke_group_access_link.py:24
+msgid "Revoke group access"
+msgstr "Supprimer l'accès pour le groupe"

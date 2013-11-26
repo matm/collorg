@@ -114,7 +114,8 @@ class Base_table(Oid_table):
     def members(self):
         # copy of core.oid_table.Oid_table.members
         access = self._rev_access_.granted()
-        users = access._user_
+        group_access = self._rev_group_access_accessed_data_._group_data_._rev_access_.granted()
+        users = access._user_ + group_access._user_
         if self._rev_hierarchy_parent_.exists():
             for child in self._rev_hierarchy_parent_._child_:
                 users += child.members

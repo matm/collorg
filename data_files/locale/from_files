@@ -79,6 +79,7 @@ collorg/db/web/a_rss_topic/cog/templates/__init__.py
 collorg/db/web/a_rss_topic/cog/relational.py
 collorg/db/web/topic/__init__.py
 collorg/db/web/topic/cog/__init__.py
+collorg/db/web/topic/cog/templates/w3new_post.py
 collorg/db/web/topic/cog/templates/w3attach_post.py
 collorg/db/web/topic/cog/templates/w3attach_post_drop_zone.py
 collorg/db/web/topic/cog/templates/w3edit.py
@@ -232,9 +233,10 @@ collorg/db/core/base_table/__init__.py
 collorg/db/core/base_table/cog/__init__.py
 collorg/db/core/base_table/cog/templates/w3select_user.py
 collorg/db/core/base_table/cog/templates/w3manage_access.py
-collorg/db/core/base_table/cog/templates/w3new_post.py
+collorg/db/core/base_table/cog/templates/w3grant_group_access.py
 collorg/db/core/base_table/cog/templates/w3search_link.py
 collorg/db/core/base_table/cog/templates/_check_env.py
+collorg/db/core/base_table/cog/templates/w3grant_group_write_access.py
 collorg/db/core/base_table/cog/templates/rss.py
 collorg/db/core/base_table/cog/templates/w3in_nav_actions.py
 collorg/db/core/base_table/cog/templates/w3home_link.py
@@ -247,7 +249,8 @@ collorg/db/core/base_table/cog/templates/w3list_inner.py
 collorg/db/core/base_table/cog/templates/_w3revoke_access_link.py
 collorg/db/core/base_table/cog/templates/_w3grant_write_access_link.py
 collorg/db/core/base_table/cog/templates/w3link_list_members.py
-collorg/db/core/base_table/cog/templates/w3list_members.py
+collorg/db/core/base_table/cog/templates/_w3revoke_group_write_access_link.py
+collorg/db/core/base_table/cog/templates/w3revoke_group_write_access.py
 collorg/db/core/base_table/cog/templates/w3icons_list.py
 collorg/db/core/base_table/cog/templates/w3creat_modif_date.py
 collorg/db/core/base_table/cog/templates/w3grant_access.py
@@ -263,10 +266,14 @@ collorg/db/core/base_table/cog/templates/w3revoke_access.py
 collorg/db/core/base_table/cog/templates/w3display.py
 collorg/db/core/base_table/cog/templates/w3grant_write_access.py
 collorg/db/core/base_table/cog/templates/check_rss.py
+collorg/db/core/base_table/cog/templates/w3revoke_group_access.py
+collorg/db/core/base_table/cog/templates/_w3grant_group_write_access_link.py
 collorg/db/core/base_table/cog/templates/w3display_item.py
 collorg/db/core/base_table/cog/templates/w3display_base.py
 collorg/db/core/base_table/cog/templates/w3list_groups.py
+collorg/db/core/base_table/cog/templates/w3select_group.py
 collorg/db/core/base_table/cog/templates/w3credit.py
+collorg/db/core/base_table/cog/templates/_w3revoke_group_access_link.py
 collorg/db/core/base_table/cog/templates/w3list_groups_link.py
 collorg/db/core/base_table/cog/relational.py
 collorg/db/core/data_type/__init__.py
@@ -310,6 +317,7 @@ collorg/db/group/group/cog/templates/w3home.py
 collorg/db/group/group/cog/templates/w3get_events.py
 collorg/db/group/group/cog/templates/w3link.py
 collorg/db/group/group/cog/templates/__init__.py
+collorg/db/group/group/cog/templates/_w3manage.py
 collorg/db/group/group/cog/templates/w3list_members.py
 collorg/db/group/group/cog/templates/w3list_long.py
 collorg/db/group/group/cog/templates/w3display.py
@@ -481,6 +489,7 @@ collorg/db/communication/blog/view/by_post/cog/templates/w3list_attached_posts.p
 collorg/db/communication/blog/post/__init__.py
 collorg/db/communication/blog/post/cog/__init__.py
 collorg/db/communication/blog/post/cog/templates/w3new_follow_up.py
+collorg/db/communication/blog/post/cog/templates/w3new_post.py
 collorg/db/communication/blog/post/cog/templates/w3navigation.py
 collorg/db/communication/blog/post/cog/templates/check_comment.py
 collorg/db/communication/blog/post/cog/templates/w3display_header.py
@@ -514,6 +523,7 @@ collorg/db/communication/blog/post/cog/templates/w3display_footer.py
 collorg/db/communication/blog/post/cog/templates/w3bookmark.py
 collorg/db/communication/blog/post/cog/templates/check_bookmarked.py
 collorg/db/communication/blog/post/cog/templates/w3see_also.py
+collorg/db/communication/blog/post/cog/templates/w3list_members.py
 collorg/db/communication/blog/post/cog/templates/w3new_comment.py
 collorg/db/communication/blog/post/cog/templates/_w3new.py
 collorg/db/communication/blog/post/cog/templates/w3filter.py

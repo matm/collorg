@@ -103,6 +103,7 @@ d_tables = {
     'access': [
         'access/sch_access.sql',
         'access/access.sql',
+        'access/group_access.sql',
 #        'access/group_access.sql',
         'access/role.sql',
         'access/hierarchy.sql',

@@ -120,9 +120,19 @@ def _rev_access_(self):
     return elt
 
 @property
-def _rev_translation_(self):
-    elt = self.db.table('collorg.i18n.translation')
-    elt._data_oid_ = self
+def _rev_group_access_group_data_(self):
+    elt = self.db.table('collorg.access.group_access')
+    elt._group_data_ = self
+    if 'cog_oid_' in self.__dict__ and self.cog_oid_.value:
+        if not '_cog_direct_refs' in elt.__dict__.keys():
+            elt._cog_direct_refs = []
+        elt._cog_direct_refs.append(self.cog_oid_.value)
+    return elt
+
+@property
+def _rev_group_access_accessed_data_(self):
+    elt = self.db.table('collorg.access.group_access')
+    elt._accessed_data_ = self
     if 'cog_oid_' in self.__dict__ and self.cog_oid_.value:
         if not '_cog_direct_refs' in elt.__dict__.keys():
             elt._cog_direct_refs = []
@@ -173,6 +183,16 @@ def _rev_a_post_data_post_(self):
 def _rev_a_post_data_data_(self):
     elt = self.db.table('collorg.communication.blog.a_post_data')
     elt._data_ = self
+    if 'cog_oid_' in self.__dict__ and self.cog_oid_.value:
+        if not '_cog_direct_refs' in elt.__dict__.keys():
+            elt._cog_direct_refs = []
+        elt._cog_direct_refs.append(self.cog_oid_.value)
+    return elt
+
+@property
+def _rev_translation_(self):
+    elt = self.db.table('collorg.i18n.translation')
+    elt._data_oid_ = self
     if 'cog_oid_' in self.__dict__ and self.cog_oid_.value:
         if not '_cog_direct_refs' in elt.__dict__.keys():
             elt._cog_direct_refs = []

@@ -67,8 +67,10 @@ class Topic(Post):
         if self.visibility_.value == 'private':
             image = "private_folder.png"
         label = self.title_.value
-        if not label:
+        if not label and self.cog_oid_.value != self.cog_environment_.value:
             label = self._cog_environment_.get().cog_label()
+        if not label:
+            label = "No label"
         label = ('<img style="display:inline-block;" ' +
             'src="/collorg/images/{}" ' +
             'alt="Folder" /> {}').format(image, label)

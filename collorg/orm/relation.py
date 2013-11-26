@@ -271,6 +271,9 @@ class Relation(object):
             if cog_oid:
                 ok = field.name != 'cog_oid' and (
                     field.comp != '=' or field.name == 'cog_fqtn')
+                if (field.name == 'cog_fqtn' and
+                    field.value == 'collorg.core.oid_table'):
+                        ok = False
             if ok:
                 sql_where_repr = field._sql_where_repr(rel_id)
                 if sql_where_repr:
@@ -470,14 +473,15 @@ class Relation(object):
             cls.__inherited_classes = []
             for base in cls.__bases__:
                 if '_cog_schemaname' in base.__dict__:
-                    cls.__inherited_classes.append(
-                        "{}.{}".format(
-                            base._cog_schemaname, base._cog_tablename))
-                    cls.__inherited_classes += cls.__inherited_fqtns(base)
+                    fqtn = "{}.{}".format(
+                        base._cog_schemaname, base._cog_tablename)
+                    if not fqtn in cls.__inherited_classes:
+                        cls.__inherited_classes.append(fqtn)
+                    for cfqtn in cls.__inherited_fqtns(base):
+                        if not cfqtn in cls.__inherited_classes:
+                            cls.__inherited_classes.append(cfqtn)
             cls.__inherited_classes.insert(
-                0,
-                "{}.{}".format(
-                    cls._cog_schemaname, cls._cog_tablename))
+                0, "{}.{}".format(cls._cog_schemaname, cls._cog_tablename))
         return cls.__inherited_classes
 
     def parents_fqtns(self):
