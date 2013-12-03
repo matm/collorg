@@ -22,12 +22,14 @@ if __name__ == '__main__':
     data_oid = raw_input("oid data: ")
     data.cog_oid_.set_intention(data_oid)
     role = the_function._rev_role_
-    role._data_ = data
-    if role.count() == 0:
-        role.insert()
     user = db.table('collorg.actor.user')
     pseudo = raw_input('pseudo: ')
     user.pseudo_.set_intention(pseudo)
     access = user._rev_access_
-    access._role_ = role
-    access.insert()
+    access._data_ = data
+    if not access.is_granted():
+        access = access.insert()
+    access.granted()
+    access = access.get()
+    role._access_ = access
+    role.insert()
