@@ -1,0 +1,8 @@
+# howto maintain i18n translation
+# * create the language directory in data_file/locale/<lang>/LC_MESSAGES
+# * replaces in the following commands 'fr' by your language.
+
+find collorg -name "*.py" > data_files/locale/from_files
+xgettext -j -f data_files/locale/from_files -o data_files/locale/fr/LC_MESSAGES/messages.po
+vi  data_files/locale/fr/LC_MESSAGES/messages.po
+msgfmt data_files/locale/fr/LC_MESSAGES/messages.po -o data_files/locale/fr/LC_MESSAGES/messages.mo

@@ -2,11 +2,12 @@
 # ---
 <div class="no_required" width="420" title="{% _("Connection") %}">
 # >>>
+i18n_su = _("Sign up")
 id = html().random_id()
 lid="log_%s" % id
 register_link = html().a(
-    cog_method = "w3register_form",
-    label = "register")
+    cog_method = "w3sign_up_form",
+    label = "{% i18n_su %}")
 # +++ form_html
 {% html().input( self.cog_oid_, hidden = True ) %}
 <label for="{%lid%}"><b>{% _("login") %}</b></label>
@@ -15,7 +16,7 @@ register_link = html().a(
 
 <input type="hidden" name="cog_method" value="w3login" />
 <button class="action" target="#login_result" data-form-id="{% id %}">
-{% _("Connect") %}
+{% _("Sign in") %}
 </button>
 <div id="login_result"></div>
 {#

@@ -45,8 +45,10 @@ class Function( Actor ):
     def _cog_label(self):
         return ['{}', self.long_name_]
 
-    def users(self, date = None):
-        """returns the users having the function self at date"""
+    def users(self, data = None):
+        """returns the users having the function on data. None if no one"""
         access = self._rev_role_._access_
-        access.at_date = date
-        return access._user_
+        access._data_ = data
+        access.granted()
+        if access.exists():
+            return access._user_

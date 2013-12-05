@@ -14,7 +14,7 @@ if topic:
         ok = True
 if ok:
     clabel = _(self.label_.value.capitalize())
-    label = '<img src="/collorg/images/{}" class="bigicon" alt="{}" title="{}" />'.format(
+    label = '<img src="/collorg/images/{}" class="medicon idx" alt="{}" title="{}" />'.format(
         self.icon_, clabel, clabel)
     if not action.raw_.value:
         icon = html(env).a(

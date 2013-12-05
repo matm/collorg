@@ -1,0 +1,37 @@
+#PRAGMA 'label':'login'
+# >>>
+i18n_su_form = _("Sign up form")
+i18n_su = _("Sign up")
+id = html().random_id()
+# cog_data is a dict with two keys : 'self', 'object'
+# * 'self' is a replacement for
+cog_data = kwargs.get('cog_data', {})
+callback = cog_data.get('callback', 'w3sign_up')
+caller = cog_data.get('caller', self)
+object_form = cog_data.get('object_form', '')
+target = cog_data.get('target', kwargs.get('target', '#cog_container'))
+alien = kwargs.get('alien', False)
+# ---
+<div title="{% i18n_su_form %}">
+# +++ form_html
+{% html(caller).input(caller.cog_oid_, hidden=True) %}
+{% html().input(self.first_name_) %}
+{% html().input(self.last_name_) %}
+{% html().input(self.email_ ) %}
+# >>>
+if not alien:
+    # ---
+    {% html().input(self.password_) %}
+# >>>
+else:
+    # ---
+    <input type="hidden" name="alien_" value="{% alien %}" />
+# ---
+
+<input type="hidden" name="cog_method" value="{% callback %}" />
+<input type="hidden" name="cog_target" value="#{% target %}" />
+<button class="action" data-form-id="{% id %}">{% i18n_su %}</button>
+{% object_form %}
+# --- form_html
+{% html().form(id=id, html=form_html) %}
+</div>

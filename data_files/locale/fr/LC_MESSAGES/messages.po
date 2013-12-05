@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-26 13:52+0100\n"
+"POT-Creation-Date: 2013-12-04 10:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,7 +42,7 @@ msgstr "mot de passe"
 #: collorg/db/actor/user/cog/templates/w3login_form.py:37
 #: build/lib.linux-x86_64-2.7/collorg/db/actor/user/cog/templates/w3login_form.py:37
 #: collorg/db/actor/user/cog/templates/w3login_form.py:36
-msgid "Connect"
+msgid "Sign in"
 msgstr "Connectez-vous"
 
 #: collorg/db/actor/user/cog/templates/w3login_link.py:22
@@ -195,6 +195,7 @@ msgstr "Mots clefs"
 #: collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:27
 #: collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:28
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:28
+#: collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:31
 msgid "private"
 msgstr "privé"
 
@@ -204,6 +205,7 @@ msgstr "privé"
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/file/cog/templates/_w3select_visibility.py:31
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:29
 #: collorg/db/communication/file/cog/templates/_w3select_visibility.py:30
+#: collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:32
 msgid "protected"
 msgstr "intranet"
 
@@ -213,6 +215,7 @@ msgstr "intranet"
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/file/cog/templates/_w3select_visibility.py:32
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:30
 #: collorg/db/communication/file/cog/templates/_w3select_visibility.py:31
+#: collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:33
 msgid "public"
 msgstr "public"
 
@@ -221,6 +224,7 @@ msgstr "public"
 #: data_files/locale/collorg_fields_i18n.py:221
 #: data_files/locale/collorg_fields_i18n.py:226
 #: collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:22
+#: collorg/db/communication/blog/post/cog/templates/_w3select_visibility.py:26
 msgid "Visibility"
 msgstr "Visibilité"
 
@@ -390,7 +394,7 @@ msgstr "par utilisateur"
 #: collorg/controller/web.py:372
 #: build/lib.linux-x86_64-2.7/collorg/controller/web.py:372
 #: collorg/db/actor/user/__init__.py:194 collorg/db/actor/user/__init__.py:195
-#: collorg/controller/web.py:378
+#: collorg/controller/web.py:378 collorg/db/actor/user/__init__.py:192
 msgid "Drag & drop your links here<br>for future reference"
 msgstr "Glissez - déposez vos liens ici<br>pour un usage ultérieur"
 
@@ -2040,3 +2044,7 @@ msgstr "Donner accès à un groupe"
 #: collorg/db/core/base_table/cog/templates/_w3revoke_group_access_link.py:24
 msgid "Revoke group access"
 msgstr "Supprimer l'accès pour le groupe"
+
+#: collorg/db/actor/user/cog/templates/w3register_form.py:22
+msgid "Sign up"
+msgstr "Inscription"

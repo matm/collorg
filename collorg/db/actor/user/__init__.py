@@ -85,6 +85,7 @@ class User(Actor, Groupable):
         * ldap_ : c_oid, FK
         * photo_ : c_oid, FK
         * url_ : url
+        * alien_ : bool
         """
         #<<< AUTO_COG DOC. Your code goes after
         self.__groups = None
@@ -111,11 +112,8 @@ class User(Actor, Groupable):
     def __grant_self_access(self):
         #XXX les tests sont là pour le cas ou des créations partielles sont
         #    encore présentes... À supprimer
-        access = self._rev_access_
-        function = self.db.table('collorg.actor.function')
-        function.name_.set_intention('Collorg actor')
         access = self.db.table('collorg.access.access')
-        access.grant(user=self, data=self, function=function)
+        access.grant(user=self, data=self)
 
     def new_account(self, **kwargs):
         self.db.set_auto_commit(False)
@@ -299,19 +297,21 @@ class User(Actor, Groupable):
         return role.is_granted()
 
     def grant_access(
-        self, data, write = False, function_long_name = None,
+        self, data, write = False, function = None,
         begin_date = None, end_date = None, pourcentage = None):
         access = self._rev_access_
         access._data_ = data
-        if function_long_name is not None:
-            function = self.db.table('collorg.actor.function')
-            function.long_name_.set_intention(function_long_name)
-            access._function_ = function
-        access.grant(
-            self, write = write,
-            begin_date = begin_date, end_date = end_date,
-            pourcentage = pourcentage)
-        sleep(0.5)
+        if not access.is_granted():
+            access.grant(
+                self, write = write,
+                begin_date = begin_date, end_date = end_date,
+                pourcentage = pourcentage)
+        if function is not None:
+            role = access._rev_role_
+            role._function_ = function
+            if not role.exists():
+                role.insert()
+        #sleep(0.5)
 
     def revoke_access(self, data):
         access = self._rev_access_

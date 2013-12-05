@@ -442,6 +442,7 @@ collorg/db/actor/user/cog/templates/w3register.py
 collorg/db/actor/user/cog/templates/w3home_link.py
 collorg/db/actor/user/cog/templates/w3session_login.py
 collorg/db/actor/user/cog/templates/w3edit.py
+collorg/db/actor/user/cog/templates/_w3register_form_inner.py
 collorg/db/actor/user/cog/templates/w3list_functions_link.py
 collorg/db/actor/user/cog/templates/__init__.py
 collorg/db/actor/user/cog/templates/w3login_link.py

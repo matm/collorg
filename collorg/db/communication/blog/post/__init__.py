@@ -176,9 +176,7 @@ class Post(Base_table):
         self = self.insert()
         data_oid and self.link_to_data(data)
         access = self.db.table('collorg.access.access')
-        function = self.db.table('collorg.actor.function')
-        function.long_name_.set_intention('Collorg actor')
-        access.grant(user=user, function=function, data=self, write=True)
+        access.grant(user=user, data=self, write=True)
         tag = self.db.table('collorg.communication.tag')
         tag.wsave(data=self, tags=kwargs.get('tag_', ''))
         if kwargs.get('email'):

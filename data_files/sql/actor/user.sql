@@ -21,5 +21,6 @@ CREATE TABLE "collorg.actor"."user" (
    -- after see user_s_photo.sql for the FK definition
    -- biography WIKI,
    "url" url,
+   alien boolean default 'f',
    PRIMARY KEY( email )
 ) INHERITS( "collorg.actor"."actor" ) ;

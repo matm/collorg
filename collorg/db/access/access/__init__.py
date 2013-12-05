@@ -134,10 +134,10 @@ class Access( Base_table ):
         if this.get().is_granted():
             raise Exception("Access still granted!")
 
-    def granted( self ):
-        self.begin_date_.set_intention( datetime.now(), '<' )
+    def granted(self, begin_date = None, end_date = None):
+        self.begin_date_.set_intention(begin_date or datetime.now(), '<')
         self.end_date_.set_null()
-        self.end_date_ += ( datetime.now(), '>' )
+        self.end_date_ += (end_date or datetime.now(), '>')
         return self
 
     def set_pourcentage(self, pct):
