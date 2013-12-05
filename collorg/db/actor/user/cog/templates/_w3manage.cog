@@ -12,6 +12,7 @@ i18n_add_a_member = _("Add a member")
 method = kwargs['method']
 action = kwargs['action']
 target = kwargs.get('target', '_page_article_')
+function_oid = kwargs.get('function_oid', "")
 data = kwargs['data']
 callback = kwargs['callback']
 id = html.random_id()
@@ -38,6 +39,7 @@ cog_oid_:'{% data.cog_oid_ %}',
 cog_fqtn_:'{% data.cog_fqtn_ %}',
 target:'{% target %}',
 action:'{% action %}',
+function_oid:'{% function_oid %}',
 callback:'{% callback %}'
 });
 });

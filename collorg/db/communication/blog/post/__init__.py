@@ -154,6 +154,7 @@ class Post(Base_table):
         comment_
         important_
         visibility_
+        function_oid
         """
         data_oid = kwargs['data_oid']
         data = kwargs.get('data', self.db.get_elt_by_oid(data_oid))
@@ -175,8 +176,11 @@ class Post(Base_table):
         self.author_.set_intention(user.cog_oid_.value)
         self = self.insert()
         data_oid and self.link_to_data(data)
-        access = self.db.table('collorg.access.access')
-        access.grant(user=user, data=self, write=True)
+        function_oid = kwargs.get('function_oid')
+        function = None
+        if function_oid:
+            function = self.db.get_elt_by_oid(function_oid)
+        user.grant_access(self, function=function, write=True)
         tag = self.db.table('collorg.communication.tag')
         tag.wsave(data=self, tags=kwargs.get('tag_', ''))
         if kwargs.get('email'):

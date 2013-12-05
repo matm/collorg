@@ -55,6 +55,7 @@ $.fn.liveSearch = function (conf) {
 	cog_oid_:undefined,
 	cog_fqtn_:undefined,
 	cog_method:undefined,
+	function_oid:undefined,
 	target:undefined,
 	id: 'jquery-live-search',
 	data_type: undefined,
@@ -191,6 +192,9 @@ $.fn.liveSearch = function (conf) {
 			ref_obj = 'cog_fqtn_=' + config.cog_fqtn_;
 			if(config.cog_oid_){
 			    ref_obj = '&cog_oid_=' + config.cog_oid_;
+			}
+			if(config.function_oid){
+			    ref_obj += '&function_oid=' + config.function_oid;
 			}
 			url ='?' + ref_obj +
 			    '&target=' + config.target +

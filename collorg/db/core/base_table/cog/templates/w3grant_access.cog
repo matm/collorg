@@ -8,9 +8,13 @@ if the object on which the access is granted is a topic, the environment
 associated becomes the topic itself.
 """
 user_oid = kwargs['user_oid']
+function_oid = kwargs.get('function_oid')
+function = None
+if function_oid:
+    function = self.db.get_elt_by_oid(function_oid)
 if cog_user.cog_oid_.value != user_oid:
     user = self.db.get_elt_by_oid(user_oid)
-    user.grant_access(self)
+    user.grant_access(self, function=function)
 if self.fqtn == "collorg.web.topic" and self.cog_environment_.value != self.cog_oid_.value:
     ntopic = self()
     ntopic.cog_environment_.set_intention(self.cog_oid_.value)

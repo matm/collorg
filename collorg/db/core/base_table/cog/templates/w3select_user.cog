@@ -1,5 +1,6 @@
 #PRAGMA 'label':"Select a user"
 # >>>
+function_oid = kwargs.get('function_oid', "")
 callback = kwargs['callback']
 action = kwargs['action']
 target = kwargs['target']
@@ -13,7 +14,7 @@ user.order_by(user.last_name_)
 # >>>
 for elt in user:
     list_elt = html(self).a(
-        label = elt.cog_label(), cog_method=action,
+        label = elt.cog_label(), cog_method=action, function_oid=function_oid,
         user_oid=elt.cog_oid_.value, target=target, callback=callback)
     # ---
     <li>{% list_elt %}</li>
