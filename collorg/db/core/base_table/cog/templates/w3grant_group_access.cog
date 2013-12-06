@@ -10,6 +10,7 @@ associated becomes the topic itself.
 group_oid = kwargs['group_oid']
 group = self.db.get_elt_by_oid(group_oid)
 group.grant_access(self)
+self._wipe_cache()
 if self.fqtn == "collorg.web.topic" and self.cog_environment_.value != self.cog_oid_.value:
     ntopic = self()
     ntopic.cog_environment_.set_intention(self.cog_oid_.value)
