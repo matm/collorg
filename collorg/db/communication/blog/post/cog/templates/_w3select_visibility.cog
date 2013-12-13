@@ -1,4 +1,4 @@
-#PRAGMA 'tasks':['Blog edition']
+#PRAGMA 'tasks':['Authenticated navigation']
 #PRAGMA 'label':'Visibility selection'
 #PRAGMA 'strip':True
 # >>>

@@ -254,13 +254,14 @@ class User(Actor, Groupable):
         return (data.members * self).count() > 0
 
     def has_access(self, data, write = None):
+        data_oid = data.cog_oid_
         data_base = self.db.table('collorg.core.base_table')
-        data_base.cog_oid_.set_intention(data.cog_oid_)
+        data_base.cog_oid_.set_intention(data_oid)
         data_env = data_base()
         access = self.db.table('collorg.access.access')
         access.user_.set_intention(self.cog_oid_.value)
         data_env.cog_oid_.set_intention(data_base.cog_environment_)
-        access.data_.set_intention(data.cog_oid_)
+        access.data_.set_intention(data_oid)
         access.data_ += (data_env.cog_oid_, '=')
         if write: #XXX ??? Do not remove (weird)
             access.write_.set_intention(write)
@@ -269,7 +270,7 @@ class User(Actor, Groupable):
         group_access = self.db.table('collorg.access.group_access')
         if write:
             group_access.write_.set_intention(write)
-        group_access.accessed_data_.set_intention(data.cog_oid_.value)
+        group_access.accessed_data_.set_intention(data_oid.value)
         return group_access.exists() and self.has_access(
             group_access._group_data_, write)
 
@@ -303,14 +304,14 @@ class User(Actor, Groupable):
         access._data_ = data
         if not access.is_granted():
             access.grant(
-                self, write = write,
-                begin_date = begin_date, end_date = end_date,
+                self, write=write, begin_date=begin_date, end_date=end_date,
                 pourcentage = pourcentage)
         if function is not None:
             role = access._rev_role_
             role._function_ = function
             if not role.exists():
                 role.insert()
+        return access
         #sleep(0.5)
 
     def revoke_access(self, data):

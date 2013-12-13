@@ -35,3 +35,31 @@ class Task( Base_table ):
         #<<< AUTO_COG DOC. Your code goes after
         super( Task, self ).__init__( db, **kwargs )
 
+    @property
+    def functions(self):
+        return self._rev_a_task_function_._function_
+
+    @property
+    def actions(self):
+        return self._rev_a_action_task_._action_
+
+    @property
+    def goals(self):
+        return self._rev_a_task_goal_._goal_
+
+    def delete(self):
+        self.db.set_auto_commit(False)
+
+        actions = self.actions
+        actions_oids = [
+            elt.cog_oid_.value for elt in actions.select(nodelay=True)]
+        actions = actions()
+        self._rev_a_action_task_.delete()
+        self._rev_a_task_function_.delete()
+        self._rev_a_task_goal_.delete()
+
+        actions.cog_oid_.set_intention(actions_oids)
+        actions.delete()
+        super(self.__class__, self).delete()
+
+        self.db.commit()

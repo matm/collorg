@@ -144,7 +144,7 @@ class Post(Base_table):
         napd._data_ = to_
         apd.update(napd)
 
-    def winsert(self, user, **kwargs):
+    def winsert(self, user, grant_access=True, **kwargs):
         """
         data_oid
         title_
@@ -180,13 +180,14 @@ class Post(Base_table):
         function = None
         if function_oid:
             function = self.db.get_elt_by_oid(function_oid)
-        user.grant_access(self, function=function, write=True)
+        if grant_access:
+            user.grant_access(self, function=function, write=True)
         tag = self.db.table('collorg.communication.tag')
         tag.wsave(data=self, tags=kwargs.get('tag_', ''))
         if kwargs.get('email'):
             self.mail()
         sleep(0.5) #XXX insert
-        self.get()
+        self.get().w3display()
         self._wipe_cache()
         return self
 

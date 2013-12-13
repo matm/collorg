@@ -60,7 +60,7 @@ class Access_ca(Table):
                         action, **kwargs):
                             continue
                     l_actions.append(icon)
-        if user.has_access(topic):
+        if topic.cog_oid_.is_constrained and user.has_access(topic):
             av = self()
             av.in_header_.set_intention(True)
             av.fqtn_.set_intention('collorg.web.topic')

@@ -47,7 +47,8 @@ def _template(func):
         kw.pop('cog_first_call', None)
         #? wma
         if not ctrl.check(self, func):
-            return "<!-- access denied -->"
+            return "<!-- access denied: {}.{} -->".format(
+                self.fqtn, func_name)
         if 'cog_alt_target' in kw:
             kw['target'] = kw['cog_alt_target']
         f_res = func(

@@ -72,7 +72,7 @@ class FieldIntention(object):
                 self.__is_constrained = False
                 return
         self.__val = val
-        self.__quoted_val = self.quoted_val
+        self.__quoted_val = self.quoted_val()
 
     def set_null(self):
         self.__val = "NULL"
@@ -102,15 +102,14 @@ class FieldIntention(object):
     def value(self):
         return self.__raw_value
 
-    @property
-    def quoted_val(self):
+    def quoted_val(self, val = None):
         """
         @return: the escaped SQL value.
         @raise exception: if the value can't be escaped.
         """
         if not self.__is_constrained:
             return None
-        val = self.__val
+        val = val or self.__val
         if not self.__null:
             if val.__class__ is self.__field.__class__:
                 table = val.table
@@ -119,9 +118,20 @@ class FieldIntention(object):
                     ref_field = table.__dict__[self.__field.f_fieldname]
                 val = "\n(\n%s)" % (table._cog_new_select([ref_field]))
                 return val
-            elif type(self.__val) != bool and self.__val is not None:
-                val = str(self.__val).replace("'", "''")#.replace("\\", "\\\\")
-                return "'%s'" % (val)
+            elif type(val) != bool and val is not None:
+                if (type(val) is not tuple and
+                    type(val) is not list):
+                        val = str(val).replace("'", "''")
+                            #.replace("\\", "\\\\")
+                        return "'%s'" % (val)
+                else:
+                    if len(val) > 1:
+                        self.__comp = 'in'
+                        l_vals = [elt for elt in val]
+                        print(l_vals)
+                        return tuple(l_vals)
+                    elif len(val) == 1:
+                        return str(self.quoted_val(val[0]))
             elif type(val) is bool:
                 if val:
                     return "'t'"
@@ -131,7 +141,7 @@ class FieldIntention(object):
         raise RuntimeError("Not here! %s\n" % (val))
 
     def __single_sql_where_repr(self):
-        val = self.quoted_val
+        val = self.quoted_val()
         if val is None:
             return None
         field_name = self.__field.id_name
@@ -139,7 +149,7 @@ class FieldIntention(object):
         if self.__field.unaccent:
             field_name = "unaccent(%s)" % field_name
             val = "unaccent(%s::text)" % val
-        res = " ".join([field_name, comp, val])
+        res = " ".join([field_name, comp, str(val)])
         return res
 
     def _sql_where_repr(self, res = ""):

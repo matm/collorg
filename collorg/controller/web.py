@@ -331,7 +331,6 @@ class WebController(Controller):
         """
         self._json_res['#cog_debug_link'] = ''
         self._json_res['#cog_debug'] = ''
-        self._json_res['#left_bar_post'] = ''
         self.__get_params()
         self.db._set_controller(self)
         #self._cog_cmd = self.__environment

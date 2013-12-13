@@ -298,9 +298,8 @@ class Field(object):
     def __le__(self, arg):
         return not(self.__ge__(arg))
 
-    @property
     def quoted_val(self):
-        return str(self.__intention.quoted_val)
+        return str(self.__intention.quoted_val())
 
     def __str__(self):
         return "{}".format(self.__intention.val).replace(

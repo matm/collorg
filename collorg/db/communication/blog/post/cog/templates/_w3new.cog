@@ -1,8 +1,6 @@
 #PRAGMA 'write':True
 #PRAGMA 'strip':True
-#PRAGMA 'goals':['Blog']
-#PRAGMA 'tasks':['Blog edition']
-#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'tasks':['Authenticated navigation']
 #PRAGMA 'label':'New post'
 #PRAGMA 'in_menu':False
 # >>>
@@ -12,10 +10,12 @@ i18n_tags = _("Tags")
 i18n_ac = _("Allow comments")
 i18n_save = _("Save")
 i18n_new = _("new")
-i18n_instructions = _("""File attachement and post references can only be made 
-once the post is saved.""")
+i18n_instructions = kwargs.get(
+    'instructions',
+    _("""File attachement and post references can only be made once the post is saved."""))
 form_id = html.random_id()
 ip_id = "ip_{}".format(form_id)
+introductory_paragraph = kwargs.get('introductory_paragraph', True)
 data_oid = kwargs.get('topic_oid') or kwargs.get('data_oid')
 if data_oid == 'None' or data_oid is None:
     raise ValueError("!!!")
@@ -26,7 +26,8 @@ if data.fqtn == "collorg.web.topic" and data.post_type_.value:
     {% new_post._w3new(**kwargs) %}
 # >>>
 else:
-    post_choice = self.w3select_type(data=data, **kwargs)
+    post_choice = kwargs.get(
+        'post_choice', self.w3select_type(data=data, **kwargs))
     tag = self.db.table('collorg.communication.tag')
     fqtn = kwargs['post_fqtn']
     sub = self.db.table(kwargs['post_fqtn'])
@@ -40,27 +41,27 @@ else:
     <h2>{% post_choice %}</h2>
     {% html(self).input(self.title_, css_class="all_width") %}
     <p><label for="{% ip_id %}"><b>{% i18n_introductory_paragraph %}</b></label></p>
-    <textarea id="{% ip_id %}" name="introductory_paragraph_"
+    # >>>
+    if introductory_paragraph:
+        # ---
+        <textarea id="{% ip_id %}" name="introductory_paragraph_"
+    # ---
     rows="3" required="required"></textarea>
     {% html(self).input(self.text_) %}
     <input type="hidden" name="data_oid" value="{% data_oid %}" />
     <input type="hidden" name="cog_fqtn_" value="{% fqtn %}" />
     <input type="hidden" name="cog_method" value="w3insert" />
     <input type="hidden" name="public_" value="True" />
-{#
-    <input type="hidden" name="important_" value="True" />
-#}
     {% sub.w3new_post_sub(**kwargs) %}
     <b>{% i18n_tags %}</b> ({% i18n_cs %})
     <input class="all_width" type="text" name = "tag_" />
     <p>
     <label>{% i18n_ac %} <input type="checkbox" name="comment_" /></label>
     </p>
-    <p>{% self._w3select_visibility() %}
+    {% self._w3select_visibility() %}
     <button class="action" target="_page_" data-form-id="{% form_id %}">
     {% i18n_save %}
     </button> {% i18n_new %} {% self.cog_type_name %} {% _("in") %} <em>{% data.cog_label() %}</em>
-    </p>
     # --- form_html
     {% html().form(id = form_id, html = form_html) %}
     </div>

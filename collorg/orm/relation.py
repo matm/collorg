@@ -237,7 +237,7 @@ class Relation(object):
             [ '"%s"' % field.orig_name for field in l_fields ])
         req += "VALUES\n"
         req += "(%s)" % ",\n".join(
-            [ field.quoted_val for field in l_fields ])
+            [ field.quoted_val() for field in l_fields ])
         if oid_req:
             req = "BEGIN\n;%s; --++++\n%s;--+++++\nEND;\n" % (req, oid_req)
         return req, cog_oid
@@ -291,7 +291,8 @@ class Relation(object):
         return False
 
     def get_extent(
-        self, expected = -1, fields = None, just_return_sql = False):
+        self, expected=-1, fields=None, just_return_sql=False,
+        nodelay=False):
         if not self.__sql_req_loaded:
             sql_req = self._cog_new_select(fields = fields)
         else:
@@ -300,7 +301,7 @@ class Relation(object):
         if just_return_sql:
             return sql_req
         try:
-            extension = self.db.get_query_res(sql_req)
+            extension = self.db.get_query_res(sql_req, nodelay=nodelay)
         except Exception as e:
             self.db.rollback()
             raise CustomError("select error: %s\n%s" % (e, sql_req))

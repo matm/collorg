@@ -266,7 +266,7 @@ class Table(Relation):
                 clause = True
                 l_fields.append(field)
         what = ", ".join(
-            ['"%s" = %s' % (field.name, field.quoted_val) for field in l_fields])
+            ['"%s" = %s' % (field.name, field.quoted_val()) for field in l_fields])
         self.__sql = "UPDATE %s SET %s" % (new_.sql_fqtn, what)
         l_fields = []
         for field in self._cog_fields:

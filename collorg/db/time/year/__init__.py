@@ -30,3 +30,10 @@ class Year( Base_table ):
         #<<< AUTO_COG DOC. Your code goes after
         super( Year, self ).__init__( db, **kwargs )
 
+    def check(self, num):
+        """
+        Checks if the year is present. If not inserts it in the table
+        """
+        self.num_.set_intention(num)
+        if self.count() == 0:
+            self.insert()

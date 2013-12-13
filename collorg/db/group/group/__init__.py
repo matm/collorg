@@ -54,15 +54,16 @@ class Group( Base_table ):
         """
         return self._rev_calendar_._rev_a_event_calendar_._event_
 
-    def __set_group_access(self, data):
+    def __set_group_access(self, data, write):
         assert self.count() == 1 and data.count() == 1
         ga = self.db.table('collorg.access.group_access')
         ga._accessed_data_ = data
         ga._group_data_ = self
+        ga.write_.set_intention(write)
         return ga
 
-    def grant_access(self, data):
-        ga = self.__set_group_access(data)
+    def grant_access(self, data, write=False):
+        ga = self.__set_group_access(data, write)
         if not ga.exists():
             ga.insert()
 
