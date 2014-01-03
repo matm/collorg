@@ -167,7 +167,7 @@
         links.each(function(){
             //trace_page && console.log(' * ' + $(this).attr('page_ref'));
             $('#cog_ariadne_menu').append($(this).clone());
-            $('#cog_ariadne_menu > a').wrap('<li/>');
+            $('#cog_ariadne_menu > a').wrap('<li class="ui-menu-item" />');
             $('#cog_ariadne_menu').menu();
         });
         var page_id = $('#cog_container > section.page.active').attr('id');

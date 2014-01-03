@@ -8,9 +8,9 @@ install: restart_apache
 restart_apache:
 	if [ -f /etc/init.d/apache2 ]; then sudo service apache2 restart; fi
 
-clean_all: clean clean_templates clean_install clean_share
+clean_all: clean clean_templates clean_install
 
-clean: restart_apache
+clean: clean_share restart_apache
 	sudo rm -rf build/ dist/ collorg.egg-info/ collorg/collorg.egg-info/
 	find $(DIRS) -name "*.orig" -exec rm -f {} \;
 	find $(DIRS) -name "*.pyc" -exec rm -f {} \;

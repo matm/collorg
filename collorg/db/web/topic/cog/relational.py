@@ -51,8 +51,8 @@ _site_ = property(
 
 # REVERSE
 @property
-def _rev_topic_graph_(self):
-    elt = self.db.table('collorg.web.topic_graph')
+def _rev_a_rss_topic_(self):
+    elt = self.db.table('collorg.web.a_rss_topic')
     elt._topic_ = self
     if 'cog_oid_' in self.__dict__ and self.cog_oid_.value:
         if not '_cog_direct_refs' in elt.__dict__.keys():
@@ -83,16 +83,6 @@ def _rev_wall_parent_(self):
 @property
 def _rev_a_topic_function_(self):
     elt = self.db.table('collorg.access.a_topic_function')
-    elt._topic_ = self
-    if 'cog_oid_' in self.__dict__ and self.cog_oid_.value:
-        if not '_cog_direct_refs' in elt.__dict__.keys():
-            elt._cog_direct_refs = []
-        elt._cog_direct_refs.append(self.cog_oid_.value)
-    return elt
-
-@property
-def _rev_a_rss_topic_(self):
-    elt = self.db.table('collorg.web.a_rss_topic')
     elt._topic_ = self
     if 'cog_oid_' in self.__dict__ and self.cog_oid_.value:
         if not '_cog_direct_refs' in elt.__dict__.keys():

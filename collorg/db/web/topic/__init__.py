@@ -16,11 +16,10 @@ class Topic(Post):
     _author_ = cog_r._author_
     _site_ = cog_r._site_
     # REVERSE
-    _rev_topic_graph_ = cog_r._rev_topic_graph_
+    _rev_a_rss_topic_ = cog_r._rev_a_rss_topic_
     _rev_wall_topic_ = cog_r._rev_wall_topic_
     _rev_wall_parent_ = cog_r._rev_wall_parent_
     _rev_a_topic_function_ = cog_r._rev_a_topic_function_
-    _rev_a_rss_topic_ = cog_r._rev_a_rss_topic_
     #<<< AUTO_COG REL_PART. Your code goes after
     __cog_type_name = 'Folder'
     _is_cog_folder = True

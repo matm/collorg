@@ -14,6 +14,8 @@ d_tables = {
         'core/database.sql',
         'core/namespace.sql',
         'core/data_type.sql',
+        'core/view/sch.sql',
+        'core/view/lost_found.sql',
         #'core/field_type.sql',
         'core/field.sql',
         'core/checked_val.sql',
@@ -156,7 +158,6 @@ d_tables = {
     'web2': [
         'web/topic.sql',
         'web/wall.sql',
-        'web/topic_graph.sql',
     ],
     'documentation': [
         'documentation/sch_documentation.sql',

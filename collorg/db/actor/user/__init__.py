@@ -267,6 +267,11 @@ class User(Actor, Groupable):
             access.write_.set_intention(write)
         if access.is_granted():
             return True
+        # if no direct access we look at the groups
+        # 1 - has a group_access been defined on the checked data.
+        #     Warning! we might have more than one group access defined.
+        # 2 - if a group exists and self (user) has an access granted
+        #     on the group, then the access is granted
         group_access = self.db.table('collorg.access.group_access')
         if write:
             group_access.write_.set_intention(write)

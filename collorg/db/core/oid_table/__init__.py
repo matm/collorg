@@ -25,7 +25,6 @@ class Oid_table( TClass ):
 
     from .cog import relational as cog_r
     # REVERSE
-    _rev_poll_ = cog_r._rev_poll_
     _rev_a_tag_post_ = cog_r._rev_a_tag_post_
     _rev_hierarchy_parent_ = cog_r._rev_hierarchy_parent_
     _rev_hierarchy_child_ = cog_r._rev_hierarchy_child_
@@ -45,7 +44,7 @@ class Oid_table( TClass ):
     _rev_a_post_data_post_ = cog_r._rev_a_post_data_post_
     _rev_a_post_data_data_ = cog_r._rev_a_post_data_data_
     _rev_translation_ = cog_r._rev_translation_
-    _rev_topic_graph_ = cog_r._rev_topic_graph_
+    _rev_poll_ = cog_r._rev_poll_
     _rev_comment_ = cog_r._rev_comment_
     #<<< AUTO_COG REL_PART. Your code goes after
     __d_members_queries = {}
