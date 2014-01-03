@@ -188,6 +188,7 @@ class User(Actor, Groupable):
             f_.remove_session_repos(key)
 #                self._cog_controller.set_user()
         site = self._cog_controller.load_site()
+        
         home_site_link = ""
         cart_msg = self._cog_controller.i18n.gettext(
             'Drag & drop your links here<br>for future reference')
@@ -199,6 +200,8 @@ class User(Actor, Groupable):
             '#cog_session':self._cog_controller.new_session,
             '#cog_cart ul':reset_cart,
             '#cog_user_actions':'',
+            '#page_ref':self._cog_controller.get_page_ref(
+                'w3display', site.cog_oid_.value),
             '#cog_container':site.w3display(cog_first_call = True)})
 
     def __authentication(self, login, password, domain):
