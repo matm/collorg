@@ -56,12 +56,15 @@ if len(d_posts):
     itopic = self.db.table('collorg.web.topic')
     for key, elt in d_posts.items():
         se = elt[0]
-        if se.post_visibility_ == 'private' and cog_user:
+        if se.post_visibility_ == 'private':
+            if not cog_user:
+                continue
             ch_post = post()
             ch_post.cog_oid_.set_intention(se.cog_oid_)
             ch_post = ch_post.get()
             if not cog_user.has_access(ch_post):#ch_post.check_visibility(cog_user):
                 continue
+
         remove_link = ''
 {#
         # ---

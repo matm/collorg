@@ -188,7 +188,7 @@ class User(Actor, Groupable):
             f_.remove_session_repos(key)
 #                self._cog_controller.set_user()
         site = self._cog_controller.load_site()
-        
+
         home_site_link = ""
         cart_msg = self._cog_controller.i18n.gettext(
             'Drag & drop your links here<br>for future reference')
