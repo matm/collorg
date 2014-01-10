@@ -136,6 +136,38 @@ class Cmd():
                 for task in tasks:
                     ta_ = self.db_.table('collorg.application.task')
                     ta_.name_.set_intention(task.name_.value)
+                    if not ta_.exists():
+                        # XXX  mettre une méthode pour faire ce qui suit
+                        ta_.delegable_.set_intention(task.delegable_.value)
+                        ta_.description_.set_intention(task.description_.value)
+                        ta_.insert()
+                        orig_goal = task._rev_a_task_goal_._goal_
+                        if orig_goal.exists():
+                            orig_goal.get()
+                            goal = self.db_.table('collorg.application.goal')
+                            goal.name_.set_intention(orig_goal.name_.value)
+                            goal.insert()
+                            atg = goal._rev_a_task_goal_
+                            atg._task_ = ta_
+                            atg.insert()
+                        orig_function = task._rev_a_task_function_._function_
+                        orig_function.get()
+                        function = self.db_.table('collorg.actor.function')
+                        function.name_.set_intention(orig_function.name_.value)
+                        if not function.exists():
+                            function.fname_.set_intention(
+                                orig_function.fname_.value)
+                            function.long_name_.set_intention(
+                                orig_function.long_name_.value)
+                            function.advertise_.set_intention(
+                                orig_function.advertise_.value)
+                            # XXX check if data_type exists
+                            function.data_type_.set_intention(
+                                orig_function.data_type_.value)
+                            function.insert()
+                        atf = function._rev_a_task_function_
+                        atf._task_ = ta_
+                        atf.insert()
                     ta_.get()
                     aat = aa_._rev_a_action_task_
                     aat._task_ = ta_

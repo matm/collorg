@@ -2,6 +2,10 @@
 target = html.random_id()
 user_oid = self.cog_oid_.val
 assert user_oid
+if cog_user.cog_oid_.value == user_oid:
+    # ---
+    <h3>{% cog_user.w3manage_account_link() %}</h3>
+# >>>
 unit = self.get_granted_data('collorg.organization.unit')
 if unit.exists():
     pl_unit = unit.count() > 1 and "s" or ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-04 10:06+0100\n"
+"POT-Creation-Date: 2014-01-09 23:11+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,6 +28,7 @@ msgstr "Connexion"
 #: collorg/db/actor/user/cog/templates/w3login_form.py:31
 #: build/lib.linux-x86_64-2.7/collorg/db/actor/user/cog/templates/w3login_form.py:31
 #: collorg/db/actor/user/cog/templates/w3login_form.py:30
+#: collorg/db/actor/user/cog/templates/w3login_form.py:32
 msgid "login"
 msgstr "identifiant"
 
@@ -180,6 +181,7 @@ msgstr "prévisualisation"
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3new.py:27
 #: collorg/db/communication/blog/post/cog/templates/_w3new.py:28
 #: collorg/db/communication/blog/post/cog/templates/w3edit_tags.py:28
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:26
 msgid "comma separated"
 msgstr "séparateur: virgule"
 
@@ -189,6 +191,7 @@ msgstr "séparateur: virgule"
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3new.py:28
 #: collorg/db/communication/blog/post/cog/templates/_w3new.py:29
 #: collorg/db/communication/blog/post/cog/templates/w3edit_tags.py:29
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:27
 msgid "Tags"
 msgstr "Mots clefs"
 
@@ -306,6 +309,7 @@ msgstr ""
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/_w3new.py:29
 #: collorg/db/communication/blog/post/cog/templates/_w3new.py:30
 #: collorg/db/communication/blog/post/cog/templates/w3edit.py:28
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:28
 msgid "Allow comments"
 msgstr "Autoriser les commentaires"
 
@@ -318,6 +322,7 @@ msgstr "Autoriser les commentaires"
 #: data_files/locale/collorg_fields_i18n.py:284
 #: collorg/db/communication/blog/post/cog/templates/w3save_link.py:33
 #: collorg/db/web/topic/cog/templates/_w3new.py:26
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:29
 msgid "Save"
 msgstr "Enregistrer"
 
@@ -326,6 +331,7 @@ msgstr "Enregistrer"
 #: collorg/db/web/topic/cog/templates/_w3new.py:28
 #: collorg/db/communication/blog/post/cog/templates/_w3new.py:32
 #: collorg/db/web/topic/cog/templates/_w3new.py:27
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:30
 msgid "new"
 msgstr "nouveau"
 
@@ -375,19 +381,19 @@ msgstr "Déposer le lien d'un \"post\" ici pour le publier dans ce dossier"
 
 #: collorg/controller/web.py:369
 #: build/lib.linux-x86_64-2.7/collorg/controller/web.py:369
-#: collorg/controller/web.py:375
+#: collorg/controller/web.py:375 collorg/controller/web.py:374
 msgid "search"
 msgstr "rechercher"
 
 #: collorg/controller/web.py:370
 #: build/lib.linux-x86_64-2.7/collorg/controller/web.py:370
-#: collorg/controller/web.py:376
+#: collorg/controller/web.py:376 collorg/controller/web.py:375
 msgid "by tag"
 msgstr "par mot clef"
 
 #: collorg/controller/web.py:370
 #: build/lib.linux-x86_64-2.7/collorg/controller/web.py:370
-#: collorg/controller/web.py:376
+#: collorg/controller/web.py:376 collorg/controller/web.py:375
 msgid "by user"
 msgstr "par utilisateur"
 
@@ -395,6 +401,7 @@ msgstr "par utilisateur"
 #: build/lib.linux-x86_64-2.7/collorg/controller/web.py:372
 #: collorg/db/actor/user/__init__.py:194 collorg/db/actor/user/__init__.py:195
 #: collorg/controller/web.py:378 collorg/db/actor/user/__init__.py:192
+#: collorg/controller/web.py:377 collorg/db/actor/user/__init__.py:198
 msgid "Drag & drop your links here<br>for future reference"
 msgstr "Glissez - déposez vos liens ici<br>pour un usage ultérieur"
 
@@ -524,6 +531,7 @@ msgstr "Pour l'édition, veuillez contacter"
 #: data_files/locale/collorg_fields_i18n.py:110
 #: collorg/db/communication/blog/post/cog/templates/w3edit.py:26
 #: collorg/db/communication/blog/post/cog/templates/_w3new.py:26
+#: collorg/db/communication/blog/post/cog/templates/_w3new.py:25
 msgid "Introductory paragraph"
 msgstr "Accroche"
 
@@ -2045,5 +2053,101 @@ msgid "Revoke group access"
 msgstr "Supprimer l'accès pour le groupe"
 
 #: collorg/db/actor/user/cog/templates/w3register_form.py:22
+#: collorg/db/actor/user/cog/templates/w3sign_up_form.py:22
+#: collorg/db/actor/user/cog/templates/w3login_form.py:23
 msgid "Sign up"
 msgstr "Inscription"
+
+#: collorg/db/actor/user/cog/templates/w3home.py:19
+#: collorg/db/actor/user/cog/templates/w3manage_account_link.py:26
+msgid "Manage account"
+msgstr "Gestion du compte"
+
+#: collorg/db/actor/user/cog/templates/w3sign_up_form.py:21
+msgid "Sign up form"
+msgstr "Formulaire d'inscription"
+
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:26
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:27
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:28
+msgid "Change password"
+msgstr "Modifier le mot de passe"
+
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:27
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:28
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:29
+msgid "Current password"
+msgstr "Mot de passe actuel"
+
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:28
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:29
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:30
+msgid "New password"
+msgstr "Nouveau mot de passe"
+
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:29
+msgid "Retype new password"
+msgstr "Retapez le nouveau mot de passe"
+
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:26
+msgid "Password Modification"
+msgstr "Modification du mot de passe"
+
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:30
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:31
+msgid "check"
+msgstr "vérification"
+
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:65
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:67
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:75
+msgid "very weak"
+msgstr "très faible"
+
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:66
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:68
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:76
+msgid "weak"
+msgstr "faible"
+
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:67
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:69
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:77
+msgid "better"
+msgstr "encore un effort"
+
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:68
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:70
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:78
+msgid "medium"
+msgstr "moyenne"
+
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:69
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:71
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:79
+msgid "strong"
+msgstr "bonne"
+
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:70
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:72
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:80
+msgid "strongest"
+msgstr "très bonne"
+
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:88
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:90
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:98
+msgid "Strength: "
+msgstr "Robustesse : "
+
+#: collorg/db/actor/user/cog/templates/w3change_password.py:26
+msgid "Your password has been changed"
+msgstr "Votre mot de passe a été modifié"
+
+#: collorg/db/actor/user/cog/templates/w3change_password.py:27
+msgid "Wrong password"
+msgstr "Mauvais mot de passe"
+
+#: collorg/db/actor/user/cog/templates/w3change_password_form.py:27
+msgid "Your password is in a LDAP directory. It cannot be changed by this application."
+msgstr "Votre mot de passe est géré par un annuaire LDAP. Il ne peut être modifié par cette application."

@@ -1,0 +1,12 @@
+#PRAGMA 'write':True
+#PRAGMA 'goals':['Manage account']
+#PRAGMA 'tasks':['Manage account']
+#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'label':"Manage account link"
+#PRAGMA 'in_menu':False
+# >>>
+i18n_manage_account = _("Manage account")
+if self.cog_oid_.value == cog_user.cog_oid_.value:
+    # link = self.w3manage_account.link()
+    # ---
+    {% html().a(cog_method="w3manage_account", label=i18n_manage_account) %}

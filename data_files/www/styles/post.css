@@ -39,6 +39,10 @@
     display: inline;
     border-bottom: 0px;
 }
+.post_item>h1, .post_item>h2, .post_item>h3, .post_item>h4, .post_item>h5{
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
 #cog_container>.post_title.stuck{
     margin-top: 0em;
 }

@@ -1,7 +1,7 @@
 # >>>
 login = kwargs['login'].strip().lower()
 password = kwargs['password_']
-domain = kwargs.get('domain', '')
+domain = kwargs.get('domain', '')  #XXX not used ?
 cog_session = self.login(login, password, domain)
 if cog_session:
     # >>>

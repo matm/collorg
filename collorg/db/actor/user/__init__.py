@@ -115,6 +115,12 @@ class User(Actor, Groupable):
         access = self.db.table('collorg.access.access')
         access.grant(user=self, data=self)
 
+    def __encrypt_password(self, password):
+        salt = uuid.uuid4()
+        salted_password = "%s%s" % (salt, password)
+        return (salt,
+                hashlib.sha256(salted_password.encode('utf-8')).hexdigest())
+
     def new_account(self, **kwargs):
         self.db.set_auto_commit(False)
         new = self()
@@ -125,11 +131,9 @@ class User(Actor, Groupable):
         new.first_name_.set_intention(kwargs['first_name_'] or " ")
         new.last_name_.set_intention(kwargs['last_name_'] or " ")
         new.ldap_.set_intention(kwargs.get('ldap_', None))
-        password = kwargs.get('password_', uuid.uuid4())
-        salt = uuid.uuid4()
-        salted_password = "%s%s" % (salt, password)
-        new.password_.set_intention(
-            hashlib.sha256(salted_password.encode('utf-8')).hexdigest())
+        salt, enc_password = self.__encrypt_password(
+            kwargs.get('password_', uuid.uuid4()))
+        new.password_.set_intention(enc_password)
         new.validation_key_.set_intention(salt)
         new.insert()
         topic = new._rev_topic_
@@ -218,6 +222,8 @@ class User(Actor, Groupable):
             if self.ldap_.val is None:
                 return self.__db_auth(password)
         # we check for an ldap account even if it's not yet in the db
+        #XXX only if it's open bar. Some applications use ldap and have
+        # restricted access to a subset of the ldap users.
         if ldap_:
             try:
                 user_info, domain = self.__ldap_auth(login, password, domain)
@@ -336,3 +342,16 @@ class User(Actor, Groupable):
         access = self._rev_access_
         access._data_ = data
         access.grant_write()
+
+    def update_passwd(self, **kwargs):
+        password = kwargs['password_']
+        new_password = kwargs['new_password']
+        ok = self.__authentication(self.pseudo_.value, password, '')
+        if ok:
+            salt, enc_password = self.__encrypt_password(new_password)
+            user = self()
+            user.password_.set_intention(enc_password)
+            user.validation_key_.set_intention(salt)
+            self.update(user)
+            return True
+        return False
