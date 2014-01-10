@@ -344,7 +344,7 @@ class User(Actor, Groupable):
         access.grant_write()
 
     def update_passwd(self, **kwargs):
-        password = kwargs['password_']
+        password = kwargs['old_password']
         new_password = kwargs['new_password']
         ok = self.__authentication(self.pseudo_.value, password, '')
         if ok:
