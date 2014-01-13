@@ -57,12 +57,16 @@ if data_type and environment:
     except:
         data_type_list = self.db.table(data_type)
     if data_type_list is not None:
-        topics_list = self()
-        topics_list.cog_environment_.set_intention(data_type_list.cog_oid_)
-        topics_list.path_info_.set_intention('')
-        if topics_list.exists():
-            a_topics = eval("topics_list.{}(**kwargs)".format(action))
-        else:
+        try:
+            #XXX pb ici
+            topics_list = self()
+            topics_list.cog_environment_.set_intention(data_type_list.cog_oid_)
+            topics_list.path_info_.set_intention('')
+            if topics_list.exists():
+                a_topics = eval("topics_list.{}(**kwargs)".format(action))
+            else:
+                a_topics = eval("data_type_list.{}(**kwargs)".format(action))
+        except:
             a_topics = eval("data_type_list.{}(**kwargs)".format(action))
         # ---
         {% a_topics %}
