@@ -319,9 +319,9 @@ class Html():
         textarea = ['wiki', 'text']
         match_type = ['email', 'password']
         html_label = '<label for="%s"><b>%s</b></label> '
-        html_input = '%s%s<input id="%s" %s %s type="%s" name="%s" value="%s" />%s'
+        html_input = '%s%s<input id="%s" %s %s %s type="%s" name="%s" value="%s" />%s'
         html_textarea =(
-            '%s %%s%%s<div class="%s"><textarea id="%%s" %%s %%s %%s ' +
+            '%s %%s%%s<div class="%s"><textarea id="%%s" %%s %%s %%s %%s ' +
             'rows="%s" name="%%s">%%s</textarea>%%s</div>' +
             '<div class="render_wiki"></div>')
 
@@ -359,14 +359,16 @@ class Html():
                 field.sql_type == 'wiki' and " (%s)" % wikicreole_link or '',
                 field.sql_type, rows)
             type_ = ''
+        placeholder = ''
         if required and not hidden:
+            placeholder = 'placeholder="%s"' % (self._("required"))
             label = '{} <span class="required"><em>{}</em></span>'.\
                 format(label, self._("required"))
         self.__html = "%s%s %s" % (label and html_label % (rid, label),
                     directive,
                     html_input % (
                         view_wiki, edit_wiki,
-                        rid, required, css_class, type_,
+                        rid, placeholder, required, css_class, type_,
                         name, value, comments))
         if not inline:
             self.__html = '<div class="highlight"><p>%s</p></div>' % (
