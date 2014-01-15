@@ -9,6 +9,14 @@ from datetime import datetime
 from collorg.db.core.base_table import Base_table
 from collorg.utils.mail import Mail
 from collorg.templates.document_type.html import Html
+from functools import wraps
+
+def wipe_cache(function):
+    @wraps(function)
+    def wrapper(self, *args, **kwargs):
+        self._wipe_cache()
+        return function(self, *args, **kwargs)
+    return wrapper
 
 class Post(Base_table):
     #>>> AUTO_COG REL_PART. DO NOT EDIT!
