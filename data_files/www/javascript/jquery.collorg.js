@@ -835,17 +835,39 @@
     {
         try{
             item = $(item.get(0));
-            var target = $(event.target).get(0);
-            var toInsert = '[['
+            var area = $(event.target).get(0);
+            var text = '[['
                 + (item.attr('href') || item.attr('data-href')) + '|' +
                 item.text() + ']]';
-            if(target.selectionStart == 0 && target.selectionEnd == 0)
-            {
-                var newText = $(target).text() + toInsert;
-                $(target).text(newText);
-            } else {
-                target.setRangeText(toInsert);
-            }
+	    var scrollPos = area.scrollTop;
+	    var strPos = 0;
+	    var br = ((area.selectionStart||area.selectionStart=='0')?"ff": (
+		document.selection ? "ie" : false ) );
+	    if (br == "ie") {
+		area.focus();
+		var range = document.selection.createRange();alert(area);
+		range.moveStart ('character', -(area.value.length));
+		strPos = range.text.length;
+	    } else if (br == "ff")
+		strPos = area.selectionStart;
+	    var front = (area.value).substring(0, strPos);  
+	    var back = (area.value).substring(strPos, area.value.length); 
+	    area.value=front+text+back;
+	    strPos = strPos + text.length;
+	    if (br == "ie") { 
+		area.focus();
+		var range = document.selection.createRange();
+		range.moveStart ('character', -(area.value.length));
+		range.moveStart ('character', strPos);
+		range.moveEnd ('character', 0);
+		range.select();
+	    } else if (br == "ff") {
+		area.selectionStart = strPos;
+		area.selectionEnd = strPos;
+		area.focus();
+	    }
+	    area.scrollTop = scrollPos;
+
         } catch(err) {
             var val = $(target).val();
             var begin = val.substring(0, target.selectionStart);
