@@ -165,7 +165,7 @@ body, #header, #footer{width: 100%;padding-left: 0; padding-right: 0; margin: 0p
     overflow: hidden;
     white-space: nowrap;}
 #title{left:970px;}
-#cog_cart, .see_also{
+#cog_cart{
     background-color:#f2f292;
     font-size: 80%;
     overflow:auto;
@@ -190,9 +190,6 @@ body, #header, #footer{width: 100%;padding-left: 0; padding-right: 0; margin: 0p
     border-top-right-radius: 5px;
     box-shadow: 2px 0 20px #666666;
     padding-right: 5px;
-}
-.see_also{
-    min-height: 30px;
 }
 #cog_cart:hover{
     white-space: wrap;

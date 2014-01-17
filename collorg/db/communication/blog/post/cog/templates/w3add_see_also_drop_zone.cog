@@ -13,7 +13,6 @@ hidden_link = html(self).a(
     cog_method="w3add_see_also", target="_page_",
     id_=a_id, css_class="action hidden")
 # ---
-<div class="see_also">{% i18n_add_see_also %}.</div>
 {%hidden_link%}
 <script>
  function add_see_also_{% id %}(item){

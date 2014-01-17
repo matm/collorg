@@ -5,11 +5,9 @@
 id = html.random_id()
 a_id = "a_{}".format(id)
 hidden_link = html(self).a(
-    cog_method="w3attach_post", id_=a_id, css_class="action hidden",
+    cog_method="w3attach_post", id_=a_id, css_class="hidden",
     target = "_page_")
 # ---
-<div class="see_also">
-{% _('Drop a "post" here to publish it in this folder') %}.</div>
 {%hidden_link%}
 <script>
  function add_see_also_{% id %}(item){

@@ -303,7 +303,7 @@ class User(Actor, Groupable):
         Has the function if has a role granted...
         """
         assert self.count() == 1
-        function = self.db.function(
+        function = self.db.table(
             'collorg.actor.function', long_name_ = function_long_name)
         role = function._rev_role_
         access = self._rev_access_

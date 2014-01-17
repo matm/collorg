@@ -44,7 +44,7 @@ if not embedded:
     if topic is not None and topic.path_info_.value in ['', '/']:
         in_nav_actions = self.w3in_nav_actions(env = env, topic = topic)
     nav_down = '<nav class="bc navdown">{} {}</nav>'.format(nav_down, in_nav_actions)
-    article = '<article id="{}">{}</article>'.format(id_article, article)
+    article = '<article id="{}" class="see_also">{}</article>'.format(id_article, article)
     footer = '<footer>{}</footer>'.format(footer)
 # ---
 {% nav_up %}
