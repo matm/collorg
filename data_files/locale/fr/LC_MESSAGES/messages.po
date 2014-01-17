@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-09 23:11+0100\n"
+"POT-Creation-Date: 2014-01-17 16:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -165,6 +165,7 @@ msgstr "Envoyer le message"
 #: build/lib.linux-x86_64-2.7/collorg/templates/document_type/html.py:358
 #: collorg/templates/document_type/html.py:359
 #: collorg/templates/document_type/html.py:364
+#: collorg/templates/document_type/html.py:366
 msgid "required"
 msgstr "requis"
 
@@ -382,18 +383,21 @@ msgstr "Déposer le lien d'un \"post\" ici pour le publier dans ce dossier"
 #: collorg/controller/web.py:369
 #: build/lib.linux-x86_64-2.7/collorg/controller/web.py:369
 #: collorg/controller/web.py:375 collorg/controller/web.py:374
+#: collorg/controller/web.py:380
 msgid "search"
 msgstr "rechercher"
 
 #: collorg/controller/web.py:370
 #: build/lib.linux-x86_64-2.7/collorg/controller/web.py:370
 #: collorg/controller/web.py:376 collorg/controller/web.py:375
+#: collorg/controller/web.py:381
 msgid "by tag"
 msgstr "par mot clef"
 
 #: collorg/controller/web.py:370
 #: build/lib.linux-x86_64-2.7/collorg/controller/web.py:370
 #: collorg/controller/web.py:376 collorg/controller/web.py:375
+#: collorg/controller/web.py:381
 msgid "by user"
 msgstr "par utilisateur"
 
@@ -402,6 +406,7 @@ msgstr "par utilisateur"
 #: collorg/db/actor/user/__init__.py:194 collorg/db/actor/user/__init__.py:195
 #: collorg/controller/web.py:378 collorg/db/actor/user/__init__.py:192
 #: collorg/controller/web.py:377 collorg/db/actor/user/__init__.py:198
+#: collorg/controller/web.py:365
 msgid "Drag & drop your links here<br>for future reference"
 msgstr "Glissez - déposez vos liens ici<br>pour un usage ultérieur"
 
@@ -2149,5 +2154,20 @@ msgid "Wrong password"
 msgstr "Mauvais mot de passe"
 
 #: collorg/db/actor/user/cog/templates/w3change_password_form.py:27
-msgid "Your password is in a LDAP directory. It cannot be changed by this application."
-msgstr "Votre mot de passe est géré par un annuaire LDAP. Il ne peut être modifié par cette application."
+msgid ""
+"Your password is in a LDAP directory. It cannot be changed by this "
+"application."
+msgstr ""
+"Votre mot de passe est géré par un annuaire LDAP. Il ne peut être modifié "
+"par cette application."
+
+#: collorg/controller/web.py:367
+msgid ""
+"Drag & drop the link from the cart to \n"
+"the page/textarea to add a reference.\n"
+"(write access is mandatory)"
+msgstr ""
+"Glissez - déposez le lien du panier vers la \n"
+"page/zone de saisie pour ajouter une référence.\n"
+"(le droit d'écriture est requis)"
+

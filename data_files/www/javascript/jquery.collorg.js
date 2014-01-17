@@ -762,7 +762,7 @@
             drop: function( event, ui )
             {
                 __follow(ui.draggable);
-		$('#cog_cart').removeClass('extend');
+		//$('#cog_cart').removeClass('extend');
             },
 	    deactivate: function(event, ui)
 	    {

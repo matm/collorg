@@ -169,7 +169,8 @@ body, #header, #footer{width: 100%;padding-left: 0; padding-right: 0; margin: 0p
     background-color:#f2f292;
     font-size: 80%;
     overflow:auto;
-    background-image: url("/collorg/images/eye.svg");
+    background-image: url("/collorg/images/cart.svg");
+    background-size: 30px;
     background-repeat: no-repeat;
     background-position: 100% 100%;
 }
@@ -179,21 +180,23 @@ body, #header, #footer{width: 100%;padding-left: 0; padding-right: 0; margin: 0p
 }
 #cog_cart{
     white-space: nowrap;
-    bottom: 20px;
+    top: 40px;
     height: 200px;
+    right: 0px;
     max-height: 200px;
     z-index: 10;
     overflow-x: hidden;
 
     border-top: 1px solid #A7A7A7;
     border-right: 1px solid #A7A7A7;
-    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
     box-shadow: 2px 0 20px #666666;
     padding-right: 5px;
 }
 #cog_cart:hover{
     white-space: wrap;
     width: 60%;
+    background-position: 0% 100%;
 }
 #cog_cart.extend{
     width: 60%;
@@ -207,7 +210,7 @@ body, #header, #footer{width: 100%;padding-left: 0; padding-right: 0; margin: 0p
 }
 #cog_cart .rotate{
 position: fixed;
-bottom: 20px;
+top: 210px;
 font-size: 80%;
 -webkit-transform-origin: 0 0;
 -webkit-transform: rotate(-90deg);

@@ -361,6 +361,12 @@ class WebController(Controller):
         ** a fqtn
         """
         _ = self.i18n.gettext
+        i18n_drag_drop = _(
+            "Drag & drop your links here<br>for future reference")
+        i18n_drop_drag = _(
+            "Drag & drop the link from the cart to \n"
+            "the page/textarea to add a reference.\n"
+            "(write access is mandatory)")
         if self._cog_oid_:
             self._cog_cmd = self.__oid_req
         elif self._cog_fqtn_:
@@ -374,8 +380,8 @@ class WebController(Controller):
                 _("search"), _("search"),
                 _("by tag"), _("by user"),
                 actor.w3login_link(),
-                _("Drag & drop your links here<br>for future reference").decode(
-                    self._charset))
+                _(i18n_drop_drag).decode(self._charset),
+                _(i18n_drag_drop).decode(self._charset))
             page = self._cog_cmd(**self._kwargs)
             if self._cog_raw:
                 return page
