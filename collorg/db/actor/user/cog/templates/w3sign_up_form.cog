@@ -29,8 +29,7 @@ else:
 # ---
 
 <input type="hidden" name="cog_method" value="{% callback %}" />
-<input type="hidden" name="cog_target" value="#{% target %}" />
-<button class="action" data-form-id="{% id %}">{% i18n_su %}</button>
+<button class="action" data-form-id="{% id %}" target="{% target %}">{% i18n_su %}</button>
 {% object_form %}
 # --- form_html
 {% html().form(id=id, html=form_html) %}
