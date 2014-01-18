@@ -195,7 +195,7 @@ body, #header, #footer{width: 100%;padding-left: 0; padding-right: 0; margin: 0p
 }
 #cog_cart:hover{
     white-space: wrap;
-    width: 60%;
+/*    width: 60%;*/
     background-position: 0% 100%;
 }
 #cog_cart.extend{

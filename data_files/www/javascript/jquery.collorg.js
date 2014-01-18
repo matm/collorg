@@ -753,7 +753,7 @@
         $( "#cog_cart ul" ).droppable({
             activeClass: "ui-state-default",
             hoverClass: "ui-state-hover",
-            tolerance: "touch",
+            tolerance: "pointer",
             accept: ".action",
 	    activate: function(event, ui)
 	    {
@@ -762,28 +762,27 @@
             drop: function( event, ui )
             {
                 __follow(ui.draggable);
-		//$('#cog_cart').removeClass('extend');
             },
 	    deactivate: function(event, ui)
 	    {
-                $('#cog_cart').removeClass('extend');
 	    },
         });
+	$("#cog_cart").hover(
+	    function(){
+		$(this).addClass('extend');
+	    },
+	    function(){
+		$(this).removeClass('extend');
+	    }
+	);
     }
 
     function initDragEvents()
     {
-        $('.action').draggable(
-            {
-                appendTo:"body",
-                revert: 'invalid',
-                cursorAt: { top: 0, left: 0 },
-                distance: 30,
-                helper: function( event ) {
-                    return $( '<img src="collorg/images/eye.svg">' ).css(
-			'z-index', '30');
-                }
-            });
+        $('.action').draggable({
+	    helper:"clone",
+	    zIndex:30
+        });
         $('.wiki > textarea').droppable({
                activeClass: "ui-state-default",
                hoverClass: "ui-state-hover",
