@@ -193,13 +193,10 @@ body, #header, #footer{width: 100%;padding-left: 0; padding-right: 0; margin: 0p
     box-shadow: 2px 0 20px #666666;
     padding-right: 5px;
 }
-#cog_cart:hover{
+#cog_cart.extend, #cog_cart:hover{
     white-space: wrap;
-/*    width: 60%;*/
-    background-position: 0% 100%;
-}
-#cog_cart.extend{
     width: 60%;
+    background-position: 0% 100%;
 }
 #cog_cart ul{
     height: 170px;

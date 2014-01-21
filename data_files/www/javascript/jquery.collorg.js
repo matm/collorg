@@ -701,23 +701,15 @@
 
         var followed = $(item)
             .clone()
-            .draggable({helper:'clone'})
+            .draggable({helper:'clone', iFrameFix: true})
             .addClass('action d_see_also')
                     .html(item.text());
 
-            /**
-             * The trash link for delete an item (previously dropped) into the "follow view"
-             * and his [inline] click event.
-             *
-             * #TODO create an $('cart-remove-action').click(function()) event
-             * if necessary.
-             */
             var del = $('<a></a>')
                 .addClass('cart-remove-action')
                 .attr('onclick','$(this).parent().remove();');
 
             var here = false;
-            cog_cart = $("#cog_cart>ul");
 
             $("#cog_cart").find('li>a').each(function(){
                 if($(this).attr('href') == followed.attr('href')){
@@ -728,7 +720,19 @@
             if(here){ return; }
 
             $('<li style="position:relative"></li>')
-                .append(del).append(followed).appendTo(cog_cart);
+                .append(del).append(followed).appendTo("#cog_cart>ul");
+    }
+
+    $.fn.show_cart = function(){
+	return this.each(function(){
+	    $(this).addClass('extend');
+	});
+    }
+
+    $.fn.hide_cart = function(){
+	return this.each(function(){
+	    $(this).removeClass('extend');
+	});
     }
 
     /**
@@ -757,30 +761,26 @@
             accept: ".action",
 	    activate: function(event, ui)
 	    {
-                $('#cog_cart').addClass('extend');
+                $('#cog_cart').show_cart();
 	    },
             drop: function( event, ui )
             {
                 __follow(ui.draggable);
+		$("#cog_cart").hide_cart();
             },
 	    deactivate: function(event, ui)
 	    {
-	    },
-        });
-	$("#cog_cart").hover(
-	    function(){
-		$(this).addClass('extend');
-	    },
-	    function(){
-		$(this).removeClass('extend');
+		$('#cog_cart').hide_cart();
 	    }
-	);
+        });
     }
 
     function initDragEvents()
     {
         $('.action').draggable({
+	    distance:15,
 	    helper:"clone",
+	    revert:true,
 	    zIndex:30
         });
         $('.wiki > textarea').droppable({
