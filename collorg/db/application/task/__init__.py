@@ -1,8 +1,9 @@
 #-*- coding: utf-8 -*-
 
 from collorg.db.core.base_table import Base_table
+from collorg.db.time.duration import Duration
 
-class Task( Base_table ):
+class Task( Base_table, Duration ):
     #>>> AUTO_COG REL_PART. DO NOT EDIT!
     _cog_schemaname = 'collorg.application'
     _cog_tablename = 'task'
@@ -28,6 +29,8 @@ class Task( Base_table ):
         * cog_modif_date_ : timestamp, inherited
         * cog_environment_ : c_oid, inherited
         * cog_state_ : text, inherited
+        * cog_from_ : timestamp, inherited
+        * cog_to_ : timestamp, inherited
         * name_ : string, PK, not null
         * delegable_ : bool
         * description_ : wiki

@@ -14,7 +14,7 @@ CREATE TABLE "collorg.communication.blog".a_post_data (
    FOREIGN KEY(who) REFERENCES "collorg.actor"."user"(cog_oid),
    "when" timestamp(0) default ('now'::text)::timestamp(0) with time zone,
    private_reference boolean default 'f',
-   "order" int,
+   "order" int default 0,
    see_also boolean default 'f',
    PRIMARY KEY(post, data)
 ) INHERITS( "collorg.core".base_table );

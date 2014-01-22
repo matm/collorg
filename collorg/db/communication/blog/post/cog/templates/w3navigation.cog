@@ -11,8 +11,10 @@ attached_posts = v_posts.w3list_attached_posts(post=self).strip()
 <div class="related_posts">
 # >>>
 if attached_posts:
+    if self.fqtn != 'collorg.web.topic':
+        # ---
+        <span class="related">{% i18n_see_also %}</span>
     # ---
-    <span class="related">{% i18n_see_also %}</span>
     {% attached_posts %}
 # >>>
 v_posts = self.db.table('collorg.communication.blog.view.by_post')

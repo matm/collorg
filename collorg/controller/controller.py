@@ -100,6 +100,7 @@ class Controller(object):
         self._json_res = {}
         self.__collorg_path = os.path.dirname(collorg.__file__)
         self.__repos_path = None
+        self.__now = None
         self.__db_name = config_file
         if self.__db_name is None:
             self.__repos_path, self.__db_name = db_connector.get_cog_infos()
@@ -158,6 +159,7 @@ class Controller(object):
         self.__user_actions = None
         self.db.rollback()
         self.db.new_cursor()
+        self.__now = datetime.datetime.now()
 
     def __load_actions(self):
         actions = self.db.table('collorg.application.action')
@@ -248,11 +250,15 @@ class Controller(object):
             view.fqtn_, view.goal_name_)
         for key, val in Controller._cog_aa_tasks.items():
             if key[1] == 'Anonymous navigation':
-                Controller.__d_anonymous_access[key] = [
-                    elt.name_ for elt in val]
+                d_elt = {}
+                for elt in val:
+                    d_elt[elt.name_] = (elt.cog_from_, elt.cog_to_)
+                Controller.__d_anonymous_access[key] = d_elt
             if key[1] == 'Authenticated navigation':
-                Controller.__d_visitor_access[key] = [
-                    elt.name_ for elt in val]
+                d_elt = {}
+                for elt in val:
+                    d_elt[elt.name_] = (elt.cog_from_, elt.cog_to_)
+                Controller.__d_visitor_access[key] = d_elt
 
     def __get_ca_tasks(self):
         """
@@ -263,10 +269,15 @@ class Controller(object):
         view = self.db.table('collorg.access.view.access_ca')
         view.cog_light = True
         view._cog_order_by = [view.task_name_]
-        Controller._cog_ca_tasks = view.select().dict_by(view.fqtn_)
+        Controller._cog_ca_tasks = view.select(
+            fields=(view.name_, view.fqtn_, view.cog_from_, view.cog_to_)
+            ).dict_by(view.fqtn_)
         for key, val in Controller._cog_ca_tasks.items():
-            ca_val = [elt.name_ for elt in val]
-            Controller.__d_ca_access[key[0]] = ca_val
+            d_elt = {}
+            for elt in val:
+                d_elt[elt.name_] = (elt.cog_from_, elt.cog_to_)
+            Controller.__d_ca_access[key[0]] = d_elt
+#        open("/tmp/xxx_ca", "w").write("{}".format(Controller.__d_ca_access))
 
     def __check(self, session_key, l_data_oid, obj, action):
         method_name = action.name_.value
@@ -313,11 +324,20 @@ class Controller(object):
                     ok = False
         return ok
 
+    def __in_interval(self, interval):
+        cog_from, cog_to = interval
+        return ((cog_from == None or cog_from < self.__now) and
+            (cog_to == None or cog_to > self.__now))
+
     def __check_da_dv(self, obj, method_name, func, dav):
         for elt in self._cog_inherits(obj):
             akey = (elt.fqtn, func)
             if akey in dav and method_name in dav[akey]:
-                return True
+                interval = dav[akey][method_name]
+                if interval == (None, None):
+                    return True
+                else:
+                    return self.__in_interval(interval)
         return False
 
     def __check_ca(self, obj, action):
@@ -334,7 +354,11 @@ class Controller(object):
             return False
         for fqtn in obj.parents_fqtns():
             if(fqtn in dca and method_name in dca[fqtn]):
-                return True
+                interval = dca[fqtn][method_name]
+                if interval == (None, None):
+                    return True
+                else:
+                    return self.__in_interval(interval)
         return False
 
     def check(self, obj, func):

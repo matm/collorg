@@ -122,15 +122,8 @@ class Post(Base_table):
         """
         self.get()
         apd = data._rev_a_post_data_data_
-        order = 0
-        if apd.exists():
-            try:
-                order = apd.max(apd.order_) + 1
-            except:
-                order = 0
         apd._post_ = self
         apd._who_ = self._cog_controller.user
-        apd.order_.set_intention(order)
         apd.insert()
         apd.get()
         data._wipe_cache()
@@ -284,13 +277,9 @@ class Post(Base_table):
 
     def add_see_also(self, **kwargs):
         apd = self._rev_a_post_data_data_
-        order = 0
-        if apd.exists():
-            order = apd.max(apd.order_)
         post = self.db.get_elt_by_oid(kwargs['data_oid'])
         apd._post_ = post
         if not apd.exists():
-            apd.order_.set_intention(order + 1)
             apd.see_also_.set_intention(True)
             apd.insert()
 
@@ -423,7 +412,8 @@ class Post(Base_table):
         else:
             apd = self._rev_a_post_data_data_
             napd = apd()
-            napd.order_.set_intention(apd.max(apd.order_) + 1)
+            max_order = apd.max(apd.order_) or 0
+            napd.order_.set_intention(max_order + 1)
             apd_elt.update(napd)
         self._wipe_cache()
 

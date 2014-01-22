@@ -7,4 +7,4 @@ CREATE TABLE "collorg.application".task (
    name STRING primary key,
    delegable BOOLEAN DEFAULT 'f',
    description WIKI
-) INHERITS( "collorg.core".base_table ) ;
+) INHERITS( "collorg.core".base_table, "collorg.time".duration ) ;

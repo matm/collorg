@@ -9,7 +9,7 @@ data = self.db.get_elt_by_oid(kwargs['data_oid'])
 if data.cog_fqtn_.value != 'collorg.web.topic': 
     apd = self.db.table('collorg.communication.blog.a_post_data')
     apd.post_.set_intention(kwargs['data_oid'])
-    apd._data_ = self
+    apd.data_.set_intention(self.cog_oid_.value)
     if self.site_.value is None:
         apd.private_reference_.set_intention(True)
     apd._who_ = cog_user

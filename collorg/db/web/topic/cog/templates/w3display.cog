@@ -75,8 +75,11 @@ if not self.action_.value:
     v_posts = self.db.table('collorg.communication.blog.view.by_post')
     v_posts.cog_oid_.set_intention(posts.cog_oid_)
     # ---
+    {% self.w3navigation() %}
     {% self.w3attach_post_drop_zone() %}
+{#
     {% v_posts.w3list(post_oid = self.cog_oid_.value, embedded = True) %}
+#}
     # >>>
     if text:
         # ---

@@ -12,13 +12,15 @@ def remove_link_f(post, elt_oid):
 # >>>
 the_post = kwargs['post']
 sortable = False
-if (cog_user and 'author_' in the_post.__dict__ and
-    cog_user.cog_oid_.value == the_post.author_.value):
+if (cog_user and
+    (('author_' in the_post.__dict__ and
+    cog_user.cog_oid_.value == the_post.author_.value) or
+    cog_user.has_write_access(the_post))):
     sortable = True
 data_oid = the_post.cog_oid_.value
 self.data_oid_.set_intention(data_oid)
 self.cog_fqtn_.set_intention('collorg.web.topic', '!=')
-self.order_by(self.post_order_)
+self.order_by(self.post_order_, self.post_creat_date_)
 post = self.db.table('collorg.communication.blog.post')
 self.cog_light = True
 # data_oid is used as reference object for sort

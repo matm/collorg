@@ -780,7 +780,6 @@
         $('.action').draggable({
 	    distance:15,
 	    helper:"clone",
-	    revert:true,
 	    zIndex:30
         });
         $('.wiki > textarea').droppable({

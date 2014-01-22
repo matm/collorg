@@ -39,7 +39,11 @@ class A_post_data(Base_table):
         super(A_post_data, self).__init__(db, **kwargs)
 
     def insert(self, **kwargs):
+        data = self.db.get_elt_by_oid(self.data_.value)
+        inc_apd = data._rev_a_post_data_data_
+        inc_apd.increment(inc_apd.order_)
         try:
+            self.order_.set_intention(0)
             super(self.__class__, self).insert(**kwargs)
             self._data_.get()._wipe_cache()
             self._post_.get()._wipe_cache()

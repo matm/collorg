@@ -31,7 +31,8 @@ class Access_ca(Table):
         * fqtn_ : text
         * cog_from_ : timestamp
         * cog_to_ : timestamp
-        * task_scheduler_data_ : c_oid
+        * data_ : c_oid
+        * description_ : wiki
         """
         #<<< AUTO_COG DOC. Your code goes after
         super(Access_ca, self).__init__(db, **kwargs)

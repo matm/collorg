@@ -288,6 +288,9 @@ class User(Actor, Groupable):
         return group_access.exists() and self.has_access(
             group_access._group_data_, write)
 
+    def has_write_access(self, data):
+        return self.has_access(data, True)
+
     def get_granted_data(self, fqtn = None):
         data = self._rev_access_.granted()._data_
         data1 = self._rev_access_.granted()._data_
