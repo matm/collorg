@@ -15,7 +15,6 @@
 ### You should have received a copy of the GNU General Public License
 ### along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from time import sleep
 from collorg.db.actor.actor import Actor
 from collorg.db.group._groupable import Groupable
 import uuid
@@ -110,8 +109,6 @@ class User(Actor, Groupable):
         return self.cog_oid_.value == user.cog_oid_.value
 
     def __grant_self_access(self):
-        #XXX les tests sont là pour le cas ou des créations partielles sont
-        #    encore présentes... À supprimer
         access = self.db.table('collorg.access.access')
         access.grant(user=self, data=self)
 
@@ -190,7 +187,6 @@ class User(Actor, Groupable):
                 self._cog_controller.del_user(key)
             f_ = self.db.table('collorg.communication.file')
             f_.remove_session_repos(key)
-#                self._cog_controller.set_user()
         site = self._cog_controller.load_site()
 
         home_site_link = ""
@@ -329,7 +325,6 @@ class User(Actor, Groupable):
             if not role.exists():
                 role.insert()
         return access
-        #sleep(0.5)
 
     def revoke_access(self, data):
         access = self._rev_access_

@@ -80,10 +80,23 @@ class PgType( object ):
         }
 
     def __init__( self, sql_type ):
-        self.__type = PgType.__d_pg_types[sql_type]
+        if sql_type[0] != '_':
+            self.__type = PgType.__d_pg_types[sql_type]
+        self.__type = []
 
     def __repr__( self ):
         return "%s" % ( self.__type )
+
+    def __check_array(self, field, val):
+        #XXX BUGGY: use with extra caution!
+        # strings containing any of "{}[]" characters will make this fail...
+        # The solution lies in relation.py by refactoring the construction
+        # of the queries. RTFM of psycopg2...
+        # REMEMBER! This is a prototype in pre-alpha development stage.
+        sql_type = field.get_sql_type()[1:]
+        array_ = [self.__d_pg_types[sql_type](elt) for elt in val]
+        return "{}".format(array_).replace(
+            "[", "{").replace("]", "}")
 
     def check( self, field, val ):
         """
@@ -96,7 +109,7 @@ class PgType( object ):
             return None
         sql_type = field.get_sql_type()
         if sql_type[0] == '_': #W redondant avec Field.__dimension ?
-            raise NotImplementedError
+#            raise NotImplementedError
             sql_type = sql_type[1:] # les types array
         if not sql_type in self.__d_pg_types:
             raise CustomError("type Postgresql '%s' inconnu" % sql_type)
@@ -110,7 +123,10 @@ class PgType( object ):
             return self.__class__.__dict__[self.__d_pg_types[sql_type]](
                 self, field, val)
         try:
-            return self.__d_pg_types[sql_type](val)
+            if field.get_sql_type()[0] != '_':
+                return self.__d_pg_types[sql_type](val)
+            else:
+                return self.__check_array(field, val)
         except:
             raise RuntimeError(
                 "Error pg_type.check: %s->%s with %s of type %s" % ( 
