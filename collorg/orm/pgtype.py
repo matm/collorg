@@ -82,7 +82,8 @@ class PgType( object ):
     def __init__( self, sql_type ):
         if sql_type[0] != '_':
             self.__type = PgType.__d_pg_types[sql_type]
-        self.__type = []
+        else:
+            self.__type = list
 
     def __repr__( self ):
         return "%s" % ( self.__type )
