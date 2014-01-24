@@ -148,7 +148,7 @@ if self.exists():
         <script type="text/javascript">
         $(document).ready(function(){
             $('.sortable').sortable({
-// buggy with webkit               axis: "y",
+                axis: "y",
                 update: function(event, ui){
                     var elt = ui.item.attr('data-elt_oid');
                     var prev = ui.item.prev().attr('data-elt_oid');
