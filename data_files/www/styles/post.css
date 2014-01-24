@@ -106,6 +106,7 @@
 .blog_item_footer{
     border-bottom:1px solid #c6c6c6;
     clear: both;
+    align: right;
 }
 .tag, .inst_tag {
     background: url("/collorg/images/tag_bg.png")

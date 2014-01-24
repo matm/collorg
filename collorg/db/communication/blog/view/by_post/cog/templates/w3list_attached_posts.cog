@@ -2,6 +2,7 @@
 #PRAGMA 'label':'List posts (by post)'
 #PRAGMA 'in_menu':False
 # >>>
+i18n_last_modified = _("last modified")
 def remove_link_f(post, elt_oid):
     label = '<img src="/collorg/images/trashcan.svg" class="medicon" />'
     title = _("remove from this list")
@@ -100,7 +101,14 @@ if self.exists():
             {% post._w3visibility() %}
         # ---
         <div>{% se.introductory_paragraph_ %}</div>
-        <div class="blog_item_footer"></div>
+        <div class="blog_item_footer" class="container">
+        # >>>
+        if se.post_creat_date_ != se.post_modif_date_:
+            # ---
+            <span class="right small">
+            {% i18n_last_modified %}: {% se.post_modif_date_ %}
+        # ---
+        </div>
         </div>
         </li>
     # --- article

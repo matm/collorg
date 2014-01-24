@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-17 16:36+0100\n"
+"POT-Creation-Date: 2014-01-24 08:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -511,7 +511,7 @@ msgstr "créé"
 #: collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:24
 #: collorg/db/core/base_table/cog/templates/w3creat_modif_date.py:30
 msgid "last modified"
-msgstr "dernière modification"
+msgstr "dernière modification "
 
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/attachment/cog/templates/w3attach_form.py:26
 #: collorg/db/communication/attachment/cog/templates/w3attach_form.py:26
@@ -1985,6 +1985,7 @@ msgstr "nom de la personne"
 #: collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:42
 #: collorg/db/communication/blog/view/by_post/cog/templates/w3list_attached_posts.py:25
 #: collorg/db/communication/blog/post/cog/templates/_w3remove_link.py:28
+#: collorg/db/communication/blog/view/by_post/cog/templates/w3list_attached_posts.py:26
 msgid "remove from this list"
 msgstr "supprimer de cette liste"
 
@@ -2170,4 +2171,3 @@ msgstr ""
 "Glissez - déposez le lien du panier vers la \n"
 "page/zone de saisie pour ajouter une référence.\n"
 "(le droit d'écriture est requis)"
-
