@@ -30,7 +30,7 @@ class Test(TestCase):
         #XXX pb here ! If we don't do the count, we can't make the get ???
         root_topic = user._rev_post_.get()
         self.assertEqual(root_topic.cog_fqtn_.value, 'collorg.web.topic')
-        self.assertTrue(user.has_access(root_topic))
+        self.assertFalse(user.has_access(root_topic))
 
     def new_account_test(self):
         self.__create_gaston()

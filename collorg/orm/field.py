@@ -156,7 +156,7 @@ class Field(object):
 
     @property
     def f_fieldname(self):
-        if self.__f_table == None:
+        if self.__f_table is None:
             return None
         return "%s_" % (
             self.__table.neighbors[self.__f_table.fqtn]['l_fields'][self.name])

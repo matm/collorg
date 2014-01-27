@@ -22,6 +22,7 @@ import uuid
 
 from .field import Field
 from .customerror import CustomError
+
 import sys
 
 def trace(debug, arg):
@@ -241,7 +242,7 @@ class Relation(object):
         if oid_req:
             req = "BEGIN\n;%s; --++++\n%s;--+++++\nEND;\n" % (req, oid_req)
         return req, cog_oid
-        
+
     def _cog_get_where(self):
         req = []
         req.append("%s" % (self._cog_get_where_inner()))
@@ -447,21 +448,34 @@ class Relation(object):
             label = ' '.join([field.value for field in self.cog_label_fields])
         return label.strip()
 
+    def __duplicate_intention(self):
+        other = self()
+        for field in self._cog_fields:
+            if field.is_constrained:
+                other.__dict__[field.pyname].set_intention(field)
+        return other
+
     def __add__(self, other):
-        self._list.append(("OR", other))
-        return self
+        dup_self = self.__duplicate_intention()
+        dup_other = other.__duplicate_intention()
+        dup_self._list.append(("OR", dup_other))
+        return dup_self
 
     __iadd__ = __add__
 
     def __mul__(self, other):
-        self._list.append(("AND", other))
-        return self
+        dup_self = self.__duplicate_intention()
+        dup_other = other.__duplicate_intention()
+        dup_self._list.append(("AND", dup_other))
+        return dup_self
 
     __imul__ = __mul__
 
     def __sub__(self, other):
-        self._list.append(("AND NOT", other))
-        return self
+        dup_self = self.__duplicate_intention()
+        dup_other = other.__duplicate_intention()
+        dup_self._list.append(("AND NOT", dup_other))
+        return dup_self
 
     __isub__ = __sub__
 
@@ -511,3 +525,23 @@ class Relation(object):
             obj.__dict__[field_name].set_intention(
                 self.__dict__[self_field_name])
         return getattr(self, cvn)
+
+    def __eq__(self, other):
+        """
+        True if the two sets are identical.
+        For testing only
+        """
+        if self.__extension:
+            self_ext = [elt.cog_oid_.value for elt in self]
+        else:
+            self_ext = [
+                elt.cog_oid_.value for elt in self.__duplicate_intention()]
+        if other.__extension:
+            other_ext = [elt.cog_oid_.value for elt in other]
+        else:
+            other_ext = [
+                elt.cog_oid_.value for elt in other.__duplicate_intention()]
+        self_ext.sort()
+        other_ext.sort()
+        print(len(self_ext), len(other_ext))
+        return self_ext == other_ext
