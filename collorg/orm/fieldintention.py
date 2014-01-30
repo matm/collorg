@@ -44,10 +44,8 @@ class FieldIntention(object):
         self.__raw_value = val
         checked = False
         if val.__class__ is self.__field.__class__:
-#            if id(val.table) == id(self.__field.table):
-#                self.__is_constrained = True
-#                return
-            comp = 'IN'
+            if comp == '=':
+                comp = 'IN'
             if (self.__field.is_fkey and
                 self.__field.f_table.fqtn == val._cog_table.fqtn):
                     checked = True
