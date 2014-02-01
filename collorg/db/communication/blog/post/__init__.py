@@ -351,7 +351,7 @@ class Post(Base_table):
             if user:
                 p_see_also = see_also()
                 p_see_also.cog_oid_.set_intention(apd._post_.cog_oid_)
-                see_also += (p_see_also * user.get_granted_data())
+                see_also += p_see_also * user.get_granted_data()
             else:
                 pub_see_also = see_also()
                 pub_see_also.visibility_.set_intention('private', '!=')

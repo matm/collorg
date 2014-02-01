@@ -112,7 +112,8 @@ class FieldIntention(object):
             if val.__class__ is self.__field.__class__:
                 table = val.table
                 ref_field = val
-                if self.__field.is_fkey:
+                if (self.__field.is_fkey and
+                    self.__field.f_table.fqtn == val._cog_table.fqtn):
                     ref_field = table.__dict__[self.__field.f_fieldname]
                 val = "\n(\n%s)" % (table._cog_new_select([ref_field]))
                 return val

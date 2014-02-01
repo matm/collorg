@@ -37,7 +37,7 @@ if self.path_info_.value == '':
 # >>>
 if not self.action_.value:
     tags_list = ''
-    tags = posts._rev_a_tag_post_._tag_ + posts.get_see_also()._rev_a_tag_post_._tag_
+    tags = posts._rev_a_tag_post_._tag_
     if tags.exists():
         has_text = True
         tags_list = '<div class="bottom_tags">{}</div>'.format(tags.w3list(

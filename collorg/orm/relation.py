@@ -60,6 +60,7 @@ class Relation(object):
         self._list = []
         self._cog_limit = None
         self._cog_offset = None
+        self.__negation = False
 
     @property
     def fqtn(self):
@@ -241,16 +242,31 @@ class Relation(object):
         if oid_req:
             req = "BEGIN\n;%s; --++++\n%s;--+++++\nEND;\n" % (req, oid_req)
         return req, cog_oid
-        
-    def _cog_get_where(self):
+
+    def _cog_get_where(self, id_=None):
         req = []
-        req.append("%s" % (self._cog_get_where_inner()))
-        for elt in self._list:
-            req = ["(%s) %s (%s)" % (
-                "\n".join(req), elt[0], elt[1]._cog_get_where_inner(self.id))]
-        req.insert(0, "WHERE")
+        if not self._list:
+#            req.append("%s" % (self._cog_get_where_inner(id_ or self.id)))
+            req.append("%s" % (self._cog_get_where_inner(id_ or self.id)))
+        else:
+            elt1 = self._list[1]
+            if elt1._list:
+                sql1 = elt1._cog_get_where(id_ or self.id)
+            else:
+                sql1 = elt1._cog_get_where_inner(id_ or self.id)
+            elt2 = self._list[2]
+            if elt2._list:
+                sql2 = elt2._cog_get_where(id_ or self.id)
+            else:
+                sql2 = elt2._cog_get_where_inner(id_ or self.id)
+            req.append("((%s) %s (%s))" % (sql1, self._list[0], sql2))
+        if not id_:
+            if not self.__negation:
+                req.insert(0, "WHERE")
+            else:
+                req.insert(0, "WHERE NOT")
         req = "\n".join(req)
-        if req.strip() == "WHERE":
+        if req.strip() == "WHERE" or req.strip() == "WHERE NOT":
             return ""
         return req
 
@@ -285,6 +301,8 @@ class Relation(object):
         @return: True if at least one of the fields of self is constrain,
         False otherwise.
         """
+        if self._list:
+            return True
         for field in self._cog_fields:
             if field.is_constrained:
                 return True
@@ -447,23 +465,48 @@ class Relation(object):
             label = ' '.join([field.value for field in self.cog_label_fields])
         return label.strip()
 
+    def __duplicate_intention(self):
+        new_ = self()
+        new_._list = self._list
+        new_.__negation = self.__negation
+        for field in self._cog_fields:
+            if field.is_constrained:
+                new_.__dict__[field.pyname].set_intention(field)
+        return new_
+
     def __add__(self, other):
-        self._list.append(("OR", other))
-        return self
+        #!!! RPN
+        #PB avec __neg__. (-a) + (-b) donne -((-a)+(-b))
+        new_ = self()
+        dup_self = self.__duplicate_intention()
+        dup_other = other.__duplicate_intention()
+        new_._list = ("OR", dup_self, dup_other)
+        return new_
 
     __iadd__ = __add__
 
     def __mul__(self, other):
-        self._list.append(("AND", other))
-        return self
+        new_ = self()
+        dup_self = self.__duplicate_intention()
+        dup_other = other.__duplicate_intention()
+        new_._list = ("AND", dup_self, dup_other)
+        return new_
 
     __imul__ = __mul__
 
     def __sub__(self, other):
-        self._list.append(("AND NOT", other))
-        return self
+        new_ = self()
+        dup_self = self.__duplicate_intention()
+        dup_other = other.__duplicate_intention()
+        new_._list = ("AND NOT", dup_self, dup_other)
+        return new_
 
     __isub__ = __sub__
+
+    def __neg__(self):
+        dup_self = self.__duplicate_intention()
+        dup_self.__negation = not(dup_self.__negation)
+        return dup_self
 
     @staticmethod
     def __inherited_fqtns(cls):
@@ -511,3 +554,28 @@ class Relation(object):
             obj.__dict__[field_name].set_intention(
                 self.__dict__[self_field_name])
         return getattr(self, cvn)
+
+    def __eq__(self, other):
+        """
+        True if the two sets have the same cog_oids.
+        For testing only
+        """
+        print(self.__duplicate_intention().select(just_return_sql=True))
+#        print(other.select(just_return_sql=True))
+        self_ext = [elt.cog_oid_.value for elt in self]
+        other_ext = [elt.cog_oid_.value for elt in other]
+#        if self.__extension:
+#            self_ext = [elt.cog_oid_.value for elt in self]
+#        else:
+#            self_ext = [
+#                elt.cog_oid_.value for elt in self.__duplicate_intention()]
+#        if other.__extension:
+#            other_ext = [elt.cog_oid_.value for elt in other]
+#        else:
+#            other_ext = [
+#                elt.cog_oid_.value for elt in other.__duplicate_intention()]
+        self_ext.sort()
+        other_ext.sort()
+        print(len(self_ext), len(other_ext))
+        return self_ext == other_ext
+

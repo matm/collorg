@@ -244,6 +244,20 @@ class Db( object ):
     def get_auto_commit(self):
         return self.__auto_commit
 
+    def __log_sql(self, sql, duration, err=""):
+        if self._cog_controller._debug:
+            trace = traceback.extract_stack()[:-3]
+            f = open("/tmp/cog_sql", 'a+')
+            try:
+                os.chmod("/tmp/cog_sql", 0777)
+            except:
+                pass
+            f.write("{}\n{}\n{}\n{}\n".format(
+                "{}{} {}s".format(err, 60 * "=", duration.total_seconds()),
+                "\n".join(["{} {} {} {}".format(*elt) for elt in trace]),
+                70*"-", sql))
+            f.close()
+
     def commit( self, sql = "", just_return_sql = False):
         if not self.__auto_commit and not sql:
             self.__transaction.append( 'END' )
@@ -258,22 +272,14 @@ class Db( object ):
         begin = datetime.now()
         try:
             self.__cursor.execute( sql )
+            duration = datetime.now() - begin
         except Exception as err:
+            duration = datetime.now() - begin
             self.rollback()
             self.set_auto_commit(False)
+            self.__log_sql(sql, duration, "ERROR")
             raise Exception("Commit error! Rolling back!\n{}".format(err))
-        duration = datetime.now() - begin
-        if self._cog_controller._debug:
-            trace = traceback.extract_stack()[:-3]
-            f = open("/tmp/cog_sql", 'a+')
-            try:
-                os.chmod("/tmp/cog_sql", 0777)
-            except:
-                pass
-            f.write("{}\n{}\n{}\n{}\n".format(
-                "{} {}s".format(60 * "=", duration.total_seconds()),
-                "\n".join(["{} {} {} {}".format(*elt) for elt in trace]),
-                70*"-", sql))
+        self.__log_sql(sql, duration)
         self.set_auto_commit( True )
         self.__transaction = []
         self.db.commit()

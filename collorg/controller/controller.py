@@ -305,9 +305,9 @@ class Controller(object):
         """
         The execution of an action can be constained by the result of
         another action (the check action).
-        The constrain is considered ok if the "check action" returns an
+        The constraint is considered ok if the "check action" returns an
         empty string.
-        This mecanism is used to display write icons in header only if
+        This mecanism is used to display write icons in the header only if
         a user has write access to the data.
         """
         action_oid = action.cog_oid_.value
@@ -318,8 +318,6 @@ class Controller(object):
                 check_action = self._d_actions_by_oid[elt]
                 res = eval("kwargs['env'].{}(**kwargs)".format(
                     check_action.name_)).strip()
-#                open("/tmp/cog_xxx", "a").write("{}: {}\n".format(
-#                    check_action.name_, res))
                 if not res:
                     ok = False
         return ok
