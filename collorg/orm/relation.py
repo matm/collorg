@@ -261,7 +261,7 @@ class Relation(object):
                 sql2 = elt2._cog_get_where_inner(id_ or self.id)
             req.append("((%s) %s (%s))" % (sql1, self._list[0], sql2))
         if not id_:
-            if not self.__negation:
+            if self.__negation is False:
                 req.insert(0, "WHERE")
             else:
                 req.insert(0, "WHERE NOT")
@@ -411,19 +411,13 @@ class Relation(object):
         self.db.raw_sql(sql_req)
         return self
         
-#    def __len__(self):
-#        return self.count()
+    def __len__(self):
+        return self.__duplicate_intention().count()
 
     def __iter__(self):
         if len(self.__extension) == 0:
             self.select()
         for elt in self.__extension:
-#            if 'cog_ref_obj' in self.__class__.__dict__:
-#                oid = elt['cog_oid']
-#                for ref_obj in self.cog_ref_obj():
-#                    if ref_obj.count() == 1:
-#                        ref_oid = ref_obj.get().cog_oid_.value
-#                        self._cog_controller.set_ref_obj_oid(oid, ref_oid)
             d_elt = {}
             for key, val in elt.items():
                 d_elt["%s_" % (key)] = val
@@ -468,7 +462,7 @@ class Relation(object):
     def __duplicate_intention(self):
         new_ = self()
         new_._list = self._list
-        new_.__negation = self.__negation
+#        new_.__negation = self.__negation
         for field in self._cog_fields:
             if field.is_constrained:
                 new_.__dict__[field.pyname].set_intention(field)
@@ -504,9 +498,9 @@ class Relation(object):
     __isub__ = __sub__
 
     def __neg__(self):
-        dup_self = self.__duplicate_intention()
-        dup_self.__negation = not(dup_self.__negation)
-        return dup_self
+        new_ = self.__duplicate_intention()
+        new_.__negation = True
+        return new_
 
     @staticmethod
     def __inherited_fqtns(cls):
@@ -560,22 +554,19 @@ class Relation(object):
         True if the two sets have the same cog_oids.
         For testing only
         """
-        print(self.__duplicate_intention().select(just_return_sql=True))
-#        print(other.select(just_return_sql=True))
+        print(self.select(just_return_sql=True))
+        print(other.select(just_return_sql=True))
         self_ext = [elt.cog_oid_.value for elt in self]
         other_ext = [elt.cog_oid_.value for elt in other]
-#        if self.__extension:
-#            self_ext = [elt.cog_oid_.value for elt in self]
-#        else:
-#            self_ext = [
-#                elt.cog_oid_.value for elt in self.__duplicate_intention()]
-#        if other.__extension:
-#            other_ext = [elt.cog_oid_.value for elt in other]
-#        else:
-#            other_ext = [
-#                elt.cog_oid_.value for elt in other.__duplicate_intention()]
+        print(len(self_ext), len(other_ext))
         self_ext.sort()
         other_ext.sort()
-        print(len(self_ext), len(other_ext))
         return self_ext == other_ext
 
+    def __contains__(self, other):
+        self_ext = [elt.cog_oid_.value for elt in self]
+        other_ext = [elt.cog_oid_.value for elt in other]
+        for elt in other_ext:
+            if not elt in self_ext:
+                return False
+        return True
