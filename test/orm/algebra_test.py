@@ -33,13 +33,6 @@ class Test(TestCase):
         self.set_3.cog_oid_.set_intention('__{}%'.format(self.c3), 'like')
         self.comp_set_1.cog_oid_.set_intention('{}%'.format(self.c1), 'not like')
         self.empty_set.cog_oid_.set_intention('X')
-        a = self.set_1
-        comp_a = self.comp_set_1
-        b = self.set_2
-        ab = self.subset_1_2
-        c = self.set_3
-        empty = self.empty_set
-        universe = self.set
 
     def and_test(self):
         a = self.set_1
@@ -74,22 +67,28 @@ class Test(TestCase):
         empty = self.empty_set
         self.assertTrue(a + empty == a)
 
-    def or_absorbing_elt_test(self):
+    def or_absorbing_elt_test_1(self):
         a = self.set_1
-        empty = self.empty_set
         universe = self.set
         self.assertTrue(universe + a == universe)
+
+    def or_absorbing_elt_test_2(self):
+        a = self.set_1
+        universe = self.set
         self.assertTrue(a + universe == universe)
+
+    def or_absorbing_elt_test_3(self):
+        empty = self.empty_set
         self.assertTrue(empty + empty == empty)
 
     def not_test(self):
         a = self.set_1
         b = self.set_2
         empty = self.empty_set
-        for elt in a - b:
-            self.assertTrue(
-                elt.cog_oid_.value[0] == self.c1 and
-                elt.cog_oid_.value[1] != self.c2)
+#        for elt in a - b:
+#            self.assertTrue(
+#                elt.cog_oid_.value[0] == self.c1 and
+#                elt.cog_oid_.value[1] != self.c2)
         self.assertTrue(a - empty == a)
 
     def empty_test(self):
@@ -103,11 +102,15 @@ class Test(TestCase):
         self.assertTrue(c - c == empty)
         self.assertTrue(universe - universe == empty)
 
-    def complementary_test(self):
+    def complementary_test_1(self):
         a = self.set_1
         comp_a = self.comp_set_1
         universe = self.set
         self.assertTrue(a + comp_a == universe)
+
+    def complementary_test_2(self):
+        a = self.set_1
+        comp_a = self.comp_set_1
         self.assertTrue(a - comp_a == a)
 
     def symetric_difference_test(self):
@@ -116,10 +119,6 @@ class Test(TestCase):
         self.assertTrue(
             (self.set_1 - self.set_2) + (self.set_2 - self.set_1) ==
             (self.set_1 + self.set_2) - (self.set_1 * self.set_2))
-        # commutativity
-        self.assertTrue(
-            (self.set_1 - self.set_2) + (self.set_2 - self.set_1) ==
-            (self.set_2 - self.set_1) + (self.set_1 - self.set_2))
 
     def commutative_laws_test(self):
         a = self.set_1
@@ -148,26 +147,44 @@ class Test(TestCase):
         self.assertTrue(a + empty == a)
         self.assertTrue(a * universe == a)
 
-    def complement_laws_test(self):
+    def complement_laws_test_1(self):
+        a = self.set_1
+        comp_a = self.comp_set_1
+        universe = self.set
+        self.assertTrue(a + comp_a == universe)
+
+    def complement_laws_test_2(self):
         a = self.set_1
         comp_a = self.comp_set_1
         empty = self.empty_set
-        universe = self.set
-        self.assertTrue(a + comp_a == universe)
         self.assertTrue(a * comp_a == empty)
-        self.assertTrue(a + (-a) == universe)
-        self.assertTrue(a * (-a) == empty)
 
-    def idempotent_laws_test(self):
+    def complement_laws_test_3(self):
         a = self.set_1
-        self.assertTrue(a + a == a)
-        self.assertTrue(a * a == a)
+        universe = self.set
+        self.assertTrue(a + (-a) == universe)
 
-    def domination_laws_test(self):
+    def complement_laws_test_4(self):
         a = self.set_1
         empty = self.empty_set
+        self.assertTrue(a * (-a) == empty)
+
+    def idempotent_laws_test_1(self):
+        a = self.set_1
+        self.assertTrue(a + a == a)
+
+    def idempotent_laws_test_2(self):
+        a = self.set_1
+        self.assertTrue(a * a == a)
+
+    def domination_laws_test_1(self):
+        a = self.set_1
         universe = self.set
         self.assertTrue(a + universe == universe)
+
+    def domination_laws_test_2(self):
+        a = self.set_1
+        empty = self.empty_set
         self.assertTrue(a * empty == empty)
 
     def absorption_laws_test(self):
@@ -176,59 +193,135 @@ class Test(TestCase):
         self.assertTrue(a + (a * b) == a)
         self.assertTrue(a * (a + b) == a)
 
-    def de_morgan_s_laws_test(self):
+    def de_morgan_s_laws_test_1(self):
         a = self.set_1
         b = self.set_2
-        self.assertTrue(
-            (-a) + (-b) == -(a * b))
-        self.assertTrue(
-            -(a + b) == (-a) * (-b))
+        self.assertTrue((-a) + (-b) == -(a * b))
+
+    def de_morgan_s_laws_test_2(self):
+        a = self.set_1
+        b = self.set_2
+        self.assertTrue(-(a + b) == (-a) * (-b))
 
     def double_complement_law_test(self):
         a = self.set_1
         self.assertTrue(-(-a) == a)
 
-    def empty_set_complement_test(self):
+    def empty_universe_complement_test_1(self):
         universe = self.set
         empty = self.empty_set
         self.assertTrue(-empty == universe)
 
-    def full_set_complement_test(self):
+    def empty_universe_complement_test_2(self):
         universe = self.set
         empty = self.empty_set
         self.assertTrue(-universe == empty)
 
-    def inclusion_test(self):
+    def inclusion_test_1(self):
         a = self.set_1
         b = self.set_2
         ab = self.subset_1_2
-        empty = self.empty_set
         self.assertTrue(ab in a)
         self.assertTrue(ab in b)
         self.assertTrue(ab in a * b)
+
+    def inclusion_test_2(self):
+        a = self.set_1
+        b = self.set_2
+        empty = self.empty_set
         self.assertTrue(empty in a)
-        self.assertTrue(a in self.set)
+
+    def inclusion_test_3(self):
+        a = self.set_1
+        b = self.set_2
+        universe = self.set
+        self.assertTrue(a in universe)
+
+    def inclusion_test_4(self):
+        a = self.set_1
+        b = self.set_2
         self.assertTrue(a in a + b)
         self.assertTrue(b in a + b)
 
+    def inclusion_test_5(self):
+        a = self.set_1
+        ab = self.subset_1_2
+        empty = self.empty_set
         self.assertTrue(ab - a == empty)
+
+    def inclusion_test_6(self):
+        a = self.set_1
+        ab = self.subset_1_2
         self.assertTrue(-a in -ab)
 
-    def relative_complement_test(self):
+    def relative_complement_test_1(self):
         a = self.set_1
         b = self.set_2
         c = self.set_3
-        self.assertTrue(c-(a*b) == (c-a)+(c-b))
-        self.assertTrue(c-(a+b) == (c-a)*(c-b))
-        self.assertTrue(c-(b-a) == (a*c)+(c-b))
-        self.assertTrue((b-a)*c == (b*c)-a)
-        self.assertTrue((b-a)*c == b*(c-a))
-        self.assertTrue((b-a)+c == (b+c)-(a-c))
-        self.assertTrue(a-a == self.empty_set)
-        self.assertTrue(self.empty_set-a == self.empty_set)
-        self.assertTrue(a-self.empty_set == a)
-        self.assertTrue(b-a == -a*b)
-        self.assertTrue(-(b-a) == a+(-b))
-        self.assertTrue(self.set-a == -a)
-        self.assertTrue(a-self.set == self.empty_set)
+        self.assertTrue(c - (a * b) == (c - a) + (c - b))
 
+    def relative_complement_test_2(self):
+        a = self.set_1
+        b = self.set_2
+        c = self.set_3
+        self.assertTrue(c - (a + b) == (c - a) * (c - b))
+
+    def relative_complement_test_3(self):
+        a = self.set_1
+        b = self.set_2
+        c = self.set_3
+        self.assertTrue(c - (b - a) == (a * c) + (c - b))
+
+    def relative_complement_test_4(self):
+        a = self.set_1
+        b = self.set_2
+        c = self.set_3
+        self.assertTrue((b - a) * c == (b * c) - a)
+
+    def relative_complement_test_5(self):
+        a = self.set_1
+        b = self.set_2
+        c = self.set_3
+        self.assertTrue((b - a) * c == b * (c - a))
+
+    def relative_complement_test_6(self):
+        a = self.set_1
+        b = self.set_2
+        c = self.set_3
+        self.assertTrue((b - a) + c == (b + c) - (a - c))
+
+    def relative_complement_test_7(self):
+        a = self.set_1
+        empty = self.empty_set
+        self.assertTrue(a - a == empty)
+
+    def relative_complement_test_8(self):
+        a = self.set_1
+        empty = self.empty_set
+        self.assertTrue(empty - a == empty)
+
+    def relative_complement_test_9(self):
+        a = self.set_1
+        empty = self.empty_set
+        self.assertTrue(a - empty == a)
+
+    def relative_complement_test_10(self):
+        a = self.set_1
+        b = self.set_2
+        self.assertTrue(b - a == -a * b)
+
+    def relative_complement_test_11(self):
+        a = self.set_1
+        b = self.set_2
+        self.assertTrue(-(b - a) == a + (-b))
+
+    def relative_complement_test_12(self):
+        a = self.set_1
+        universe = self.set
+        self.assertTrue(universe - a == -a)
+
+    def relative_complement_test_13(self):
+        a = self.set_1
+        empty = self.empty_set
+        universe = self.set
+        self.assertTrue(a - universe == empty)

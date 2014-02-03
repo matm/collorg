@@ -411,8 +411,8 @@ class Relation(object):
         self.db.raw_sql(sql_req)
         return self
         
-    def __len__(self):
-        return self.__duplicate_intention().count()
+#    def NO NO NO!__len__(self):
+#        return self.__duplicate_intention().count()
 
     def __iter__(self):
         if len(self.__extension) == 0:
@@ -537,17 +537,6 @@ class Relation(object):
 
     def cog_path(self, data_type):
         return None
-
-    def set_class_variable(self, fqtn, *args):
-        cvn = "_cv_{}".format(inspect.stack()[1][3])
-        cls = self.__class__
-        if not hasattr(cls, cvn):
-            setattr(cls, cvn, self.db.table(fqtn))
-        obj = getattr(cls, cvn)
-        for field_name, self_field_name in args:
-            obj.__dict__[field_name].set_intention(
-                self.__dict__[self_field_name])
-        return getattr(self, cvn)
 
     def __eq__(self, other):
         """

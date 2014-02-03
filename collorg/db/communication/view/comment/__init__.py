@@ -37,39 +37,39 @@ class Comment(Table):
         super(Comment, self).__init__(db, **kwargs)
 
     def post(self):
-        return self.set_class_variable(
-            'collorg.communication.blog.post',
-            ('cog_oid_', 'post_oid_'),
-            ('title_', 'post_title_'))
+        post = self.db.table('collorg.communication.blog.post')
+        post.cog_oid_.set_intention(self.post_oid_.value)
+        post.title_.set_intention(self.post_title_.value)
+        return post
 
     def comment(self):
-        return self.set_class_variable(
-            'collorg.communication.comment',
-            ('cog_oid_', 'comment_oid_'),
-            ('cog_creat_date_', 'comment_creat_date_'),
-            ('cog_modif_date_', 'comment_modif_date_'),
-            ('text_', 'comment_text_'))
+        comment = self.db.table('collorg.communication.comment')
+        comment.cog_oid_.set_intention(self.comment_oid_.value)
+        comment.cog_creat_date_.set_intention(self.comment_creat_date_.value)
+        comment.cog_modif_date_.set_intention(self.comment_modif_date_.value)
+        comment.text_.set_intention(self.comment_text_.value)
+        return comment
 
     def comment_author(self):
-        return self.set_class_variable(
-            'collorg.actor.user',
-            ('cog_oid_', 'user_comment_oid_'),
-            ('first_name_', 'user_comment_first_name_'),
-            ('last_name_', 'user_comment_last_name_'))
+        author = self.db.table('collorg.actor.user')
+        author.cog_oid_.set_intention(self.user_comment_oid_.value)
+        author.first_name_.set_intention(self.user_comment_first_name_.value)
+        author.last_name_.set_intention(self.user_comment_last_name_.value)
+        return author
 
     def follow_up(self):
-        return self.set_class_variable(
-            'collorg.communication.follow_up',
-            ('cog_oid_', 'follow_up_oid_'),
-            ('cog_creat_date_', 'follow_up_creat_date_'),
-            ('cog_modif_date_', 'follow_up_modif_date_'),
-            ('text_', 'follow_up_text_'))
+        fu = self.db.table('collorg.communication.follow_up')
+        fu.cog_oid_.set_intention(self.follow_up_oid_.value)
+        fu.cog_creat_date_.set_intention(self.follow_up_creat_date_.value)
+        fu.cog_modif_date_.set_intention(self.follow_up_modif_date_.value)
+        fu.text_.set_intention(self.follow_up_text_.value)
+        return fu
 
     def follow_up_author(self):
-        return self.set_class_variable(
-            'collorg.actor.user',
-            ('cog_oid_', 'user_follow_up_oid_'),
-            ('first_name_', 'user_follow_up_first_name_'),
-            ('last_name_', 'user_follow_up_last_name_'))
+        fua = self.db.table('collorg.actor.user')
+        fua.cog_oid_.set_intention(self.user_follow_up_oid_.value)
+        fua.first_name_.set_intention(self.user_follow_up_first_name_.value)
+        fua.last_name_.set_intention(self.user_follow_up_last_name_.value)
+        return fua
 
     desc = {'post':{('comment', 'comment_author'):('follow_up', 'follow_up_author')}}

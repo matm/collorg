@@ -149,6 +149,7 @@ if self.exists():
         $(document).ready(function(){
             $('.sortable').sortable({
                 axis: "y",
+                distance: 5,
                 update: function(event, ui){
                     var elt = ui.item.attr('data-elt_oid');
                     var prev = ui.item.prev().attr('data-elt_oid');
