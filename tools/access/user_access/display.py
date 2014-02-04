@@ -13,7 +13,7 @@ if __name__ == '__main__':
     ctrl = Controller()
     print(ctrl._d_anonymous_access)
     print(ctrl._d_visitor_access)
-    
+
 if False:#ÇA MARCHE PAS! LE SET_INTENTION SUR PVIEW!!!!
     action = None
     tv = ctrl._get_tasks_view()

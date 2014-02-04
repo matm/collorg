@@ -16,7 +16,7 @@ my_database = Db( *db_connector.connect( '<db conf file name>' )
 }}}
 
 == Glossary
-* schema: 
+* schema:
 * table:
 * FQTN: fully qualified table name. The fully table name is unique in a
 database.

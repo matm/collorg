@@ -13,5 +13,5 @@ CREATE TABLE "collorg.core".field (
               status = 'protected' OR
               status = 'private' ),
     description WIKI,
-    PRIMARY KEY(fqfn) 
+    PRIMARY KEY(fqfn)
 ) INHERITS( "collorg.core".base_table );

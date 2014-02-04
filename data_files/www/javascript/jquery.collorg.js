@@ -848,11 +848,11 @@
 		strPos = range.text.length;
 	    } else if (br == "ff")
 		strPos = area.selectionStart;
-	    var front = (area.value).substring(0, strPos);  
-	    var back = (area.value).substring(strPos, area.value.length); 
+	    var front = (area.value).substring(0, strPos);
+	    var back = (area.value).substring(strPos, area.value.length);
 	    area.value=front+text+back;
 	    strPos = strPos + text.length;
-	    if (br == "ie") { 
+	    if (br == "ie") {
 		area.focus();
 		var range = document.selection.createRange();
 		range.moveStart ('character', -(area.value.length));
@@ -1083,7 +1083,7 @@
                 post_item.siblings('.focus').removeClass('focus');
                 post_item.addClass('focus').find('a:first').trigger('click');
                 return false;
-            } 
+            }
         });
 
         $(document).ajaxStop(ajax_stop);

@@ -11,7 +11,7 @@ CREATE TABLE "collorg.planning.scheduler".month (
    name STRING CHECK(
       name IN ('January', 'February', 'March', 'April', 'May', 'June',
          'July', 'August', 'September', 'October', 'November', 'December')),
-   CHECK ( 
+   CHECK (
       (num = 1 AND name = 'January') OR
       (num = 2 AND name = 'February') OR
       (num = 3 AND name = 'March') OR

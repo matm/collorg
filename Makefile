@@ -20,8 +20,8 @@ clean: clean_share restart_apache
 	for i in `find $(DIRS) -name __pycache__` ; do rmdir $$i ; done
 
 clean_templates:
-	for i in `find collorg -name "*.py" | grep "/cog/templates/" | grep -v __init__.py`; do rm $$i ; done 
-	for i in `find collorg -name "__init__.py" | grep "/cog/templates/"`; do rm $$i ; touch $$i ; done 
+	for i in `find collorg -name "*.py" | grep "/cog/templates/" | grep -v __init__.py`; do rm $$i ; done
+	for i in `find collorg -name "__init__.py" | grep "/cog/templates/"`; do rm $$i ; touch $$i ; done
 
 clean_install:
 	sudo rm -rf /usr/local/lib/python?.?/dist-packages/collorg-*-py?.?.egg/

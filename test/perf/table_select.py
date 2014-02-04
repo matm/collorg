@@ -40,9 +40,9 @@ for type_ in data_types:
     result[ratio] = (type_.fqtn_.value, count, duration)
     durations.append(duration)
 ratios.sort()
-    
+
 for ratio in ratios:
     fqtn, count, duration = result[ratio]
     print("{}: {} {} {}".format(fqtn, ratio, count, duration))
 
-    
+

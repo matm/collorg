@@ -10,7 +10,7 @@ CREATE TABLE "collorg.planning.scheduler".week_day (
    name STRING CHECK(
       name IN ('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
                'Friday', 'Saturday')),
-   CHECK ( 
+   CHECK (
       (num = 0 AND name = 'Sunday') OR
       (num = 1 AND name = 'Monday') OR
       (num = 2 AND name = 'Tuesday') OR

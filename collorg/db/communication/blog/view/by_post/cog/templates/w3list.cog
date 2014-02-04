@@ -7,7 +7,7 @@ def remove_link_f(post, elt_oid):
     label = '<img src="/collorg/images/trashcan.svg" class="medicon" />'
     title = _("remove from this list")
     link = html(post).a(
-        cog_method="w3remove", 
+        cog_method="w3remove",
         label=label, target='_page_', elt_oid=elt_oid, title=title)
     return link
 
@@ -15,7 +15,7 @@ def remove_link_from(post, data_oid):
     label = '<img src="/collorg/images/trashcan.svg" class="medicon" />'
     title = _("remove from this list")
     link = html(post).a(
-        cog_method="w3remove_from", 
+        cog_method="w3remove_from",
         label=label, target='_page_', data_oid=data_oid, title=title)
     return link
 
@@ -23,7 +23,7 @@ def apd_remove_link(post_oid, data_oid):
     label = '<img src="/collorg/images/trashcan.svg" class="medicon" />'
     title = _("remove from this list")
     link = html(apd).a(
-        cog_method="w3remove", 
+        cog_method="w3remove",
         label=label, target='_page_',
         post_oid=post_oid, data_oid=data_oid, title=title)
     return link

@@ -20,7 +20,7 @@ if cog_user and visibility == 'private':
 # --- article
 # >>>
 display = self.w3display_base(
-    header = header, article = article, 
+    header = header, article = article,
     embedded = False, no_header_actions = True)
 # ---
 {% display %}

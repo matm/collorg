@@ -86,7 +86,7 @@ class GenRelationalPart():
             field_name, fk_field_name, field_name,
             field_name)
         return _get_code
-    
+
     def gen_set_code(self, field_name, fk_field_name):
         _set_code = self.set_code
         _set_code %= (
@@ -94,10 +94,10 @@ class GenRelationalPart():
             field_name, field_name, fk_field_name
         )
         return _set_code
-    
+
     def gen_prop_code(self, field_name):
         return self.prop_code % (field_name, field_name, field_name)
-    
+
     def gen_relational(self, fqtn):
         res_cog_rel = []
         res = []
@@ -114,7 +114,7 @@ class GenRelationalPart():
                 res_cog_rel.append(self.gen_prop_code(field_name))
                 res.append(self.res_cog_ref % (field_name, field_name))
         return res_cog_rel, res
-    
+
     def gen_trans_rel(self, src_fqtn, fqtn):
         res = []
         try:
@@ -130,7 +130,7 @@ class GenRelationalPart():
                 field_name = fkey
                 res.append(field_name)
         return res
-    
+
     def gen_rev_relational(self, fqtn):
         res_cog_rel = []
         res = []
@@ -147,7 +147,7 @@ class GenRelationalPart():
                     self.get_rev_code % (lf_ref, f_table, fkey))
                 res.append(self.res_cog_rev_ref % (lf_ref, lf_ref))
         return res_cog_rel, res
-    
+
     def strip_lines(self, lines, begin_mark, end_mark):
         n_lines = []
         skip = False
@@ -162,7 +162,7 @@ class GenRelationalPart():
                 continue
             n_lines.append(line)
         return n_lines
-    
+
     def replace_lines(self, lines, replact, pos):
         res = []
         idx = 1
@@ -173,7 +173,7 @@ class GenRelationalPart():
             res.append(line.rstrip())
             idx += 1
         return res
-    
+
     def fdl_replace(self, lines, pos):
         begin_attrs_mark = "        #>>> AUTO_COG DOC. DO NOT EDIT"
         end_attrs_mark = "        #<<< AUTO_COG DOC. Your code goes after"
@@ -187,7 +187,7 @@ class GenRelationalPart():
         replact += ['        """']
         replact += [end_attrs_mark]
         return self.replace_lines(src_lines, replact, pos)
-    
+
     def rel_replace(self, lines, pos):
         imp_rel = "    from .cog import relational as cog_r"
         begin_rel_mark = "    #>>> AUTO_COG REL_PART. DO NOT EDIT!"
@@ -240,6 +240,6 @@ class GenRelationalPart():
         open(module_file, "w").write("\n".join(lines) + "\n")
         if res_cog_rel:
             open(cog_relational_file, "w").write("\n".join(res_cog_rel) + "\n")
-    
+
 if __name__ == '__main__':
     GenRelationalPart()

@@ -15,7 +15,7 @@ if nb_posts:
     for tag in self:
         l_title_tags.append(tag.tag_.value)
     # ---
-    <span class="title">{% " AND ".join(l_title_tags) %} 
+    <span class="title">{% " AND ".join(l_title_tags) %}
     ({% nb_posts %} post{% nb_posts > 1 and "s" or "" %})
     </span>
     {% vp.w3list(embedded=True) %}

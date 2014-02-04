@@ -1,7 +1,7 @@
 CREATE TABLE "collorg.actor".category (
    cog_oid C_OID UNIQUE NOT NULL,
    FOREIGN KEY(cog_oid) REFERENCES "collorg.core".oid_table(cog_oid)
-      INITIALLY DEFERRED, 
+      INITIALLY DEFERRED,
    cog_fqtn C_FQTN
       DEFAULT 'collorg.actor.category'
       CHECK(cog_fqtn = 'collorg.actor.category'),

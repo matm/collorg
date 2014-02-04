@@ -32,7 +32,7 @@ class Mail():
 
     def set_bcc(self, bcc_):
         self.__email['Bcc'] = ",".join(bcc_)
-        
+
     def set_subject(self, subject):
         self.__email['Subject'] = subject
 
@@ -46,7 +46,7 @@ class Mail():
         smtp.sendmail(
             self.__from,
             self.__to,
-            self.__email.as_string() ) 
+            self.__email.as_string() )
         smtp.quit()
 
     def attach(self, chemin_fichier):

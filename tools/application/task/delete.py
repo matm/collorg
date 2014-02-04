@@ -32,7 +32,7 @@ if len(sys.argv) == 2:
     for action in actions:
         print(" . {} {}.{}".format(
                 action.cog_oid_.value[0:8], action.data_type_, action.name_))
-    
+
     suppress = raw_input('Suppress [N/y]? ')
     if suppress.upper() != 'Y':
         print("Nothing suppressed.")
@@ -42,5 +42,5 @@ else:
     task = tasks()
     task.cog_oid_.set_intention('{}%'.format(task_oid), 'like')
     task = task.get()
-    
+
 task.delete()

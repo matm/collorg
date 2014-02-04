@@ -13,7 +13,7 @@ def color(src):
         return colored.encode( 'utf-8' )
     except:
         return src
-table = self.db.table( 'collorg.core.data_type' ) 
+table = self.db.table( 'collorg.core.data_type' )
 cls = table.join( self ).get()().__class__
 dirname = os.path.dirname(
     os.path.realpath( inspect.getabsfile( cls ) ) )
@@ -49,7 +49,7 @@ if source:
 <h2>python module</h2>
 {% color(open( template_src ).read()) %}
 # ---
-{# 
+{#
 #!! Element cog_ref not allowed as child of element section in this context
 <cog_ref>{% self.cog_oid_ %}</cog_ref>
 #}

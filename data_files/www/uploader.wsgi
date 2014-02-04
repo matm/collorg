@@ -35,17 +35,17 @@ class Uploader(object):
         self.sfile_name = None
         self.user = None
         self.data = None
-        
+
     #import cgitb; cgitb.enable()
     def __unicode(self, str_):
         if type(str_) is not unicode:
             return unicode("%s" % str_, "utf-8")
         return str_
-    
+
     def strip_accents(self, str_):
         return unicodedata.normalize(
             'NFKD', str_).encode('ASCII', 'ignore').decode('ASCII')
-    
+
     def attach_file(self):
         attach = self.db.table('collorg.communication.attachment')
         attach.attach(self.file_, self.data, self.user, self.description)
@@ -58,7 +58,7 @@ class Uploader(object):
               chunk = f.read(chunk_size)
               if not chunk: break
               yield chunk
-    
+
         # A nested FieldStorage instance holds the file
         fileitem = fs['file']
         session_key = fs['cog_session'].value
@@ -74,7 +74,7 @@ class Uploader(object):
 
         # Test if the file was uploaded
         if fileitem.filename:
-    
+
            # strip leading path from file name to avoid directory traversal attacks
            self.file_name = unicode(
                os.path.basename(fileitem.filename), encoding='utf-8')
@@ -82,7 +82,7 @@ class Uploader(object):
            tmp_file_name = '%s/tmp/%s' % (
                self.db._cog_params['upload_dir'], self.sfile_name)
            tmp_file = open(tmp_file_name, 'wb', 10000)
-    
+
            # Read the file in chunks
            for chunk in fbuffer(fileitem.file):
               tmp_file.write(chunk)
@@ -94,12 +94,12 @@ class Uploader(object):
            self.attach_file()
            message = 'The file "%s" was attached successfully' % (
                fileitem.filename)
-    
+
         else:
            message = 'No file was uploaded'
         __json['#%s' % (target)] = {'action':'html', 'content':message}
         return self.__unicode(json.dumps(__json))
-    
+
 def application(environ, start_response):
     fs = cgi.FieldStorage(fp=environ['wsgi.input'], environ=environ)
     log(fs)

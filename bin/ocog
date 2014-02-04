@@ -37,7 +37,7 @@ def run_cmd( cmd, args ):
     temp = __import__(
         "collorg.utils.%s" % ( cmd ), globals(), locals(), cmd.capitalize() )
     eval( "temp.%s( args )" % ( cmd.capitalize() ) )
-    
+
 if __name__ == '__main__':
     if len( sys.argv ) == 1:
         help()

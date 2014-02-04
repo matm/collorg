@@ -15,7 +15,7 @@ class Client():
     def request(self,  *args):
         data = json.dumps([self.__db, args])
         print("client request{}".format(data))
-        self.__client.settimeout(0.01)         
+        self.__client.settimeout(0.01)
         self.__client.sendto(data, self.__address)
         recv_data, addr = self.__client.recvfrom(self.__buff_size)
         return json.loads(recv_data)

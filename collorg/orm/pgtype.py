@@ -130,7 +130,7 @@ class PgType( object ):
                 return self.__check_array(field, val)
         except:
             raise RuntimeError(
-                "Error pg_type.check: %s->%s with %s of type %s" % ( 
+                "Error pg_type.check: %s->%s with %s of type %s" % (
                     sql_type, self.__d_pg_types[sql_type], val,
                     val.__class__.__name__))
 
@@ -149,16 +149,16 @@ class PgType( object ):
             return "%s-%02d-%02dT%02d:%02d:%02dZ" % (
                 val.year, val.month, val.day, val.hour, val.minute, val.second)
         return datetime.datetime.strptime(val, "%Y-%m-%d %H:%M:%S")
-        
+
     def iso_date( self, field, val ):
         """
-        val is 
+        val is
         the format must be iso8601. the "T%H:%M:%SZ" part is ignored
         """
         if type(val) in [datetime.date, datetime.datetime]:
             return "%s-%s-%s" % (val.year, val.month, val.day)
         return datetime.datetime.strptime(val, '%Y-%m-%d')
-        
+
     def notImplemented( self, field, val ):
         sql_type = field.get_sql_type()
         raise CustomError(

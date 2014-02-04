@@ -29,7 +29,7 @@ else:
     # +++ form_html
     {% html(self).input(self.title_, css_class="all_width") %}
     <div><label for="{% ip_id %}"><b>{% i18n_introductory_paragraph %}</b></label></div>
-    <textarea 
+    <textarea
         id="{% ip_id %}" name="introductory_paragraph_"
         rows="3" >{% self.introductory_paragraph_ %}</textarea>
     {% html(self).input(self.text_) %}

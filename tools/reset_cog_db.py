@@ -68,7 +68,7 @@ if __name__ == '__main__':
     os.system(cmd1 % (db_name, cur_dir))
     if db_name != 'collorg_db':
         print("cmd 2 %s" % (70 * "="))
-        os.system(cmd2 % (db_name)) 
+        os.system(cmd2 % (db_name))
     else:
         print("cmd 3 %s" % (70 * "="))
         os.system(cmd3 % (db_name))

@@ -30,9 +30,9 @@ sub.attachment,
 sub.comment
 FROM
 post left join (
-select 
+select
 post.cog_oid,
-count(distinct attachment.cog_oid) as attachment, 
+count(distinct attachment.cog_oid) as attachment,
 count(distinct comment.cog_oid) as comment
 from post
 LEFT JOIN attachment ON

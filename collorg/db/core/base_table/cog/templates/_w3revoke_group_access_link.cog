@@ -5,7 +5,7 @@
 # >>>
 i18n_revoke_group_access = _("Revoke group access")
 callback = kwargs['callback']
-label = """<img 
+label = """<img
  class="bigicon" src="/collorg/images/remove_group.svg"
  title="{}"
 />""".format(i18n_revoke_group_access)

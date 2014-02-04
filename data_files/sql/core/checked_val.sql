@@ -7,6 +7,6 @@ CREATE TABLE "collorg.core".checked_val (
    field STRING NOT NULL,
    FOREIGN KEY(field) REFERENCES "collorg.core".field(fqfn),
    val STRING NOT NULL,
-   "default" BOOL DEFAULT 'f', 
+   "default" BOOL DEFAULT 'f',
    PRIMARY KEY(field, val)
 ) INHERITS( "collorg.core".base_table ) ;

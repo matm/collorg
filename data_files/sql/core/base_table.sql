@@ -1,5 +1,5 @@
 CREATE TABLE "collorg.core".base_table (
-   cog_oid C_OID UNIQUE NOT NULL, -- DEFAULT uuid_generate_v4(), 
+   cog_oid C_OID UNIQUE NOT NULL, -- DEFAULT uuid_generate_v4(),
    cog_fqtn C_FQTN NOT NULL,
    cog_signature TEXT,
    cog_test BOOL DEFAULT 'f',

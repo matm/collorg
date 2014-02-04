@@ -17,9 +17,9 @@ try:
         apd.see_also_.set_intention(True)
         apd.insert()
         sa.delete()
-    
+
     graph_topic = table('collorg.web.topic_graph')
-    
+
     for gt in graph_topic:
         apd = a_post_data()
         apd.post_.set_intention(gt.topic_.value)
@@ -30,7 +30,7 @@ try:
         gt.delete()
 except:
     pass
-    
+
 apd = a_post_data()
 apd.order_by(apd.data_, apd.cog_creat_date_)
 this = None

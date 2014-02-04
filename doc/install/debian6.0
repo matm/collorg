@@ -16,11 +16,11 @@ ALTER USER collorg password 'gl,0uArgl' ;
 joel@debian:~$ cd collorg/sql/pg/collorg/
 joel@debian:~/collorg/sql/pg/collorg$ createdb db_test
 joel@debian:~/collorg/sql/pg/collorg$ psql db_test -c 'CREATE LANGUAGE plpgsql'
-joel@debian:~/collorg/sql/pg/collorg$ psql db_test -f /usr/share/postgresql/8.4/contrib/_int.sql 
+joel@debian:~/collorg/sql/pg/collorg$ psql db_test -f /usr/share/postgresql/8.4/contrib/_int.sql
 [...]
 some NOTICEs
 [...]
-joel@debian:~/collorg/sql/pg/collorg$ psql db_test -f /usr/share/postgresql/8.4/contrib/uuid-ossp.sql 
+joel@debian:~/collorg/sql/pg/collorg$ psql db_test -f /usr/share/postgresql/8.4/contrib/uuid-ossp.sql
 joel@debian:~/collorg/sql/pg/collorg$ cd ~/tmp
 joel@debian:~/tmp$ cog init -d db_test
 root@debian:/home/joel/collorg# cd ../tmp/cog_db_test/

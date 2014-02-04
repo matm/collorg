@@ -14,4 +14,4 @@ label = "%s follow-up%s" % (nb_follow_ups, nb_follow_ups > 1 and 's' or '')
   <a class="action" target="_after_"
     href="?cog_fqtn_={% self.fqtn %}&amp;cog_method=w3list&amp;comment_oid={% comment_oid %}"
   >{% label %}</a>
-    
+

@@ -16,7 +16,7 @@ def fullsplit( path, result = None ):
     return fullsplit(head, [tail] + result)
 
 for dirpath, dirnames, filenames in os.walk( "collorg_app" ):
-    # Ignore dirnames that start with '.' 
+    # Ignore dirnames that start with '.'
     for i, dirname in enumerate( dirnames ):
         if dirname.startswith( '.' ):
             del dirnames[i]

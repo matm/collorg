@@ -12,7 +12,7 @@ for topic in topics:
         first = False
         # +++ header
         <span class="title">{%html(self).a(label=_("Site map"))%}</span>
-        
+
         # --- header
         # +++ article
         <nav class="bc">{% html(topic).a() %}</nav>

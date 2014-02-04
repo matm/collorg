@@ -410,7 +410,7 @@ class Relation(object):
         sql_req = "\n".join(req)
         self.db.raw_sql(sql_req)
         return self
-        
+
 #    def NO NO NO!__len__(self):
 #        return self.__duplicate_intention().count()
 

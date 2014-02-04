@@ -59,12 +59,12 @@ $.fn.liveSearch = function (conf) {
 	target:undefined,
 	id: 'jquery-live-search',
 	data_type: undefined,
-        duration:  400, 
+        duration:  400,
         typeDelay:  200,
 	top: 0,
         min_length: 3,
-        loadingClass: 'loading', 
-        onSlideUp:  function () {}, 
+        loadingClass: 'loading',
+        onSlideUp:  function () {},
         position: 'absolute'
     }, conf);
 
@@ -105,9 +105,9 @@ $.fn.liveSearch = function (conf) {
         var repositionLiveSearch = function () {
             var tmpOffset = input.offset();
             var inputDim = {
-                left:  tmpOffset.left, 
-                top:  tmpOffset.top, 
-                width:  input.outerWidth(), 
+                left:  tmpOffset.left,
+                top:  tmpOffset.top,
+                width:  input.outerWidth(),
                 height:  input.outerHeight()
             };
 
@@ -115,8 +115,8 @@ $.fn.liveSearch = function (conf) {
             inputDim.totalWidth = inputDim.width - liveSearchPaddingBorderHoriz;
 
             liveSearch.css({
-                position: config.position, 
-                left:  inputDim.left + 'px', 
+                position: config.position,
+                left:  inputDim.left + 'px',
                 top:  inputDim.topPos + 'px',
                 width:  inputDim.totalWidth + 'px'
             });

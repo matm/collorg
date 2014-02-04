@@ -56,6 +56,6 @@ class Cmd():
 
     def do_dump(self):
         Client(self.__ctrl).dump()
-        
+
     def do_clean(self):
         raise NotImplementedError

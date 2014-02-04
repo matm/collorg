@@ -3,11 +3,11 @@
 ### BEGIN INIT INFO
 # Provides:          collorg
 # Required-Start:    $all
-# Required-Stop:     
+# Required-Stop:
 # Should-Start:      2 3 4 5
-# Should-Stop:       
+# Should-Stop:
 # Default-Start:     2 3 4 5
-# Default-Stop:      
+# Default-Stop:
 # Short-Description: collorg cache service
 # Description:       collorg cache service
 ### END INIT INFO

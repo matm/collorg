@@ -2,7 +2,7 @@ CREATE SCHEMA "collorg.access.view";
 create view "collorg.access.view".access AS
 SELECT
 se.key AS session_key,
-user_.cog_oid AS user_oid, 
+user_.cog_oid AS user_oid,
 user_.pseudo AS user_pseudo,
 user_.first_name AS user_first_name,
 user_.last_name AS user_last_name,

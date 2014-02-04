@@ -124,7 +124,7 @@ class Table(Relation):
     def _cog_label_fields(self):
         for field in self.__label_fields:
             yield field
-        
+
     @property
     def _cog_inherits(self):
         """returns the list of objects inherited by self"""
@@ -160,7 +160,7 @@ class Table(Relation):
     @property
     def uniq(self):
         return self.__uniq
-    
+
     def _not_retrieved(self):
         self.__uniq = False
         self.__retrieved = False
@@ -172,7 +172,7 @@ class Table(Relation):
     @property
     def name(self):
         return self._cog_tablename
-    
+
     @property
     def neighbors(self):
         return self.__neighbors
@@ -285,7 +285,7 @@ class Table(Relation):
                 raise CustomError("Attempting to delete all tuples from %s" % (
                         self.sql_fqtn))
         return self.__sql.strip()
-        
+
     def _cog_update(
         self, update_tuple, just_return_sql, no_clause,
         update_modif_date = True):

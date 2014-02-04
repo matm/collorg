@@ -17,7 +17,7 @@ callback = kwargs['callback']
 id = html.random_id()
 fid = "form_%s" % (id)
 # +++ form_html
-<label><img 
+<label><img
  class="left bigicon" src="/collorg/images/add_group.svg"
  title="{% i18n_grant_group_access %}"
 />

@@ -23,13 +23,13 @@ to each page found in the tree.
 _cog_web_site/__src is the root (home page) of the site.
 In each directory under the __src there is one and only one file
 =<label>= where label is the label of the page.
-For instance : 
+For instance :
     __src/=Home page=
     __src/admin/=Site administration page=
     ...
 
 Considering ./_cog_web_site/__src/<path_info>/<label>
-This script generates the module ./cog_web_site/<path_info>/page.py 
+This script generates the module ./cog_web_site/<path_info>/page.py
 """
 
 import os

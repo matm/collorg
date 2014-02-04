@@ -20,7 +20,7 @@ if post.exists():
 else:
     # ---
     <span>Add posts on your desk by bookmarking them using the
-    <img class="medicon" src="/collorg/images/bookmark.svg"> icon on the 
+    <img class="medicon" src="/collorg/images/bookmark.svg"> icon on the
     post and follow the comments under the "Comments" tab.
     </span>
 # --- bookmarked_posts

@@ -48,13 +48,13 @@ SELECT
     n_fk.nspname AS fk_schemaname,
     c_fk.relname AS fk_tablename,
     a_fk.attname AS fk_fieldname
-FROM 
+FROM
     pg_class c -- table
     LEFT JOIN pg_description tdesc ON
     tdesc.objoid = c.oid AND
     tdesc.objsubid = 0
     LEFT JOIN pg_namespace n ON
-    n.oid = c.relnamespace 
+    n.oid = c.relnamespace
 --    LEFT JOIN pg_tablespace t ON
 --    t.oid = c.reltablespace
 --    JOIN pg_database db ON
@@ -88,7 +88,7 @@ FROM
     LEFT JOIN pg_attribute a_fk ON
     a_fk.attrelid = c_fk.oid AND
     a_fk.attnum = cn_fk.confkey[idx( cn_fk.conkey, a.attnum )]
-WHERE 
+WHERE
     n.nspname <> 'pg_catalog'::name AND
     n.nspname <> 'information_schema'::name AND
     ( c.relkind = 'r'::"char" OR c.relkind = 'v'::"char" ) AND
@@ -193,7 +193,7 @@ class Metadata:
                 d_schemas[schemaname]['d_tbl'][tablename] = {
                     'schemaname': schemaname,
                     'tablename': tablename,
-                    'tableid': tableid, 
+                    'tableid': tableid,
                     'l_fld': [],
                     'd_fld': OrderedDict(),
                     }
