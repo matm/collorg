@@ -27,9 +27,10 @@ if __name__ == '__main__':
     user.pseudo_.set_intention(pseudo)
     access = user._rev_access_
     access._data_ = data
+    access.granted()
     if not access.is_granted():
         access = access.insert()
-    access.granted()
     access = access.get()
+    role._function_ = the_function
     role._access_ = access
     role.insert()

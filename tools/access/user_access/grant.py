@@ -14,15 +14,17 @@ accessed_data = table('collorg.core.oid_table')
 user = table('collorg.actor.user')
 
 def grant_access(accessed_data, user, write):
-    print("Grant access \n  for user: {}\n  to accessed object: {}".format(
-        user.cog_label(), accessed_data.cog_label()))
     user_access = table('collorg.access.access')
     user_access._data_ = accessed_data
     user_access._user_ = user
     if write:
         user_access.write_.set_intention(write)
     if not user_access.exists():
+        print("Grant access \n  for user: {}\n  to accessed object: {}".format(
+            user.cog_label(), accessed_data.cog_label()))
         user_access.insert()
+    else:
+        print("Access already granted for {}".format(user.cog_label()))
 
 try:
     try:
