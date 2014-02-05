@@ -73,14 +73,14 @@ class Group( Base_table ):
             ga.delete()
 
     def grant_write_access(self, data):
-        ga = self.__set_group_access(data)
+        ga = self.__set_group_access(data, False)
         nga = ga()
         nga.write_.set_intention(True)
         if ga.exists():
             ga.update(nga)
 
     def revoke_write_access(self, data):
-        ga = self.__set_group_access(data)
+        ga = self.__set_group_access(data, True)
         nga = ga()
         nga.write_.set_intention(False)
         if ga.exists():
