@@ -89,13 +89,6 @@ class Group( Base_table ):
     def insert(self, user):
         new_group = super(self.__class__, self).insert().get()
         topic = self.db.table('collorg.web.topic')
-#        env_oid = new_group.cog_oid_.value
-#        data_oid = new_group.cog_oid_.value
-#        topic.winsert(
-#            user,
-#            title_=new_group.name_.value, text_='',
-#            env_oid=env_oid, data_oid=data_oid,
-#            visibility_='private')
         topic.cog_environment_.set_intention(new_group.cog_oid_.value)
         topic.title_.set_intention('')
         topic.text_.set_intention('')

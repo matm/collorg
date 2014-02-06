@@ -22,11 +22,18 @@ access = group._rev_access_
 access.granted()
 for user in access._user_:
     print(" - {}".format(user.pseudo_))
-pseudo = raw_input("pseudo? ")
-if not pseudo.strip():
-    sys.exit()
-user = table("collorg.actor.user")
-user.pseudo_.set_intention(pseudo.strip())
-user.get()
-access._user_ = user
-access.insert()
+while True:
+    last_name = raw_input("Name? ")
+    if not last_name.strip():
+        sys.exit()
+    users = table("collorg.actor.user")
+    users.last_name_.set_intention(last_name.strip(), 'ilike')
+    for user in users:
+        print(" - {} {} {}".format(
+            user.cog_oid_, user.first_name_, user.last_name_))
+    user_oid = raw_input("User's OID? ")
+    if not user_oid:
+        continue
+    user = db.get_elt_by_oid(user_oid)
+    access._user_ = user
+    access.insert()
