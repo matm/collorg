@@ -1,0 +1,20 @@
+#PRAGMA 'write':True
+#PRAGMA 'goals':['Manage group']
+#PRAGMA 'tasks':['Manage group']
+#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'label':"New group (form)"
+#PRAGMA 'in_menu':False
+# >>>
+id_ = html.random_id()
+form_id = "form_{}".format(id_)
+i18n_gn = _("group name")
+i18n_add_group = _("create group")
+# ---
+<form id="{% form_id %}">
+<input type="hidden" name="cog_oid_" value="{% self.cog_oid_ %}" />
+<input type="hidden" name="cog_method" value="w3group_add" />
+<input name="group_name" value="" placeholder="{% i18n_gn %}" />
+<button  class="action" target="_page_" data-form-id="{% form_id %}">
+{% i18n_add_group %}
+</button>
+</form>

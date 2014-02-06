@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-24 08:29+0100\n"
+"POT-Creation-Date: 2014-02-06 12:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,6 +76,7 @@ msgstr "Recherche"
 #: build/lib.linux-x86_64-2.7/collorg/db/core/base_table/cog/templates/w3list_members.py:23
 #: collorg/db/core/base_table/cog/templates/w3list_members.py:22
 #: collorg/db/communication/blog/post/cog/templates/w3list_members.py:23
+#: collorg/db/web/topic/cog/templates/w3list_members.py:23
 msgid "Members"
 msgstr "Membres"
 
@@ -83,6 +84,7 @@ msgstr "Membres"
 #: build/lib.linux-x86_64-2.7/collorg/db/core/base_table/cog/templates/w3list_members.py:24
 #: collorg/db/core/base_table/cog/templates/w3list_members.py:23
 #: collorg/db/communication/blog/post/cog/templates/w3list_members.py:24
+#: collorg/db/web/topic/cog/templates/w3list_members.py:24
 msgid "Members inherited from"
 msgstr "Membres hérités de"
 
@@ -510,6 +512,7 @@ msgstr "créé"
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:24
 #: collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:24
 #: collorg/db/core/base_table/cog/templates/w3creat_modif_date.py:30
+#: collorg/db/communication/blog/view/by_post/cog/templates/w3list_attached_posts.py:23
 msgid "last modified"
 msgstr "dernière modification "
 
@@ -2047,6 +2050,7 @@ msgid "emails, comma separated"
 msgstr "emails, séparés par des virgules"
 
 #: collorg/db/group/group/cog/templates/_w3manage.py:27
+#: collorg/db/actor/user/cog/templates/w3group_new.py:28
 msgid "group name"
 msgstr "nom du groupe"
 
@@ -2171,3 +2175,19 @@ msgstr ""
 "Glissez - déposez le lien du panier vers la \n"
 "page/zone de saisie pour ajouter une référence.\n"
 "(le droit d'écriture est requis)"
+
+#: collorg/db/actor/user/cog/templates/w3manage_group_link.py:26
+msgid "My groups"
+msgstr "Mes groupes"
+
+#: collorg/db/actor/user/cog/templates/w3group_list.py:27
+msgid "You don't have any personnal group."
+msgstr "Vous n'avez créé aucun groupe personnel."
+
+#: collorg/db/actor/user/cog/templates/w3group_new.py:29
+msgid "create group"
+msgstr "créer le groupe"
+
+#: collorg/db/group/group/cog/templates/w3manage_members_link.py:27
+msgid "manage the group members"
+msgstr "gérer les membres du groupe"

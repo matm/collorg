@@ -1,0 +1,14 @@
+#PRAGMA 'write':True
+#PRAGMA 'strip':True
+#PRAGMA 'goals':['Group management']
+#PRAGMA 'tasks':['Group management']
+#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'label':'Manage group members'
+#PRAGMA 'in_menu':False
+# >>>
+i18n_mng_grp = _("manage the group members")
+label = '''<img src="/collorg/images/cog.svg"
+ title="{}" class="medicon" />'''.format(i18n_mng_grp)
+label += kwargs.get('label', '')
+# ---
+{% html(self).a(cog_method="w3manage_members", label=label, user=cog_user) %}

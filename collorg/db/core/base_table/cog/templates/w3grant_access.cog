@@ -15,7 +15,8 @@ if function_oid:
 if cog_user.cog_oid_.value != user_oid:
     user = self.db.get_elt_by_oid(user_oid)
     user.grant_access(self, function=function)
-    self._wipe_cache()
+    if self._is_cog_post:
+        self._wipe_cache()
 if self.fqtn == "collorg.web.topic" and self.cog_environment_.value != self.cog_oid_.value:
     ntopic = self()
     ntopic.cog_environment_.set_intention(self.cog_oid_.value)

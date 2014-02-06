@@ -1,0 +1,10 @@
+# >>>
+for group in self:
+    # ---
+    <li>{% html(group).a() %}
+    # >>>
+    if cog_user and cog_user.cog_oid_.value == group.data_.value:
+        # ---
+        {% group.w3manage_members_link() %}
+    # ---
+    </li>

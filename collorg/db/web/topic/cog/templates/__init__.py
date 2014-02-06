@@ -1,1 +1,1 @@
-__all__ = ["_w3new", "w3attach_post", "w3attach_post_drop_zone", "w3display", "w3display_item", "w3edit", "w3list", "w3new_post", "w3parents"]
+__all__ = ["_w3new", "w3attach_post", "w3attach_post_drop_zone", "w3display", "w3display_item", "w3edit", "w3list", "w3list_members", "w3new_post", "w3parents"]

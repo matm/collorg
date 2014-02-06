@@ -5,6 +5,8 @@
 __doc__ = """
 Displays the list of the members of the group group_oid
 """
+owner = kwargs['owner'] # True or False
+group = kwargs['group']
 user = self.db.table('collorg.actor.user')
 data_link = (
     """<a href="?cog_method=w3display&amp;cog_fqtn_=%s&amp;"""
@@ -23,6 +25,13 @@ for user_oid, vals in d_users.items():
     user.last_name_.set_intention(elt.last_name_.value)
     # ---
     <tr>
+    <td>
+    # >>>
+    if owner and elt.user_oid_.value != owner.cog_oid_.value:
+        # ---
+        {% group._w3revoke_access_link(user=user, callback="w3manage_members", target="_page_") %}
+    # ---
+    </td>
     <td>{% html(user).a() %}</td>
     <td style="width:25px;"></td>
     <td>

@@ -5,6 +5,7 @@
 #PRAGMA 'in_menu':False
 # >>>
 this = kwargs['this']
+target = kwargs.get('target', '_page_article_')
 this_oid = this.cog_oid_.value
 post_oid = self.cog_oid_.value
 callback = kwargs['callback']
@@ -14,10 +15,12 @@ if(self.is_cog_post and cog_user is not None and
    self.author_.value == cog_user.cog_oid_.value):
     user_add = user._w3manage(
         data = self, method = "w3select_user",
-        action="w3grant_access", callback=callback)
-    group_add = group._w3manage(
-        data = self, method = "w3select_group",
-        action="w3grant_group_access", callback=callback)
+        action="w3grant_access", callback=callback, target=target)
+    group_add = ''
+    if self._is_cog_post:
+        group_add = group._w3manage(
+            data = self, method = "w3select_group",
+            action="w3grant_group_access", callback=callback, target=target)
     if this_oid != post_oid and this.cog_fqtn_.value == 'collorg.web.topic':
         # ---
         <div class="right">

@@ -1,0 +1,25 @@
+#PRAGMA 'write':True
+#PRAGMA 'strip':True
+#PRAGMA 'goals':['Group management']
+#PRAGMA 'tasks':['Group management']
+#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'label':'Manage group members'
+#PRAGMA 'in_menu':False
+# >>>
+id_ = html.random_id()
+self.author_ = self.data_
+# +++ header
+<span class="title">{% self.w3manage_members_link(label=self.cog_label(), user=cog_user) %}</span>
+# --- header
+# +++ article
+{% self.w3manage_access(this=self, target="_page_", callback="w3manage_members") %}
+{#
+w3list_members is group.group.w3list_members
+#}
+{% self.w3list_members(user=cog_user) %}
+# --- article
+# >>>
+output = self.db.table('collorg.core.base_table').w3display_base(
+    header=header, article=article)
+# ---
+{% output %}

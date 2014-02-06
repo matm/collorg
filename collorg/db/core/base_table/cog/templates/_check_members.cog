@@ -1,4 +1,4 @@
 # >>>
-if self._is_cog_post:
+if self._is_cog_post or self._is_cog_group:
     # ---
     ok

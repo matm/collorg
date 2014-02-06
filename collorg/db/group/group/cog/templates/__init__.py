@@ -1,1 +1,1 @@
-__all__ = ["_w3manage", "w3display", "w3get_events", "w3home", "w3link", "w3list_long", "w3list_members", "w3tag_link"]
+__all__ = ["_w3manage", "w3display", "w3get_events", "w3home", "w3link", "w3list_inner", "w3list_long", "w3list_members", "w3manage_members", "w3manage_members_link", "w3tag_link"]

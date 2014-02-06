@@ -45,7 +45,7 @@ class Group( Base_table ):
 
     @property
     def _cog_label(self):
-        return ["{} {}", self.name_, self._data_.get().cog_label()]
+        return ["{} ({})", self.name_, self._data_.get().cog_label()]
 
     @property
     def events(self):
@@ -85,3 +85,24 @@ class Group( Base_table ):
         nga.write_.set_intention(False)
         if ga.exists():
             ga.update(nga)
+
+    def insert(self, user):
+        new_group = super(self.__class__, self).insert().get()
+        topic = self.db.table('collorg.web.topic')
+#        env_oid = new_group.cog_oid_.value
+#        data_oid = new_group.cog_oid_.value
+#        topic.winsert(
+#            user,
+#            title_=new_group.name_.value, text_='',
+#            env_oid=env_oid, data_oid=data_oid,
+#            visibility_='private')
+        topic.cog_environment_.set_intention(new_group.cog_oid_.value)
+        topic.title_.set_intention('')
+        topic.text_.set_intention('')
+        topic.author_.set_intention(user.cog_oid_.value)
+        topic.visibility_.set_intention('private')
+        topic.path_info_.set_intention('')
+        topic.insert()
+        new_group.grant_access(topic, False)
+        user.grant_access(topic, True)
+        return new_group

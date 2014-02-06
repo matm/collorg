@@ -1,0 +1,23 @@
+#PRAGMA 'write':True
+#PRAGMA 'goals':['Manage group']
+#PRAGMA 'tasks':['Manage group']
+#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'label':"User's groups list"
+#PRAGMA 'in_menu':False
+# >>>
+id_ = html.random_id()
+i18n_no_group = _("You don't have any personnal group.")
+my_groups = self.db.table('collorg.group.group')
+my_groups.data_.set_intention(self.cog_oid_.value)
+other_groups = my_groups()
+other_groups.cog_oid_.set_intention(self._rev_access_._data_.cog_oid_)
+other_groups -= my_groups
+if not my_groups.exists():
+    # ---
+    {% i18n_no_group %}
+# >>>
+else:
+    # ---
+    {% my_groups.w3list() %}
+# ---
+{% other_groups.w3list() %}

@@ -162,7 +162,11 @@ class Post(Base_table):
         data_fqtns = [data.fqtn] + data.parents_fqtns()
         if (not 'collorg.web.topic' in data_fqtns and
             not 'collorg.communication.blog.post' in data_fqtns):
-                data = data.get_root_topic().get()
+                try:
+                    data = data.get_root_topic().get()
+                except:
+                    # groups, ...
+                    pass
         tag = self.db.table('collorg.communication.tag')
         self.title_.set_intention(kwargs['title_'].strip() or None)
         self.text_.set_intention(kwargs['text_'].strip() or None)

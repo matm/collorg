@@ -326,10 +326,10 @@ class User(Actor, Groupable):
                 role.insert()
         return access
 
-    def revoke_access(self, data):
+    def revoke_access(self, data, delete=False):
         access = self._rev_access_
         access._data_ = data
-        access.revoke()
+        access.revoke(delete=delete)
 
     def revoke_write_access(self, data):
         access = self._rev_access_

@@ -1,0 +1,17 @@
+#PRAGMA 'write':True
+#PRAGMA 'goals':['Manage group']
+#PRAGMA 'tasks':['Manage group']
+#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'label':"New group (insert)"
+#PRAGMA 'in_menu':False
+# >>>
+id_ = html.random_id()
+group_name = kwargs['group_name']
+group = self.db.table('collorg.group.group')
+group.name_.set_intention(group_name)
+group.data_.set_intention(self.cog_oid_.value)
+if not group.exists():
+    group.insert(user=cog_user)
+self.grant_access(group, True)
+# ---
+{% self.w3manage_group() %}

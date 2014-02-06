@@ -113,26 +113,34 @@ class Access( Base_table ):
                 role.insert()
         #self.db.commit()
 
-    def revoke(self, end_date = None):
+    def revoke(self, delete=False, end_date = None):
         """
         The access is revoked by setting the end date to datetime.now()
         We should register the user that has revoked the access
         #!! Who is invoking this method ???
         #!! Where do we store the operations
         """
+        assert delete
         self.granted()
         self = self.get()
         this = self()
         this.cog_oid_.set_intention(self.cog_oid_.value)
         self.db.set_auto_commit(False)
         for role in self._rev_role_:
-            role.revoke()
-        n_access = self()
-        n_access.end_date_.set_intention(end_date or datetime.now())
-        self.update(n_access)
+            if not delete:
+                role.revoke()
+            else:
+                role.delete()
+        if not delete:
+            n_access = self()
+            n_access.end_date_.set_intention(end_date or datetime.now())
+            self.update(n_access)
+            self.db.commit()
+            if this.get().is_granted():
+                raise Exception("Access still granted!")
+        else:
+            self.delete()
         self.db.commit()
-        if this.get().is_granted():
-            raise Exception("Access still granted!")
 
     def granted(self, begin_date = None, end_date = None):
         self.begin_date_.set_intention(begin_date or datetime.now(), '<')
