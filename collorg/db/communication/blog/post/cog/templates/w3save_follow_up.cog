@@ -2,6 +2,7 @@
 #PRAGMA 'tasks':['Authenticated navigation']
 # >>>
 # access control !!!
+self._wipe_cache()
 comment_oid = kwargs['comment_oid']
 self.attach_follow_up(**kwargs)
 vc = self.db.table('collorg.communication.view.comment')

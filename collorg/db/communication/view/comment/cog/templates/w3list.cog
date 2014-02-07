@@ -1,5 +1,6 @@
 #PRAGMA 'label': 'Comments list'
 # >>>
+target = kwargs.get('target', '_page_article_')
 link_to_post = kwargs.get('link_to_post', False)
 partial_list = kwargs.get('partial_list')
 mark_as_read = kwargs.get('mark_as_read')
@@ -21,7 +22,7 @@ if cog_user and not partial_list and not link_to_post:
     post = self.db.table('collorg.communication.blog.post')
     post.cog_oid_.set_intention(self.post_oid_.value)
     # ---
-    {% post.w3new_comment() %}
+    {% post.w3new_comment(target=target) %}
 # >>>
 for key, list_ in dict_.items():
     elt_id = html.random_id()

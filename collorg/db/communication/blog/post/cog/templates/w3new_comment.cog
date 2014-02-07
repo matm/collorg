@@ -3,6 +3,7 @@
 #PRAGMA 'label':'New comment form'
 # >>>
 id = html().random_id()
+target = kwargs.get('target', '_page_article_')
 i18n_new_comment = _("New comment")
 # ---
 # +++ form_html
@@ -10,6 +11,6 @@ i18n_new_comment = _("New comment")
 <input type="hidden" name="cog_oid_" value="{% self.cog_oid_ %}" />
 <input type="hidden" name="cog_fqtn_" value="{% self.fqtn %}" />
 <input type="hidden" name="cog_method" value="w3save_comment" />
-{% cog_user.w3submit_button(target="_page_article_", form_id=id) %}
+{% cog_user.w3submit_button(target=target, form_id=id) %}
 # --- form_html
 {% html().form(tag = 'div', id = id, html = form_html) %}

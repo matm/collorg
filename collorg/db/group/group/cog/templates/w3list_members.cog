@@ -3,7 +3,7 @@ assert self.count() == 1
 ms = self.db.table('collorg.group.view.membership')
 ms.group_oid_.set_intention(self.cog_oid_.value)
 owner = False
-if cog_user.cog_oid_.value == self.data_.value:
+if cog_user and cog_user.cog_oid_.value == self.data_.value:
     owner = cog_user
 # ---
 {% ms.w3list(group=self, owner=owner) %}
