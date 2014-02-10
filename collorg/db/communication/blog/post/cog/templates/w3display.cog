@@ -8,7 +8,7 @@ id_ = html.random_id()
 comm_id = "comm_{}".format(id_)
 content_id = "content_{}".format(id_)
 attach_id = "attach_{}".format(id_)
-comments_enabled=False
+comments_enabled=self.comment_.value
 embedded = kwargs.pop('embedded', False)
 header = kwargs.pop('header', None)
 footer = kwargs.pop('footer', None)
@@ -41,8 +41,12 @@ tags = self._rev_a_tag_post_._tag_ + self.get_see_also()._rev_a_tag_post_._tag_
 {%self.w3display_core_sub()%}
 {% self.w3add_see_also_drop_zone() %}
 <div class="page" id="{% comm_id %}">
-<h3>{% i18n_comments %}</h3>
-{% self.w3list_comments(target=comm_id) %}
+# >>>
+if comments_enabled:
+    # ---
+    <h3>{% i18n_comments %}</h3>
+    {% self.w3list_comments(target=comm_id) %}
+# ---
 </div>
 </div>
 </div>
