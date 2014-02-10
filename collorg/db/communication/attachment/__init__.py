@@ -1,6 +1,7 @@
 #-*- coding: UTF-8 -*-
 
 import time
+from datetime import datetime
 from collorg.db.core.base_table import Base_table
 
 class Attachment(Base_table):
@@ -46,6 +47,9 @@ class Attachment(Base_table):
         self._author_ = author
         self.description_.set_intention(description)
         self.insert()
+        ndata = data()
+        ndata.cog_modif_date_.set_intention(datetime.now())
+        data.update(ndata)
         time.sleep(1)
         return "document attached"
 
