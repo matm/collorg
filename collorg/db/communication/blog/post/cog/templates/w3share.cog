@@ -17,16 +17,18 @@ i18n_sm = _("Send mail")
 cog_ref_oid = cog_user.cog_oid_.value
 target = kwargs.get('cog_target')[1:]
 id_ = html.random_id()
+orid = "or_{}".format(id_)
 fid = "f_{}".format(id_)
 bid = "b_{}".format(id_)
+rid = "r_{}".format(id_)
 recipient_id = "recipient_{}".format(id_)
 text = html(self).display(self.text_, label='')
 self.text_.set_intention('')
 # ---
-<h5>{% i18n_to %} {% self._w3get_recipient(target = recipient_id) %}</h5>
+<h5>{% i18n_to %} {% self._w3get_recipient(rid=rid, target = recipient_id) %}</h5>
 # +++ form_html
 <h5><label>{% i18n_or %}
-<input type="text" placeholder="{% i18n_or_help %}" class="all_width" name="other_recipient" />
+<input id="{% orid %}" type="email" multiple pattern="^([\w+-.%]+@[\w-.]+\.[A-Za-z]{2,4},*[\W]*)+$" placeholder="{% i18n_or_help %}" class="all_width" name="other_recipient" />
 </h5>
 <div id="{% recipient_id %}"></div>
 {% html(self).input(self.title_, label = i18n_sub, css_class="all_width") %}
@@ -57,8 +59,28 @@ if self.visibility_.value == 'private':
 </article>
 <script type="text/javascript">
 $(document).ready(function(){
+    var pattern = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}\b/;
     $("#sel_{% recipient_id %}").on('change', function(){
         $("#{% bid %}").removeAttr("disabled").next().hide();
+    });
+    $('#{% orid %}').on('keypress', function() {
+        function check_emails() {
+            var emails = $("#{% orid %}").val();
+            if (emails.match(pattern)){ return true };
+            var splitInput = $("#{% orid %}").val().split(',');
+            var match = true;
+            for(i=0 ; i<splitInput.length ; i++) {
+                    if(!splitInput[i].match(pattern)){
+                            match = false;
+                    }
+            }
+            return match;
+        }
+        if(check_emails()){
+                $("#{% bid %}").removeAttr("disabled").next().hide();
+        } else {
+                $("#{% bid %}").attr("disabled", "disabled").next().show();
+        }
     });
 });
 </script>

@@ -1,4 +1,5 @@
 # >>>
+rid = kwargs['rid']
 i18n_sr = _("Select a recipient")
 i18n_motp = _("Members of this post")
 i18n_tp = _("This post")
@@ -6,7 +7,7 @@ i18n_ygou = _("Your groups or units")
 i18n_ogi = _("Other groups in")
 # ---
 <select trigger="True" id="sel_{% kwargs['target'] %}">
-<option disabled="disabled" selected="selected">{% i18n_sr %}</option>
+<option selected="selected">{% i18n_sr %}</option>
 # >>>
 if cog_user:
     user_oid = cog_user.cog_oid_.val
@@ -71,4 +72,4 @@ if cog_user:
         </optgroup>
 # ---
 </select>
-<div class="hidden">{% links %}</div>
+<div id="{% rid %}" class="hidden">{% links %}</div>
