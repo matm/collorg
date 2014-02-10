@@ -1,0 +1,14 @@
+#PRAGMA 'functions':['Authenticated user']
+#PRAGMA 'tasks':['Authenticated navigation']
+#PRAGMA 'label':'Self registration to an open group'
+# >>>
+i18n_register = _("Register")
+i18n_unregister = _("Unregister")
+if self.open_.value is True:
+    if not cog_user.has_access(self):
+        # ---
+        {% html(self).a(cog_method="w3selfRegister", label=i18n_register, target="_page_", css_class="button") %}
+    # >>>
+    else:
+        # ---
+        {% html(self).a(cog_method="w3selfUnregister", label=i18n_unregister, target="_page_", css_class="button") %}

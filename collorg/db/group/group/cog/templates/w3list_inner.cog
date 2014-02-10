@@ -1,4 +1,6 @@
 # >>>
+i18n_open = _("Open")
+i18n_restricted = _("Restricted")
 for group in self:
     # ---
     <li>{% html(group).a() %}
@@ -6,5 +8,20 @@ for group in self:
     if cog_user and cog_user.cog_oid_.value == group.data_.value:
         # ---
         {% group.w3manage_members_link() %}
+        # >>>
+        open_ = '<b>{}</b>'.format(i18n_open)
+        restricted = '<b>{}</b>'.format(i18n_restricted)
+        if group.open_.value is True:
+            restricted = html(group).a(
+                cog_method="w3manage_accessibility",
+                new_open_value='f', css_class="button",
+                label=i18n_restricted, target='_page_')
+        else:
+            open_ = html(group).a(
+                cog_method="w3manage_accessibility",
+                new_open_value='t', css_class="button",
+                label=i18n_open, target='_page_')
+        # ---
+        {% open_ %} {% restricted %}
     # ---
     </li>

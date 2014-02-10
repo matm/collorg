@@ -310,6 +310,16 @@ class User(Actor, Groupable):
         role *= access._rev_role_
         return role.is_granted()
 
+    def __wait_granted_access(self, data, timeout=2):
+        from time import sleep
+        delta = 0.5
+        elapsed_time = 0
+        while elapsed_time < timeout:
+            if self.has_access(data):
+                return
+            elapsed_time += delta
+            sleep(delta)
+
     def grant_access(
         self, data, write = False, function = None,
         begin_date = None, end_date = None, pourcentage = None):
@@ -324,6 +334,7 @@ class User(Actor, Groupable):
             role._function_ = function
             if not role.exists():
                 role.insert()
+        self.__wait_granted_access(data)
         return access
 
     def revoke_access(self, data, delete=False):

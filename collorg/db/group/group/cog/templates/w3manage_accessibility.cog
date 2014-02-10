@@ -1,0 +1,12 @@
+#PRAGMA 'strip':True
+#PRAGMA 'tasks':['Group management']
+#PRAGMA 'functions':['Collorg actor']
+#PRAGMA 'label':'Manage accessibility'
+#PRAGMA 'in_menu':False
+# >>>
+accessibility = kwargs['new_open_value'] == 't' and True or False
+new_ = self()
+new_.open_.set_intention(accessibility)
+self.update(new_)
+# ---
+{% cog_user.w3manage_group() %}

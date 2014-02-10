@@ -1,0 +1,11 @@
+#PRAGMA 'functions':['Authenticated user']
+#PRAGMA 'tasks':['Authenticated navigation']
+#PRAGMA 'label':'Self registration to an open group'
+# >>>
+if self.open_.value is True:
+    access = cog_user._rev_access_
+    access._data_ = self
+    if access.count() == 1:
+        access.delete()
+# ---
+{% self.w3display() %}

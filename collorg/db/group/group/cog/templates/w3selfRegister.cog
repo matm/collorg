@@ -1,0 +1,8 @@
+#PRAGMA 'functions':['Authenticated user']
+#PRAGMA 'tasks':['Authenticated navigation']
+#PRAGMA 'label':'Self registration to an open group'
+# >>>
+if self.open_.value is True:
+    cog_user.grant_access(self, write=True)
+# ---
+{% self.w3display() %}

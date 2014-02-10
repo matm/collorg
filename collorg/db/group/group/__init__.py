@@ -38,6 +38,7 @@ class Group( Base_table ):
         * cog_state_ : text, inherited
         * name_ : string, PK, not null
         * data_ : c_oid, PK, not null, FK
+        * open_ : bool
         """
         #<<< AUTO_COG DOC. Your code goes after
         super( Group, self ).__init__( db, **kwargs )

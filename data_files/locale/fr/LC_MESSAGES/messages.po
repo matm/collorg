@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-06 12:21+0100\n"
+"POT-Creation-Date: 2014-02-10 12:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -444,6 +444,7 @@ msgstr "Nouveau"
 #: collorg/db/communication/blog/post/cog/templates/w3new_comment.py:24
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3new_comment.py:24
 #: collorg/db/communication/blog/post/cog/templates/w3new_comment.py:23
+#: collorg/db/communication/blog/post/cog/templates/w3new_comment.py:25
 msgid "New comment"
 msgstr "Nouveau commentaire"
 
@@ -1926,6 +1927,7 @@ msgid "Browse database"
 msgstr ""
 
 #: data_files/locale/collorg_fields_i18n.py:305
+#: collorg/db/communication/blog/post/cog/templates/w3display.py:24
 msgid "Comments"
 msgstr "Commentaires"
 
@@ -2191,3 +2193,19 @@ msgstr "créer le groupe"
 #: collorg/db/group/group/cog/templates/w3manage_members_link.py:27
 msgid "manage the group members"
 msgstr "gérer les membres du groupe"
+
+#: collorg/db/group/group/cog/templates/w3selfRegisterUnregisterLink.py:23
+msgid "Register"
+msgstr "S'inscrire"
+
+#: collorg/db/group/group/cog/templates/w3selfRegisterUnregisterLink.py:24
+msgid "Unregister"
+msgstr "Se désinscrire"
+
+#: collorg/db/group/group/cog/templates/w3list_inner.py:19
+msgid "Open"
+msgstr "Ouvert"
+
+#: collorg/db/group/group/cog/templates/w3list_inner.py:20
+msgid "Restricted"
+msgstr "Restreint"
