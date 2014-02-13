@@ -69,7 +69,7 @@ class Group( Base_table ):
             ga.insert()
 
     def revoke_access(self, data):
-        ga = self.__set_group_access(data)
+        ga = self.__set_group_access(data, None)
         if ga.exists():
             ga.delete()
 

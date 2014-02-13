@@ -144,6 +144,11 @@ class Relation(object):
                 self.__l_fields.append(field)
                 fidx += 1
 
+    @property
+    def fields(self):
+        for field in self.__l_fields:
+            yield(field)
+
     def fields_list(self):
         for field in self.__l_fields:
             yield(field.name, field.type_)

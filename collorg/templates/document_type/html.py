@@ -39,6 +39,13 @@ from random import random
 
 from collorg.db.communication.comment import Comment
 
+def video(text):
+    out = u"""<video controls width="80%">{}</video>"""
+    vout = ""
+    for elt in text.split(','):
+        vout += u'<source src="{}">'.format(elt.strip())
+    return out.format(vout)
+
 class Html():
     def __init__(self, elt):
         self.__elt = elt
@@ -458,4 +465,4 @@ class Html():
             return ""
         if not type(val) is unicode:
             val = unicode(val, self.__charset)
-        return creole2html(val).encode(self.__charset)
+        return creole2html(val, macros={"video": video}).encode(self.__charset)
