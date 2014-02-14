@@ -51,7 +51,7 @@ if self.visibility_.value == 'private':
 <button
     id="{% bid %}"
     disabled="disabled"
-    class="action" target="_page_article_"
+    class="action" target="_page_"
     data-form-id="{% fid %}">
     {% i18n_sm %}
 </button>

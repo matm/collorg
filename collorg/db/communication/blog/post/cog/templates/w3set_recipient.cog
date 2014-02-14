@@ -7,9 +7,9 @@ recipient_oid = kwargs['recipient_oid']
 recipient = self.db.get_elt_by_oid(recipient_oid)
 l_members = []
 members = recipient.members
-members.order_by(members.last_name_, members.first_name_)
+members.order_by(members.last_name_, members.first_name_, members.email_)
 for member in members:
-    l_members.append("{} {}".format(member.first_name_, member.last_name_))
+    l_members.append('"{} {}" &lt;{}&gt;'.format(member.first_name_, member.last_name_, member.email_))
 # ---
 <b>{% recipient.cog_label() %}</b>: {% ", ".join(l_members) %}
 <input type="hidden" name="recipient_oid" value="{% recipient_oid %}" />
