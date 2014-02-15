@@ -2,6 +2,7 @@
 #PRAGMA 'label':'List posts (by post)'
 #PRAGMA 'in_menu':False
 # >>>
+id_ = html.random_id()
 apd = self.db.table('collorg.communication.blog.a_post_data')
 def remove_link_f(post, elt_oid):
     label = '<img src="/collorg/images/trashcan.svg" class="medicon" />'
@@ -145,7 +146,7 @@ if len(d_posts):
     # >>>
     if article:
         article = '<ul class="none {}">{}</ul><hr>'.format(
-            sortable and "sortable", article)
+            sortable and "sortable_{}".format(id_), article)
     list_ = self.db.table('collorg.core.base_table').w3display_base(
         article = article, footer = '', embedded = embedded)
     # ---
@@ -155,7 +156,7 @@ if len(d_posts):
         # ---
         <script type="text/javascript">
         $(document).ready(function(){
-            $('.sortable').sortable({
+            $('.sortable_{% id_ %}').sortable({
                 update: function(event, ui){
                     var elt = $(event.target);
                     var cog_oid = elt.find('li').first().attr('data-post_oid');

@@ -6,6 +6,10 @@
 nav_up = kwargs.get('nav_up', '')
 header = kwargs.get('header', '')
 footer = kwargs.get('footer', '')
+article_id_cls = ''
+article_id = kwargs.get('article_id', '')
+if article_id:
+    article_id_cls = 'class="{}"'.format(article_id)
 nav_down = kwargs.get('nav_down', '')
 presentation = kwargs.get('presentation', '')
 article = kwargs.get('article', '')
@@ -44,7 +48,8 @@ if not embedded:
     if topic is not None and topic.path_info_.value in ['', '/']:
         in_nav_actions = self.w3in_nav_actions(env = env, topic = topic)
     nav_down = '<nav class="bc navdown">{} {}</nav>'.format(nav_down, in_nav_actions)
-    article = '<article id="{}" class="see_also">{}</article>'.format(id_article, article)
+    article = '<article id="{}" {}>{}</article>'.format(
+        id_article, article_id_cls, article)
     footer = '<footer>{}</footer>'.format(footer)
 # ---
 {% nav_up %}

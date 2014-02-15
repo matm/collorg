@@ -39,7 +39,7 @@ tags = self._rev_a_tag_post_._tag_ + self.get_see_also()._rev_a_tag_post_._tag_
 <div id="{% content_id %}" class="topic_list">
 {%self.w3display_core()%}
 {%self.w3display_core_sub()%}
-{% self.w3add_see_also_drop_zone() %}
+{% self.w3add_see_also_drop_zone(article_id=id_) %}
 <div class="page" id="{% comm_id %}">
 # >>>
 if comments_enabled:
@@ -60,7 +60,8 @@ if footer is None:
 # >>>
 display = self.w3display_base(
     nav_up = nav_up,
-    header = header, nav_down = nav_down, article = article, footer = footer,
+    header = header, nav_down = nav_down,
+    article_id=id_, article = article, footer = footer,
     embedded = embedded, **kwargs)
 # ---
 {% display %}

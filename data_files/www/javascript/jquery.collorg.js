@@ -1,6 +1,6 @@
 (function($) {
-    var trace_page = false;
     $.cog = {};
+    $.cog.trace = false;
     var creole = new Parse.Simple.Creole( {
         forIE: document.all,
         interwiki: {
@@ -9,16 +9,13 @@
         },
         linkFormat: ''
     } );
-    var init_path = window.location.pathname;
-    var init_path_link = '<a class="action" href="' + init_path +
-        '" target="#cog_container">first access</a>"';
 
     $.fn.cog_resize = function()
     {
         $.cog.header_height_ = $('#header').outerHeight(true);
         $.cog.footer_height_ = $('#footer').outerHeight(true);
         $(this).each(function(){
-            //trace_page && console.log('cog_resize: ' + $(this).attr('id'));
+            $.cog.trace && console.log('cog_resize: ' + $(this).attr('id'));
             $(this).cog_resizeCogContainer();
             $.cog.height_ = $(window).height() -
                 ($.cog.header_height_ + $.cog.footer_height_);
@@ -55,8 +52,8 @@
 
     $.fn.scrollPage = function()
     {
-        //trace_page && console.log('scrollPage');
-        //trace_page && console.log($('#cog_container > section.page').length);
+        $.cog.trace && console.log('scrollPage');
+        $.cog.trace && console.log($('#cog_container > section.page').length);
         var pageWidth = $('#cog_container .active').outerWidth(true);
         var leftOffset = ($(window).width() - pageWidth)/2;
         $('#cog_container').animate({
@@ -70,7 +67,7 @@
 
     $.fn.hasPage = function(page_ref)
     {
-        //trace_page && console.log('hasPage: ' + page_ref);
+        $.cog.trace && console.log('hasPage: ' + page_ref);
         if(page_ref != undefined)
         {
             return $('#cog_container > .page#' + page_ref)
@@ -100,7 +97,7 @@
 
     $.fn.referencePage = function(page_ref)
     {
-        //trace_page && console.log('referencePage: ' + page_ref);
+        $.cog.trace && console.log('referencePage: ' + page_ref);
         $(this).attr('id', page_ref);
         var title = $(this).find("header > .title > a").first();
         if(title)
@@ -113,7 +110,7 @@
     $.fn.inactivatePage = function()
     {
         return $(this).each(function(){
-            //trace_page && console.log('inactivatePage: ' + $(this).attr('id'));
+            $.cog.trace && console.log('inactivatePage: ' + $(this).attr('id'));
             $(this).removeClass('active')
                 .removeClass('to_inactivate')
                 .addClass('inactive')
@@ -128,7 +125,7 @@
             page_ref = $(this).getCogRefObj();
             $(this).referencePage(page_ref);
         }
-        //trace_page && console.log('activatePage: ' + page_ref);
+        $.cog.trace && console.log('activatePage: ' + page_ref);
         $(this).removeClass('active');
         $('#cog_container > .page.active').addClass('to_inactivate');
         $('#' + page_ref).removeClass('inactive').addClass('active')
@@ -147,7 +144,7 @@
 
     $.fn.deletePage = function()
     {
-        //trace_page && console.log('deletePage');
+        $.cog.trace && console.log('deletePage');
         var previous_page = $(this).prev();
         $(this).remove();
         $(document).loadedPagesMenu();
@@ -161,11 +158,11 @@
 
     $.fn.loadedPagesMenu = function()
     {
-        //trace_page && console.log('loadedPagesMenu');
+        $.cog.trace && console.log('loadedPagesMenu');
         var links = $("#cog_container > .page > header > .title > a");
         $('#cog_ariadne_menu').empty();
         links.each(function(){
-            //trace_page && console.log(' * ' + $(this).attr('page_ref'));
+            $.cog.trace && console.log(' * ' + $(this).attr('page_ref'));
             $('#cog_ariadne_menu').append($(this).clone());
             $('#cog_ariadne_menu > a').wrap('<li class="ui-menu-item" />');
             $('#cog_ariadne_menu').menu();
@@ -350,7 +347,7 @@
 
     $.fn.wrapPage = function(elt, page_ref)
     {
-        //trace_page && console.log('wrapPage: page_ref: ' + page_ref);
+        $.cog.trace && console.log('wrapPage: page_ref: ' + page_ref);
         var new_page = $('#cog_new_page').clone()
             .removeAttr('id').html(elt)
             .addClass('page')
@@ -995,7 +992,6 @@
         });
 
         $(document).on('click',function(evt){
-
             $('#cog_ariadne_menu').hide();
             var target = $(evt.target)
             if(target.hasClass('ewiki') || target.hasClass('vwiki')){
@@ -1007,6 +1003,7 @@
                 elt = target.is(".page.inactive") &&
 		    target || target.parents(".page.inactive").first();
                 var page_ref = elt.attr('id');
+		$.cog.trace && console.log("page_ref: " + page_ref);
                 elt.activatePage(page_ref);
                 return false;
             } else if(target.is('#cog_ariadne_menu a')) {

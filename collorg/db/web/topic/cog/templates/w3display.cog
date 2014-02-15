@@ -1,6 +1,7 @@
 # >>>
-target = html.random_id()
-tl_target = "tl_{}".format(target)
+id_ = html.random_id()
+tl_target = "tl_{}".format(id_)
+article_id = "see_also_{}".format(id_)
 self = self.get(reload_=True)
 posts = self.db.table('collorg.communication.blog.post')
 posts.cog_oid_.set_intention(self._rev_a_post_data_data_._post_.cog_oid_)
@@ -34,6 +35,7 @@ if self.path_info_.value == '':
     text = environment.w3presentation(**kwargs)
 # --- presentation
 # +++ article
+{% self.w3add_see_also_drop_zone(article_id=id_) %}
 # >>>
 env_addendum = ''
 if environment:
@@ -79,7 +81,6 @@ if not self.action_.value:
     v_posts.cog_oid_.set_intention(posts.cog_oid_)
     # ---
     {% self.w3navigation() %}
-    {% self.w3attach_post_drop_zone() %}
 {#
     {% v_posts.w3list(post_oid = self.cog_oid_.value, embedded = True) %}
 #}
@@ -89,13 +90,13 @@ if not self.action_.value:
         </div>
 # --- article
 # >>>
-article = '<div id="{}">{}</div>'.format(target, article)
+article = '<div id="{}">{}</div>'.format(id_, article)
 if (self.path_info_.value == '/' and self.site_.value):
     article = "{}".format(article)
 display = self.w3display_base(
     nav_up = nav_up, header = header, nav_down = nav_down,
     presentation = presentation,
     environment = environment,
-    article = article, embedded = False)
+    article = article, article_id=id_, embedded = False)
 # ---
 {% display %}
