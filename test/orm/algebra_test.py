@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 #-*- coding:  utf-8 -*-
 
-from collorg.controller.controller import Controller
-
 from random import randint
 from unittest import TestCase
-from .. import cog_db, cog_table
+from .. import cog_table
 
 class Test(TestCase):
     def reset(self):
@@ -106,7 +104,6 @@ class Test(TestCase):
 
     def not_test(self):
         a = self.set_1
-        b = self.set_2
         empty = self.empty_set
         self.assertTrue(a - empty == a)
 
@@ -129,9 +126,7 @@ class Test(TestCase):
     def symetric_difference_test(self):
         a = self.set_1
         b = self.set_2
-        self.assertTrue(
-            (self.set_1 - self.set_2) + (self.set_2 - self.set_1) ==
-            (self.set_1 + self.set_2) - (self.set_1 * self.set_2))
+        self.assertTrue((a - b) + (b - a) == (a + b) - (a * b))
 
     def commutative_laws_test_1(self):
         a = self.set_1
@@ -227,7 +222,6 @@ class Test(TestCase):
     def de_morgan_s_laws_test_1(self):
         a = self.set_1
         b = self.set_2
-#        print(((-a) + (-b) - (-(a * b))).select(just_return_sql=True))
         self.assertTrue((-a) + (-b) == -(a * b))
 
     def de_morgan_s_laws_test_2(self):
@@ -259,13 +253,11 @@ class Test(TestCase):
 
     def inclusion_test_2(self):
         a = self.set_1
-        b = self.set_2
         empty = self.empty_set
         self.assertTrue(empty in a)
 
     def inclusion_test_3(self):
         a = self.set_1
-        b = self.set_2
         universe = self.universe
         self.assertTrue(a in universe)
 
@@ -345,17 +337,11 @@ class Test(TestCase):
     def relative_complement_test_11(self):
         a = self.set_1
         b = self.set_2
-        print(-(b - a) in (a + (-b)))
-        print((-(b - a) - (a + (-b))).select(just_return_sql=True))
-        print((a + (-b)) in (-(b - a)))
-        print(((a + (-b)) - (-(b - a))).select(just_return_sql=True))
-        self.assertTrue((-(b - a)) == (a + (-b)))
+        self.assertTrue(-(b - a) == a + (-b))
 
     def relative_complement_test_12(self):
         a = self.set_1
         universe = self.universe
-        print(universe - a in -a)
-        print(-a in universe - a)
         self.assertTrue(universe - a == -a)
 
     def relative_complement_test_13(self):

@@ -247,19 +247,24 @@ class Relation(object):
         req = []
         if not self._list:
 #            req.append("%s" % (self._cog_get_where_inner(id_ or self.id)))
-            req.append("%s" % (self._cog_get_where_inner(id_ or self.id)))
+            not_ = self.__negation and "NOT" or ""
+            req.append("%s %s" % (
+                not_, self._cog_get_where_inner(id_ or self.id)))
         else:
             elt1 = self._list[1]
             if elt1._list:
                 sql1 = elt1._cog_get_where(id_ or self.id)
             else:
                 sql1 = elt1._cog_get_where_inner(id_ or self.id)
+            not_1 = elt1.__negation and "NOT" or ""
             elt2 = self._list[2]
             if elt2._list:
                 sql2 = elt2._cog_get_where(id_ or self.id)
             else:
                 sql2 = elt2._cog_get_where_inner(id_ or self.id)
-            req.append("((%s) %s (%s))" % (sql1, self._list[0], sql2))
+            not_2 = elt2.__negation and "NOT" or ""
+            req.append("(%s (%s) %s %s (%s))" % (
+                not_1, sql1, self._list[0], not_2, sql2))
         if not id_:
             if self.__negation is False:
                 req.insert(0, "WHERE")
@@ -462,15 +467,13 @@ class Relation(object):
     def __duplicate_intention(self):
         new_ = self()
         new_._list = self._list
-#        new_.__negation = self.__negation
+        new_.__negation = self.__negation
         for field in self._cog_fields:
             if field.is_constrained:
                 new_.__dict__[field.pyname].set_intention(field)
         return new_
 
     def __add__(self, other):
-        #!!! RPN
-        #PB avec __neg__. (-a) + (-b) donne -((-a)+(-b))
         new_ = self()
         dup_self = self.__duplicate_intention()
         dup_other = other.__duplicate_intention()
@@ -491,16 +494,25 @@ class Relation(object):
     def __sub__(self, other):
         new_ = self()
         dup_self = self.__duplicate_intention()
-        dup_other = other.__duplicate_intention()
-        new_._list = ("AND NOT", dup_self, dup_other)
+        dup_other = -(other.__duplicate_intention())
+        new_._list = ("AND", dup_self, dup_other)
         return new_
 
     __isub__ = __sub__
 
     def __neg__(self):
         new_ = self.__duplicate_intention()
-        new_.__negation = True
+        if self.__negation:
+            new_.__negation = False
+        else:
+            new_.__negation = True
         return new_
+
+    def __eq__(self, other):
+        return self in other and other in self
+
+    def __contains__(self, other):
+        return not (other - self).exists()
 
     @staticmethod
     def __inherited_fqtns(cls):
@@ -537,25 +549,3 @@ class Relation(object):
 
     def cog_path(self, data_type):
         return None
-
-    def __eq__(self, other):
-        """
-        True if the two sets have the same cog_oids.
-        For testing only
-        """
-        print(self.select(just_return_sql=True))
-        print(other.select(just_return_sql=True))
-        self_ext = [elt.cog_oid_.value for elt in self]
-        other_ext = [elt.cog_oid_.value for elt in other]
-        print(len(self_ext), len(other_ext))
-        self_ext.sort()
-        other_ext.sort()
-        return self_ext == other_ext
-
-    def __contains__(self, other):
-        self_ext = [elt.cog_oid_.value for elt in self]
-        other_ext = [elt.cog_oid_.value for elt in other]
-        for elt in other_ext:
-            if not elt in self_ext:
-                return False
-        return True
