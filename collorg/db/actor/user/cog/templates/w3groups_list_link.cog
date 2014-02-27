@@ -1,0 +1,4 @@
+# >>>
+i18n_manage_group = _("Groups")
+# ---
+{% html(self).a(cog_method="w3groups_list", label=i18n_manage_group) %}

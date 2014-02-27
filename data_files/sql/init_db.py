@@ -93,6 +93,7 @@ d_tables = {
     'event': [
         'event/event.sql',
         'communication/blog/view/by_post.sql',
+        'communication/blog/view/children.sql',
         #'event/a_event_calendar.sql',
         #'event/agenda_item.sql',
         #'event/agenda.sql',

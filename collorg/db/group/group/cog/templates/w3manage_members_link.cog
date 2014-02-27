@@ -7,7 +7,7 @@
 #PRAGMA 'in_menu':False
 # >>>
 i18n_mng_grp = _("manage the group members")
-label = '''<img src="/collorg/images/cog.svg"
+label = '''<img src="/collorg/images/group.svg"
  title="{}" class="medicon" />'''.format(i18n_mng_grp)
 label += kwargs.get('label', '')
 # ---

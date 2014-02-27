@@ -6,13 +6,14 @@
 i18n_revoke_write_access = _("Revoke write access")
 i18n_write_access = _("write access")
 callback = kwargs['callback']
+target = kwargs.get('target', '_page_article_')
 label = """<img
  class="bigicon" src="/collorg/images/revoke_write_access.svg"
  title="{}"
 />""".format(i18n_revoke_write_access)
 user = kwargs['user']
 link = html(self).a(
-    cog_method="w3revoke_write_access", label=label, target="_page_article_",
+    cog_method="w3revoke_write_access", label=label, target=target,
     user_oid = user.cog_oid_.value, callback = callback)
 # ---
 <small>(<b>{% i18n_write_access %}</b>)</small> {% link %}

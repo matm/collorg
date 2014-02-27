@@ -99,7 +99,9 @@ class Oid_table( TClass ):
         return hasattr(self, '_is_cog_event')
 
     def _wipe_cache(self):
-        obj = self.get()
-        if obj._is_cog_post:
-            return obj._wipe_cache()
+        for obj in self:
+            if obj.__class__ == Oid_table:
+                obj = obj.get()
+            if obj._is_cog_post:
+                return obj._wipe_cache()
 

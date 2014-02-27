@@ -39,8 +39,9 @@ class Group_access(Base_table, Duration):
         #<<< AUTO_COG DOC. Your code goes after
         super(Group_access, self).__init__(db, **kwargs)
 
-    def granted( self ):
+    def granted(self, write=None):
         self.begin_date_.set_intention( datetime.now(), '<' )
         self.end_date_.set_null()
         self.end_date_ += ( datetime.now(), '>' )
+        self.write_.set_intention(write)
         return self

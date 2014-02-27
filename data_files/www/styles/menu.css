@@ -66,10 +66,10 @@ a img { /*IE*/
     border:0px;
     outline: 0px;
 }
-img:hover {
+img:hover, link:hover {
     background:transparent;
 }
-a img:hover {
+a img:hover, .link:hover {
     z-index: 20;
     transform:scale(1.5);
     -ms-transform:scale(1.5); /* IE 9 */

@@ -56,7 +56,8 @@ class Base_table(Oid_table):
 
     def get( self, fields = None, just_return_sql = False, recurse = True,
             reload_ = False):
-        if not self.fqtn in [ 'collorg.core.base_table', 'collorg.core.oid_table' ]:
+        if not self.fqtn in (
+            'collorg.core.base_table', 'collorg.core.oid_table'):
             return TClass.get(
                 self,
                 fields = fields, just_return_sql = just_return_sql,
@@ -114,7 +115,8 @@ class Base_table(Oid_table):
     def members(self):
         # copy of core.oid_table.Oid_table.members
         access = self._rev_access_.granted()
-        group_access = self._rev_group_access_accessed_data_._group_data_._rev_access_.granted()
+        group_access = self.\
+            _rev_group_access_accessed_data_._group_data_._rev_access_.granted()
         users = access._user_ + group_access._user_
         if self._rev_hierarchy_parent_.exists():
             for child in self._rev_hierarchy_parent_._child_:

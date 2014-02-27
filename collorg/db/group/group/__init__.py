@@ -91,12 +91,18 @@ class Group( Base_table ):
         new_group = super(self.__class__, self).insert().get()
         topic = self.db.table('collorg.web.topic')
         topic.cog_environment_.set_intention(new_group.cog_oid_.value)
-        topic.title_.set_intention('')
+        topic.title_.set_intention(self.name_.value)
         topic.text_.set_intention('')
         topic.author_.set_intention(user.cog_oid_.value)
         topic.visibility_.set_intention('private')
         topic.path_info_.set_intention('')
         topic.insert()
-        new_group.grant_access(topic, False)
+        new_group.grant_access(topic, True)
         user.grant_access(topic, True)
         return new_group
+
+    def root_topic(self):
+        topic = self.db.table('collorg.web.topic')
+        topic.cog_environment_.set_intention(self.cog_oid_.value)
+        #topic.path_info_.set_intention('')
+        return topic

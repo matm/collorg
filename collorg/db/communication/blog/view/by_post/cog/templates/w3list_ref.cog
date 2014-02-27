@@ -6,7 +6,7 @@ the_post = kwargs['post']
 sortable = False
 self.cog_oid_.set_intention(the_post.cog_oid_.value)
 
-self.cog_fqtn_.set_intention('collorg.web.topic', '!=')
+#self.cog_fqtn_.set_intention('collorg.web.topic', '!=')
 self.order_by(self.post_order_)
 post = self.db.table('collorg.communication.blog.post')
 self.cog_light = True

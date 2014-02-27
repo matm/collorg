@@ -21,7 +21,7 @@ if (cog_user and
     sortable = True
 data_oid = the_post.cog_oid_.value
 self.data_oid_.set_intention(data_oid)
-self.cog_fqtn_.set_intention('collorg.web.topic', '!=')
+#self.cog_fqtn_.set_intention('collorg.web.topic', '!=')
 self.order_by(self.post_order_, self.post_creat_date_)
 post = self.db.table('collorg.communication.blog.post')
 self.cog_light = True

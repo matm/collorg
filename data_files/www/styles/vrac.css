@@ -429,3 +429,6 @@ input.all_width{
     background-repeat: no-repeat;
     padding-left: 20px;
 }
+.inline {
+    display: inline;
+}

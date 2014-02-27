@@ -18,6 +18,7 @@ if attached_posts:
     {% attached_posts %}
 # >>>
 v_posts = self.db.table('collorg.communication.blog.view.by_post')
+v_posts.cog_fqtn_.set_intention('collorg.web.topic', '!=')
 rev_attached_posts = v_posts.w3list_ref(post=self._rev_a_post_data_post_._data_).strip()
 if rev_attached_posts:
     # ---

@@ -5,7 +5,8 @@ assert user_oid
 if cog_user and cog_user.cog_oid_.value == user_oid:
     # ---
     <h3>{% cog_user.w3manage_account_link() %}</h3>
-    <h3>{% cog_user.w3manage_group_link() %}</h3>
+# ---
+<h3>{% self.w3groups_list_link() %}</h3>
 # >>>
 unit = self.get_granted_data('collorg.organization.unit')
 if unit.exists():
@@ -13,10 +14,3 @@ if unit.exists():
     # ---
     <h5>Unit{% pl_unit %}</h5>
     {% unit.w3list() %}
-# >>>
-group = self.get_granted_data('collorg.group.group')
-if group.exists():
-    pl_group = group.count() > 1 and "s" or ""
-    # ---
-    <h5>Group{% pl_group %}</h5>
-    {% group.w3list() %}

@@ -10,16 +10,10 @@ i18n_no_group = _("You don't have any personnal group.")
 my_groups = self.db.table('collorg.group.group')
 my_groups.data_.set_intention(self.cog_oid_.value)
 my_groups.order_by(my_groups.name_)
-other_groups = my_groups()
-other_groups.cog_oid_.set_intention(self._rev_access_._data_.cog_oid_)
-other_groups -= my_groups
-other_groups.order_by(other_groups.name_)
 if not my_groups.exists():
     # ---
     {% i18n_no_group %}
 # >>>
 else:
     # ---
-    {% my_groups.w3list(callback="w3group_list") %}
-# ---
-{% other_groups.w3list() %}
+    {% my_groups.w3list_manage() %}

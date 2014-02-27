@@ -502,10 +502,7 @@ class Relation(object):
 
     def __neg__(self):
         new_ = self.__duplicate_intention()
-        if self.__negation:
-            new_.__negation = False
-        else:
-            new_.__negation = True
+        new_.__negation = not self.__negation
         return new_
 
     def __eq__(self, other):

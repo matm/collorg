@@ -24,7 +24,7 @@ clean_templates:
 	for i in `find collorg -name "__init__.py" | grep "/cog/templates/"`; do rm $$i ; touch $$i ; done
 
 clean_install:
-	sudo rm -rf /usr/local/lib/python?.?/dist-packages/collorg-*-py?.?.egg/
+	sudo rm -rf /usr/local/lib/python?.?/dist-packages/collorg-*-py?.?.egg
 	sudo rm -rf build
 
 clean_share:

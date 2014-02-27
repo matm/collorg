@@ -1,0 +1,12 @@
+# >>>
+size = kwargs.get('size', None)
+assert size is None or int(size)
+size_style = ''
+if size:
+    size_style = 'heigh="{}px" width="{}px"'.format(size, size)
+url_photo = self.db._cog_params['user_photo_url']
+if url_photo:
+    url_photo = url_photo % (self.pseudo_)
+    url_photo = '<object data="{}" {}><img src="/collorg/images/user.svg" alt=""/ {}></object>'.format(url_photo, size_style, size_style)
+# ---
+{% url_photo %}

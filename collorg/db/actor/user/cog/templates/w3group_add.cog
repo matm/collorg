@@ -14,4 +14,4 @@ if not group.exists():
     group.insert(user=cog_user)
 self.grant_access(group, True)
 # ---
-{% self.w3manage_group() %}
+{% self.w3groups_list() %}

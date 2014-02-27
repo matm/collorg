@@ -13,6 +13,7 @@ data_link = (
 # ---
 <table>
 # >>>
+target = kwargs.get('target')
 data = kwargs['data']
 post = data
 if 'topic_oid' in kwargs.keys():
@@ -37,14 +38,14 @@ for user_oid, vals in d_users.items():
     manage_write_access = '&nbsp;'
     if(author and cog_user.cog_oid_.value != user.cog_oid_.value):
         # ---
-        {% post._w3revoke_access_link(user = user, callback = callback) %}
+        {% post._w3revoke_access_link(user=user, callback=callback, target=target) %}
         # >>>
         if elt.write_.value:
             manage_write_access = post._w3revoke_write_access_link(
-                user = user, callback = callback)
+                user = user, callback = callback, target=target)
         else:
             manage_write_access = post._w3grant_write_access_link(
-                user = user, callback = callback)
+                user = user, callback = callback, target=target)
         m = elt.manage_.value
     # ---
     </td>

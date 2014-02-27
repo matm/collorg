@@ -6,7 +6,9 @@
 author = None
 if self.author_.value:
     author = self._author_.get()
+#    url_photo = author.w3photo(size=20)
+    url_photo = ''
     topic = self._author_.root_topic().get()
-    link = html(topic).a(label = author.cog_label())
+    link = html(topic).a(label = "{} {}".format(url_photo, author.cog_label()))
     # ---
     {% self.w3credit(link=link) %}

@@ -167,7 +167,6 @@ class Post(Base_table):
                 except:
                     # groups, ...
                     pass
-        tag = self.db.table('collorg.communication.tag')
         self.title_.set_intention(kwargs['title_'].strip() or None)
         self.text_.set_intention(kwargs['text_'].strip() or None)
         ip = kwargs.get('introductory_paragraph_')
@@ -342,8 +341,7 @@ class Post(Base_table):
 
     def get_see_also(self):
         """
-        returns None if no see_also.
-        otherwise returns the set of posts attach to self.
+        returns the set of posts attach to self.
         """
         apd = self.db.table('collorg.communication.blog.a_post_data')
         apd._data_ = self
@@ -363,32 +361,33 @@ class Post(Base_table):
         return see_also
 
     def get_children(self):
-        children = self.db.table('collorg.web.topic')
-        children.cog_oid_.set_intention(
-            self._rev_a_post_data_data_._post_.cog_oid_)
+        children = self.db.table('collorg.communication.blog.view.children')
+        children.parent_oid_.set_intention(self.cog_oid_.value)
+        children.cog_fqtn_.set_intention('collorg.web.topic')
         return children
 
     def get_accessible_children(self, user):
-        topics = self.get_not_private_children()
-        topics += self.get_private_children(user)
-        return topics
+        if not user:
+            children = self.__get_not_private_children()
+        else:
+            children = self.__get_not_private_children() + \
+                self.__get_private_children(user)
+        children.order_by(children.order_)
+        return children
 
-    def get_not_private_children(self):
-        topics = self.get_children()
-        topics.visibility_.set_intention('private', '!=')
-        return topics
+    def __get_not_private_children(self):
+        children = self.get_children()
+        children.visibility_.set_intention('private', '!=')
+        return children
 
-    def get_private_children(self, user):
+    def __get_private_children(self, user):
         """
         Returns private children topics of self
         """
-        priv_posts = self.db.table('collorg.web.topic')
-        priv_posts.cog_oid_.set_intention(
-            self._rev_a_post_data_data_._post_.cog_oid_)
-        priv_posts.visibility_.set_intention('private')
+        children = self.get_children()
         accessible_posts = user.get_granted_data()
-        priv_posts.cog_oid_ *= accessible_posts.cog_oid_
-        return priv_posts
+        children *= accessible_posts
+        return children
 
     def sort_attached_posts(self, elt_, prev_, next_):
         """
@@ -430,13 +429,27 @@ class Post(Base_table):
                 self.cog_oid_)
         return self.__cache_path
 
-    def _wipe_cache(self):
+    def _wipe_cache(self, deja_vus = None):
         """
         The cache is wiped when there is a modification. It'll be re-generated
         at first none connected access.
         """
-        if os.path.exists(self._cache_path):
-            shutil.rmtree(self._cache_path)
+        if deja_vus is None:
+            deja_vus = []
+        for elt in self:
+            cog_oid = elt.cog_oid_.value
+            if cog_oid in deja_vus:
+                continue
+            deja_vus.append(cog_oid)
+            if os.path.exists(elt._cache_path):
+                shutil.rmtree(elt._cache_path)
+            data = self()
+            data.cog_oid_.set_intention(
+                elt._rev_a_post_data_post_._data_.cog_oid_)
+            deja_vu = self()
+            deja_vu.cog_oid_.set_intention(deja_vus)
+            data -= deja_vu
+            data._wipe_cache(deja_vus)
 
     def _cog_get_cache(self, func_name):
         assert (func_name == 'w3display' and self._is_cog_post and

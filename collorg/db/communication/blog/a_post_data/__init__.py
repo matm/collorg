@@ -1,7 +1,6 @@
 #-*- coding: UTF-8 -*-
 
 from collorg.db.core.base_table import Base_table
-
 class A_post_data(Base_table):
     #>>> AUTO_COG REL_PART. DO NOT EDIT!
     _cog_schemaname = 'collorg.communication.blog'
@@ -14,6 +13,11 @@ class A_post_data(Base_table):
     _data_ = cog_r._data_
     _who_ = cog_r._who_
     #<<< AUTO_COG REL_PART. Your code goes after
+    """
+    The post is associated to a data. When you attach a post to another post,
+    the associated object is called the post in this table. The attribute
+    data in this table references the post to which the object is associated.
+    """
     def __init__(self, db, **kwargs):
         #>>> AUTO_COG DOC. DO NOT EDIT
         """

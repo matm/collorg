@@ -9,8 +9,9 @@ class Test(TestCase):
     def reset(self):
         self.universe = cog_table('collorg.core.base_table')
         self.set_1 = self.universe()
-        self.subset_1_2 = self.universe()
+        self.comp_set_1 = self.universe()
         self.set_2 = self.universe()
+        self.subset_1_2 = self.universe()
         self.set_3 = self.universe()
         self.comp_set_1 = self.universe()
         self.empty_set = self.universe()
@@ -25,12 +26,12 @@ class Test(TestCase):
         self.universe.cog_oid_.set_not_null()
         #XXX ... Otherwise, the SQL is buggy.
         self.set_1.cog_oid_.set_intention('{}%'.format(self.c1), 'like')
+        self.comp_set_1.cog_oid_.set_intention(
+            '{}%'.format(self.c1), 'not like')
         self.set_2.cog_oid_.set_intention('_{}%'.format(self.c2), 'like')
         self.subset_1_2.cog_oid_.set_intention(
             '{}{}%'.format(self.c1, self.c2), 'like')
         self.set_3.cog_oid_.set_intention('__{}%'.format(self.c3), 'like')
-        self.comp_set_1.cog_oid_.set_intention(
-            '{}%'.format(self.c1), 'not like')
         self.empty_set.cog_oid_.set_intention('X')
 
     def and_test_1(self):
@@ -112,6 +113,11 @@ class Test(TestCase):
         empty = self.empty_set
         self.assertTrue(a - a == empty)
 
+    def complementary_test_0(self):
+        a = self.set_1
+        comp_a = self.comp_set_1
+        self.assertTrue(-a == comp_a)
+
     def complementary_test_1(self):
         a = self.set_1
         comp_a = self.comp_set_1
@@ -162,11 +168,14 @@ class Test(TestCase):
         c = self.set_3
         self.assertTrue(a * (b + c) == (a * b) + (a * c))
 
-    def identity_laws_test(self):
+    def identity_laws_test_1(self):
         a = self.set_1
         empty = self.empty_set
-        universe = self.universe
         self.assertTrue(a + empty == a)
+
+    def identity_laws_test_2(self):
+        a = self.set_1
+        universe = self.universe
         self.assertTrue(a * universe == a)
 
     def complement_laws_test_1(self):
@@ -243,12 +252,20 @@ class Test(TestCase):
         empty = self.empty_set
         self.assertTrue(-universe == empty)
 
-    def inclusion_test_1(self):
+    def inclusion_test_1_1(self):
+        a = self.set_1
+        ab = self.subset_1_2
+        self.assertTrue(ab in a)
+
+    def inclusion_test_1_2(self):
+        b = self.set_2
+        ab = self.subset_1_2
+        self.assertTrue(ab in b)
+
+    def inclusion_test_1_3(self):
         a = self.set_1
         b = self.set_2
         ab = self.subset_1_2
-        self.assertTrue(ab in a)
-        self.assertTrue(ab in b)
         self.assertTrue(ab in a * b)
 
     def inclusion_test_2(self):
@@ -261,10 +278,14 @@ class Test(TestCase):
         universe = self.universe
         self.assertTrue(a in universe)
 
-    def inclusion_test_4(self):
+    def inclusion_test_4_1(self):
         a = self.set_1
         b = self.set_2
         self.assertTrue(a in a + b)
+
+    def inclusion_test_4_2(self):
+        a = self.set_1
+        b = self.set_2
         self.assertTrue(b in a + b)
 
     def inclusion_test_5(self):

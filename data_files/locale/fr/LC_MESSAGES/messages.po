@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-10 12:15+0100\n"
+"POT-Creation-Date: 2014-02-19 16:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -152,8 +152,9 @@ msgstr ""
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3share.py:31
 #: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:18
 #: collorg/db/communication/blog/post/cog/templates/w3share.py:30
-msgid "Select a recipient"
-msgstr "Sélectionnez un destinatraire"
+#: collorg/db/communication/blog/post/cog/templates/_w3get_recipient.py:20
+msgid "Select a group"
+msgstr "Sélectionnez un groupe"
 
 #: collorg/db/communication/blog/post/cog/templates/w3share.py:32
 #: build/lib.linux-x86_64-2.7/collorg/db/communication/blog/post/cog/templates/w3share.py:32
@@ -168,6 +169,8 @@ msgstr "Envoyer le message"
 #: collorg/templates/document_type/html.py:359
 #: collorg/templates/document_type/html.py:364
 #: collorg/templates/document_type/html.py:366
+#: collorg/templates/document_type/html.py:371
+#: collorg/templates/document_type/html.py:373
 msgid "required"
 msgstr "requis"
 
@@ -175,6 +178,7 @@ msgstr "requis"
 #: build/lib.linux-x86_64-2.7/collorg/templates/document_type/html.py:349
 #: collorg/templates/document_type/html.py:350
 #: collorg/templates/document_type/html.py:354
+#: collorg/templates/document_type/html.py:361
 msgid "preview"
 msgstr "prévisualisation"
 
@@ -514,6 +518,7 @@ msgstr "créé"
 #: collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:24
 #: collorg/db/core/base_table/cog/templates/w3creat_modif_date.py:30
 #: collorg/db/communication/blog/view/by_post/cog/templates/w3list_attached_posts.py:23
+#: collorg/db/communication/blog/view/by_post/cog/templates/w3list_attached_posts.py:24
 msgid "last modified"
 msgstr "dernière modification "
 
@@ -1974,6 +1979,7 @@ msgstr "Référencé par"
 
 #: collorg/templates/document_type/html.py:351
 #: collorg/templates/document_type/html.py:356
+#: collorg/templates/document_type/html.py:363
 msgid "edit"
 msgstr "édition"
 
@@ -1991,6 +1997,10 @@ msgstr "nom de la personne"
 #: collorg/db/communication/blog/view/by_post/cog/templates/w3list_attached_posts.py:25
 #: collorg/db/communication/blog/post/cog/templates/_w3remove_link.py:28
 #: collorg/db/communication/blog/view/by_post/cog/templates/w3list_attached_posts.py:26
+#: collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:27
+#: collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:35
+#: collorg/db/communication/blog/view/by_post/cog/templates/w3list.py:43
+#: collorg/db/communication/blog/view/by_post/cog/templates/w3list_attached_posts.py:27
 msgid "remove from this list"
 msgstr "supprimer de cette liste"
 
@@ -2023,6 +2033,7 @@ msgid "Add a member"
 msgstr "Ajouter un membre"
 
 #: collorg/templates/document_type/html.py:203
+#: collorg/templates/document_type/html.py:210
 msgid "select an entry"
 msgstr "sélectionnez une entrée"
 
@@ -2179,8 +2190,8 @@ msgstr ""
 "(le droit d'écriture est requis)"
 
 #: collorg/db/actor/user/cog/templates/w3manage_group_link.py:26
-msgid "My groups"
-msgstr "Mes groupes"
+msgid "Groups"
+msgstr "Groupes"
 
 #: collorg/db/actor/user/cog/templates/w3group_list.py:27
 msgid "You don't have any personnal group."
@@ -2203,9 +2214,15 @@ msgid "Unregister"
 msgstr "Se désinscrire"
 
 #: collorg/db/group/group/cog/templates/w3list_inner.py:19
+#: collorg/db/group/group/cog/templates/w3list_manage.py:19
 msgid "Open"
 msgstr "Ouvert"
 
 #: collorg/db/group/group/cog/templates/w3list_inner.py:20
+#: collorg/db/group/group/cog/templates/w3list_manage.py:20
 msgid "Restricted"
 msgstr "Restreint"
+
+#: collorg/db/communication/blog/post/cog/templates/w3add_see_also_drop_zone.py:28
+msgid "Add a reference by dragging a link from the cart on the top right."
+msgstr ""

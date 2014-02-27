@@ -1,0 +1,21 @@
+# >>>
+"""
+Group list.
+"""
+topics = self.db.table('collorg.web.topic')
+topics.cog_environment_.set_intention(self.cog_oid_)
+# +++ groups
+# >>>
+for topic in topics:
+    # >>>
+    if (topic.visibility_.value == 'private' and
+        (not cog_user or not cog_user.has_access(topic))):
+        continue
+    # ---
+    <li>{% html(topic).a() %}</li>
+# --- groups
+# >>>
+if groups.strip():
+    # ---
+    <ul class="none">{% groups %}</ul>
+

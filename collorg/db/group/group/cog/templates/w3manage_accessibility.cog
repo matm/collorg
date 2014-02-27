@@ -9,4 +9,4 @@ new_ = self()
 new_.open_.set_intention(accessibility)
 self.update(new_)
 # ---
-{% cog_user.w3manage_group() %}
+{% cog_user.w3groups_list() %}

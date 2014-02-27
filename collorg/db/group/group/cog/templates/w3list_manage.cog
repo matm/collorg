@@ -1,13 +1,19 @@
 # >>>
 i18n_open = _("Open")
 i18n_restricted = _("Restricted")
+# +++ groups
+# >>>
 for group in self:
+    root_topic = group.root_topic().get()
+    if (root_topic.visibility_.value == 'private' and
+        (not cog_user or not cog_user.has_access(root_topic))):
+        continue
     # ---
-    <li>{% html(group).a() %}
+    <tr><td>{% html(root_topic).a() %}</td>
     # >>>
     if cog_user and cog_user.cog_oid_.value == group.data_.value:
         # ---
-        {% group.w3manage_members_link() %}
+        <td>{% group.w3manage_members_link() %}</td>
         # >>>
         open_ = '<b>{}</b>'.format(i18n_open)
         restricted = '<b>{}</b>'.format(i18n_restricted)
@@ -22,6 +28,11 @@ for group in self:
                 new_open_value='t', css_class="button",
                 label=i18n_open, target='_page_')
         # ---
-        {% open_ %} {% restricted %}
+        <td>{% open_ %}</td><td>{% restricted %}</td>
     # ---
-    </li>
+    </tr>
+# --- groups
+# >>>
+if groups.strip:
+    # ---
+    <table>{% groups %}</table>

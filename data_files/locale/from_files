@@ -76,8 +76,6 @@ collorg/db/web/a_rss_topic/cog/relational.py
 collorg/db/web/topic/__init__.py
 collorg/db/web/topic/cog/__init__.py
 collorg/db/web/topic/cog/templates/w3new_post.py
-collorg/db/web/topic/cog/templates/w3attach_post.py
-collorg/db/web/topic/cog/templates/w3attach_post_drop_zone.py
 collorg/db/web/topic/cog/templates/w3edit.py
 collorg/db/web/topic/cog/templates/__init__.py
 collorg/db/web/topic/cog/templates/w3list.py
@@ -316,12 +314,13 @@ collorg/db/group/__init__.py
 collorg/db/group/group/__init__.py
 collorg/db/group/group/cog/__init__.py
 collorg/db/group/group/cog/templates/w3home.py
+collorg/db/group/group/cog/templates/w3list_manage.py
 collorg/db/group/group/cog/templates/w3get_events.py
 collorg/db/group/group/cog/templates/w3selfUnregister.py
 collorg/db/group/group/cog/templates/w3manage_members.py
 collorg/db/group/group/cog/templates/w3link.py
 collorg/db/group/group/cog/templates/__init__.py
-collorg/db/group/group/cog/templates/w3list_inner.py
+collorg/db/group/group/cog/templates/w3list.py
 collorg/db/group/group/cog/templates/w3selfRegister.py
 collorg/db/group/group/cog/templates/w3manage_members_link.py
 collorg/db/group/group/cog/templates/w3selfRegisterUnregisterLink.py
@@ -417,9 +416,6 @@ collorg/db/access/view/access_aa/cog/__init__.py
 collorg/db/access/view/access_aa/cog/templates/w3icon.py
 collorg/db/access/view/access_aa/cog/templates/w3in_nav_link.py
 collorg/db/access/view/access_aa/cog/templates/__init__.py
-collorg/db/access/task/__init__.py
-collorg/db/access/task/cog/__init__.py
-collorg/db/access/task/cog/templates/__init__.py
 collorg/db/actor/relation/__init__.py
 collorg/db/actor/relation/cog/__init__.py
 collorg/db/actor/relation/cog/templates/__init__.py
@@ -461,6 +457,7 @@ collorg/db/actor/user/cog/templates/w3list_functions_link.py
 collorg/db/actor/user/cog/templates/__init__.py
 collorg/db/actor/user/cog/templates/w3login_link.py
 collorg/db/actor/user/cog/templates/w3sign_up.py
+collorg/db/actor/user/cog/templates/w3photo.py
 collorg/db/actor/user/cog/templates/w3edit_rss.py
 collorg/db/actor/user/cog/templates/w3my_comments.py
 collorg/db/actor/user/cog/templates/w3manage_account.py
