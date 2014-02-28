@@ -99,7 +99,7 @@ class Topic(Post):
         assert obj.cog_oid_.value
         self.cog_environment_.set_intention(obj.cog_oid_)
         self.path_info_.set_intention('')
-        self.title_.set_intention('')
+        self.title_.set_intention(obj.cog_label())
         self._author_ = author
         assert not self.exists()
         self.insert()

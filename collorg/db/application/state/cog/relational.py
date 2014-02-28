@@ -15,7 +15,7 @@ def _rev_transition_start_state_(self):
     elt = self.db.table('collorg.application.transition')
     elt._start_state_ = self
     if 'cog_oid_' in self.__dict__ and self.cog_oid_.value:
-        if not '_cog_direct_refs' in elt.__dict__.keys():
+        if not '_cog_direct_refs' in elt.__dict__:
             elt._cog_direct_refs = []
         elt._cog_direct_refs.append(self.cog_oid_.value)
     return elt
@@ -25,7 +25,7 @@ def _rev_transition_end_state_(self):
     elt = self.db.table('collorg.application.transition')
     elt._end_state_ = self
     if 'cog_oid_' in self.__dict__ and self.cog_oid_.value:
-        if not '_cog_direct_refs' in elt.__dict__.keys():
+        if not '_cog_direct_refs' in elt.__dict__:
             elt._cog_direct_refs = []
         elt._cog_direct_refs.append(self.cog_oid_.value)
     return elt
@@ -35,7 +35,7 @@ def _rev_log_(self):
     elt = self.db.table('collorg.application.log')
     elt._state_ = self
     if 'cog_oid_' in self.__dict__ and self.cog_oid_.value:
-        if not '_cog_direct_refs' in elt.__dict__.keys():
+        if not '_cog_direct_refs' in elt.__dict__:
             elt._cog_direct_refs = []
         elt._cog_direct_refs.append(self.cog_oid_.value)
     return elt

@@ -9,8 +9,11 @@ The arguments are:
     * data_type (fqtn)
 """
 
-from collorg.controller.controller import Controller
 import sys
+from collorg.controller.controller import Controller
+
+if sys.version_info.major < 3:
+    input = raw_input
 
 if __name__ == '__main__':
     db = Controller().db
@@ -23,7 +26,7 @@ if __name__ == '__main__':
         sys.stderr.write(
             "this group already exists (%s)\nAborting\n" % (name))
         sys.exit()
-    ok = raw_input('ok [y/N]: ')
+    ok = input('ok [y/N]: ')
     if ok.upper() != 'Y':
         sys.stderr.write("exiting\n")
         sys.exit()

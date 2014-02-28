@@ -4,6 +4,9 @@
 import sys
 from collorg.controller.controller import Controller
 
+if sys.version_info.major < 3:
+    input = raw_input
+
 ctrl = Controller()
 db = ctrl.db
 table = db.table
@@ -12,7 +15,7 @@ groups = table('collorg.group.group')
 groups.order_by(groups.name_)
 for funct in groups:
     print(" - {}".format(funct.name_))
-group_name = raw_input("group name? ")
+group_name = input("group name? ")
 if not group_name.strip():
     sys.exit()
 group = groups()
@@ -22,7 +25,7 @@ access = group._rev_access_
 access.granted()
 for user in access._user_:
     print(" - {}".format(user.pseudo_))
-pseudo = raw_input("pseudo? ")
+pseudo = input("pseudo? ")
 if not pseudo.strip():
     sys.exit()
 user = table("collorg.actor.user")

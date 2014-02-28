@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
 
+import sys
 from collorg.controller.controller import Controller
+
+if sys.version_info.major < 3:
+    input = raw_input
 
 db = Controller().db
 table = db.table
@@ -13,7 +17,7 @@ for dt in data_types:
         table(dt.fqtn_.value)
     except Exception as err:
         print("{}: {}".format(dt.fqtn_, err))
-        ok = raw_input('Remove entry from database [N/y] ? ')
+        ok = input('Remove entry from database [N/y] ? ')
         if ok.upper() == 'Y':
             dt._rev_field_.delete()
             dt.delete()

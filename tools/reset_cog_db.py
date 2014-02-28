@@ -4,6 +4,9 @@
 import sys
 import os
 
+if sys.version_info.major < 3:
+    input = raw_input
+
 description = """
 WARNING!
 
@@ -57,10 +60,7 @@ if __name__ == '__main__':
         sys.stderr.write("The database name can't contain a dot\naborting\n")
         sys.exit(1)
     print(description % (db_name, db_name))
-    if sys.version < '3':
-        ok = raw_input("proceed [N/y]? ")
-    else:
-        ok = input("proceed [N/y]? ")
+    ok = input("proceed [N/y]? ")
     if ok.lower() != 'y':
         sys.stderr.write("aborting\n")
         sys.exit()

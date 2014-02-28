@@ -3,6 +3,7 @@
 
 from collorg.controller.controller import Controller
 import sys
+
 if sys.version_info.major < 3:
     input = raw_input
 

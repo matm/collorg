@@ -17,7 +17,7 @@ if len(dv):
     # +++ task_list
     # >>>
     deja_vu = []
-    for key in dv.keys():
+    for key in dv:
         goal_name = dv[key][0].goal_name_.val
         if goal_name in ('Anonymous navigation', 'Authenticated navigation'):
             continue

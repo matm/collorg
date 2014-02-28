@@ -57,13 +57,13 @@ class Action_requirement(object):
         self._d_csv_requirement = self.__read_csv_file()
         self._d_db_requirement = self.__read_db_requirement()
         for key, val in self._d_db_requirement.items():
-            if not key in self._d_csv_requirement.keys():
+            if not key in self._d_csv_requirement:
                 check = self.__table('collorg.application.check')
                 check.requires_.set_intention(val[0])
                 check.required_.set_intention(val[1])
                 print("- removing action requirement {}".format(key))
                 check.delete()
-        for key in self._d_csv_requirement.keys():
+        for key in self._d_csv_requirement:
             fqtn_requires, method_requires = key[0].rsplit(".", 1)
             fqtn_required, method_required = key[1].rsplit(".", 1)
             mrs = self.__table(

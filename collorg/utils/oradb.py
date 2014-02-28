@@ -11,6 +11,7 @@ if sys.version >= 3:
     import ordereddict
 else:
     import OrederedDict as ordereddict
+    input = input
 
 ora_table = "select * from user_objects where object_name = '%s'"
 ora_table_list = "select * from user_objects where object_type = 'TABLE'"
@@ -231,11 +232,11 @@ class Relation(object):
         return len(self.__extension)
 
 if __name__ == '__main__':
-    user = raw_input('User: ')
+    user = input('User: ')
     password = getpass.getpass()
-    sid = raw_input('sid: ')
-    host = raw_input('host: ')
-    port = raw_input('port [1521]: ') or '1521'
+    sid = input('sid: ')
+    host = input('host: ')
+    port = input('port [1521]: ') or '1521'
     db = Oradb(user, password, sid, host, port)
     print("Tables:\n * %s" % ("\n * ".join(db.tables_list())))
     print("Views:\n * %s" % ("\n * ".join(db.views_list())))

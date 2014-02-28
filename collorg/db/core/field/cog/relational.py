@@ -15,7 +15,7 @@ def _rev_checked_val_(self):
     elt = self.db.table('collorg.core.checked_val')
     elt._field_ = self
     if 'cog_oid_' in self.__dict__ and self.cog_oid_.value:
-        if not '_cog_direct_refs' in elt.__dict__.keys():
+        if not '_cog_direct_refs' in elt.__dict__:
             elt._cog_direct_refs = []
         elt._cog_direct_refs.append(self.cog_oid_.value)
     return elt
@@ -25,7 +25,7 @@ def _rev_translation_(self):
     elt = self.db.table('collorg.i18n.translation')
     elt._field_ = self
     if 'cog_oid_' in self.__dict__ and self.cog_oid_.value:
-        if not '_cog_direct_refs' in elt.__dict__.keys():
+        if not '_cog_direct_refs' in elt.__dict__:
             elt._cog_direct_refs = []
         elt._cog_direct_refs.append(self.cog_oid_.value)
     return elt
@@ -35,7 +35,7 @@ def _rev_comment_(self):
     elt = self.db.table('collorg.communication.comment')
     elt._field_ = self
     if 'cog_oid_' in self.__dict__ and self.cog_oid_.value:
-        if not '_cog_direct_refs' in elt.__dict__.keys():
+        if not '_cog_direct_refs' in elt.__dict__:
             elt._cog_direct_refs = []
         elt._cog_direct_refs.append(self.cog_oid_.value)
     return elt

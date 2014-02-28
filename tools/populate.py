@@ -17,7 +17,7 @@ def set_fk_val(field, val):
         f_fqtn, f_field_name = f_field_name.rsplit('.', 1)
         f_table = field.f_table.db.table(f_fqtn)
 #    print("1 XXXXX FK %s %s %s"%(f_table.fqtn, f_field_name, val))
-    #print(f_table.__dict__.keys())
+    #print(list(f_table.__dict__))
     comp = 'ilike'
 #    print("xxx %s" % f_table.__dict__[f_field_name].sql_type)
     if f_table.__dict__[f_field_name].sql_type.find('int') != -1:

@@ -16,7 +16,7 @@ data_link = (
 target = kwargs.get('target')
 data = kwargs['data']
 post = data
-if 'topic_oid' in kwargs.keys():
+if 'topic_oid' in kwargs:
     post = self.db.get_elt_by_oid(kwargs['topic_oid'])
 callback = kwargs.get('callback')
 user = self.db.table('collorg.actor.user')

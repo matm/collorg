@@ -28,7 +28,7 @@ import sys
 from collorg.controller.controller import Controller
 import collorg.utils.globvars as glob
 
-if sys.version < '3':
+if sys.version_info.major < 3:
     input = raw_input
 
 def _input(question, default_val):
@@ -125,12 +125,8 @@ class Init():
 
     def __create_db(self):
         self.__check_pg_extensions()
-        if sys.version < '3':
-            create = raw_input("will try to create %s database [y/N]? " % (
-                self.db_name))
-        else:
-            create = input("will try to create %s database [y/N]? " % (
-                self.db_name))
+        create = input("will try to create %s database [y/N]? " % (
+            self.db_name))
         if create.upper() != 'Y':
             print("aborting")
             sys.exit()

@@ -134,7 +134,8 @@ class User(Actor, Groupable):
         new.validation_key_.set_intention(salt)
         new.insert()
         topic = new._rev_topic_
-        topic.title_.set_intention('')
+        topic.title_.set_intention("{} {}".format(
+            kwargs['first_name_'], kwargs['last_name_']))
         topic.text_.set_intention('')
         topic.path_info_.set_intention('')
         topic.author_.set_intention(new.cog_oid_)

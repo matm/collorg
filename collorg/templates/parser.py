@@ -200,7 +200,7 @@ class Parser( object ):
         for line in template_code:
             result.append("    {}".format(line))
         assert self.__out_var == [self.default_out_var]
-        result.append("    if 'format' in PRAGMA.keys():")
+        result.append("    if 'format' in PRAGMA:")
         result.append(
             "        {} = _format(PRAGMA['format'], {}, cog_charset)".format(
             self.default_out_var, self.default_out_var))

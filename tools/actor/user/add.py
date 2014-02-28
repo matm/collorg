@@ -5,6 +5,9 @@ import sys
 from collorg.controller.controller import Controller
 import getpass
 
+if sys.version_info.major < 3:
+    input = raw_input
+
 if __name__ == '__main__':
     ctrl = Controller()
     if len(sys.argv) == 2:
@@ -12,10 +15,10 @@ if __name__ == '__main__':
     db = ctrl.db
     user = db.table('collorg.actor.user')
     kwargs = {}
-    kwargs['first_name_'] = raw_input('First name: ')
-    kwargs['last_name_'] = raw_input('Last name: ')
-    kwargs['email_'] = raw_input('email: ')
-    kwargs['pseudo_'] = raw_input('pseudo: ')
+    kwargs['first_name_'] = input('First name: ')
+    kwargs['last_name_'] = input('Last name: ')
+    kwargs['email_'] = input('email: ')
+    kwargs['pseudo_'] = input('pseudo: ')
     pass1 = ''
     pass2 = 'x'
     while pass1 != pass2:

@@ -25,7 +25,7 @@ import getpass
 from collorg.controller.controller import Controller
 import collorg.utils.globvars as glob
 
-if sys.version < '3':
+if sys.version_info.major < 3:
     input = raw_input
 
 def _input(question, default_val):
@@ -277,10 +277,10 @@ class Cmd():
         db = self.db
         user = db.table('collorg.actor.user')
         kwargs = {}
-        kwargs['first_name_'] = raw_input('First name: ')
-        kwargs['last_name_'] = raw_input('Last name: ')
-        kwargs['email_'] = raw_input('email: ')
-        kwargs['pseudo_'] = raw_input('pseudo: ')
+        kwargs['first_name_'] = input('First name: ')
+        kwargs['last_name_'] = input('Last name: ')
+        kwargs['email_'] = input('email: ')
+        kwargs['pseudo_'] = input('pseudo: ')
         pass1 = ''
         pass2 = 'x'
         while pass1 != pass2:

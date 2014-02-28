@@ -8,6 +8,9 @@ Suppress a task and all actions attached to it.
 import sys
 from collorg.controller.controller import Controller
 
+if sys.version_info.major < 3:
+    input = raw_input
+
 ctrl = Controller()
 db = ctrl.db
 table = db.table
@@ -21,7 +24,7 @@ if len(sys.argv) >= 2:
 if len(sys.argv) == 2:
     for task in tasks:
         print("{} {}".format(task.cog_oid_.value[0:8], task.name_))
-    task_oid = raw_input('Task oid: ')
+    task_oid = input('Task oid: ')
     task = tasks()
     task.cog_oid_.set_intention('{}%'.format(task_oid), 'like')
     task = task.get()
@@ -33,7 +36,7 @@ if len(sys.argv) == 2:
         print(" . {} {}.{}".format(
                 action.cog_oid_.value[0:8], action.data_type_, action.name_))
 
-    suppress = raw_input('Suppress [N/y]? ')
+    suppress = input('Suppress [N/y]? ')
     if suppress.upper() != 'Y':
         print("Nothing suppressed.")
         sys.exit()

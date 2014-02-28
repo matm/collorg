@@ -107,7 +107,7 @@ class Db( object ):
         heavy_nodes = [ 'collorg.core.data_type' ]
         di_graph = nx.DiGraph()
         d_fkey = self._metadata.d_fkey
-        for fqtn in d_fkey.keys():
+        for fqtn in d_fkey:
 #            print("XXXXX", fqtn,d_fkey[fqtn])
             for fk_fqtn, l_fields in d_fkey[fqtn].items():
                 src = fqtn
@@ -330,7 +330,7 @@ class Db( object ):
         l'objet sera référencé par self.a_.b_ (PEP 8)
         """
         # sys.stderr.write( "DEBUG db.table %s\n" % cog_fqtn )
-        if not self.__d_tables.has_key(cog_fqtn):
+        if not cog_fqtn in self.__d_tables:
             cog_fqtn = cog_fqtn.replace( '"', '' )
             ( schema_name, table_name ) = cog_fqtn.rsplit( ".", 1 )
             if schema_name.find('collorg') == 0:

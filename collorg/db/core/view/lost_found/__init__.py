@@ -1,6 +1,10 @@
 #-*- coding: UTF-8 -*-
 
+import sys
 from collorg.orm.table import Table
+
+if sys.version_info.major < 3:
+    input = raw_input
 
 class Lost_found(Table):
     #>>> AUTO_COG REL_PART. DO NOT EDIT!
@@ -32,7 +36,7 @@ class Lost_found(Table):
         to_remove = self.count()
         print("About to remove {} elements from {}.".format(
             to_remove, total))
-        ok = raw_input("Proceed [Y/n] ? ")
+        ok = input("Proceed [Y/n] ? ")
         if ok == '' or ok.upper() == 'Y':
             oid_table = self.db.table('collorg.core.oid_table')
             oid_table.cog_oid_.set_intention(self.cog_oid_)

@@ -232,18 +232,18 @@ class Metadata:
         self.__d_fkeys = self.__set_d_fkeys( d_oid_field )
         self.d_oid_table = d_oid_table
         self.d_fqtn_table = d_fqtn_table
-        for sch in d_schemas.keys():
-            for tbl in d_schemas[sch]['d_tbl'].keys():
+        for sch in d_schemas:
+            for tbl in d_schemas[sch]['d_tbl']:
                 dtbl = d_schemas[sch]['d_tbl'][tbl]
                 dtbl['children_fqtns'] = []
-                if 'children_fqtns' in d_oid_table[dtbl['tableid']].keys():
+                if 'children_fqtns' in d_oid_table[dtbl['tableid']]:
                     dtbl['children_fqtns'] = \
                         d_oid_table[dtbl['tableid']]['children_fqtns']
 
     def __set_d_fkeys( self, doid ):
         d_fkey = OrderedDict()
-        for key in doid.keys():
-            for key2 in doid[key].keys():
+        for key in doid:
+            for key2 in doid[key]:
                 doid2 = doid[key][key2]
                 if doid2['fkey'] != 'f':
                     continue

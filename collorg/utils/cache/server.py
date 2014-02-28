@@ -10,7 +10,7 @@ class Handler():
         self.dict_ = {}
 
     def __set_session(self, session):
-        if not session in self.dict_.keys():
+        if not session in self.dict_:
             self.dict_[session] = {}
         return self.dict_[session]
 
@@ -26,7 +26,7 @@ class Handler():
         """
         obj_oid, ref_obj_oid = json.loads(value)
         dict_ = self.__set_session(session)
-        if not sub_cmd in dict_.keys():
+        if not sub_cmd in dict_:
             dict_[sub_cmd] = {}
         dict_ = dict_[sub_cmd]
         if not obj_oid in dict_:
@@ -80,7 +80,7 @@ class Server():
                 if session is None or session == "None":
                     self.__server.sendto(json.dumps(None), addr)
                     continue
-                if not db_name in self.__d_handlers.keys():
+                if not db_name in self.__d_handlers:
                     self.__d_handlers[db_name] = Handler()
                 handler = self.__d_handlers[db_name]
                 if cmd == "set":

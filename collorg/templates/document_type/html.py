@@ -72,7 +72,7 @@ class Html():
     def __href(self, **kwargs):
         res = []
         kwargs['cog_fqtn_'] = self.__elt.fqtn
-        if 'cog_ref_oid' in kwargs.keys():
+        if 'cog_ref_oid' in kwargs:
             if not 'cog_fqtn_' in kwargs and not 'cog_oid_' in kwargs:
                 kwargs['cog_fqtn_'] = self.__elt.fqtn
         for key, val in kwargs.items():
@@ -92,7 +92,7 @@ class Html():
         """
         adds to kwargs cog_oid_ or the pk fields
         """
-        if 'cog_proxy_oid' in kwargs.keys():
+        if 'cog_proxy_oid' in kwargs:
             # we must have elt.cog_oid_
             kwargs['cog_oid_'] = kwargs['cog_proxy_oid']
             kwargs['cog_elt_oid'] = "{}".format(elt.cog_oid_)
@@ -102,7 +102,7 @@ class Html():
             #!! elt is a pview (?? pkey for a pview ??)
             for field in elt._cog_pkey_fields:
                 kwargs["%s_" % (field.name)] = "{}".format(field)
-        if 'cog_oid_' in kwargs.keys() and kwargs["cog_oid_"] == "None":
+        if 'cog_oid_' in kwargs and kwargs["cog_oid_"] == "None":
             kwargs["cog_oid_"] = None
         return kwargs
 

@@ -15,7 +15,7 @@ def _rev_attachment_(self):
     elt = self.db.table('collorg.communication.attachment')
     elt._ref_ = self
     if 'cog_oid_' in self.__dict__ and self.cog_oid_.value:
-        if not '_cog_direct_refs' in elt.__dict__.keys():
+        if not '_cog_direct_refs' in elt.__dict__:
             elt._cog_direct_refs = []
         elt._cog_direct_refs.append(self.cog_oid_.value)
     return elt
@@ -25,7 +25,7 @@ def _rev_user_(self):
     elt = self.db.table('collorg.actor.user')
     elt._photo_ = self
     if 'cog_oid_' in self.__dict__ and self.cog_oid_.value:
-        if not '_cog_direct_refs' in elt.__dict__.keys():
+        if not '_cog_direct_refs' in elt.__dict__:
             elt._cog_direct_refs = []
         elt._cog_direct_refs.append(self.cog_oid_.value)
     return elt

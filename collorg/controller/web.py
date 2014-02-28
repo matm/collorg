@@ -316,7 +316,7 @@ class WebController(Controller):
             cookie_string = self._environ.get('HTTP_COOKIE')
             cookie = SimpleCookie()
             cookie.load(cookie_string)
-            if cookie.has_key('cog_session'):
+            if 'cog_session' in cookie:
                 self._session_key = cookie['cog_session'].value
         self.__cog_environment = self.__get_env()
         self._cog_fqtn_ = self._kwargs.get('cog_fqtn_', None)
@@ -454,8 +454,7 @@ class WebController(Controller):
                 WebController.__static_body = self.__get_static_body()
             self.__response = Response()
             self.__reset()
-            if not(self._cog_method is None and
-                '#page_ref' in self._json_res.keys()):
+            if not(self._cog_method is None and '#page_ref' in self._json_res):
                     self.add_json_res({'#page_ref':self.get_page_ref()})
             self.__response.unicode_body = self._unicode(self.__exec())
             if(self.__response.content_type != 'text/html' or

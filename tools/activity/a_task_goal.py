@@ -4,14 +4,14 @@
 import sys
 from collorg.controller.controller import Controller
 
+if sys.version < '3':
+    input = raw_input
+
 if __name__ == '__main__':
     ctrl = Controller()
     db = ctrl.db
     task = db.table('collorg.application.task')
-    if sys.version < '3':
-        task_name = raw_input('task name: ')
-    else:
-        task_name = input('task name: ')
+    task_name = input('task name: ')
     task.name_.set_intention(task_name)
     actions = task._action__s_
     for action in actions:

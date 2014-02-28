@@ -303,7 +303,7 @@ class Cmd():
                 #XXX TODO
                 'write', 'moderate', 'admin']
             for attr in attrs:
-                if attr in pragma.keys():
+                if attr in pragma:
                     action.__dict__["{}_".format(attr)].set_intention(
                         pragma[attr])
             action.insert()

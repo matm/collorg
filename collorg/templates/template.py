@@ -68,7 +68,7 @@ template_code_lines = """
 
 # self.__out_var, self.default_out_var
 template_format = """
-    if 'format' in __PRAGMA.keys():
+    if 'format' in __PRAGMA:
         %s = _format(PRAGMA['format'], %s, charset)
 """
 

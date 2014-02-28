@@ -1,8 +1,11 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
 
-from collorg.controller.controller import Controller
 import sys
+from collorg.controller.controller import Controller
+
+if sys.version_info.major < 3:
+    input = raw_input
 
 if __name__ == '__main__':
     ctrl = Controller()
@@ -17,7 +20,7 @@ if __name__ == '__main__':
             groups.order_by(groups.name_)
             for group in groups:
                 print(group.name_.val)
-            gr_name = raw_input('group : ')
+            gr_name = input('group : ')
             if not gr_name:
                 continue
             group = group(name_ = gr_name).get()

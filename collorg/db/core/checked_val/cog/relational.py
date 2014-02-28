@@ -15,7 +15,7 @@ def _rev_d_ldap_connectivity_security_(self):
     elt = self.db.table('collorg.auth.d_ldap')
     elt._connectivity_security_ = self
     if 'cog_oid_' in self.__dict__ and self.cog_oid_.value:
-        if not '_cog_direct_refs' in elt.__dict__.keys():
+        if not '_cog_direct_refs' in elt.__dict__:
             elt._cog_direct_refs = []
         elt._cog_direct_refs.append(self.cog_oid_.value)
     return elt
@@ -25,7 +25,7 @@ def _rev_d_ldap_certificate_checks_(self):
     elt = self.db.table('collorg.auth.d_ldap')
     elt._certificate_checks_ = self
     if 'cog_oid_' in self.__dict__ and self.cog_oid_.value:
-        if not '_cog_direct_refs' in elt.__dict__.keys():
+        if not '_cog_direct_refs' in elt.__dict__:
             elt._cog_direct_refs = []
         elt._cog_direct_refs.append(self.cog_oid_.value)
     return elt
@@ -35,7 +35,7 @@ def _rev_d_ldap_scope_(self):
     elt = self.db.table('collorg.auth.d_ldap')
     elt._scope_ = self
     if 'cog_oid_' in self.__dict__ and self.cog_oid_.value:
-        if not '_cog_direct_refs' in elt.__dict__.keys():
+        if not '_cog_direct_refs' in elt.__dict__:
             elt._cog_direct_refs = []
         elt._cog_direct_refs.append(self.cog_oid_.value)
     return elt

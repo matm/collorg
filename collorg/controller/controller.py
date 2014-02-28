@@ -41,7 +41,7 @@ def _template(func):
 #        cog_environment = None
         cog_reminder = kw.pop('cog_reminder', "")
         res = []
-        if 'cog_first_call' in kwargs.keys() and self._is_of_type_post:
+        if 'cog_first_call' in kwargs and self._is_of_type_post:
             if not ctrl.check_visibility(self):
                 return self.w3access_denied()
         kw.pop('cog_first_call', None)
