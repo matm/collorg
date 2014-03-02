@@ -4,9 +4,9 @@
 package = self._namespace_
 package_link = html( package ).a( cog_method = 'w3listModules' )
 # ---
-<h3>{% package_link %}.{% self.name_.val %}
+<h3>{% package_link %}.{% self.name_.value %}
 # >>>
-obj = self.db.table( self.fqtn_.val )
+obj = self.db.table( self.fqtn_.value )
 inherits_from = obj._cog_inherits
 {#
 if inherits_from.exists():
@@ -21,11 +21,11 @@ if inherits_from.exists():
 #}
 # ---
 </h3>
-<div>{% self.cog_presentation_.val or "" %}</div>
+<div>{% self.cog_presentation_.value or "" %}</div>
 <table>
 # >>>
 for field in obj._cog_fields:
-    val = field.val or ""
+    val = field.value or ""
     flashy = ""
     if field.spec['pkey']:
         flashy = 'class="flashy"'

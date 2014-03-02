@@ -68,7 +68,7 @@ class Base_table(Oid_table):
         if just_return_sql:
             return obj
         return self.db.table(
-            self.cog_fqtn_.val, cog_oid_ = self.cog_oid_.val ).get(
+            self.cog_fqtn_.value, cog_oid_ = self.cog_oid_.value ).get(
                 reload_ = reload_)
 
     @property

@@ -24,7 +24,7 @@ if cog_user.has_access(self, write = True):
     {% html(self).input(self.text_) %}
     {% self.w3edit_sub() %}
     {%html(self).input(self.expiry_date_, css_class="timepicker")%}
-    <input type="hidden" name="cog_oid_" value="{% self.cog_oid_.value %}" />
+    <input type="hidden" name="cog_oid_" value="{% self.cog_oid_ %}" />
     <input type="hidden" name="cog_target" value="_page_" />
     <input type="hidden" name="cog_method" value="w3save" />
     <input type="hidden" name="public_" value="True" />

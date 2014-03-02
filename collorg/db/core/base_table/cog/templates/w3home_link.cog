@@ -1,5 +1,5 @@
 # >>>
-assert self.cog_oid_.val
+assert self.cog_oid_.value
 image = "/collorg/images/home.svg"
 label = kwargs.get('label', 'home')
 method = kwargs.get("method", "w3display")

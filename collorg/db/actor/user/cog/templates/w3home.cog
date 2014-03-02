@@ -1,6 +1,6 @@
 # >>>
 target = html.random_id()
-user_oid = self.cog_oid_.val
+user_oid = self.cog_oid_.value
 assert user_oid
 if cog_user and cog_user.cog_oid_.value == user_oid:
     # ---

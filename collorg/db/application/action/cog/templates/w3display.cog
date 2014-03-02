@@ -18,15 +18,15 @@ cls = table.join( self ).get()().__class__
 dirname = os.path.dirname(
     os.path.realpath( inspect.getabsfile( cls ) ) )
 mod_name = cls.__name__.lower()
-method_name = self.name_.val
-source = self.source_.val
+method_name = self.name_.value
+source = self.source_.value
 template_src = "%s/cog/templates/%s.py" % (dirname, method_name)
 # ---
 <h1>{% cls.__name__ %}.{% method_name %}</h1>
 <table>
 # >>>
 for field in self._cog_fields:
-    val = field.val
+    val = field.value
     if val is None:
         val = "NULL"
     val = html_escape(str(val))

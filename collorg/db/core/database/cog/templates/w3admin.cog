@@ -4,7 +4,7 @@
 #PRAGMA 'description':'Lists the modules (AKA schemas) of the database.'
 #PRAGMA 'keywords':'navigation, modules, schemas'
 #PRAGMA 'tasks':['Db admin']
-<h1>{% self.long_name_.val or self.name_.val %} database management</h1>
+<h1>{% self.long_name_.value or self.name_.value %} database management</h1>
 <ul class="none">
 # >>>
 target = '#cog_container'

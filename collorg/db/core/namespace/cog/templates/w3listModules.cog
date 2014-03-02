@@ -2,5 +2,5 @@
 # >>>
 module = self._rev_data_type_
 # ---
-<h1>modules of {% self.name_.val %} schema</h1>
+<h1>modules of {% self.name_.value %} schema</h1>
 {% module.w3list() %}

@@ -1,4 +1,7 @@
 # >>>
+default_user = '/collorg/images/user.svg'
+html_user = '<object id="{}" data="{}" {}><img src="{}" alt=""/ {}></object>'
+id_ = html.random_id()
 size = kwargs.get('size', None)
 assert size is None or int(size)
 size_style = ''
@@ -7,6 +10,16 @@ if size:
 url_photo = self.db._cog_params['user_photo_url']
 if url_photo:
     url_photo = url_photo % (self.pseudo_)
-    url_photo = '<object data="{}" {}><img src="/collorg/images/user.svg" alt=""/ {}></object>'.format(url_photo, size_style, size_style)
+    url_photo = html_user.format(
+        id_, url_photo, size_style, default_user, size_style)
 # ---
 {% url_photo %}
+<script>
+$(document).ready(function(){
+    var width=$('#{% id_ %}').parent().parent().width();
+    if(width != 0) {
+        console.log(width);
+        $('#{% id_ %}').css("width", width/3 + "px");
+    };
+});
+</script>

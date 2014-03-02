@@ -14,12 +14,12 @@ if __name__ == '__main__':
     roles.order_by(roles.tmp_name_)
     for role in roles:
         if role._group__s_.count() == 0:
-            print(role.tmp_name_.val)
+            print(role.tmp_name_)
             groups = db.table('collorg.group.group')
             groups._data_ = role._data_
             groups.order_by(groups.name_)
             for group in groups:
-                print(group.name_.val)
+                print(group.name_)
             gr_name = input('group : ')
             if not gr_name:
                 continue

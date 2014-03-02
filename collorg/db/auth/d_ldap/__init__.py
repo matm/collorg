@@ -83,13 +83,13 @@ class D_ldap( Base_table ):
         D_ldap.__domains = {}
         D_ldap.__default_domain = None
         for dom in self.get_extent():
-            dom_name = dom.domain_.val
+            dom_name = dom.domain_.value
             D_ldap.__domains[dom_name] = {}
             for field in dom._cog_fields:
                 fname = field.pyname
-                D_ldap.__domains[dom_name][fname] = dom.__dict__[fname].val
-            if dom.default_.val:
-                D_ldap.__default_domain = dom.domain_.val
+                D_ldap.__domains[dom_name][fname] = dom.__dict__[fname].value
+            if dom.default_.value:
+                D_ldap.__default_domain = dom.domain_.value
 
     def get_default_domain(self):
         if not self.__domains:

@@ -107,6 +107,7 @@ class Controller(object):
         if self.__repos_path is None and self.__db_name == 'collorg_db':
             self.__repos_path = self.__collorg_path
         self.db = Db(self, *db_connector.ini_connect(self.__db_name))
+        self.model = self.db
         if 'charset' in self.db._cog_params:
             self._charset = self.db._cog_params['charset']
         self.__debug = False

@@ -106,7 +106,7 @@ class Relation(object):
         field_names = [ field.name for field in fields ]
         for elt in self:
             if not self.__light:
-                key = tuple("%s" % elt.__dict__["%s_" % (field_name)].val
+                key = tuple("%s" % elt.__dict__["%s_" % (field_name)].value
                     for field_name in field_names)
                 if not key in _dict:
                     _dict[key] = []
@@ -507,6 +507,21 @@ class Relation(object):
 
     def __eq__(self, other):
         return self in other and other in self
+
+    def __ne__(self, other):
+        return not(self == other)
+
+    def __lt__(self, other):
+        return self in other and (other - self).exists()
+
+    def __gt__(self, other):
+        return other in self and (self - other).exists()
+
+    def __le__(self, other):
+        return self in other
+
+    def __ge__(self, other):
+        return other in self
 
     def __contains__(self, other):
         return not (other - self).exists()

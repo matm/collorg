@@ -60,7 +60,7 @@ class Data_type( Base_table ):
 
     def insert( self, **kwargs ):
         namespace = self.db.table( 'collorg.core.namespace' )
-        namespace.name_.set_intention(self.fqtn_.val.rsplit( '.', 1 )[0])
+        namespace.name_.set_intention(self.fqtn_.value.rsplit( '.', 1 )[0])
         if not namespace.exists():
             self.db.set_auto_commit( False )
             namespace.insert()
@@ -69,8 +69,8 @@ class Data_type( Base_table ):
         self.db.commit()
 
     def __call__( self ):
-        assert self.fqtn_.val.__class__ is str
-        return self.db.table( self.fqtn_.val )
+        assert self.fqtn_.value.__class__ is str
+        return self.db.table( self.fqtn_.value )
 
     def __add_data_type_self_ref(self):
         fqtn = self.fqtn

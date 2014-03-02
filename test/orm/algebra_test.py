@@ -252,6 +252,10 @@ class Test(TestCase):
         empty = self.empty_set
         self.assertTrue(-universe == empty)
 
+    def inclusion_test_1_0(self):
+        a = self.set_1
+        self.assertTrue(a in a)
+
     def inclusion_test_1_1(self):
         a = self.set_1
         ab = self.subset_1_2
@@ -370,3 +374,33 @@ class Test(TestCase):
         empty = self.empty_set
         universe = self.universe
         self.assertTrue(a - universe == empty)
+
+    def inequality_test_0(self):
+        a = self.set_1
+        self.assertTrue(a != -a)
+
+    def inequality_test_1(self):
+        a = self.set_1
+        self.assertTrue(not(a != a))
+
+    def less_than_test(self):
+        a = self.set_1
+        ab = self.subset_1_2
+        if ab.exists():
+            self.assertTrue(ab < a)
+
+    def greater_than_test(self):
+        a = self.set_1
+        ab = self.subset_1_2
+        if ab.exists():
+            self.assertTrue(a > ab)
+
+    def less_or_equal_than_test(self):
+        a = self.set_1
+        ab = self.subset_1_2
+        self.assertTrue(ab <= a)
+
+    def greater_ot_equal_than_test(self):
+        a = self.set_1
+        ab = self.subset_1_2
+        self.assertTrue(a >= ab)

@@ -14,7 +14,7 @@ if not cog_user:
 environment = None
 if self.cog_environment_.value != self.cog_oid_.value:
     environment = self.db.get_elt_by_oid(self.cog_environment_.value)
-data_type = self.data_type_.val
+data_type = self.data_type_.value
 action = 'w3list'
 if self.action_.value:
     action = self.db.get_elt_by_oid(self.action_.value).name_.value
@@ -46,8 +46,8 @@ if not self.action_.value:
     if tags.exists():
         has_text = True
         tags_list = '<div class="bottom_tags">{}</div>'.format(tags.w3list(
-            raw=False, env_oid=self.cog_oid_.val,
-            env_fqtn=self.cog_fqtn_.val, target=tl_target))
+            raw=False, env_oid=self.cog_oid_.value,
+            env_fqtn=self.cog_fqtn_.value, target=tl_target))
     if self.text_.value is not None:
         text = "{}{}".format(text, html.display(self.text_, label=''))
     text = "{}{}{}".format(tags_list, text, env_addendum)

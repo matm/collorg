@@ -76,16 +76,16 @@ class Action(Base_table):
 
     def link_to_task( self, task ):
         #print( "%s\n%s" % ( self._cog_debug, task._cog_debug ) )
-        if not self.cog_oid_.val:
+        if not self.cog_oid_.value:
             self.get()
-        if not task.cog_oid_.val:
+        if not task.cog_oid_.value:
             task.get()
         aat = self.db.table( 'collorg.application.a_action_task' )
         aat.action_ = self
         aat.task_ = task
         if not aat.exists():
             print("+ new assoc action<->task: %s<->%s" % (
-                self.name_.val, task.name_.val))
+                self.name_.value, task.name_.value))
             aat.insert()
 
     def is_granted(self, obj):

@@ -5,7 +5,7 @@
 idem for field and fqtn
 @returns: the link with the number of items
 """
-comment_oid = kwargs['comment'].cog_oid_.val
+comment_oid = kwargs['comment'].cog_oid_.value
 
 self.comment_.set_intention(comment_oid)
 nb_follow_ups = self.count()

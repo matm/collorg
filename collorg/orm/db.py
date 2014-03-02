@@ -345,6 +345,8 @@ class Db( object ):
         return self.__d_tables[cog_fqtn](
             self, load_fields = load_fields, *args, **kwargs )
 
+    relation = table
+
     def _set_controller(self, controller):
         self._cog_controller = controller
 

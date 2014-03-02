@@ -41,7 +41,7 @@ if self.visibility_.value == 'private':
     <b>{% i18n_wp %}</b>
 # ---
 {% text %}
-<input type="hidden" name="cog_oid_" value="{% self.cog_oid_.value %}" />
+<input type="hidden" name="cog_oid_" value="{% self.cog_oid_ %}" />
 <input type="hidden" name="cog_ref_oid" value="{% cog_ref_oid %}" />
 <input type="hidden" name="cog_method" value="w3mail" />
 <input type="hidden" name="public_" value="True" />

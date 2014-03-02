@@ -108,7 +108,7 @@ class Table(Relation):
                     raise ValueError("%s Field %s error:\n'%s'\n" % (
                         self.name, fieldname, err))
         for field in args:
-            self.__dict__[field.name].set_intention(field.val, field.comp)
+            self.__dict__[field.name].set_intention(field.value, field.comp)
 
     @property
     def _cog_description(self):
@@ -335,7 +335,7 @@ class Table(Relation):
         if self.__class__ != other.__class__:
             return False
         for field in self._cog_fields:
-            if field.val != other.__dict__[field.pyname].val:
+            if field.value != other.__dict__[field.pyname].value:
                 return False
         return True
 

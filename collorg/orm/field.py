@@ -73,6 +73,7 @@ class Field(object):
         return self.value or self
 
     set_ = set_intention
+    value = set_intention
 
     def set_descending_order(self):
         self.__descending_order = "DESC"
@@ -162,10 +163,6 @@ class Field(object):
             self.__table.neighbors[self.__f_table.fqtn]['l_fields'][self.name])
 
     @property
-    def val(self):
-        return self.__intention.val
-
-    @property
     def value(self):
         return self.__intention.value
 
@@ -178,7 +175,7 @@ class Field(object):
         res = OrderedDict()
         res['pkey'] = self.__d_metadata['pkey'] and "PK" or ""
         res['name'] = self.__name_as
-        res['val'] = self.val or ""
+        res['val'] = self.value or ""
         res['sql_type'] = self.sql_type
         res['inherited'] = self.__d_metadata['inherited'] and "inherited" or ""
         res['uniq'] = self.__d_metadata['uniq'] and "unique" or ""
@@ -268,11 +265,11 @@ class Field(object):
     def __eq__(self, arg):
         #!! à améliorer en utilisant la conversion selon de type du champ
         if arg is None:
-            return self.val == None
+            return self.value == None
         if arg.__class__ is Field:
-            return self.val == arg.val
+            return self.value == arg.value
         else:
-            return self._cog_ref_type._type(self.val) == \
+            return self._cog_ref_type._type(self.value) == \
                 self._cog_ref_type._type(arg)
 
     def __ne__(self, arg):
@@ -280,9 +277,9 @@ class Field(object):
 
     def __gt__(self, arg):
         if arg.__class__ is Field:
-            return self.val > arg.val
+            return self.value > arg.value
         else:
-            return self._cog_ref_type._type(self.val) > \
+            return self._cog_ref_type._type(self.value) > \
                 self._cog_ref_type._type(arg)
 
     def __lt__(self, arg):
@@ -290,9 +287,9 @@ class Field(object):
 
     def __ge__(self, arg):
         if arg.__class__ is Field:
-            return self.val >= arg.val
+            return self.value >= arg.value
         else:
-            return self._cog_ref_type._type(self.val) >= \
+            return self._cog_ref_type._type(self.value) >= \
                 self._cog_ref_type._type(arg)
 
     def __le__(self, arg):
@@ -302,5 +299,5 @@ class Field(object):
         return str(self.__intention.quoted_val())
 
     def __str__(self):
-        return "{}".format(self.__intention.val).replace(
+        return "{}".format(self.__intention.value).replace(
             '>', '&gt;').replace('<', '&lt;')

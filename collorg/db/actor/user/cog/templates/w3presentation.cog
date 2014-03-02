@@ -5,7 +5,7 @@ url_photo = self.w3photo()
 # >>>
 if cog_user:
     # ---
-    <div class="right">{% url_photo %}</div>
+    <div class="right" style="max-width:40%;">{% url_photo %}</div>
 # ---
 <div id="{% id %}">
 {% self.w3home() %}

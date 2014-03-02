@@ -215,8 +215,8 @@ class User(Actor, Groupable):
         if not self.count() <= 1: raise ToManyAccountError
         if self.count():
             self.get()
-            login = self.pseudo_.val
-            if self.ldap_.val is None:
+            login = self.pseudo_.value
+            if self.ldap_.value is None:
                 return self.__db_auth(password)
         # we check for an ldap account even if it's not yet in the db
         #XXX only if it's open bar. Some applications use ldap and have
@@ -233,7 +233,7 @@ class User(Actor, Groupable):
                     last_name_ = user_info[domain['last_name_attr_']][0],
                     email_ = user_info[domain['e_mail_attr_']][0].lower(),
                     ldap_ = domain['cog_oid_'])
-                self.cog_oid_.set_intention(new.cog_oid_.val)
+                self.cog_oid_.set_intention(new.cog_oid_.value)
             return user_info and True
 
     def __db_auth(self, password):

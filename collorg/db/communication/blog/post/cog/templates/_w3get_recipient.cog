@@ -10,7 +10,7 @@ i18n_ogi = _("Other groups in")
 <option selected="selected">{% i18n_sr %}</option>
 # >>>
 if cog_user:
-    user_oid = cog_user.cog_oid_.val
+    user_oid = cog_user.cog_oid_.value
     assert user_oid
 
     target = kwargs['target']

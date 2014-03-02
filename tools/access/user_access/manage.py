@@ -12,13 +12,13 @@ if __name__ == '__main__':
     function = db.table('collorg.actor.function')
     function.order_by(function.long_name_)
     for fctn in function:
-        print(fctn.long_name_.val)
+        print(fctn.long_name_)
     fctn_lng_name = input("name: ")
     the_function = function()
     the_function.long_name_.set_intention(fctn_lng_name)
     data = the_function._data_type_.get()()
     for dt in data:
-        print("%s : %s" % (dt.cog_oid_.val, dt.cog_label()))
+        print("%s : %s" % (dt.cog_oid_, dt.cog_label()))
     data_oid = input("oid data: ")
     data.cog_oid_.set_intention(data_oid)
     role = the_function._rev_role_

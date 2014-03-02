@@ -82,7 +82,7 @@ class System_users():
         rtf._task_ = task
         if not rtf.exists():
             print("+ Function<->Task: %s<->%s" % (
-                function.long_name_.val, task_name))
+                function.long_name_, task_name))
             rtf.insert()
 
     def __add_function(self, value, data_type, task_name, advertise):

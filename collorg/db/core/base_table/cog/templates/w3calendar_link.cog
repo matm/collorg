@@ -3,12 +3,12 @@
 
 # >>>
 target = kwargs.get('target', '#cog_dialog')
-assert self.cog_oid_.val
+assert self.cog_oid_.value
 image = "/collorg/images/date_today.svg"
-if self.cog_fqtn_.val == 'collorg.actor.user':
+if self.cog_fqtn_.value == 'collorg.actor.user':
     image = "/collorg/images/my_calendar.svg"
     label = "my calendar"
 cal = self.db.table('collorg.planning.calendar')
 label = '<img src="{% image %}" class="hugeicon" title="calendar" alt="calendar" />'
 # ---
-{% html(cal).a(css_class="ui-action", obj_id=self.cog_oid_.val, target = target, label = label) %}
+{% html(cal).a(css_class="ui-action", obj_id=self.cog_oid_.value, target = target, label = label) %}

@@ -228,7 +228,7 @@ class Html():
                 dis_selected, message)
         selected_ok = False
         for elt in self.__elt.get_extent():
-            value=elt.__dict__[value_field.pyname].val
+            value=elt.__dict__[value_field.pyname].value
             trigger = ''
             id_ = self.random_id()
             if live:
@@ -244,11 +244,11 @@ class Html():
                 trigger = 'class="action" triggered="#%s"' % (id_)
             selected = ''
             if default is not None and not selected_ok:
-                if elt.cog_oid_.val == default.cog_oid_.val:
+                if elt.cog_oid_.value == default.cog_oid_.value:
                     selected = 'selected="selected"'
                     selected_ok = True
             if label_field:
-                label = elt.__dict__[label_field.pyname].val
+                label = elt.__dict__[label_field.pyname].value
             else:
                 label = elt.cog_label()
             html += '<option value="%s" %s %s>%s</option>' % (
@@ -311,13 +311,13 @@ class Html():
         """
         * acts according to the sql type of the field (wiki, string... see
           postgresql domains)
-        * if the field.name is cog_oid and field.val is None replace
+        * if the field.name is cog_oid and field.value is None replace
           name by cog_fqtn and value by field.table.fqtn
         Dependencies:
         * works with the plugin jquery.validate.js
         """
         comments = ""
-#        if not hidden and field.table.cog_oid_.val:
+#        if not hidden and field.table.cog_oid_.value:
 #            comments = Comment(field.table.db).w3list_link(
 #                data=field.table, field=field, follow_up="ok")
         wikicreole_link = (
@@ -442,7 +442,7 @@ class Html():
         css_class = css_class and ' class="%s"' % (css_class)
         if label is None:
             label = field.name.replace('_', ' ').capitalize()
-        value = field.val
+        value = field.value
         if value is None or value == '':
             return ''
         if field.sql_type in ('wiki', 'text'):

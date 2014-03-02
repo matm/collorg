@@ -63,8 +63,8 @@ class Oid_table( TClass ):
     def get(self, just_return_sql = False, reload_ = False):
         self = super(Oid_table, self).get(
             just_return_sql = just_return_sql, reload_ = reload_)
-        obj = self.db.table(self.cog_fqtn_.val)
-        obj.cog_oid_.set_intention(self.cog_oid_.val)
+        obj = self.db.table(self.cog_fqtn_.value)
+        obj.cog_oid_.set_intention(self.cog_oid_.value)
         return obj.get(just_return_sql = just_return_sql, reload_ = reload_)
 
     @property

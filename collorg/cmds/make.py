@@ -322,10 +322,10 @@ class Cmd():
                     task = self.db_.table(
                         'collorg.application.task', name_=task_)
                     if not goal.exists():
-                        print("+ new goal {}".format(goal.name_.val))
+                        print("+ new goal {}".format(goal.name_.value))
                         goal.insert()
                     if not task.exists():
-                        print("+ new task {}".format(task.name_.val))
+                        print("+ new task {}".format(task.name_.value))
                         task.insert()
                     atg = task._rev_a_task_goal_
                     atg._goal_ = goal
@@ -339,7 +339,7 @@ class Cmd():
                 task = self.db_.table(
                     'collorg.application.task', name_=task_)
                 if not task.exists():
-                    print("+ new task {}".format(task.name_.val))
+                    print("+ new task {}".format(task.name_.value))
                     task.insert()
                 for function_ in functions:
                     function = self.db_.table(

@@ -15,10 +15,10 @@ events.end_date_.set_intention(end, '<=')
 # >>>
 for event in events:
     d_event = {}
-    d_event['cog_oid'] = "%s" % (event.cog_oid_.val)
-    d_event['title'] = "%s" % (event.name_.val)
-    d_event['start'] = "%s" % event.begin_date_.val
-    d_event['end'] = "%s" % event.end_date_.val
+    d_event['cog_oid'] = "%s" % (event.cog_oid_.value)
+    d_event['title'] = "%s" % (event.name_.value)
+    d_event['start'] = "%s" % event.begin_date_.value
+    d_event['end'] = "%s" % event.end_date_.value
     d_event['allDay'] = False
     l_events.append(d_event)
 # ---

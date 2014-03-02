@@ -18,7 +18,7 @@ if self.photo_.value is None:
 {#
 {% html.input(self.mots_clefs_) %}
 #}
-<input type="hidden" name="cog_oid_" value="{% self.cog_oid_.val %}" />
+<input type="hidden" name="cog_oid_" value="{% self.cog_oid_ %}" />
 <input type="hidden" name="cog_method" value="w3update" />
 # --- form_html
 {% html().form(id = target, html = form_html) %}

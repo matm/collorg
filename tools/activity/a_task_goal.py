@@ -15,7 +15,7 @@ if __name__ == '__main__':
     task.name_.set_intention(task_name)
     actions = task._action__s_
     for action in actions:
-        print("%s %s" % (action.name_.val, action.label_.val))
+        print("%s %s" % (action.name_, action.label_))
     goals = task._goal__s_
     for goal in goals:
-        print(goal.name_.val)
+        print(goal.name_)
