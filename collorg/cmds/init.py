@@ -334,17 +334,17 @@ class Cmd():
         assert user.count() == 1
         db = table('collorg.core.database').get()
         ndb = db()
-        ndb.name_.set_intention(self.db.name)
+        ndb.name_.value = self.db.name
         db.update(ndb)
         site = table('collorg.web.site')
-        site.url_.set_intention('{}/collorg'.format(self.db.name))
+        site.url_.value = '{}/collorg'.format(self.db.name)
         if not site.exists():
             site.insert()
         assert site.count() == 1
         unit = table('collorg.organization.unit')
-        unit.acronym_.set_intention('Collorg')
-        unit.name_.set_intention('Collorg unit')
-        unit.cog_fqtn_.set_intention('collorg.organization.unit')
+        unit.acronym_.value = 'Collorg'
+        unit.name_.value = 'Collorg unit'
+        unit.cog_fqtn_.value = 'collorg.organization.unit'
         if not unit.exists():
             unit.insert()
         assert unit.count() == 1
@@ -352,9 +352,9 @@ class Cmd():
         topic._site_ = site
         topic._author_ = user
         topic._cog_environment_ = unit
-        topic.title_.set_intention('Home')
-        topic.path_info_.set_intention('/')
-        topic.author_.set_intention(user.cog_oid_.value)
+        topic.title_.value = 'Home'
+        topic.path_info_.value = '/'
+        topic.author_.value = user.cog_oid_.value
         if not topic.exists():
             topic.insert()
         assert topic.count() == 1

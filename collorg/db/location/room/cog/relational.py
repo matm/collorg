@@ -1,10 +1,10 @@
 # DIRECT
 def _get_building(self):
     building_ = self.db.table('collorg.location.building')
-    building_.cog_oid_.set_intention(self.building_)
+    building_.cog_oid_.value = self.building_
     return building_
 def _set_building(self, building_):
-    self.building_.set_intention(building_.cog_oid_)
+    self.building_.value = building_.cog_oid_
 
 _building_ = property(
     _get_building, _set_building)

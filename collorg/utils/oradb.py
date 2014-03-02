@@ -97,13 +97,13 @@ class Field(object):
         self.__comp = comp
 
     def set_null(self):
-        self.set_intention("NULL", "IS")
+        self.value = "NULL", "IS"
 
     def set_not_null(self):
-        self.set_intention("NOT NULL", "IS")
+        self.value = "NOT NULL", "IS"
 
     def reset(self):
-        self.set_intention(None, None)
+        self.value = None, None
 
 class Relation(object):
     __deja_vu = ordereddict.OrderedDict()

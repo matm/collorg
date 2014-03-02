@@ -62,22 +62,22 @@ class Error(Ticket):
         mail.send()
 
     def hit(self, fqtn, method, traceback):
-        self.title_.set_intention("{}->{}: {}".format(
-            fqtn, method, traceback.splitlines()[-1]))
-        self.text_.set_intention("-")
+        self.title_.value = "{}->{}: {}".format(
+            fqtn, method, traceback.splitlines()[-1])
+        self.text_.value = "-"
         author = self.db.table("collorg.actor.user")
-        author.email_.set_intention(self.db._cog_params['error_report_to'])
+        author.email_.value = self.db._cog_params['error_report_to']
         self._author_ = author
         if not self.exists():
             self.insert()
             error_traceback = self._rev_error_traceback_
             error_traceback.hit(traceback)
             error = self.get()
-            error.text_.set_intention(traceback)
+            error.text_.value = traceback
             error.mail()
         else:
             error_traceback = self._rev_error_traceback_
             error_traceback.hit(traceback)
             nself = self()
-            nself.hit_.set_intention(self.get().hit_.value + 1)
+            nself.hit_.value = self.get().hit_.value + 1
             self.update(nself)

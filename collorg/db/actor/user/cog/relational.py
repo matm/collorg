@@ -1,20 +1,20 @@
 # DIRECT
 def _get_ldap(self):
     ldap_ = self.db.table('collorg.auth.d_ldap')
-    ldap_.cog_oid_.set_intention(self.ldap_)
+    ldap_.cog_oid_.value = self.ldap_
     return ldap_
 def _set_ldap(self, ldap_):
-    self.ldap_.set_intention(ldap_.cog_oid_)
+    self.ldap_.value = ldap_.cog_oid_
 
 _ldap_ = property(
     _get_ldap, _set_ldap)
 
 def _get_photo(self):
     photo_ = self.db.table('collorg.communication.file')
-    photo_.cog_oid_.set_intention(self.photo_)
+    photo_.cog_oid_.value = self.photo_
     return photo_
 def _set_photo(self, photo_):
-    self.photo_.set_intention(photo_.cog_oid_)
+    self.photo_.value = photo_.cog_oid_
 
 _photo_ = property(
     _get_photo, _set_photo)

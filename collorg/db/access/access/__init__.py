@@ -100,11 +100,11 @@ class Access( Base_table ):
             self._data_ = data
         if user is not None:
             self._user_ = user
-        self.write_.set_intention(write)
+        self.write_.value = write
         if not self.is_granted():
-            self.begin_date_.set_intention(begin_date)
-            self.end_date_.set_intention(end_date)
-            self.pourcentage_.set_intention(pourcentage)
+            self.begin_date_.value = begin_date
+            self.end_date_.value = end_date
+            self.pourcentage_.value = pourcentage
             self.insert()
         if function:
             role = self._rev_role_
@@ -124,7 +124,7 @@ class Access( Base_table ):
         self.granted()
         self = self.get()
         this = self()
-        this.cog_oid_.set_intention(self.cog_oid_.value)
+        this.cog_oid_.value = self.cog_oid_.value
         self.db.set_auto_commit(False)
         for role in self._rev_role_:
             if not delete:
@@ -133,7 +133,7 @@ class Access( Base_table ):
                 role.delete()
         if not delete:
             n_access = self()
-            n_access.end_date_.set_intention(end_date or datetime.now())
+            n_access.end_date_.value = end_date or datetime.now()
             self.update(n_access)
             self.db.commit()
             if this.get().is_granted():
@@ -143,7 +143,7 @@ class Access( Base_table ):
         self.db.commit()
 
     def granted(self, begin_date = None, end_date = None):
-        self.begin_date_.set_intention(begin_date or datetime.now(), '<')
+        self.begin_date_.value = begin_date or datetime.now(), '<'
         self.end_date_.set_null()
         self.end_date_ += (end_date or datetime.now(), '>')
         return self
@@ -151,8 +151,8 @@ class Access( Base_table ):
     def set_pourcentage(self, pct):
         ue = self()
         to_update = self.get(fields=(self.cog_oid_,))
-        to_update.cog_oid_.set_intention(self.cog_oid_.value)
-        ue.pourcentage_.set_intention(pct)
+        to_update.cog_oid_.value = self.cog_oid_.value
+        ue.pourcentage_.value = pct
         to_update.update(ue)
 
     def is_granted(self):
@@ -163,16 +163,16 @@ class Access( Base_table ):
         assert self.user_.is_constrained
         assert self.data_.is_constrained
         access = self()
-        access.cog_oid_.set_intention(self.cog_oid_)
+        access.cog_oid_.value = self.cog_oid_
         access.granted()
         return access.exists()
 
     def revoke_write(self):
         new_acc = self()
-        new_acc.write_.set_intention(False)
+        new_acc.write_.value = False
         self.update(new_acc)
 
     def grant_write(self):
         new_acc = self()
-        new_acc.write_.set_intention(True)
+        new_acc.write_.value = True
         self.update(new_acc)

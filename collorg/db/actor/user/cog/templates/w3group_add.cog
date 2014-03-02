@@ -8,8 +8,8 @@
 id_ = html.random_id()
 group_name = kwargs['group_name']
 group = self.db.table('collorg.group.group')
-group.name_.set_intention(group_name)
-group.data_.set_intention(self.cog_oid_.value)
+group.name_.value = group_name
+group.data_.value = self.cog_oid_.value
 if not group.exists():
     group.insert(user=cog_user)
 self.grant_access(group, True)

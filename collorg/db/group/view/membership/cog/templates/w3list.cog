@@ -20,9 +20,9 @@ self.order_by(self.last_name_, self.first_name_)
 d_users = self.dict_by(self.user_oid_)
 for user_oid, vals in d_users.items():
     elt = vals[0]
-    user.cog_oid_.set_intention(elt.user_oid_.value)
-    user.first_name_.set_intention(elt.first_name_.value)
-    user.last_name_.set_intention(elt.last_name_.value)
+    user.cog_oid_.value = elt.user_oid_.value
+    user.first_name_.value = elt.first_name_.value
+    user.last_name_.value = elt.last_name_.value
     # ---
     <tr>
     <td>

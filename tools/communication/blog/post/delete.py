@@ -8,5 +8,5 @@ db = ctrl.db
 table = db.table
 
 post = table('collorg.communication.blog.post')
-post.cog_oid_.set_intention(sys.argv[1])
+post.cog_oid_.value = sys.argv[1]
 post.get().wdelete()

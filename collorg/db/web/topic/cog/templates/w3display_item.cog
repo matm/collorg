@@ -15,7 +15,7 @@ tid=html.random_id()
 # +++ embedded
 # >>>
 for tpl in cog_embedded:
-    tpl[1].set_intention(self.cog_oid_.value)
+    tpl[1].value = self.cog_oid_.value
     tpl[2]['target'] = tid
     # ---
     {% tpl[0](cog_ref_oid=self.cog_oid_.value, **tpl[2]) %}

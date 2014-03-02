@@ -12,14 +12,14 @@ months = ((1,'January'), (2,'February'), (3, 'March'), (4, 'April'),
 def year_week():
     for num in range(52):
         yw = db.table("collorg.planning.scheduler.year_week")
-        yw.num_.set_intention(num + 1)
+        yw.num_.value = num + 1
         if yw.count() == 0:
             yw.insert()
 
 def month_day():
     for num in range(31):
         md = db.table("collorg.planning.scheduler.month_day")
-        md.num_.set_intention(num + 1)
+        md.num_.value = num + 1
         if md.count() == 0:
             md.insert()
 
@@ -31,8 +31,8 @@ def month_week_day():
         data = elt[1]
         for num, name in data:
             table = db.table(fqtn)
-            table.num_.set_intention(num)
-            table.name_.set_intention(name)
+            table.num_.value = num
+            table.name_.value = name
             if table.count() == 0:
                 table.insert()
 

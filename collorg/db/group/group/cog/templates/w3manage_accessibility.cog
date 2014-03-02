@@ -6,7 +6,7 @@
 # >>>
 accessibility = kwargs['new_open_value'] == 't' and True or False
 new_ = self()
-new_.open_.set_intention(accessibility)
+new_.open_.value = accessibility
 self.update(new_)
 # ---
 {% cog_user.w3groups_list() %}

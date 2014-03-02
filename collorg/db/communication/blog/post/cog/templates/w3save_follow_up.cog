@@ -6,11 +6,11 @@ self._wipe_cache()
 comment_oid = kwargs['comment_oid']
 self.attach_follow_up(**kwargs)
 vc = self.db.table('collorg.communication.view.comment')
-vc.comment_oid_.set_intention(comment_oid)
+vc.comment_oid_.value = comment_oid
 filter_oid = None
 if kwargs.get('partial_list'):
     user_check = self.db.table('collorg.communication.user_check')
-    user_check.user_.set_intention(cog_user.cog_oid_.value)
+    user_check.user_.value = cog_user.cog_oid_.value
     filter_oid = user_check._communication_object_.cog_oid_
 # ---
 {% vc.w3list(filter_oid = filter_oid, partial_list = True) %}

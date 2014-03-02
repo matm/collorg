@@ -6,10 +6,10 @@ target = html.random_id()
 tl_target = "tl_{}".format(target)
 posts = self.db.table('collorg.communication.blog.post')
 access = self.db.table('collorg.access.access')
-access.user_.set_intention(self.cog_oid_.value)
+access.user_.value = self.cog_oid_.value
 access.granted()
 data = access._data_
-posts.cog_oid_.set_intention(data.cog_oid_)
+posts.cog_oid_.value = data.cog_oid_
 posts.cog_modif_date_.set_descending_order()
 posts.order_by(posts.cog_modif_date_)
 tags_list = ''

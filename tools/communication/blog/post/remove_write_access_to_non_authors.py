@@ -21,5 +21,5 @@ for post in posts:
         if user.cog_oid_.value != author.cog_oid_.value:
             print("{} is not {}".format(user.pseudo_, author.pseudo_))
             naccess = access()
-            naccess.write_.set_intention(False)
+            naccess.write_.value = False
             access.update(naccess)

@@ -1,10 +1,10 @@
 # DIRECT
 def _get_namespace(self):
     namespace_ = self.db.table('collorg.core.namespace')
-    namespace_.cog_oid_.set_intention(self.namespace_)
+    namespace_.cog_oid_.value = self.namespace_
     return namespace_
 def _set_namespace(self, namespace_):
-    self.namespace_.set_intention(namespace_.cog_oid_)
+    self.namespace_.value = namespace_.cog_oid_
 
 _namespace_ = property(
     _get_namespace, _set_namespace)

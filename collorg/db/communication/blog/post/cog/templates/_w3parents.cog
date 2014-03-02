@@ -5,12 +5,12 @@
 apd = self.db.table('collorg.communication.blog.a_post_data')
 apdw = apd()
 apd._post_ = self
-apd.private_reference_.set_intention(False)
-apd.see_also_.set_intention(False)
+apd.private_reference_.value = False
+apd.see_also_.value = False
 if cog_user:
     apdw._post_ = self
     apdw._who_ = cog_user
-    apdw.private_reference_.set_intention(True)
+    apdw.private_reference_.value = True
     apd += apdw
 if apd.exists():
     l_paths = []

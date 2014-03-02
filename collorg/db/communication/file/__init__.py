@@ -130,14 +130,14 @@ class File(Base_table):
         except:
             raise RuntimeError("no such file '%s' % (tmp_file_name)")
         digest = hash_.hexdigest()
-        self.signature_.set_intention(digest)
+        self.signature_.value = digest
         if self.count() == 1:
             return self.get()
-        self.name_.set_intention(file_name)
+        self.name_.value = file_name
         self.__store()
-        self.uploader_.set_intention(user.cog_oid_)
-        self.size_.set_intention(size)
-        self.visibility_.set_intention(visibility)
+        self.uploader_.value = user.cog_oid_
+        self.size_.value = size
+        self.visibility_.value = visibility
         self.insert()
         user.grant_access(self, write = True)
         return self
@@ -149,7 +149,7 @@ class File(Base_table):
         if visibility == 'public':
             self.make_public_link()
         nself = self()
-        nself.visibility_.set_intention(visibility)
+        nself.visibility_.value = visibility
         for post in self._rev_attachment_._data_:
             post._wipe_cache()
         self.update(nself)

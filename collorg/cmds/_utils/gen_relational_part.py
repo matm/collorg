@@ -9,11 +9,11 @@ from collorg.controller.controller import Controller
 class GenRelationalPart():
     get_code = """def _get_%s(self):
     %s_ = self.db.table('%s')
-    %s_.%s_.set_intention(self.%s_)
+    %s_.%s_.value = self.%s_
     return %s_\n"""
 
     set_code = """def _set_%s(self, %s_):
-    self.%s_.set_intention(%s_.%s_)\n"""
+    self.%s_.value = %s_.%s_\n"""
 
     prop_code = """_%s_ = property(
     _get_%s, _set_%s)\n"""

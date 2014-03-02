@@ -36,11 +36,11 @@ class Error_traceback(Base_table):
         super(Error_traceback, self).__init__(db, **kwargs)
 
     def hit(self, traceback):
-        self.trace_.set_intention(traceback)
-        self.trace_md5_.set_intention(hashlib.md5(traceback).hexdigest())
+        self.trace_.value = traceback
+        self.trace_md5_.value = hashlib.md5(traceback).hexdigest()
         if not self.exists():
             self.insert()
         else:
             nself = self()
-            nself.hit_.set_intention(self.get().hit_.value + 1)
+            nself.hit_.value = self.get().hit_.value + 1
             self.update(nself)

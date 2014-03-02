@@ -19,7 +19,7 @@ group_name = input("group name? ")
 if not group_name.strip():
     sys.exit()
 group = groups()
-group.name_.set_intention(group_name)
+group.name_.value = group_name
 group.get()
 access = group._rev_access_
 access.granted()
@@ -29,7 +29,7 @@ pseudo = input("pseudo? ")
 if not pseudo.strip():
     sys.exit()
 user = table("collorg.actor.user")
-user.pseudo_.set_intention(pseudo.strip())
+user.pseudo_.value = pseudo.strip()
 user.get()
 access._user_ = user
 for role in access._rev_role_:

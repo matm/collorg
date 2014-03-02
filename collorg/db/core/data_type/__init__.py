@@ -60,7 +60,7 @@ class Data_type( Base_table ):
 
     def insert( self, **kwargs ):
         namespace = self.db.table( 'collorg.core.namespace' )
-        namespace.name_.set_intention(self.fqtn_.value.rsplit( '.', 1 )[0])
+        namespace.name_.value = self.fqtn_.value.rsplit( '.', 1 )[0]
         if not namespace.exists():
             self.db.set_auto_commit( False )
             namespace.insert()
@@ -75,8 +75,8 @@ class Data_type( Base_table ):
     def __add_data_type_self_ref(self):
         fqtn = self.fqtn
         data_type = self.db.table(fqtn)
-        data_type.fqtn_.set_intention(fqtn)
-        data_type.name_.set_intention(fqtn.split(".")[-1])
+        data_type.fqtn_.value = fqtn
+        data_type.name_.value = fqtn.split(".")[-1]
         if not data_type.exists():
             print("+ adding %s in data_type" % fqtn)
             data_type.insert()
@@ -88,8 +88,8 @@ class Data_type( Base_table ):
             if fqtn == self.fqtn:
                 continue
             data_type = self.db.table('collorg.core.data_type', fqtn_ = fqtn)
-            data_type.fqtn_.set_intention(fqtn)
-            data_type.name_.set_intention(fqtn.split(".")[-1])
+            data_type.fqtn_.value = fqtn
+            data_type.name_.value = fqtn.split(".")[-1]
             if data_type.count() == 0:
                 print("+ adding %s in data_type" % fqtn)
                 data_type.insert()

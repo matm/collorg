@@ -5,9 +5,9 @@ callback = kwargs['callback']
 action = kwargs['action']
 target = kwargs['target']
 user = self.db.table('collorg.actor.user')
-user.last_name_.set_intention('%s%%' % kwargs['q'], 'ilike')
+user.last_name_.value = '%s%%' % kwargs['q'], 'ilike'
 user.last_name_.unaccent = True
-user.system_account_.set_intention(False)
+user.system_account_.value = False
 user.order_by(user.last_name_)
 # +++ liste
 <ul class="none">

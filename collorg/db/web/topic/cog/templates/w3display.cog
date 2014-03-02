@@ -4,9 +4,9 @@ tl_target = "tl_{}".format(id_)
 article_id = "see_also_{}".format(id_)
 self = self.get(reload_=True)
 posts = self.db.table('collorg.communication.blog.post')
-posts.cog_oid_.set_intention(self._rev_a_post_data_data_._post_.cog_oid_)
+posts.cog_oid_.value = self._rev_a_post_data_data_._post_.cog_oid_
 if not cog_user:
-    posts.visibility_.set_intention('private', '!=')
+    posts.visibility_.value = 'private', '!='
 #    posts = self.get_not_private_posts()
 #else:
 #    posts = self.get_accessible_posts(cog_user)
@@ -65,8 +65,8 @@ if data_type and environment:
         try:
             #XXX pb ici
             topics_list = self()
-            topics_list.cog_environment_.set_intention(data_type_list.cog_oid_)
-            topics_list.path_info_.set_intention('')
+            topics_list.cog_environment_.value = data_type_list.cog_oid_
+            topics_list.path_info_.value = ''
             if topics_list.exists():
                 a_topics = eval("topics_list.{}(**kwargs)".format(action))
             else:
@@ -78,7 +78,7 @@ if data_type and environment:
 # >>>
 if not self.action_.value:
     v_posts = self.db.table('collorg.communication.blog.view.by_post')
-    v_posts.cog_oid_.set_intention(posts.cog_oid_)
+    v_posts.cog_oid_.value = posts.cog_oid_
     # ---
     {% self.w3navigation() %}
 {#

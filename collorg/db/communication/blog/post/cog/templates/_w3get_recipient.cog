@@ -30,7 +30,7 @@ if cog_user:
         # >>>
         oid_groups = cog_user.get_granted_data('collorg.group.group')
         groups = self.db.table('collorg.group.group')
-        groups.cog_oid_.set_intention(oid_groups.cog_oid_)
+        groups.cog_oid_.value = oid_groups.cog_oid_
         for group in groups:
             label = group.cog_label()
             link_id = html.random_id()

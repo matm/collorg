@@ -49,9 +49,9 @@ class Cmd():
         cog_table = self.db_.table('collorg.core.data_type')
         for fqtn in self.db_.fqtns:
             cog_table = self.db_.table('collorg.core.data_type')
-            cog_table.fqtn_.set_intention(fqtn)
+            cog_table.fqtn_.value = fqtn
             tablename = fqtn.rsplit('.', 1)[1]
-            cog_table.name_.set_intention(tablename)
+            cog_table.name_.value = tablename
             if not cog_table.count():
                 cog_table.insert()
         self.__gen_templates()
@@ -76,9 +76,9 @@ class Cmd():
         """
         t2d = task_to_dup
         dt_ = duped_task
-        dt_.name_.set_intention(t2d.name_.value)
-        dt_.delegable_.set_intention(t2d.delegable_.value)
-        dt_.description_.set_intention(t2d.description_.value)
+        dt_.name_.value = t2d.name_.value
+        dt_.delegable_.value = t2d.delegable_.value
+        dt_.description_.value = t2d.description_.value
         return dt_
 
     def __dup_action(self, action_to_dup, duped_action):
@@ -88,21 +88,21 @@ class Cmd():
         """
         da_ = duped_action
         a2d = action_to_dup
-        da_.data_type_.set_intention(a2d.data_type_.value)
-        da_.name_.set_intention(a2d.name_.value)
-        da_.label_.set_intention(a2d.label_.value)
-        da_.description_.set_intention(a2d.description_.value)
-        da_.format_.set_intention(a2d.format_.value)
-        da_.source_.set_intention(a2d.source_.value)
-        da_.raw_.set_intention(a2d.raw_.value)
-        da_.protected_.set_intention(a2d.protected_.value)
-        da_.in_menu_.set_intention(a2d.in_menu_.value)
-        da_.in_header_.set_intention(a2d.in_header_.value)
-        da_.in_nav_.set_intention(a2d.in_nav_.value)
-        da_.write_.set_intention(a2d.write_.value)
-        da_.moderate_.set_intention(a2d.moderate_.value)
-        da_.admin_.set_intention(a2d.admin_.value)
-        da_.icon_.set_intention(a2d.icon_.value)
+        da_.data_type_.value = a2d.data_type_.value
+        da_.name_.value = a2d.name_.value
+        da_.label_.value = a2d.label_.value
+        da_.description_.value = a2d.description_.value
+        da_.format_.value = a2d.format_.value
+        da_.source_.value = a2d.source_.value
+        da_.raw_.value = a2d.raw_.value
+        da_.protected_.value = a2d.protected_.value
+        da_.in_menu_.value = a2d.in_menu_.value
+        da_.in_header_.value = a2d.in_header_.value
+        da_.in_nav_.value = a2d.in_nav_.value
+        da_.write_.value = a2d.write_.value
+        da_.moderate_.value = a2d.moderate_.value
+        da_.admin_.value = a2d.admin_.value
+        da_.icon_.value = a2d.icon_.value
         return da_
 
     def __sync_collorg_actions(self):
@@ -115,8 +115,8 @@ class Cmd():
         ca_ = self.__collorg_db.table('collorg.application.action')
         for action in aa_:
             sca = ca_()
-            sca.data_type_.set_intention(ca_.data_type_.value)
-            sca.name_.set_intention(ca_.name_.value)
+            sca.data_type_.value = ca_.data_type_.value
+            sca.name_.value = ca_.name_.value
             if not sca.exists():
                 print("- {}.{} missing".format(ca_.data_type_, ca_.name_))
                 rat = action._rev_a_action_task_
@@ -127,25 +127,25 @@ class Cmd():
             aa_ = self.__dup_action(action, aa_())
             tasks = action._rev_a_action_task_._task_
             saa = aa_()
-            saa.data_type_.set_intention(aa_.data_type_.value)
-            saa.name_.set_intention(aa_.name_.value)
+            saa.data_type_.value = aa_.data_type_.value
+            saa.name_.value = aa_.name_.value
             if not saa.exists():
                 print("++ action {}.{}".format(aa_.data_type_, aa_.name_))
                 aa_.insert()
                 aa_.get()
                 for task in tasks:
                     ta_ = self.db_.table('collorg.application.task')
-                    ta_.name_.set_intention(task.name_.value)
+                    ta_.name_.value = task.name_.value
                     if not ta_.exists():
                         # XXX  mettre une méthode pour faire ce qui suit
-                        ta_.delegable_.set_intention(task.delegable_.value)
-                        ta_.description_.set_intention(task.description_.value)
+                        ta_.delegable_.value = task.delegable_.value
+                        ta_.description_.value = task.description_.value
                         ta_.insert()
                         orig_goal = task._rev_a_task_goal_._goal_
                         if orig_goal.exists():
                             orig_goal.get()
                             goal = self.db_.table('collorg.application.goal')
-                            goal.name_.set_intention(orig_goal.name_.value)
+                            goal.name_.value = orig_goal.name_.value
                             goal.insert()
                             atg = goal._rev_a_task_goal_
                             atg._task_ = ta_
@@ -153,17 +153,16 @@ class Cmd():
                         orig_function = task._rev_a_task_function_._function_
                         orig_function.get()
                         function = self.db_.table('collorg.actor.function')
-                        function.name_.set_intention(orig_function.name_.value)
+                        function.name_.value = orig_function.name_.value
                         if not function.exists():
-                            function.fname_.set_intention(
-                                orig_function.fname_.value)
-                            function.long_name_.set_intention(
-                                orig_function.long_name_.value)
-                            function.advertise_.set_intention(
-                                orig_function.advertise_.value)
+                            function.fname_.value = orig_function.fname_.value
+                            function.long_name_.value = \
+                                orig_function.long_name_.value
+                            function.advertise_.value = \
+                                orig_function.advertise_.value
                             # XXX check if data_type exists
-                            function.data_type_.set_intention(
-                                orig_function.data_type_.value)
+                            function.data_type_.value = \
+                                orig_function.data_type_.value
                             function.insert()
                         atf = function._rev_a_task_function_
                         atf._task_ = ta_
@@ -304,8 +303,7 @@ class Cmd():
                 'write', 'moderate', 'admin']
             for attr in attrs:
                 if attr in pragma:
-                    action.__dict__["{}_".format(attr)].set_intention(
-                        pragma[attr])
+                    action.__dict__["{}_".format(attr)].value = pragma[attr]
             action.insert()
             if not tasks and not functions:
                 print("Linking action to 'Anonymous navigation'")
@@ -383,7 +381,7 @@ class Cmd():
         action._data_type_ = module
         if not action.exists():
             print("+ new action {}.{} {}".format(schemaname, tablename, tsn))
-            action.source_.set_intention(template_code)
+            action.source_.value = template_code
             self.__treat_pragmas(action)
 
     def __remove_cog_templates(self):
@@ -395,7 +393,7 @@ class Cmd():
         cog_base_dir = collorg.__path__[0]
         cog_app_pkg_dir = "{}/{}".format(self.__repos_base_dir, self.pkg_path)
         action = self.db_.table('collorg.application.action')
-        action.this_application_.set_intention(True)
+        action.this_application_.value = True
         for act in action:
             missing = False
             data_type = act.data_type_.value
@@ -416,8 +414,8 @@ class Cmd():
             elif((data_type.find("collorg.") == 0 and
                 self.db_.name != "collorg_db")):
                 act_cog = self.__collorg_db.table('collorg.application.action')
-                act_cog.name_.set_intention(act.name_.value)
-                act_cog.data_type_.set_intention(data_type)
+                act_cog.name_.value = act.name_.value
+                act_cog.data_type_.value = data_type
                 if not act_cog.exists():
                     print("MISSING: {}, {}".format(data_type, act.name_))
                     missing = True

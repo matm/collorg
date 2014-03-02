@@ -43,7 +43,7 @@ for data_type in data_types:
     except:
         continue
     count = data.count()
-    data.cog_oid_.set_intention(get_random_oid(fqtn))
+    data.cog_oid_.value = get_random_oid(fqtn)
     begin = datetime.now()
     data.get()
     end = datetime.now()

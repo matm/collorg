@@ -1,10 +1,10 @@
 # DIRECT
 def _get_parent_oid(self):
     parent_oid_ = self.db.table('collorg.actor.category')
-    parent_oid_.cog_oid_.set_intention(self.parent_oid_)
+    parent_oid_.cog_oid_.value = self.parent_oid_
     return parent_oid_
 def _set_parent_oid(self, parent_oid_):
-    self.parent_oid_.set_intention(parent_oid_.cog_oid_)
+    self.parent_oid_.value = parent_oid_.cog_oid_
 
 _parent_oid_ = property(
     _get_parent_oid, _set_parent_oid)

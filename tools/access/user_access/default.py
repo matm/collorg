@@ -14,16 +14,16 @@ if __name__ == '__main__':
         ('Authenticated navigation','Authenticated user'),
         ('Anonymous navigation', 'Anonymous user')]:
         goal = db.table('collorg.application.goal')
-        goal.name_.set_intention(label)
+        goal.name_.value = label
         if goal.count() == 0:
             goal.insert()
         task = db.table('collorg.application.task')
-        task.name_.set_intention(label)
+        task.name_.value = label
         if task.count() == 0:
             task.insert()
             # link anonymous navigation to anonymous role
             func = db.table('collorg.actor.function')
-            func.name_.set_intention(function)
+            func.name_.value = function
             atf = task._rev_a_task_function_
             atf._function_ = func
             atf.insert()

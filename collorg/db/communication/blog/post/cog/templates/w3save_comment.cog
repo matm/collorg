@@ -3,7 +3,7 @@
 # >>>
 # access control !!!
 comment = self._rev_comment_
-comment.text_.set_intention(kwargs['text_'])
+comment.text_.value = kwargs['text_']
 self.attach_comment(comment)
 self._wipe_cache()
 # ---

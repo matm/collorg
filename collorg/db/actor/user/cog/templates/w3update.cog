@@ -5,7 +5,7 @@
 # >>>
 assert cog_user.cog_oid_.value == self.cog_oid_.value
 nuser = self()
-nuser.biography_.set_intention(kwargs.get("biography_", ''))
+nuser.biography_.value = kwargs.get("biography_", '')
 self = self.update(nuser)
 self.get()
 # ---

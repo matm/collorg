@@ -45,8 +45,8 @@ class Field( Base_table ):
         the_table = self.db.table(fqtn)
         for field in the_table._cog_fields:
             self.reset()
-            self.data_type_.set_intention(fqtn)
-            self.fqfn_.set_("%s.%s"%(fqtn, field.name))
+            self.data_type_.value = fqtn
+            self.fqfn_.value = "%s.%s"%(fqtn, field.name)
             if not self.exists():
                 print("+ %s.%s" % (fqtn, field.name))
                 self.insert()

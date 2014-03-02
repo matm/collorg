@@ -21,7 +21,7 @@ data_oid = input("Data oid? ")
 data = db.get_elt_by_oid(data_oid)
 owner_s_name = input("Owner's name? ")
 users = table('collorg.actor.user')
-users.last_name_.set_intention(owner_s_name, 'ilike')
+users.last_name_.value = owner_s_name, 'ilike'
 users.order_by(users.last_name_, users.first_name_)
 for user in users:
     print(" - {} {} {}".format(user.cog_oid_, user.first_name_, user.last_name_))
@@ -33,6 +33,6 @@ group_name = group_name.strip()
 if not group_name:
     sys.exit()
 
-group.name_.set_intention(group_name)
+group.name_.value = group_name
 group._data_ = data
 group.insert(user=owner)

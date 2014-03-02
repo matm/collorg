@@ -3,7 +3,7 @@
 Group list.
 """
 topics = self.db.table('collorg.web.topic')
-topics.cog_environment_.set_intention(self.cog_oid_)
+topics.cog_environment_.value = self.cog_oid_
 # +++ groups
 # >>>
 for topic in topics:

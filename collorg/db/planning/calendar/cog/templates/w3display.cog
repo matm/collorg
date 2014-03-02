@@ -2,7 +2,7 @@
 assert kwargs['obj_id']
 oid = kwargs['obj_id']
 obj = self.db.table('collorg.core.oid_table')
-obj.cog_oid_.set_(oid)
+obj.cog_oid_.value = oid
 wg = self.db.table('collorg.group.group')
 role = self.db.table('collorg.actor.role')
 event = self.db.table('collorg.event.event')

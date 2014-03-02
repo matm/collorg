@@ -31,11 +31,11 @@ to_date = '{} {}:00'.format(to_day, to_hour)
 
 task = tasks[int(task_num)]
 ts = task._rev_task_scheduler_
-ts.cog_from_.set_intention(from_date)
-ts.cog_to_.set_intention(to_date)
+ts.cog_from_.value = from_date
+ts.cog_to_.value = to_date
 ts.insert()
 
 nt = task()
-nt.cog_from_.set_intention(from_date)
-nt.cog_to_.set_intention(to_date)
+nt.cog_from_.value = from_date
+nt.cog_to_.value = to_date
 task.update(nt)

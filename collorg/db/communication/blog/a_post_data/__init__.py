@@ -47,7 +47,7 @@ class A_post_data(Base_table):
         inc_apd = data._rev_a_post_data_data_
         inc_apd.increment(inc_apd.order_)
         try:
-            self.order_.set_intention(0)
+            self.order_.value = 0
             super(self.__class__, self).insert(**kwargs)
             self._data_.get()._wipe_cache()
             self._post_.get()._wipe_cache()

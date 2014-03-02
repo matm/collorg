@@ -1,10 +1,10 @@
 # DIRECT
 def _get_uploader(self):
     uploader_ = self.db.table('collorg.actor.user')
-    uploader_.cog_oid_.set_intention(self.uploader_)
+    uploader_.cog_oid_.value = self.uploader_
     return uploader_
 def _set_uploader(self, uploader_):
-    self.uploader_.set_intention(uploader_.cog_oid_)
+    self.uploader_.value = uploader_.cog_oid_
 
 _uploader_ = property(
     _get_uploader, _set_uploader)

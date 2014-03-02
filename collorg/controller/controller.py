@@ -194,8 +194,8 @@ class Controller(object):
         if (obj.fqtn, method) in self.__d_accessible_actions:
             return True
         action = self.db.table('collorg.application.action')
-        action.name_.set_intention(method)
-        action.data_type_.set_intention(obj.fqtn)
+        action.name_.value = method
+        action.data_type_.value = obj.fqtn
         for in_obj in self._cog_inherits(obj):
             action.data_type_ += (in_obj.fqtn, '=')
         try:
@@ -243,9 +243,9 @@ class Controller(object):
             return
         view = self.db.table('collorg.access.view.access_aa')
         view.cog_light = True
-        view.goal_name_.set_intention("Anonymous navigation")
+        view.goal_name_.value = "Anonymous navigation"
         view.goal_name_ += ("Authenticated navigation", "=")
-        #view.in_menu_.set_intention(True)
+        #view.in_menu_.value = True
         view._cog_order_by = [view.task_name_]
         Controller._cog_aa_tasks = view.select().dict_by(
             view.fqtn_, view.goal_name_)
@@ -286,8 +286,8 @@ class Controller(object):
         av.cog_light = True
         for data_oid in l_data_oid:
             av.data_oid_ += (data_oid, '=')
-        av.name_.set_intention(method_name)
-        av.session_key_.set_intention(session_key)
+        av.name_.value = method_name
+        av.session_key_.value = session_key
         return av.exists()
 
     def _cog_inherits(self, obj):
@@ -347,7 +347,7 @@ class Controller(object):
         assert action.write_.value is not None
         method_name = action.name_.value
         oa = self.db.table('collorg.core.oid_table')
-        oa.cog_oid_.set_intention(obj.cog_oid_.value)
+        oa.cog_oid_.value = obj.cog_oid_.value
         dca = Controller.__d_ca_access
         if not self.user.has_access(oa, action.write_.value):
             return False
@@ -397,8 +397,8 @@ class Controller(object):
 
     def _get_tasks_menu(self, data_oid):
         av = self.db.table('collorg.access.view.access')
-        av.data_oid_.set_intention(data_oid)
-        av.session_key_.set_intention(self._session_key)
-        av.in_menu_.set_intention(True)
+        av.data_oid_.value = data_oid
+        av.session_key_.value = self._session_key
+        av.in_menu_.value = True
         av._cog_order_by = [av.task_name_]
         return av.select().dict_by(av.fqtn_, av.goal_name_)

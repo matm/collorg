@@ -34,7 +34,7 @@ class Cmd():
         self.db = self.__ctrl.db
         self.__database = self.db.table('collorg.core.database')
         self.__db_name = self.db.name
-        self.__database.name_.set_intention(self.__db_name)
+        self.__database.name_.value = self.__db_name
         assert self.__database.count() == 1
         self.__patch = None
         self.__patch_dir = None
@@ -107,23 +107,23 @@ class Cmd():
         if 'pre' in self.__items:
             self.__pre_patch(self.__items['pre'])
         self.__patch = self.db.table("collorg.core.patch.changelog")
-        self.__patch.major_.set_intention(self.__major)
-        self.__patch.minor_.set_intention(self.__minor)
-        self.__patch.revision_.set_intention(self.__revision)
+        self.__patch.major_.value = self.__major
+        self.__patch.minor_.value = self.__minor
+        self.__patch.revision_.value = self.__revision
         if self.__patch.count() == 1:
             sys.exit("Patch already applied\n")
         self.__patch._database_ = self.__database
-        self.__patch.stage_.set_intention(
-            self.__stages.index(self.__items['stage']))
-        self.__patch.label_.set_intention(self.__items['label'])
-        self.__patch.description_.set_intention(
-            self.__items['description'])
+        self.__patch.stage_.value = \
+            self.__stages.index(self.__items['stage'])
+        self.__patch.label_.value = self.__items['label']
+        self.__patch.description_.value = \
+            self.__items['description']
         if 'sql' in self.__items:
             self.__sql_patch(self.__items['sql'])
         if 'post' in self.__items:
             self.__post_patch(self.__items['post'])
-        self.__patch.error_.set_intention("\n".join(self.__error))
-        self.__patch.output_.set_intention("\n".join(self.__output))
+        self.__patch.error_.value = "\n".join(self.__error)
+        self.__patch.output_.value = "\n".join(self.__output)
         if self.__patch is not None:
             self.__patch.insert()
 
@@ -184,9 +184,9 @@ class Cmd():
         self.db = Controller().db
         for fqtn in self.db.fqtns:
             cog_table = self.db.table('collorg.core.data_type')
-            cog_table.fqtn_.set_intention(fqtn)
+            cog_table.fqtn_.value = fqtn
             tablename = fqtn.rsplit('.', 1)[1]
-            cog_table.name_.set_intention(tablename)
+            cog_table.name_.value = tablename
             if not cog_table.count():
                 print("+ adding table %s to data_type" % fqtn)
                 cog_table.insert()

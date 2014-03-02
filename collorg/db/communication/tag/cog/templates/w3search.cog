@@ -9,8 +9,8 @@ posts = self._rev_a_tag_post_._post_
 nb_posts = posts.count()
 if nb_posts:
     vp = self.db.table('collorg.communication.blog.view.by_post')
-    vp.cog_oid_.set_intention(posts.cog_oid_)
-    vp.data_oid_.set_intention(kwargs.get('env_oid'))
+    vp.cog_oid_.value = posts.cog_oid_
+    vp.data_oid_.value = kwargs.get('env_oid')
     l_title_tags = []
     for tag in self:
         l_title_tags.append(tag.tag_.value)

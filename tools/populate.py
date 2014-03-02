@@ -22,7 +22,7 @@ def set_fk_val(field, val):
 #    print("xxx %s" % f_table.__dict__[f_field_name].sql_type)
     if f_table.__dict__[f_field_name].sql_type.find('int') != -1:
         comp = '='
-    f_table.__dict__[f_field_name].set_intention(val, comp)
+    f_table.__dict__[f_field_name].value = val, comp
 #    print("2 XXXXX")
     return f_table.__dict__[f_field_name]
 
@@ -38,9 +38,9 @@ def set_val(obj, fields, line):
 #            print("yyy %s" % fk_field.sql_type)
             if fk_field.sql_type.find('int') != -1:
                 comp = '='
-            fields[idx].set_intention(fk_field, comp)
+            fields[idx].value = fk_field, comp
         else:
-            fields[idx].set_intention(val)
+            fields[idx].value = val
         for field in obj._cog_fields:
             if field.is_constrained:
                 pass

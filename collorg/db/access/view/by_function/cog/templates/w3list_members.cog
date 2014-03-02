@@ -28,9 +28,9 @@ if(cog_user and post.is_cog_post and
     author = True
 for user_oid, vals in d_users.items():
     elt = vals[0]
-    user.cog_oid_.set_intention(elt.user_oid_.value)
-    user.first_name_.set_intention(elt.user_first_name_.value)
-    user.last_name_.set_intention(elt.user_last_name_.value)
+    user.cog_oid_.value = elt.user_oid_.value
+    user.first_name_.value = elt.user_first_name_.value
+    user.last_name_.value = elt.user_last_name_.value
     # ---
     <tr>
     <td>

@@ -26,7 +26,7 @@ class Bookmark(Table):
 
     def winsert(self, **kwargs):
         assert kwargs['user_oid'] and kwargs['post_oid']
-        self.user_.set_intention(kwargs['user_oid'])
-        self.post_.set_intention(kwargs['post_oid'])
+        self.user_.value = kwargs['user_oid']
+        self.post_.value = kwargs['post_oid']
         if not self.exists():
             self.insert()

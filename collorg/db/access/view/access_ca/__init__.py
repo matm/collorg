@@ -43,7 +43,7 @@ class Access_ca(Table):
         user = self._cog_controller.user
         if user.has_access(env):
             av = self()
-            av.in_header_.set_intention(True)
+            av.in_header_.value = True
             for fqtn in env.parents_fqtns():
                 av.fqtn_ +=  (fqtn, '=')
             av._cog_order_by = [av.name_]
@@ -63,8 +63,8 @@ class Access_ca(Table):
                     l_actions.append(icon)
         if topic.cog_oid_.is_constrained and user.has_access(topic):
             av = self()
-            av.in_header_.set_intention(True)
-            av.fqtn_.set_intention('collorg.web.topic')
+            av.in_header_.value = True
+            av.fqtn_.value = 'collorg.web.topic'
             for action in av.select(fields = [
                 av.cog_oid_, av.name_, av.label_, av.icon_, av.write_]):
                 if action.write_.value and not user.has_access(
@@ -87,7 +87,7 @@ class Access_ca(Table):
         user = self._cog_controller.user
         if user.has_access(env):
             av = self()
-            av.in_nav_.set_intention(True)
+            av.in_nav_.value = True
             for fqtn in env.parents_fqtns():
                 av.fqtn_ +=  (fqtn, '=')
             av._cog_order_by = [av.name_]

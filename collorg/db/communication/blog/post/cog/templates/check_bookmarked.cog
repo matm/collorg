@@ -1,7 +1,7 @@
 # >>>
 bookmark = self.db.table('collorg.communication.bookmark')
-bookmark._user_.set_intention(cog_user.cog_oid_.value)
-bookmark._post_.set_intention(self.cog_oid_.value)
+bookmark._user_.value = cog_user.cog_oid_.value
+bookmark._post_.value = self.cog_oid_.value
 if bookmark.exists():
    # ---
    ok

@@ -16,8 +16,8 @@ if __name__ == '__main__':
         name, data_type, tags = line.split(';', 3)
         tags = tags.strip().split(';')
         action = db.table('collorg.application.action')
-        action.name_.set_intention(name)
-        action.data_type_.set_intention(data_type)
+        action.name_.value = name
+        action.data_type_.value = data_type
         naction = db.table('collorg.application.action')
         l_rights = [naction.write_, naction.moderate_, naction.admin_]
         idx = 0
@@ -27,7 +27,7 @@ if __name__ == '__main__':
             assert tag in ('t', 'f', '')
             if tag:
                 update = True
-                l_rights[idx].set_intention(tag)
+                l_rights[idx].value = tag
             idx += 1
         if update:
             action.update(naction)

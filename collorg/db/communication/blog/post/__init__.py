@@ -75,16 +75,16 @@ class Post(Base_table):
         @status: the status associated with a_tag_post
         """
         tag_t = self.db.table('collorg.communication.tag')
-        tag_t.tag_.set_intention(tag)
+        tag_t.tag_.value = tag
         if not tag_t.exists():
             tag_t.insert()
         atp = self._rev_a_tag_post_
         order = atp.count() + 1
-        atp.tag_.set_intention(tag)
+        atp.tag_.value = tag
         if not atp.exists():
-            atp.data_type_.set_intention(ref_data.fqtn)
-            atp.order_.set_intention(order)
-            atp.status_.set_intention(status)
+            atp.data_type_.value = ref_data.fqtn
+            atp.order_.value = order
+            atp.status_.value = status
             atp.insert()
 
     def del_tag(self, tag, ref_data = None, status = None):
@@ -94,20 +94,20 @@ class Post(Base_table):
         tag to be removed.
         """
         atp = self._rev_a_tag_post_
-        atp.tag_.set_intention(tag)
-        atp.data_type_.set_intention(ref_data.fqtn)
-        atp.status_.set_intention(status)
+        atp.tag_.value = tag
+        atp.data_type_.value = ref_data.fqtn
+        atp.status_.value = status
         if atp.count() == 1:
             atp.delete()
             tag_t = self.db.table('collorg.communication.tag')
-            tag_t.tag_.set_intention(tag)
+            tag_t.tag_.value = tag
             if not tag_t._rev_a_tag_post_.exists():
                 tag_t.delete()
 
     def has_tag(self, tag):
         atp = self._rev_a_tag_post_
         atp.data_type_.set_not_null()
-        atp.tag_.set_intention(tag)
+        atp.tag_.value = tag
         return atp.exists()
 
     def is_owned_by(self, user):
@@ -167,17 +167,17 @@ class Post(Base_table):
                 except:
                     # groups, ...
                     pass
-        self.title_.set_intention(kwargs['title_'].strip() or None)
-        self.text_.set_intention(kwargs['text_'].strip() or None)
+        self.title_.value = kwargs['title_'].strip() or None
+        self.text_.value = kwargs['text_'].strip() or None
         ip = kwargs.get('introductory_paragraph_')
         if ip is not None:
             ip = ip.strip() or None
-        self.introductory_paragraph_.set_intention(ip)
-        self.public_.set_intention(kwargs.get('public_', None))
-        self.comment_.set_intention(kwargs.get('comment_', None))
-        self.important_.set_intention(kwargs.get('important_'))
-        self.visibility_.set_intention(kwargs['visibility_'])
-        self.author_.set_intention(user.cog_oid_.value)
+        self.introductory_paragraph_.value = ip
+        self.public_.value = kwargs.get('public_', None)
+        self.comment_.value = kwargs.get('comment_', None)
+        self.important_.value = kwargs.get('important_')
+        self.visibility_.value = kwargs['visibility_']
+        self.author_.value = user.cog_oid_.value
         self = self.insert()
         data_oid and self.link_to_data(data)
         function_oid = kwargs.get('function_oid')
@@ -200,23 +200,23 @@ class Post(Base_table):
         update a post. Invoked by template w3save
         """
         n_post = n_elt or self()
-        n_post.title_.set_intention(kwargs['title_'].strip() or None)
-        n_post.introductory_paragraph_.set_intention(
-            kwargs.get('introductory_paragraph_'))
-        n_post.text_.set_intention(kwargs['text_'].strip() or None)
-        n_post.public_.set_intention(kwargs.get('public_', False))
-        n_post.comment_.set_intention(kwargs.get('comment_', False))
-        n_post.visibility_.set_intention(kwargs.get('visibility_', None))
+        n_post.title_.value = kwargs['title_'].strip() or None
+        n_post.introductory_paragraph_.value = \
+            kwargs.get('introductory_paragraph_')
+        n_post.text_.value = kwargs['text_'].strip() or None
+        n_post.public_.value = kwargs.get('public_', False)
+        n_post.comment_.value = kwargs.get('comment_', False)
+        n_post.visibility_.value = kwargs.get('visibility_', None)
         expiry_date = kwargs.get('expiry_date_')
         if expiry_date:
-            n_post.expiry_date_.set_intention(expiry_date)
+            n_post.expiry_date_.value = expiry_date
         else:
             n_post.expiry_date_.set_null()
         self.update(n_post)
         tag = self.db.table('collorg.communication.tag')
         tag.wsave(data=self, tags=kwargs.get('tag_', ''))
         new = self()
-        new.cog_oid_.set_intention(self.cog_oid_.value)
+        new.cog_oid_.value = self.cog_oid_.value
         new.get()
         new._wipe_cache()
         return new
@@ -283,7 +283,7 @@ class Post(Base_table):
         post = self.db.get_elt_by_oid(kwargs['data_oid'])
         apd._post_ = post
         if not apd.exists():
-            apd.see_also_.set_intention(True)
+            apd.see_also_.value = True
             apd.insert()
 
     def attach_comment(self, comment):
@@ -298,7 +298,7 @@ class Post(Base_table):
         comment_oid = kwargs['comment_oid']
         comment = self.db.get_elt_by_oid(comment_oid)
         follow_up = comment._rev_follow_up_
-        follow_up.text_.set_intention(kwargs['text_'])
+        follow_up.text_.value = kwargs['text_']
         assert self.comment_.value
         assert self.cog_oid_.value == comment._data_.get().cog_oid_.value
         self.db.set_auto_commit(False)
@@ -316,15 +316,15 @@ class Post(Base_table):
         """
         assert comment.cog_oid_.value
         user_check = self.db.table('collorg.communication.user_check')
-        user_check.communication_object_.set_intention(comment.cog_oid_.value)
+        user_check.communication_object_.value = comment.cog_oid_.value
         if user:
-            user_check.user_.set_intention(user.cog_oid_.value)
+            user_check.user_.value = user.cog_oid_.value
         if not poll:
             user_check.delete()
         user_check = user_check()
-        user_check.communication_object_.set_intention(comment.cog_oid_.value)
-        user_check.user_.set_intention(self._cog_controller.user.cog_oid_)
-        user_check.date_checked_.set_intention(datetime.now())
+        user_check.communication_object_.value = comment.cog_oid_.value
+        user_check.user_.value = self._cog_controller.user.cog_oid_
+        user_check.date_checked_.value = datetime.now()
         user_check.insert()
 
     def check_visibility(self, cog_user):
@@ -348,22 +348,22 @@ class Post(Base_table):
         see_also = self()
         see_also.cog_oid_.set_null()
         if apd.exists():
-            see_also.cog_oid_.set_intention(apd._post_.cog_oid_)
+            see_also.cog_oid_.value = apd._post_.cog_oid_
             user = self._cog_controller.user
             if user:
                 p_see_also = see_also()
-                p_see_also.cog_oid_.set_intention(apd._post_.cog_oid_)
+                p_see_also.cog_oid_.value = apd._post_.cog_oid_
                 see_also += p_see_also * user.get_granted_data()
             else:
                 pub_see_also = see_also()
-                pub_see_also.visibility_.set_intention('private', '!=')
+                pub_see_also.visibility_.value = 'private', '!='
                 see_also *= pub_see_also
         return see_also
 
     def get_children(self):
         children = self.db.table('collorg.communication.blog.view.children')
-        children.parent_oid_.set_intention(self.cog_oid_.value)
-        children.cog_fqtn_.set_intention('collorg.web.topic')
+        children.parent_oid_.value = self.cog_oid_.value
+        children.cog_fqtn_.value = 'collorg.web.topic'
         return children
 
     def get_accessible_children(self, user):
@@ -377,7 +377,7 @@ class Post(Base_table):
 
     def __get_not_private_children(self):
         children = self.get_children()
-        children.visibility_.set_intention('private', '!=')
+        children.visibility_.value = 'private', '!='
         return children
 
     def __get_private_children(self, user):
@@ -405,18 +405,18 @@ class Post(Base_table):
             apd_next._post_ = next_
             next_position = apd_next.get().order_.value
             apd = self._rev_a_post_data_data_
-            apd.order_.set_intention(next_position, '>=')
+            apd.order_.value = next_position, '>='
             apd.increment(apd.order_)
             apd = self._rev_a_post_data_data_
             apd._post_ = elt_
             napd = apd()
-            napd.order_.set_intention(next_position)
+            napd.order_.value = next_position
             apd.update(napd)
         else:
             apd = self._rev_a_post_data_data_
             napd = apd()
             max_order = apd.max(apd.order_) or 0
-            napd.order_.set_intention(max_order + 1)
+            napd.order_.value = max_order + 1
             apd_elt.update(napd)
         self._wipe_cache()
 
@@ -444,10 +444,10 @@ class Post(Base_table):
             if os.path.exists(elt._cache_path):
                 shutil.rmtree(elt._cache_path)
             data = self()
-            data.cog_oid_.set_intention(
-                elt._rev_a_post_data_post_._data_.cog_oid_)
+            data.cog_oid_.value = \
+                elt._rev_a_post_data_post_._data_.cog_oid_
             deja_vu = self()
-            deja_vu.cog_oid_.set_intention(deja_vus)
+            deja_vu.cog_oid_.value = deja_vus
             data -= deja_vu
             data._wipe_cache(deja_vus)
 

@@ -8,7 +8,7 @@ id_ = html.random_id()
 # >>>
 i18n_no_group = _("You don't have any personnal group.")
 my_groups = self.db.table('collorg.group.group')
-my_groups.data_.set_intention(self.cog_oid_.value)
+my_groups.data_.value = self.cog_oid_.value
 my_groups.order_by(my_groups.name_)
 if cog_user and cog_user.cog_oid_.value == self.cog_oid_.value:
     # ---
@@ -22,9 +22,9 @@ if cog_user and cog_user.cog_oid_.value == self.cog_oid_.value:
 {% my_groups.w3list_manage() %}
 # >>>
 group = self.db.table('collorg.group.group')
-group.cog_oid_.set_intention(
-    self.get_granted_data('collorg.group.group').cog_oid_)
-group.data_.set_intention(self.cog_oid_.value, '!=')
+group.cog_oid_.value = \
+    self.get_granted_data('collorg.group.group').cog_oid_
+group.data_.value = self.cog_oid_.value, '!='
 if group.exists():
     pl_group = group.count() > 1 and "s" or ""
     # ---

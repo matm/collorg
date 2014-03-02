@@ -34,6 +34,6 @@ class Year( Base_table ):
         """
         Checks if the year is present. If not inserts it in the table
         """
-        self.num_.set_intention(num)
+        self.num_.value = num
         if self.count() == 0:
             self.insert()

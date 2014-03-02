@@ -46,8 +46,8 @@ class Session( TClass ):
 
     def new(self, user, key):
         # crée un nouveau jeton
-        self.key_.set_intention(key)
-        self.last_access_date_.set_intention(datetime.now())
+        self.key_.value = key
+        self.last_access_date_.value = datetime.now()
         self._user_ = user
         self.insert()
 

@@ -19,7 +19,7 @@ function_long_name = input("function name? ")
 if not function_long_name.strip():
     sys.exit()
 function = functions()
-function.long_name_.set_intention(function_long_name)
+function.long_name_.value = function_long_name
 function.get()
 access = function._rev_role_._access_
 access.granted()
@@ -29,7 +29,7 @@ pseudo = input("pseudo? ")
 if not pseudo.strip():
     sys.exit()
 user = table("collorg.actor.user")
-user.pseudo_.set_intention(pseudo.strip())
+user.pseudo_.value = pseudo.strip()
 user.get()
 access._user_ = user
 for role in access._rev_role_:

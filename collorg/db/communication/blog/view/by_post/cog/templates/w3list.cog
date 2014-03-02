@@ -46,8 +46,8 @@ if post_oid:
     this_post = self.db.get_elt_by_oid(post_oid)
 data_fqtn = kwargs.get('data_fqtn')
 if not data_fqtn == 'collorg.web.topic':
-    self.data_oid_.set_intention(data_oid)
-#self.cog_fqtn_.set_intention('collorg.web.topic', '!=')
+    self.data_oid_.value = data_oid
+#self.cog_fqtn_.value = 'collorg.web.topic', '!='
 d_posts = self.dict_by(self.cog_oid_)
 n_posts = len(d_posts)
 sortable = kwargs.get('sortable') and n_posts > 1
@@ -61,7 +61,7 @@ if len(d_posts):
             if not cog_user:
                 continue
             ch_post = post()
-            ch_post.cog_oid_.set_intention(se.cog_oid_)
+            ch_post.cog_oid_.value = se.cog_oid_
             ch_post = ch_post.get()
             if not cog_user.has_access(ch_post):#ch_post.check_visibility(cog_user):
                 continue
@@ -82,8 +82,8 @@ if len(d_posts):
                 remove_link = remove_link_f(this_post, se.cog_oid_)
             elif(post_oid and
                  se.author_oid_ == cog_user.cog_oid_.value):
-                 post.visibility_.set_intention(None)
-                 post.cog_oid_.set_intention(se.cog_oid_)
+                 post.visibility_.value = None
+                 post.cog_oid_.value = se.cog_oid_
                  remove_link = remove_link_from(post, post_oid)
             elif(post_oid and se.who_attached_ == cog_user.cog_oid_.value):
                  remove_link = apd_remove_link(se.cog_oid_, post_oid)
@@ -129,7 +129,7 @@ if len(d_posts):
         <span class="post_title">{% elt_link %}</span>
         # >>>
         visibility = se.post_visibility_
-        post.visibility_.set_intention(visibility)
+        post.visibility_.value = visibility
         if visibility != 'public':
             # ---
             {% post._w3visibility() %}

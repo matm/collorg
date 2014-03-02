@@ -18,7 +18,7 @@ def grant_access(accessed_data, user, write):
     user_access._data_ = accessed_data
     user_access._user_ = user
     if write:
-        user_access.write_.set_intention(write)
+        user_access.write_.value = write
     if not user_access.exists():
         print("Grant access \n  for user: {}\n  to accessed object: {}".format(
             user.cog_label(), accessed_data.cog_label()))
@@ -32,12 +32,12 @@ try:
     except:
         raise ValueError("")
 
-    accessed_data.cog_oid_.set_intention(sys.argv[1])
+    accessed_data.cog_oid_.value = sys.argv[1]
     try:
         accessed_data = accessed_data.get()
     except:
         raise ValueError("Accessed object does not exist")
-    user.cog_oid_.set_intention(sys.argv[2])
+    user.cog_oid_.value = sys.argv[2]
     try:
         user = user.get()
     except:

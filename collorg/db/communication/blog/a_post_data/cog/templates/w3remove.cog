@@ -2,8 +2,8 @@
 # >>>
 data = self.db.get_elt_by_oid(kwargs['data_oid'])
 apd = self()
-apd.post_.set_intention(kwargs['post_oid'])
-apd.data_.set_intention(kwargs['data_oid'])
+apd.post_.value = kwargs['post_oid']
+apd.data_.value = kwargs['data_oid']
 apd.get()
 assert apd.who_.value == cog_user.cog_oid_.value
 apd.delete()

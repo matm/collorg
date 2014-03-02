@@ -19,14 +19,14 @@ tasks = table('collorg.application.task')
 if len(sys.argv) >= 2:
     fqtn = sys.argv[1]
     actions = table('collorg.application.action')
-    actions.data_type_.set_intention(fqtn)
+    actions.data_type_.value = fqtn
     tasks = actions._rev_a_action_task_._task_
 if len(sys.argv) == 2:
     for task in tasks:
         print("{} {}".format(task.cog_oid_.value[0:8], task.name_))
     task_oid = input('Task oid: ')
     task = tasks()
-    task.cog_oid_.set_intention('{}%'.format(task_oid), 'like')
+    task.cog_oid_.value = '{}%'.format(task_oid), 'like'
     task = task.get()
     print("\n{}\n".format(task.name_))
     print(' Actions:')
@@ -43,7 +43,7 @@ if len(sys.argv) == 2:
 else:
     task_oid = sys.argv[2]
     task = tasks()
-    task.cog_oid_.set_intention('{}%'.format(task_oid), 'like')
+    task.cog_oid_.value = '{}%'.format(task_oid), 'like'
     task = task.get()
 
 task.delete()

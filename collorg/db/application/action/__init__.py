@@ -97,9 +97,9 @@ class Action(Base_table):
 #        if not atf.exists():
 #            return True
 #        if self.write_.value or self.moderate_.value or self.admin_.value:
-#            atf.write_.set_intention(self.write_.value)
-#            atf.moderate_.set_intention(self.moderate_.value)
-#            atf.admin_.set_intention(self.admin_.value)
+#            atf.write_.value = self.write_.value
+#            atf.moderate_.value = self.moderate_.value
+#            atf.admin_.value = self.admin_.value
 #            atf *= self._cog_controller.user._rev_access_.\
 #                _rev_role_._function_._rev_a_topic_function_
 #            return atf.exists()

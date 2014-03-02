@@ -170,7 +170,7 @@ class WebController(Controller):
             obj = self.db.get_elt_by_oid(self._cog_oid_)
         else:
             obj = self.db.table(self._cog_fqtn_)
-            obj.cog_oid_.set_intention(self._cog_oid_)
+            obj.cog_oid_.value = self._cog_oid_
             obj.get()
         self.check_action(obj, self._cog_method)
         self.cog_exec_env = obj.get_environment()

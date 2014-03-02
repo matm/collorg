@@ -7,7 +7,7 @@ idem for field and fqtn
 """
 comment_oid = kwargs['comment'].cog_oid_.value
 
-self.comment_.set_intention(comment_oid)
+self.comment_.value = comment_oid
 nb_follow_ups = self.count()
 label = "%s follow-up%s" % (nb_follow_ups, nb_follow_ups > 1 and 's' or '')
 # ---

@@ -60,7 +60,7 @@ class Group( Base_table ):
         ga = self.db.table('collorg.access.group_access')
         ga._accessed_data_ = data
         ga._group_data_ = self
-        ga.write_.set_intention(write)
+        ga.write_.value = write
         return ga
 
     def grant_access(self, data, write=False):
@@ -76,26 +76,26 @@ class Group( Base_table ):
     def grant_write_access(self, data):
         ga = self.__set_group_access(data, False)
         nga = ga()
-        nga.write_.set_intention(True)
+        nga.write_.value = True
         if ga.exists():
             ga.update(nga)
 
     def revoke_write_access(self, data):
         ga = self.__set_group_access(data, True)
         nga = ga()
-        nga.write_.set_intention(False)
+        nga.write_.value = False
         if ga.exists():
             ga.update(nga)
 
     def insert(self, user):
         new_group = super(self.__class__, self).insert().get()
         topic = self.db.table('collorg.web.topic')
-        topic.cog_environment_.set_intention(new_group.cog_oid_.value)
-        topic.title_.set_intention(self.name_.value)
-        topic.text_.set_intention('')
-        topic.author_.set_intention(user.cog_oid_.value)
-        topic.visibility_.set_intention('private')
-        topic.path_info_.set_intention('')
+        topic.cog_environment_.value = new_group.cog_oid_.value
+        topic.title_.value = self.name_.value
+        topic.text_.value = ''
+        topic.author_.value = user.cog_oid_.value
+        topic.visibility_.value = 'private'
+        topic.path_info_.value = ''
         topic.insert()
         new_group.grant_access(topic, True)
         user.grant_access(topic, True)
@@ -103,6 +103,6 @@ class Group( Base_table ):
 
     def root_topic(self):
         topic = self.db.table('collorg.web.topic')
-        topic.cog_environment_.set_intention(self.cog_oid_.value)
-        #topic.path_info_.set_intention('')
+        topic.cog_environment_.value = self.cog_oid_.value
+        #topic.path_info_.value = ''
         return topic

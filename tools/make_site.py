@@ -64,9 +64,9 @@ def make_site(cog_web_site):
             path_info = re.sub('.*/__src', '', srcdirpath)
             if path_info == '':
                 path_info = '/'
-            page.path_info_.set_intention(path_info)
+            page.path_info_.value = path_info
             if page.count() == 0:
-                page.label_.set_intention(src_file)
+                page.label_.value = src_file
                 page.insert()
             print(path_info, file_)
             try:

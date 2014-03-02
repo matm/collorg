@@ -10,7 +10,7 @@ table = db.table
 apd = table('collorg.communication.blog.a_post_data')
 apd.order_.set_not_null()
 topics = table('collorg.web.topic')
-topics.cog_oid_.set_intention(apd._data_.cog_oid_)
+topics.cog_oid_.value = apd._data_.cog_oid_
 for topic in topics:
     topic._wipe_cache()
     print("{}: {}".format(
@@ -23,7 +23,7 @@ for topic in topics:
     idx_apd = nb_elts - 1
     for apd in apds:
         napd = apd()
-        napd.order_.set_intention(idx_apd)
+        napd.order_.value = idx_apd
         apd.update(napd)
         print(" {} {}".format(apd.order_, apd._post_.get().cog_label()))
         idx_apd -= 1

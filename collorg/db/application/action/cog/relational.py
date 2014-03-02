@@ -1,10 +1,10 @@
 # DIRECT
 def _get_data_type(self):
     data_type_ = self.db.table('collorg.core.data_type')
-    data_type_.fqtn_.set_intention(self.data_type_)
+    data_type_.fqtn_.value = self.data_type_
     return data_type_
 def _set_data_type(self, data_type_):
-    self.data_type_.set_intention(data_type_.fqtn_)
+    self.data_type_.value = data_type_.fqtn_
 
 _data_type_ = property(
     _get_data_type, _set_data_type)

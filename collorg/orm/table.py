@@ -103,12 +103,12 @@ class Table(Relation):
         if kwargs:
             for fieldname, val in kwargs.items():
                 try:
-                    self.__dict__[fieldname].set_intention(val)
+                    self.__dict__[fieldname].value = val
                 except Exception as err:
                     raise ValueError("%s Field %s error:\n'%s'\n" % (
                         self.name, fieldname, err))
         for field in args:
-            self.__dict__[field.name].set_intention(field.value, field.comp)
+            self.__dict__[field.name].value = field.value, field.comp
 
     @property
     def _cog_description(self):
@@ -193,8 +193,8 @@ class Table(Relation):
 
     def insert(self, just_return_sql = False):
         if self.db.test_mode and self.has_field('cog_test_'):
-            self.cog_test_.set_intention(True)
-            self.cog_signature_.set_intention(id(self.db))
+            self.cog_test_.value = True
+            self.cog_signature_.value = id(self.db)
         sql_req, cog_oid = self._cog_new_insert()
         if just_return_sql:
             return sql_req
@@ -211,7 +211,7 @@ class Table(Relation):
                 i += 1
                 try:
                     this = self.db.table(self.fqtn)
-                    this.cog_oid_.set_intention(cog_oid)
+                    this.cog_oid_.value = cog_oid
                     self = this.get()
                     break
                 except:
@@ -236,7 +236,7 @@ class Table(Relation):
         sql_req = []
         if self._cog_base_table:
             oid = self.db.table('collorg.core.oid_table')
-            oid.cog_oid_.set_intention(self.cog_oid_)
+            oid.cog_oid_.value = self.cog_oid_
             sql_req.append(oid.delete(just_return_sql = True))
         if just_return_sql:
             no_clause = True
@@ -295,7 +295,7 @@ class Table(Relation):
         if just_return_sql:
             no_clause = True
         if self.has_field('cog_modif_date_') and update_modif_date:
-            update_tuple.cog_modif_date_.set_intention(datetime.now())
+            update_tuple.cog_modif_date_.value = datetime.now()
         sql_req = self.__sql_update(update_tuple, no_clause)
         if just_return_sql:
             return sql_req
@@ -307,7 +307,7 @@ class Table(Relation):
         ## màj. de update_tuple pour y intégrer les nouvelles valeurs
         for field in update_tuple._cog_fields:
             if field.is_constrained:
-                self.__dict__["%s_" % (field.name)].set_intention(field.value)
+                self.__dict__["%s_" % (field.name)].value = field.value
         return self
 
     def update(
@@ -349,7 +349,7 @@ class Table(Relation):
         if len(args) == 0:
             args = self._cog_fields
         for field in args:
-            dup_obj.__dict__[field.pyname].set_intention(field)
+            dup_obj.__dict__[field.pyname].value = field
         return dup_obj
 
     def showstruct(self):

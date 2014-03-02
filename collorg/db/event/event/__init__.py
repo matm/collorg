@@ -63,15 +63,15 @@ class Event(Post):
         return self._Event__event_types
 
     def winsert(self, user, **kwargs):
-        self.begin_date_.set_intention(kwargs['begin_date_'])
-        self.end_date_.set_intention(kwargs['end_date_'])
+        self.begin_date_.value = kwargs['begin_date_']
+        self.end_date_.value = kwargs['end_date_']
         self = super(Event, self).winsert(user, **kwargs)
         return self
 
     def wupdate(self, **kwargs):
         n_event = self()
-        n_event.begin_date_.set_intention(kwargs['begin_date_'])
-        n_event.end_date_.set_intention(kwargs['end_date_'])
+        n_event.begin_date_.value = kwargs['begin_date_']
+        n_event.end_date_.value = kwargs['end_date_']
         self = super(Event, self).wupdate(n_event, **kwargs)
         return self
 

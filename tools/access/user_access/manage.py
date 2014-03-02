@@ -15,16 +15,16 @@ if __name__ == '__main__':
         print(fctn.long_name_)
     fctn_lng_name = input("name: ")
     the_function = function()
-    the_function.long_name_.set_intention(fctn_lng_name)
+    the_function.long_name_.value = fctn_lng_name
     data = the_function._data_type_.get()()
     for dt in data:
         print("%s : %s" % (dt.cog_oid_, dt.cog_label()))
     data_oid = input("oid data: ")
-    data.cog_oid_.set_intention(data_oid)
+    data.cog_oid_.value = data_oid
     role = the_function._rev_role_
     user = db.table('collorg.actor.user')
     pseudo = input('pseudo: ')
-    user.pseudo_.set_intention(pseudo)
+    user.pseudo_.value = pseudo
     access = user._rev_access_
     access._data_ = data
     access.granted()

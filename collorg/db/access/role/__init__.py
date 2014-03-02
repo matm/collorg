@@ -45,8 +45,8 @@ class Role(Base_table, Duration):
         @begin_date: optional (defaults to now())
         @end_date: optional
         """
-        self.cog_from_.set_intention(cog_from_)
-        self.cog_to_.set_intention(cog_to_)
+        self.cog_from_.value = cog_from_
+        self.cog_to_.value = cog_to_
         if not self.is_granted():
             self.insert()
 
@@ -54,8 +54,8 @@ class Role(Base_table, Duration):
         if not self.exists():
             return False
         role = self()
-        role.cog_oid_.set_intention(self.cog_oid_)
-        role.cog_from_.set_intention(datetime.now(), '<=')
+        role.cog_oid_.value = self.cog_oid_
+        role.cog_from_.value = datetime.now(), '<='
         role.cog_to_.set_null()
         role.cog_to_ += (datetime.now(), '>')
         return role.exists()
@@ -65,5 +65,5 @@ class Role(Base_table, Duration):
         assert no_function or self.function_.is_constrained
         for elt in self:
             n_role = self()
-            n_role.cog_to_.set_intention(datetime.now())
+            n_role.cog_to_.value = datetime.now()
             elt.update(n_role)

@@ -19,8 +19,8 @@ if self.exists():
     for elt in self:
         post = d_posts_types.get(
             elt.cog_fqtn_.value, 'collorg.communication.blog.post')
-        post.cog_oid_.set_intention(elt.cog_oid_.value)
-        post.title_.set_intention(elt.title_.value)
+        post.cog_oid_.value = elt.cog_oid_.value
+        post.title_.value = elt.title_.value
         # ---
         <li class="inline">{% html(post).a() %}&nbsp;</li>
     # ---

@@ -38,17 +38,17 @@ class Attachment(Base_table):
         super(Attachment, self).__init__(db, **kwargs)
 
     def attach(self, elt, data, author, description):
-        self.ref_.set_intention(elt.cog_oid_.value)
+        self.ref_.value = elt.cog_oid_.value
         self._data_ = data
         if self.exists():
             time.sleep(1)
             return "document already attached"
         data._wipe_cache()
         self._author_ = author
-        self.description_.set_intention(description)
+        self.description_.value = description
         self.insert()
         ndata = data()
-        ndata.cog_modif_date_.set_intention(datetime.now())
+        ndata.cog_modif_date_.value = datetime.now()
         data.update(ndata)
         time.sleep(1)
         return "document attached"

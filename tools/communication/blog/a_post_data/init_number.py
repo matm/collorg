@@ -12,7 +12,7 @@ for elt in apd:
         data = elt.data_.value
         i = 0
     nelt = elt()
-    nelt.order_.set_intention(i)
+    nelt.order_.value = i
     elt.update(nelt)
     i += 1
 

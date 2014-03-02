@@ -39,5 +39,5 @@ class Lost_found(Table):
         ok = input("Proceed [Y/n] ? ")
         if ok == '' or ok.upper() == 'Y':
             oid_table = self.db.table('collorg.core.oid_table')
-            oid_table.cog_oid_.set_intention(self.cog_oid_)
+            oid_table.cog_oid_.value = self.cog_oid_
             oid_table.delete()

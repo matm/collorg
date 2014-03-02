@@ -15,8 +15,8 @@ for group in groups:
     function.get()
     ng = group()
     if data.cog_fqtn_ in ['organization.department', 'organization.team']:
-        ng.name_.set_intention('{} {}'.format(function.name_, data.acronym_))
+        ng.name_.value = '{} {}'.format(function.name_, data.acronym_)
     if data.cog_fqtn_ in ['collorg.actor.user']:
-        ng.name_.set_intention("{} {}'s private group".format(
-            data.first_name_, data.last_name_))
+        ng.name_.value = "{} {}'s private group".format(
+            data.first_name_, data.last_name_)
     group.update(ng)

@@ -18,7 +18,7 @@ db = ctrl.db
 table = db.table
 
 posts = table('collorg.communication.blog.post')
-posts.visibility_.set_intention('public')
+posts.visibility_.value = 'public'
 for elt in posts:
     if elt.cog_fqtn_.value != 'collorg.communication.blog.post':
         elt = elt.get()

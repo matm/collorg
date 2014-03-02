@@ -25,14 +25,13 @@ class Test(TestCase):
         #XXX WARNING! The universe must be defined by a constraint...
         self.universe.cog_oid_.set_not_null()
         #XXX ... Otherwise, the SQL is buggy.
-        self.set_1.cog_oid_.set_intention('{}%'.format(self.c1), 'like')
-        self.comp_set_1.cog_oid_.set_intention(
-            '{}%'.format(self.c1), 'not like')
-        self.set_2.cog_oid_.set_intention('_{}%'.format(self.c2), 'like')
-        self.subset_1_2.cog_oid_.set_intention(
+        self.set_1.cog_oid_.value = ('{}%'.format(self.c1), 'like')
+        self.comp_set_1.cog_oid_.value = ('{}%'.format(self.c1), 'not like')
+        self.set_2.cog_oid_.value = ('_{}%'.format(self.c2), 'like')
+        self.subset_1_2.cog_oid_.value = (
             '{}{}%'.format(self.c1, self.c2), 'like')
-        self.set_3.cog_oid_.set_intention('__{}%'.format(self.c3), 'like')
-        self.empty_set.cog_oid_.set_intention('X')
+        self.set_3.cog_oid_.value = ('__{}%'.format(self.c3), 'like')
+        self.empty_set.cog_oid_.value = 'X'
 
     def and_test_1(self):
         a = self.set_1

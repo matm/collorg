@@ -64,17 +64,6 @@ class Field(object):
         self.__rel_id = rel_id
         return self.__intention._sql_where_repr()
 
-    def set_intention(self, val, comp = '='):
-        """
-        @val: a literal (compatible with the SQL type of self)
-        @comp: the comparator used for this intention (defaults to '=')
-        """
-        self.__intention.set_(val, comp)
-        return self.value or self
-
-    set_ = set_intention
-    value = set_intention
-
     def set_descending_order(self):
         self.__descending_order = "DESC"
 
@@ -162,9 +151,23 @@ class Field(object):
         return "%s_" % (
             self.__table.neighbors[self.__f_table.fqtn]['l_fields'][self.name])
 
-    @property
-    def value(self):
+    def __get_value(self):
         return self.__intention.value
+
+    def __set_value(self, arg):
+        """
+        @val: a literal (compatible with the SQL type of self)
+        @comp: the comparator used for this intention (defaults to '=')
+        """
+        val = arg
+        comp = '='
+        if type(arg) is tuple:
+            val = arg[0]
+            if len(arg) > 1:
+                comp = arg[1]
+        self.__intention.set_(val, comp)
+
+    value = property(__get_value, __set_value)
 
     @property
     def comp(self):

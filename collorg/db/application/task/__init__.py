@@ -61,7 +61,7 @@ class Task( Base_table, Duration ):
         self._rev_a_task_function_.delete()
         self._rev_a_task_goal_.delete()
 
-        actions.cog_oid_.set_intention(actions_oids)
+        actions.cog_oid_.value = actions_oids
         actions.delete()
         super(self.__class__, self).delete()
 

@@ -41,8 +41,8 @@ class Access_aa(Table):
         topic = kwargs['topic']
         user = self._cog_controller.user
         av = self()
-        av.in_header_.set_intention(True)
-        av.function_name_.set_intention('Anonymous user', '=')
+        av.in_header_.value = True
+        av.function_name_.value = 'Anonymous user', '='
         for fqtn in env.parents_fqtns():
             av.fqtn_ +=  (fqtn, '=')
         if user is not None:
@@ -66,8 +66,8 @@ class Access_aa(Table):
         topic = kwargs['topic']
         user = self._cog_controller.user
         av = self()
-        av.in_nav_.set_intention(True)
-        av.function_name_.set_intention('Anonymous user', '=')
+        av.in_nav_.value = True
+        av.function_name_.value = 'Anonymous user', '='
         for fqtn in env.parents_fqtns():
             av.fqtn_ +=  (fqtn, '=')
         if user is not None:

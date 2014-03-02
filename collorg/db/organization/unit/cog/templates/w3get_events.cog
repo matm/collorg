@@ -6,8 +6,8 @@ events = self.groups.events
 l_events = []
 begin = datetime.fromtimestamp(float(kwargs['start']))
 end = datetime.fromtimestamp(float(kwargs['end']))
-events.begin_date_.set_intention(begin, '>=')
-events.end_date_.set_intention(end, '<=')
+events.begin_date_.value = begin, '>='
+events.end_date_.value = end, '<='
 # ---
 {#
 {% events.get_extent(just_return_sql = True) %}

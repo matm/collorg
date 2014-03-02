@@ -19,7 +19,7 @@ if cog_user.cog_oid_.value != user_oid:
         self._wipe_cache()
 if self.fqtn == "collorg.web.topic" and self.cog_environment_.value != self.cog_oid_.value:
     ntopic = self()
-    ntopic.cog_environment_.set_intention(self.cog_oid_.value)
+    ntopic.cog_environment_.value = self.cog_oid_.value
     self.update(ntopic)
 callback = eval("self.{}()".format(kwargs['callback']))
 # ---

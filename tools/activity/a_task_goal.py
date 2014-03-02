@@ -12,7 +12,7 @@ if __name__ == '__main__':
     db = ctrl.db
     task = db.table('collorg.application.task')
     task_name = input('task name: ')
-    task.name_.set_intention(task_name)
+    task.name_.value = task_name
     actions = task._action__s_
     for action in actions:
         print("%s %s" % (action.name_, action.label_))

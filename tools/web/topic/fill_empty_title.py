@@ -8,7 +8,7 @@ db = ctrl.db
 table = db.table
 
 topics = table("collorg.web.topic")
-topics.title_.set_intention("")
+topics.title_.value = ""
 for topic in topics:
     if not topic.cog_environment_.value:
         continue
@@ -18,5 +18,5 @@ for topic in topics:
         topic.delete()
         continue
     nt = topic()
-    nt.title_.set_intention(obj.cog_label())
+    nt.title_.value = obj.cog_label()
     topic.update(nt)

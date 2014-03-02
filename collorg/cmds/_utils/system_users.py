@@ -48,11 +48,11 @@ class System_users():
             ('Authenticated navigation','Authenticated user'),
             ('Anonymous navigation', 'Anonymous user')]:
             goal = self.__db.table('collorg.application.goal')
-            goal.name_.set_intention(label)
+            goal.name_.value = label
             if not goal.exists():
                 goal.insert()
             task = self.__db.table('collorg.application.task')
-            task.name_.set_intention(label)
+            task.name_.value = label
             atg = self.__db.table('collorg.application.a_task_goal')
             atg._task_ = task
             atg._goal_ = goal
@@ -63,9 +63,9 @@ class System_users():
         if data_type is None:
             return
         i_group = self.__db.table('collorg.actor.inst_group')
-        i_group.name_.set_intention(value)
-        i_group.long_name_.set_intention(value)
-        i_group.data_type_.set_intention(data_type)
+        i_group.name_.value = value
+        i_group.long_name_.value = value
+        i_group.data_type_.value = data_type
         if not i_group.exists():
             i_group.insert()
         return i_group
@@ -74,7 +74,7 @@ class System_users():
         if task_name is None:
             return
         task = self.__db.table('collorg.application.task')
-        task.name_.set_intention(task_name)
+        task.name_.value = task_name
         if not task.exists():
             task.insert()
         rtf = function._rev_a_task_function_
@@ -88,15 +88,15 @@ class System_users():
     def __add_function(self, value, data_type, task_name, advertise):
         i_group = self.__add_inst_group(value, data_type, advertise)
         func = self.__db.table('collorg.actor.function')
-        func.name_.set_intention(value)
-        func.fname_.set_intention(value)
-        func.long_name_.set_intention(value)
-        func.data_type_.set_intention(data_type)
+        func.name_.value = value
+        func.fname_.value = value
+        func.long_name_.value = value
+        func.data_type_.value = data_type
         if not func.exists():
-            func.advertise_.set_intention(advertise)
+            func.advertise_.value = advertise
             func.insert()
             afig = self.__db.table('collorg.actor.a_function_inst_group')
-            afig.inst_group_.set_intention(i_group.cog_oid_)
+            afig.inst_group_.value = i_group.cog_oid_
             afig._function_ = func
             afig.insert()
         self.__add_link_to_task(func, task_name)
@@ -105,16 +105,16 @@ class System_users():
     def __add_role(self, user, value, data_type, task_name, advertise):
         func = self.__add_function(value, data_type, task_name, advertise)
         role = self.__db.table('collorg.actor.role')
-        role.function_.set_intention(func.cog_oid_)
-        role.data_.set_intention(user.cog_oid_)
+        role.function_.value = func.cog_oid_
+        role.data_.value = user.cog_oid_
         if not role.exists():
             super(role.__class__, role).insert()
         return role
 
     def __add_access(self, user, role):
         access = self.__db.table('collorg.access.access')
-        access.role_.set_intention(role.cog_oid_)
-        access.user_.set_intention(user.cog_oid_)
+        access.role_.value = role.cog_oid_
+        access.user_.value = user.cog_oid_
         if not access.exists():
             access.insert()
 

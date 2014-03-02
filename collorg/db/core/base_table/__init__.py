@@ -77,7 +77,7 @@ class Base_table(Oid_table):
         returns a 'collorg.core.data_type' with fqtn_ = self.cog_fqtn_
         """
         table = self.db.table('collorg.core.data_type')
-        table.fqtn_.set_intention(self.fqtn)
+        table.fqtn_.value = self.fqtn
         return table
 
     @property

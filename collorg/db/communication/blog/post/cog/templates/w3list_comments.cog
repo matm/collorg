@@ -4,6 +4,6 @@
 #PRAGMA 'check': 'check_comment'
 # >>>
 vc = self.db.table('collorg.communication.view.comment')
-vc.post_oid_.set_intention(self.cog_oid_)
+vc.post_oid_.value = self.cog_oid_
 # ---
 {% vc.w3list(**kwargs) %}

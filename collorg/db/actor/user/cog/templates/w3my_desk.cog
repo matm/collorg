@@ -4,9 +4,9 @@
 # >>>
 assert self.cog_oid_.value == cog_user.cog_oid_.value
 bookmark = self.db.table('collorg.communication.bookmark')
-bookmark.user_.set_intention(self.cog_oid_.value)
+bookmark.user_.value = self.cog_oid_.value
 post = self.db.table('collorg.communication.blog.post')
-post.cog_oid_.set_intention(bookmark._post_.cog_oid_)
+post.cog_oid_.value = bookmark._post_.cog_oid_
 post.cog_modif_date_.set_descending_order()
 post.order_by(post.cog_modif_date_)
 # +++ bookmarked_posts
@@ -27,13 +27,13 @@ else:
 # >>>
 i18n_new_comments_on_my_posts = "New comments/follow-ups on my posts/comments or the posts I have bookmarked"
 mcomment = self.db.table('collorg.communication.comment')
-mcomment.author_.set_intention(self.cog_oid_.value)
+mcomment.author_.value = self.cog_oid_.value
 my_post = self.db.table('collorg.communication.blog.post')
 my_post._author_ = cog_user
 post += my_post
 post += mcomment._data_
 user_check = self.db.table('collorg.communication.user_check')
-user_check.user_.set_intention(self.cog_oid_.value)
+user_check.user_.value = self.cog_oid_.value
 filter_oid = user_check._communication_object_.cog_oid_
 # +++ comments
 <span>{% i18n_new_comments_on_my_posts %}.</span>

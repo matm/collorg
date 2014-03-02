@@ -1,30 +1,30 @@
 # DIRECT
 def _get_data(self):
     data_ = self.db.table('collorg.core.oid_table')
-    data_.cog_oid_.set_intention(self.data_)
+    data_.cog_oid_.value = self.data_
     return data_
 def _set_data(self, data_):
-    self.data_.set_intention(data_.cog_oid_)
+    self.data_.value = data_.cog_oid_
 
 _data_ = property(
     _get_data, _set_data)
 
 def _get_field(self):
     field_ = self.db.table('collorg.core.field')
-    field_.fqfn_.set_intention(self.field_)
+    field_.fqfn_.value = self.field_
     return field_
 def _set_field(self, field_):
-    self.field_.set_intention(field_.fqfn_)
+    self.field_.value = field_.fqfn_
 
 _field_ = property(
     _get_field, _set_field)
 
 def _get_author(self):
     author_ = self.db.table('collorg.actor.user')
-    author_.cog_oid_.set_intention(self.author_)
+    author_.cog_oid_.value = self.author_
     return author_
 def _set_author(self, author_):
-    self.author_.set_intention(author_.cog_oid_)
+    self.author_.value = author_.cog_oid_
 
 _author_ = property(
     _get_author, _set_author)

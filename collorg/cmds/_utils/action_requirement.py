@@ -59,8 +59,8 @@ class Action_requirement(object):
         for key, val in self._d_db_requirement.items():
             if not key in self._d_csv_requirement:
                 check = self.__table('collorg.application.check')
-                check.requires_.set_intention(val[0])
-                check.required_.set_intention(val[1])
+                check.requires_.value = val[0]
+                check.required_.value = val[1]
                 print("- removing action requirement {}".format(key))
                 check.delete()
         for key in self._d_csv_requirement:

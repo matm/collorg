@@ -9,7 +9,7 @@ now = datetime.now() + timedelta(0, 1)
 comment_oid = kwargs.get('comment_oid', None)
 
 id = html().random_id()
-self.comment_.set_intention(comment_oid)
+self.comment_.value = comment_oid
 # ---
 <div id="{% id %}">
 # >>>

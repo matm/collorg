@@ -7,8 +7,8 @@
 post_oid = self.cog_oid_.value
 user_oid = cog_user.cog_oid_.value
 bookmark = self.db.table('collorg.communication.bookmark')
-bookmark.user_.set_intention(user_oid)
-bookmark.post_.set_intention(post_oid)
+bookmark.user_.value = user_oid
+bookmark.post_.value = post_oid
 your_home_page = html(cog_user).a(label = 'your home page')
 if not bookmark.exists():
     bookmark.insert()

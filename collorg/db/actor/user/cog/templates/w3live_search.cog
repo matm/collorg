@@ -7,8 +7,8 @@
 self.last_name_.unaccent = True
 fn = self()
 fn.first_name_.unaccent = True
-self.system_account_.set_intention(False)
-fn.system_account_.set_intention(False)
+self.system_account_.value = False
+fn.system_account_.value = False
 query = kwargs['q']
 if len(query.split()) <= 2:
     if not ' '  in query:
@@ -18,8 +18,8 @@ if len(query.split()) <= 2:
         first_name, last_name = query.split()
         first_name = '%%%s%%' % first_name
         last_name = '%%%s%%' % last_name
-    self.last_name_.set_intention(last_name, 'ilike')
-    fn.first_name_.set_intention(first_name, 'ilike')
+    self.last_name_.value = last_name, 'ilike'
+    fn.first_name_.value = first_name, 'ilike'
     if not ' ' in query:
         self = self + fn
     else:

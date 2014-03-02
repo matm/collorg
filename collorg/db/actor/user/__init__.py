@@ -121,25 +121,25 @@ class User(Actor, Groupable):
     def new_account(self, **kwargs):
         self.db.set_auto_commit(False)
         new = self()
-        new.email_.set_intention(kwargs['email_'] or None)
+        new.email_.value = kwargs['email_'] or None
         if new.exists():
             raise RuntimeError("an account already exists for this email")
-        new.pseudo_.set_intention(kwargs.get('pseudo_', None))
-        new.first_name_.set_intention(kwargs['first_name_'] or " ")
-        new.last_name_.set_intention(kwargs['last_name_'] or " ")
-        new.ldap_.set_intention(kwargs.get('ldap_', None))
+        new.pseudo_.value = kwargs.get('pseudo_', None)
+        new.first_name_.value = kwargs['first_name_'] or " "
+        new.last_name_.value = kwargs['last_name_'] or " "
+        new.ldap_.value = kwargs.get('ldap_', None)
         salt, enc_password = self.__encrypt_password(
             kwargs.get('password_', uuid.uuid4()))
-        new.password_.set_intention(enc_password)
-        new.validation_key_.set_intention(salt)
+        new.password_.value = enc_password
+        new.validation_key_.value = salt
         new.insert()
         topic = new._rev_topic_
-        topic.title_.set_intention("{} {}".format(
-            kwargs['first_name_'], kwargs['last_name_']))
-        topic.text_.set_intention('')
-        topic.path_info_.set_intention('')
-        topic.author_.set_intention(new.cog_oid_)
-        topic.cog_environment_.set_intention(new.cog_oid_)
+        topic.title_.value = "{} {}".format(
+            kwargs['first_name_'], kwargs['last_name_'])
+        topic.text_.value = ''
+        topic.path_info_.value = ''
+        topic.author_.value = new.cog_oid_
+        topic.cog_environment_.value = new.cog_oid_
         topic.insert()
         new.grant_access(new, True)
         new.grant_access(topic, True)
@@ -148,8 +148,8 @@ class User(Actor, Groupable):
 
     def root_topic(self):
         topic = self._rev_topic_
-        topic.path_info_.set_intention('')
-        topic.cog_environment_.set_intention(self.cog_oid_)
+        topic.path_info_.value = ''
+        topic.cog_environment_.value = self.cog_oid_
         return topic
 
     def remove_account(self):
@@ -182,7 +182,7 @@ class User(Actor, Groupable):
         self._cog_controller.delete_cookie('cog_session')
         self._cog_controller._user = None
         if key is not None:
-            sess.key_.set_intention(key)
+            sess.key_.value = key
             if sess.exists():
                 sess.delete()
                 self._cog_controller.del_user(key)
@@ -209,9 +209,9 @@ class User(Actor, Groupable):
         if not password:
             return False
         if login.find('@') != -1:
-            self.email_.set_intention(login.strip())
+            self.email_.value = login.strip()
         else:
-            self.pseudo_.set_intention(login.strip())
+            self.pseudo_.value = login.strip()
         if not self.count() <= 1: raise ToManyAccountError
         if self.count():
             self.get()
@@ -233,7 +233,7 @@ class User(Actor, Groupable):
                     last_name_ = user_info[domain['last_name_attr_']][0],
                     email_ = user_info[domain['e_mail_attr_']][0].lower(),
                     ldap_ = domain['cog_oid_'])
-                self.cog_oid_.set_intention(new.cog_oid_.value)
+                self.cog_oid_.value = new.cog_oid_.value
             return user_info and True
 
     def __db_auth(self, password):
@@ -253,7 +253,7 @@ class User(Actor, Groupable):
         self = self.get()
         assert self.validation_key_ == validation_key
         n_self = self()
-        n_self.valid_account_.set_intention(True)
+        n_self.valid_account_.value = True
         return self.update(n_self)
 
     def is_member(self, data):
@@ -262,15 +262,15 @@ class User(Actor, Groupable):
     def has_access(self, data, write = None):
         data_oid = data.cog_oid_
         data_base = self.db.table('collorg.core.base_table')
-        data_base.cog_oid_.set_intention(data_oid)
+        data_base.cog_oid_.value = data_oid
         data_env = data_base()
         access = self.db.table('collorg.access.access')
-        access.user_.set_intention(self.cog_oid_.value)
-        data_env.cog_oid_.set_intention(data_base.cog_environment_)
-        access.data_.set_intention(data_oid)
+        access.user_.value = self.cog_oid_.value
+        data_env.cog_oid_.value = data_base.cog_environment_
+        access.data_.value = data_oid
         access.data_ += (data_env.cog_oid_, '=')
         if write: #XXX ??? Do not remove (weird)
-            access.write_.set_intention(write)
+            access.write_.value = write
         if access.is_granted():
             return True
         # if no direct access we look at the groups
@@ -280,8 +280,8 @@ class User(Actor, Groupable):
         #     on the group, then the access is granted
         group_access = self.db.table('collorg.access.group_access')
         if write:
-            group_access.write_.set_intention(write)
-        group_access.accessed_data_.set_intention(data_oid.value)
+            group_access.write_.value = write
+        group_access.accessed_data_.value = data_oid.value
         return group_access.exists() and self.has_access(
             group_access._group_data_, write)
 
@@ -363,8 +363,8 @@ class User(Actor, Groupable):
         if ok:
             salt, enc_password = self.__encrypt_password(new_password)
             user = self()
-            user.password_.set_intention(enc_password)
-            user.validation_key_.set_intention(salt)
+            user.password_.value = enc_password
+            user.validation_key_.value = salt
             self.update(user)
             return True
         return False

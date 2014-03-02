@@ -21,7 +21,7 @@ if __name__ == '__main__':
     long_name = sys.argv[2]
     fqtn = sys.argv[3]
     inst_group = db.table('collorg.actor.inst_group')
-    inst_group.name_.set_intention(name)
+    inst_group.name_.value = name
     if inst_group.count():
         sys.stderr.write(
             "this group already exists (%s)\nAborting\n" % (name))
@@ -30,6 +30,6 @@ if __name__ == '__main__':
     if ok.upper() != 'Y':
         sys.stderr.write("exiting\n")
         sys.exit()
-    inst_group.long_name_.set_intention(long_name)
-    inst_group.data_type_.set_intention(fqtn)
+    inst_group.long_name_.value = long_name
+    inst_group.data_type_.value = fqtn
     inst_group.insert()

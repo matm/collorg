@@ -41,18 +41,18 @@ class Site( Base_table ):
         if not path_info:
             path_info = '/'
         if url:
-            self.url_.set_intention(url)
+            self.url_.value = url
         if not self.exists():
             url = self.db._cog_params['url']
-            self.url_.set_intention(url)
+            self.url_.value = url
         self = self.get() # 1 site !!!!
         topic = self.db.table('collorg.web.topic')
-        topic.site_.set_intention(self.cog_oid_.value)
-        topic.path_info_.set_intention(path_info)
+        topic.site_.value = self.cog_oid_.value
+        topic.path_info_.value = path_info
         if topic.count() == 1:
             topic = topic.get()
         else:
-            topic.path_info_.set_intention('/')
+            topic.path_info_.value = '/'
             topic = topic.get()
         return topic, topic.w3display
 

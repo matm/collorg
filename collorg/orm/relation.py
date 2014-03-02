@@ -224,10 +224,10 @@ class Relation(object):
             cog_fqtn = self.fqtn
             oid_req = ("""INSERT INTO "collorg.core".oid_table VALUES """
                         """('%s', '%s')""" % (cog_oid, cog_fqtn))
-            self.cog_oid_.set_intention(cog_oid)
+            self.cog_oid_.value = cog_oid
             if ('cog_environment_' in self.__dict__ and
                 self.cog_environment_.value is None):
-                self.cog_environment_.set_intention(cog_oid)
+                self.cog_environment_.value = cog_oid
         req += "INSERT INTO\n"
         req += "%s\n" % (self.sql_fqtn)
         l_fields = []
@@ -347,19 +347,19 @@ class Relation(object):
             assert self.cog_oid_.value is not None
             for field in self._cog_fields:
                 if field.name != 'cog_oid':
-                    self.__dict__[field.pyname].set_intention(None)
+                    self.__dict__[field.pyname].value = None
         #!! offset ?
         res = self.select(
             expected = 1, fields = fields, just_return_sql = just_return_sql)
         if just_return_sql:
             return res
         for key, val in self.__extension[0].items():
-            self.__dict__["%s_" % (key)].set_intention(val)
+            self.__dict__["%s_" % (key)].value = val
         self.__retrieved = True
         self.__uniq = True
         if 'cog_fqtn_' in self.__dict__ and self.fqtn != self.cog_fqtn_.value:
             obj = self.db.table(self.cog_fqtn_.value)
-            obj.cog_oid_.set_intention(self.cog_oid_.value)
+            obj.cog_oid_.value = self.cog_oid_.value
             return obj.get()
         return self[0]
 
@@ -470,7 +470,7 @@ class Relation(object):
         new_.__negation = self.__negation
         for field in self._cog_fields:
             if field.is_constrained:
-                new_.__dict__[field.pyname].set_intention(field)
+                new_.__dict__[field.pyname].value = field
         return new_
 
     def __add__(self, other):

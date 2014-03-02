@@ -6,8 +6,8 @@ text = kwargs['text_'].strip()
 comment_oid = kwargs['comment_oid']
 
 if text:
-    self.comment_.set_intention(comment_oid)
-    self.text_.set_intention(text)
+    self.comment_.value = comment_oid
+    self.text_.value = text
     self._author_ = cog_user
     self.insert()
     this_list = self()

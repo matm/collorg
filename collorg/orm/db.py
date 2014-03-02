@@ -89,8 +89,8 @@ class Db( object ):
             print("Going into test mode.")
         if mode is False:
             bt = self.table('collorg.core.base_table')
-            bt.cog_test_.set_intention(True)
-            bt.cog_signature_.set_intention(id(self))
+            bt.cog_test_.value = True
+            bt.cog_signature_.value = id(self)
             print("Out of test mode. Removing %s test tuples." % bt.count())
             bt.delete()
         self.__test_mode = mode

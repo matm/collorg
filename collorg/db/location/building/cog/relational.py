@@ -1,20 +1,20 @@
 # DIRECT
 def _get_address(self):
     address_ = self.db.table('collorg.location.address')
-    address_.cog_oid_.set_intention(self.address_)
+    address_.cog_oid_.value = self.address_
     return address_
 def _set_address(self, address_):
-    self.address_.set_intention(address_.cog_oid_)
+    self.address_.value = address_.cog_oid_
 
 _address_ = property(
     _get_address, _set_address)
 
 def _get_site(self):
     site_ = self.db.table('collorg.location.site')
-    site_.cog_oid_.set_intention(self.site_)
+    site_.cog_oid_.value = self.site_
     return site_
 def _set_site(self, site_):
-    self.site_.set_intention(site_.cog_oid_)
+    self.site_.value = site_.cog_oid_
 
 _site_ = property(
     _get_site, _set_site)

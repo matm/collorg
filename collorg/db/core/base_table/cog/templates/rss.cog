@@ -28,7 +28,7 @@ if topic.visibility_.value == 'public':
     posts = topic.get_not_private_posts()
     vp = self.db.table('collorg.communication.blog.view.by_post')
     vp.cog_light = True
-    vp.cog_oid_.set_intention(posts.cog_oid_)
+    vp.cog_oid_.value = posts.cog_oid_
     vp.post_modif_date_.set_descending_order()
     vp.post_modif_date_ *= (datetime.datetime.now() - datetime.timedelta(30), '>')
     vp.order_by(vp.post_modif_date_)

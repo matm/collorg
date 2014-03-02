@@ -4,9 +4,9 @@
 # >>>
 the_post = kwargs['post']
 sortable = False
-self.cog_oid_.set_intention(the_post.cog_oid_.value)
+self.cog_oid_.value = the_post.cog_oid_.value
 
-#self.cog_fqtn_.set_intention('collorg.web.topic', '!=')
+#self.cog_fqtn_.value = 'collorg.web.topic', '!='
 self.order_by(self.post_order_)
 post = self.db.table('collorg.communication.blog.post')
 self.cog_light = True
@@ -22,7 +22,7 @@ if self.exists():
         if se.post_visibility_ == 'private':
             if cog_user:
                 ch_post = post()
-                ch_post.cog_oid_.set_intention(se.cog_oid_)
+                ch_post.cog_oid_.value = se.cog_oid_
                 ch_post = ch_post.get()
                 if not ch_post.check_visibility(cog_user):
                     continue
@@ -60,7 +60,7 @@ if self.exists():
         <span class="post_title">{% elt_link %}</span>
         # >>>
         visibility = se.post_visibility_
-        post.visibility_.set_intention(visibility)
+        post.visibility_.value = visibility
         if visibility != 'public':
             # ---
             {% post._w3visibility() %}

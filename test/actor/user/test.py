@@ -9,7 +9,7 @@ class Test(TestCase):
     def setUp(self):
         self.user = cog_table('collorg.actor.user')
         gaston = self.user()
-        gaston.pseudo_.set_intention('gaston')
+        gaston.pseudo_.value = 'gaston'
         gaston.remove_account()
 
     def tearDown(self):

@@ -55,7 +55,7 @@ if nb_doc:
             {% i18n_file %} {% file_.name_ %} {% i18n_is_missing %}!
         # >>>
         same_file = file_()
-        same_file.name_.set_intention(file_.name_.value)
+        same_file.name_.value = file_.name_.value
         nb_same_file = (same_file * self).count()
         if nb_same_file > 1:
             # ---

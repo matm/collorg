@@ -6,7 +6,7 @@ rss_key = kwargs.get('rss_key')
 rss = cog_user._rev_rss_
 if rss_key:
     this_rss = rss()
-    this_rss.key_.set_intention(rss_key)
+    this_rss.key_.value = rss_key
     this_rss = this_rss.get()
     assert (rss * this_rss).exists()
 rss = cog_user._rev_rss_

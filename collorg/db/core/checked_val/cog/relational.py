@@ -1,10 +1,10 @@
 # DIRECT
 def _get_field(self):
     field_ = self.db.table('collorg.core.field')
-    field_.fqfn_.set_intention(self.field_)
+    field_.fqfn_.value = self.field_
     return field_
 def _set_field(self, field_):
-    self.field_.set_intention(field_.fqfn_)
+    self.field_.value = field_.fqfn_
 
 _field_ = property(
     _get_field, _set_field)

@@ -12,9 +12,9 @@ try:
     see_also = table('collorg.communication.blog.see_also')
     for sa in see_also:
         apd = a_post_data()
-        apd.post_.set_intention(sa.post_.value)
-        apd.data_.set_intention(sa.data_.value)
-        apd.see_also_.set_intention(True)
+        apd.post_.value = sa.post_.value
+        apd.data_.value = sa.data_.value
+        apd.see_also_.value = True
         apd.insert()
         sa.delete()
 
@@ -22,10 +22,10 @@ try:
 
     for gt in graph_topic:
         apd = a_post_data()
-        apd.post_.set_intention(gt.topic_.value)
-        apd.data_.set_intention(gt.parent_.value)
+        apd.post_.value = gt.topic_.value
+        apd.data_.value = gt.parent_.value
         if not apd.exists():
-            apd.see_also_.set_intention(False)
+            apd.see_also_.value = False
             apd.insert()
         gt.delete()
 except:
@@ -39,6 +39,6 @@ for elt in apd:
         order = 0
         this = elt.data_.value
     napd = apd()
-    napd.order_.set_intention(order)
+    napd.order_.value = order
     elt.update(napd)
     order += 1

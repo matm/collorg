@@ -22,7 +22,7 @@ class Duration(Table):
         super(Duration, self).__init__(db, **kwargs)
 
     def granted( self ):
-        self.cog_from_.set_intention( datetime.now(), '<' )
+        self.cog_from_.value =  datetime.now(), '<'
         self.cog_to_.set_null()
         self.cog_to_ += ( datetime.now(), '>' )
         return self

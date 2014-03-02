@@ -15,13 +15,13 @@ if __name__ == '__main__':
     db = Controller().db
     f_long_name = sys.argv[1]
     function = db.table('collorg.actor.function')
-    function.long_name_.set_intention(f_long_name)
+    function.long_name_.value = f_long_name
     if function.count() != 1:
         sys.stderr.write("No such function (%s)\nAborting\n" % (f_long_name))
         sys.exit()
     task_name = sys.argv[2]
     task = db.table('collorg.application.task')
-    task.name_.set_intention(task_name)
+    task.name_.value = task_name
     if task.count() != 1:
         sys.stderr.write("No such task %s\nAborting\n" % (task_name))
         sys.exit()

@@ -20,15 +20,15 @@ units = table('collorg.organization.unit')
 data_type = table('collorg.core.data_type')
 topics = table('collorg.web.topic')
 topics.data_type_.set_null()
-topics.cog_environment_.set_intention(groups.cog_oid_ + units.cog_oid_)
+topics.cog_environment_.value = groups.cog_oid_ + units.cog_oid_
 topics.site_.set_not_null()
 
 for topic in topics:
     print(topic.cog_label())
     group = groups()
-    group.cog_oid_.set_intention(topic._cog_environment_.cog_oid_)
+    group.cog_oid_.value = topic._cog_environment_.cog_oid_
     if group.exists():
         group.grant_access(topic)
     ntopic = topic()
-    ntopic.cog_environment_.set_intention(topic.cog_oid_.value)
+    ntopic.cog_environment_.value = topic.cog_oid_.value
     topic.update(ntopic)

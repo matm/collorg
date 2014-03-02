@@ -9,7 +9,7 @@
 id_ = html.random_id()
 self.author_ = self.data_
 vbf = self.db.table('collorg.access.view.by_function')
-vbf.data_oid_.set_intention(self.cog_oid_.value)
+vbf.data_oid_.value = self.cog_oid_.value
 # +++ header
 <span class="title">{% self.w3manage_members_link(label=self.cog_label(), user=cog_user) %}</span>
 # --- header

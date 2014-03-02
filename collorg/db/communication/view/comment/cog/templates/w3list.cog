@@ -7,7 +7,7 @@ mark_as_read = kwargs.get('mark_as_read')
 filter_oid = kwargs.get('filter_oid')
 if filter_oid:
     filter = self()
-    filter.comment_oid_.set_intention(filter_oid)
+    filter.comment_oid_.value = filter_oid
     self -= filter
 self.comment_creat_date_.set_descending_order()
 self.follow_up_creat_date_.set_descending_order()
@@ -20,7 +20,7 @@ l_comments = []
 l_follow_ups = []
 if cog_user and not partial_list and not link_to_post:
     post = self.db.table('collorg.communication.blog.post')
-    post.cog_oid_.set_intention(self.post_oid_.value)
+    post.cog_oid_.value = self.post_oid_.value
     # ---
     {% post.w3new_comment(target=target) %}
 # >>>

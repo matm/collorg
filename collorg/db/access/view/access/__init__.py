@@ -44,12 +44,12 @@ class Access(Table):
         user = self._cog_controller.user
         if user is not None:
             av = self()
-            av.in_header_.set_intention(True)
+            av.in_header_.value = True
             for fqtn in env.parents_fqtns():
                 av.fqtn_ +=  (fqtn, '=')
-            av.user_oid_.set_intention(user.cog_oid_.value)
-            av.data_oid_.set_intention(env.cog_oid_.value, '=')
-            av.in_header_.set_intention(True)
+            av.user_oid_.value = user.cog_oid_.value
+            av.data_oid_.value = env.cog_oid_.value, '='
+            av.in_header_.value = True
             av._cog_order_by = [av.name_]
             for action in av.select(fields = [
                 av.cog_oid_, av.name_, av.label_, av.icon_]):
@@ -70,12 +70,12 @@ class Access(Table):
         user = self._cog_controller.user
         if user is not None:
             av = self()
-            av.in_nav_.set_intention(True)
+            av.in_nav_.value = True
             for fqtn in env.parents_fqtns():
                 av.fqtn_ +=  (fqtn, '=')
-            av.user_oid_.set_intention(user.cog_oid_.value)
-            av.data_oid_.set_intention(env.cog_oid_.value, '=')
-            av.in_nav_.set_intention(True)
+            av.user_oid_.value = user.cog_oid_.value
+            av.data_oid_.value = env.cog_oid_.value, '='
+            av.in_nav_.value = True
             av._cog_order_by = [av.name_]
             for action in av.select(fields = [
                 av.cog_oid_, av.name_, av.label_, av.icon_]):

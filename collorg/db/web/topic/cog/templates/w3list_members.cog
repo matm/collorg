@@ -6,9 +6,9 @@ i18n_m = _("Members")
 i18n_mo = _("Members inherited from")
 embedded = kwargs.get('embedded', True)
 members = self.db.table('collorg.access.view.by_function')
-members.data_oid_.set_intention(self.cog_oid_.value)
+members.data_oid_.value = self.cog_oid_.value
 hierarchy = self.db.table('collorg.access.hierarchy')
-hierarchy.parent_.set_intention(self.cog_oid_.value)
+hierarchy.parent_.value = self.cog_oid_.value
 members.data_oid_ += (hierarchy.child_, 'in')
 post = self
 if 'topic_oid' in kwargs:
@@ -30,8 +30,8 @@ if post.cog_oid_.value != self.cog_oid_.value:
 groups_accesses = self._rev_group_access_accessed_data_
 groups_accesses.order_by(groups_accesses.cog_creat_date_)
 groups = self.db.table('collorg.group.group')
-groups.cog_oid_.set_intention(
-    self._rev_group_access_accessed_data_._group_data_.cog_oid_)
+groups.cog_oid_.value = \
+    self._rev_group_access_accessed_data_._group_data_.cog_oid_
 for ga in groups_accesses:
     group = ga._group_data_.get()
     revoke_link = ''

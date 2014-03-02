@@ -23,7 +23,7 @@ bid = "b_{}".format(id_)
 rid = "r_{}".format(id_)
 recipient_id = "recipient_{}".format(id_)
 text = html(self).display(self.text_, label='')
-self.text_.set_intention('')
+self.text_.value = ''
 # ---
 <h5>{% i18n_to %} {% self._w3get_recipient(rid=rid, target = recipient_id) %}</h5>
 # +++ form_html

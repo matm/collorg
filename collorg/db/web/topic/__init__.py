@@ -78,7 +78,7 @@ class Topic(Post):
     def __get_parent(self):
         tg = self.db.table('collorg.communication.blog.a_post_data')
         tg._post_ = self
-        tg.see_also_.set_intention(False)
+        tg.see_also_.value = False
         parent = tg._data_
         if parent.exists():
             return parent.get() # 1 and only 1 parent
@@ -97,24 +97,24 @@ class Topic(Post):
 
     def set_root(self, obj, author):
         assert obj.cog_oid_.value
-        self.cog_environment_.set_intention(obj.cog_oid_)
-        self.path_info_.set_intention('')
-        self.title_.set_intention(obj.cog_label())
+        self.cog_environment_.value = obj.cog_oid_
+        self.path_info_.value = ''
+        self.title_.value = obj.cog_label()
         self._author_ = author
         assert not self.exists()
         self.insert()
 
     def get_root(self, obj):
         site = self._cog_controller.site
-        self.site_.set_intention(site.cog_oid_.value)
-        self.cog_environment_.set_intention(obj.cog_oid_)
+        self.site_.value = site.cog_oid_.value
+        self.cog_environment_.value = obj.cog_oid_
         if self.exists():
             self.order_by(self.path_info_)
             self.cog_limit(1)
             return self.get()
         self = self()
-        self.cog_environment_.set_intention(obj.cog_oid_)
-        self.path_info_.set_intention('')
+        self.cog_environment_.value = obj.cog_oid_
+        self.path_info_.value = ''
         return self
 
     def link_to(self, parent):
@@ -130,8 +130,7 @@ class Topic(Post):
         self._site_ = parent._site_
         if self.exists():
             raise ValueError("Topic already present for this site")
-        self.path_info_.set_intention("{}/{}".format(
-            parent.path_info_, sub_path_info))
+        self.path_info_.value = "{}/{}".format(parent.path_info_, sub_path_info)
         if not self.exists():
             self.insert()
             self.link_to(parent)
@@ -148,18 +147,17 @@ class Topic(Post):
         print(old_path_info, parent.path_info_.value)
         children = self.get_children()
         nself = self()
-        nself.path_info_.set_intention(
-            "{}/{}".format(parent.path_info_, rel_path_info))
+        nself.path_info_.value ="{}/{}".format(parent.path_info_, rel_path_info)
         print(nself.path_info_)
         self.update(nself)
         self._rev_topic_graph_.delete()
         self.link_to(parent)
         for elt in children:
             nelt = elt()
-            nelt.path_info_.set_intention("{}/{}{}".format(
+            nelt.path_info_.value = "{}/{}{}".format(
                 parent.path_info_,
                 rel_path_info, elt.path_info_.value.replace(
-                    old_path_info, "", 1)))
+                    old_path_info, "", 1))
             print(nelt.path_info_)
             elt.update(nelt)
 
@@ -168,17 +166,16 @@ class Topic(Post):
 
     def get_not_private_posts(self):
         posts = self.db.table('collorg.communication.blog.post')
-        posts.cog_oid_.set_intention(
-            self._rev_a_post_data_data_._post_.cog_oid_)
-        posts.visibility_.set_intention('private', '!=')
+        posts.cog_oid_.value = self._rev_a_post_data_data_._post_.cog_oid_
+        posts.visibility_.value = 'private', '!='
         return posts
 
     def get_accessible_posts(self, user):
         posts = self.get_not_private_posts()
         accessible_data = user.get_granted_data()
         other_posts = posts()
-        other_posts.cog_oid_.set_intention(
-            (self._rev_a_post_data_data_._post_ * accessible_data).cog_oid_)
+        other_posts.cog_oid_.value = \
+            (self._rev_a_post_data_data_._post_ * accessible_data).cog_oid_
         posts += other_posts
 
         return posts
@@ -186,7 +183,7 @@ class Topic(Post):
     def set_parent(self, data, link = False):
         tg = self._rev_a_post_data_post_
         tg._data_ = data
-        tg.see_also_.set_intention(link)
+        tg.see_also_.value = link
         tg.insert()
 
     def winsert(self, user, **kwargs):
@@ -196,12 +193,12 @@ class Topic(Post):
         if data.fqtn == 'collorg.web.topic':
             if data.path_info_.value:
                 if data.site_.value is not None:
-                    self.site_.set_intention(data.site_.value)
+                    self.site_.value = data.site_.value
                 path_info = "{}/{}".format(data.path_info_, kwargs['title_'])
                 if data.path_info_.value and data.path_info_.value[-1:] == '/':
                     path_info = "{}{}".format(data.path_info_, kwargs['title_'])
-        self.path_info_.set_intention(path_info)
-        self.cog_environment_.set_intention(kwargs['env_oid'])
+        self.path_info_.value = path_info
+        self.cog_environment_.value = kwargs['env_oid']
         super(self.__class__, self).winsert(user, **kwargs)
         self._cog_controller.site._d_topics = None
         self._cog_controller.site.load_topics()

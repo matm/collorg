@@ -36,7 +36,7 @@ class Namespace( Base_table ):
 
     def insert( self, db_name = None, **kwargs ):
         database = self.db.table( 'collorg.core.database' )
-        database.name_.set_intention( db_name or self.db.name )
+        database.name_.value =  db_name or self.db.name
         if not database.exists():
             database.insert()
         self._database_ = database

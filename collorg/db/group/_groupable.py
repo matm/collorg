@@ -12,7 +12,7 @@ class Groupable(object):
         retruns the groups linked to self
         """
         wg = self.db.table('collorg.group.group')
-        wg.data_.set_(self.cog_oid_)
+        wg.data_.value = self.cog_oid_
         return wg
 
     @property

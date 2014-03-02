@@ -19,7 +19,7 @@ group_name = input("group name? ")
 if not group_name.strip():
     sys.exit()
 group = groups()
-group.name_.set_intention(group_name)
+group.name_.value = group_name
 group.get()
 access = group._rev_access_
 access.granted()
@@ -30,7 +30,7 @@ while True:
     if not last_name.strip():
         sys.exit()
     users = table("collorg.actor.user")
-    users.last_name_.set_intention(last_name.strip(), 'ilike')
+    users.last_name_.value = last_name.strip(), 'ilike'
     for user in users:
         print(" - {} {} {}".format(
             user.cog_oid_, user.first_name_, user.last_name_))

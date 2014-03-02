@@ -4,7 +4,7 @@ callback = kwargs['callback']
 action = kwargs['action']
 target = kwargs['target']
 group = self.db.table('collorg.group.group')
-group.name_.set_intention('%s%%' % kwargs['q'], 'ilike')
+group.name_.value = '%s%%' % kwargs['q'], 'ilike'
 group.name_.unaccent = True
 group.order_by(group.name_)
 # +++ liste

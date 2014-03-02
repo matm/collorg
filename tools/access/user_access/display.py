@@ -24,8 +24,8 @@ if False:#ÇA MARCHE PAS! LE SET_INTENTION SUR PVIEW!!!!
         if action == '':
             sys.exit()
         fqtn = input("fqtn: ")
-        tv.name_.set_intention(action)
-        tv.fqtn_.set_intention(fqtn)
+        tv.name_.value = action
+        tv.fqtn_.value = fqtn
         print(tv.select(just_return_sql = True))
         for elt in tv:
             print("%s" % (elt.task_name_))

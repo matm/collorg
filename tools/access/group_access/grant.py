@@ -28,12 +28,12 @@ try:
     except:
         raise ValueError("")
 
-    accessed_data.cog_oid_.set_intention(sys.argv[1])
+    accessed_data.cog_oid_.value = sys.argv[1]
     try:
         accessed_data = accessed_data.get()
     except:
         raise ValueError("Accessed object does not exist")
-    group_data.cog_oid_.set_intention(sys.argv[2])
+    group_data.cog_oid_.value = sys.argv[2]
     try:
         group_data = group_data.get()
     except:
