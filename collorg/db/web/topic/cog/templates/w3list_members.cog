@@ -1,6 +1,14 @@
 #PRAGMA 'label':'members list'
 #PRAGMA 'icon':'users_list.svg'
 #PRAGMA 'in_header':True
+{#
+# >>>
+members = self.db.table('collorg.access.view.by_function')
+members.data_oid_.value = self.cog_oid_.value
+# ---
+{% self.w3manage_access(this=self, callback="w3list_members") %}
+{% members.w3list_members(data = self, callback = "w3list_members") %}
+#}
 # >>>
 i18n_m = _("Members")
 i18n_mo = _("Members inherited from")
@@ -29,9 +37,6 @@ if post.cog_oid_.value != self.cog_oid_.value:
 # >>>
 groups_accesses = self._rev_group_access_accessed_data_
 groups_accesses.order_by(groups_accesses.cog_creat_date_)
-groups = self.db.table('collorg.group.group')
-groups.cog_oid_.value = \
-    self._rev_group_access_accessed_data_._group_data_.cog_oid_
 for ga in groups_accesses:
     group = ga._group_data_.get()
     revoke_link = ''
@@ -46,8 +51,8 @@ for ga in groups_accesses:
             wa_link = self._w3revoke_group_write_access_link(
                 group=group, callback="w3list_members")
     # ---
-    <h3>{% revoke_link %} {% group.cog_label() %} {% wa_link %}</h3>
-    {% group.w3list_members() %}
+    <h3>{% revoke_link %} {% group.root_topic().cog_label() %} {% wa_link %}</h3>
+    {% group.root_topic().get().members.w3list() %}
 # --- article
 # >>>
 output = self.db.table('collorg.core.base_table').w3display_base(
