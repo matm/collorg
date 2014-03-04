@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-19 16:53+0100\n"
+"POT-Creation-Date: 2014-03-04 13:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,6 +77,7 @@ msgstr "Recherche"
 #: collorg/db/core/base_table/cog/templates/w3list_members.py:22
 #: collorg/db/communication/blog/post/cog/templates/w3list_members.py:23
 #: collorg/db/web/topic/cog/templates/w3list_members.py:23
+#: collorg/db/web/topic/cog/templates/w3list_members.py:31
 msgid "Members"
 msgstr "Membres"
 
@@ -85,6 +86,7 @@ msgstr "Membres"
 #: collorg/db/core/base_table/cog/templates/w3list_members.py:23
 #: collorg/db/communication/blog/post/cog/templates/w3list_members.py:24
 #: collorg/db/web/topic/cog/templates/w3list_members.py:24
+#: collorg/db/web/topic/cog/templates/w3list_members.py:32
 msgid "Members inherited from"
 msgstr "Membres hérités de"
 
@@ -2190,10 +2192,12 @@ msgstr ""
 "(le droit d'écriture est requis)"
 
 #: collorg/db/actor/user/cog/templates/w3manage_group_link.py:26
+#: collorg/db/actor/user/cog/templates/w3groups_list_link.py:19
 msgid "Groups"
 msgstr "Groupes"
 
 #: collorg/db/actor/user/cog/templates/w3group_list.py:27
+#: collorg/db/actor/user/cog/templates/w3groups_list.py:29
 msgid "You don't have any personnal group."
 msgstr "Vous n'avez créé aucun groupe personnel."
 
@@ -2226,3 +2230,11 @@ msgstr "Restreint"
 #: collorg/db/communication/blog/post/cog/templates/w3add_see_also_drop_zone.py:28
 msgid "Add a reference by dragging a link from the cart on the top right."
 msgstr ""
+
+#: collorg/db/communication/blog/post/cog/templates/w3set_recipient.py:27
+msgid "Toggle selection"
+msgstr "Inverser la sélection"
+
+#: collorg/db/communication/blog/post/cog/templates/w3share.py:31
+msgid "Select a recipient"
+msgstr "Sélectionner un destinataire"

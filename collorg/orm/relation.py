@@ -61,6 +61,7 @@ class Relation(object):
         self._cog_limit = None
         self._cog_offset = None
         self.__negation = False
+        self.relation = self.db.table
 
     @property
     def fqtn(self):

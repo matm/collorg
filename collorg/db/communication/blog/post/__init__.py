@@ -254,16 +254,19 @@ class Post(Base_table):
         mail.set_body(html_body, 'html')
 
     def mail(self, **kwargs):
-        exp = self._cog_controller.user.email_.value
-        recipient = self.db.get_elt_by_oid(kwargs['recipient_oid']).members
-        emails = [exp]
-        emails += [elt.email_.value for elt in recipient]
+        sender = self._cog_controller.user.email_.value
+        recipients = self.relation('collorg.actor.user')
+        recipients.cog_oid_.value = kwargs['recipient_oid']
+        emails = [sender]
+        for elt in recipients:
+            email = elt.email_.value
+            if not email in emails:
+                emails.append(email)
         other_recipient = kwargs.get('other_recipient', [])
         other_emails = [elt.strip() for elt in other_recipient.split(',')]
         emails += other_emails
         mail = Mail(self.db)
-        mail.set_from(exp)
-#        mail.set_to([exp])
+        mail.set_from(sender)
         mail.set_to(emails)
         self.set_mail_subject(mail, kwargs.get('title_'))
         self.set_mail_body(mail, kwargs.get('text_'))

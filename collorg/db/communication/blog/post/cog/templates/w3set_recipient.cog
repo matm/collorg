@@ -3,13 +3,35 @@
 #PRAGMA 'functions':['Collorg actor']
 #PRAGMA 'label':'Set recipient'
 # >>>
+id_ = html.random_id() # 1234
+toggle_button_id = "tbi_{}".format(id_) # tbi_1234
+rec_id = "rec_{}".format(id_) # rec_1234
+i18n_tbi = _("Toggle selection")
 recipient_oid = kwargs['recipient_oid']
 recipient = self.db.get_elt_by_oid(recipient_oid)
 l_members = []
 members = recipient.members
 members.order_by(members.last_name_, members.first_name_, members.email_)
 for member in members:
-    l_members.append('"{} {}" &lt;{}&gt;'.format(member.first_name_, member.last_name_, member.email_))
+    button = '<input type="checkbox" name="recipient_oid" value="{}" checked="checked" />'.format(
+        member.cog_oid_)
+    l_members.append('{} "{} {}" &lt;{}&gt;'.format(
+        button, member.first_name_, member.last_name_, member.email_))
 # ---
-<b>{% recipient.cog_label() %}</b>: {% ", ".join(l_members) %}
-<input type="hidden" name="recipient_oid" value="{% recipient_oid %}" />
+<div id="{% rec_id %}">
+<strong>{% recipient.cog_label() %}</strong>: {% ", ".join(l_members) %}
+</div>
+<button id="{% toggle_button_id %}">{% i18n_tbi %}</button>
+
+
+<script>
+$(document).ready(function(){
+    $("#{% toggle_button_id %}").on('click', function(){
+        var rec_div = $("#{% rec_id %}");
+        var ch = rec_div.find("input:checked");
+        var unch = rec_div.find("input:not(:checked)");
+        ch.removeAttr('checked');
+        unch.prop('checked', true);
+    })
+})
+</script>

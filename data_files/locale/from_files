@@ -325,7 +325,6 @@ collorg/db/group/group/cog/templates/w3selfRegister.py
 collorg/db/group/group/cog/templates/w3manage_members_link.py
 collorg/db/group/group/cog/templates/w3selfRegisterUnregisterLink.py
 collorg/db/group/group/cog/templates/_w3manage.py
-collorg/db/group/group/cog/templates/w3list_members.py
 collorg/db/group/group/cog/templates/w3list_long.py
 collorg/db/group/group/cog/templates/w3display.py
 collorg/db/group/group/cog/templates/w3topic_addendum.py
@@ -448,7 +447,6 @@ collorg/db/actor/user/cog/templates/w3live_search.py
 collorg/db/actor/user/cog/templates/w3logout_link.py
 collorg/db/actor/user/cog/templates/w3manage_account_link.py
 collorg/db/actor/user/cog/templates/w3change_password_form.py
-collorg/db/actor/user/cog/templates/w3manage_group_link.py
 collorg/db/actor/user/cog/templates/w3home_link.py
 collorg/db/actor/user/cog/templates/w3session_login.py
 collorg/db/actor/user/cog/templates/w3edit.py
@@ -461,14 +459,15 @@ collorg/db/actor/user/cog/templates/w3photo.py
 collorg/db/actor/user/cog/templates/w3edit_rss.py
 collorg/db/actor/user/cog/templates/w3my_comments.py
 collorg/db/actor/user/cog/templates/w3manage_account.py
-collorg/db/actor/user/cog/templates/w3manage_group.py
 collorg/db/actor/user/cog/templates/w3group_add.py
 collorg/db/actor/user/cog/templates/w3update.py
+collorg/db/actor/user/cog/templates/w3groups_list_link.py
 collorg/db/actor/user/cog/templates/_w3manage.py
 collorg/db/actor/user/cog/templates/w3group_new.py
 collorg/db/actor/user/cog/templates/w3my_posts.py
 collorg/db/actor/user/cog/templates/w3login_form.py
 collorg/db/actor/user/cog/templates/w3login.py
+collorg/db/actor/user/cog/templates/w3groups_list.py
 collorg/db/actor/user/cog/templates/w3presentation.py
 collorg/db/actor/user/cog/templates/w3add_my_calendar.py
 collorg/db/actor/user/cog/templates/w3my_desk.py
@@ -495,6 +494,10 @@ collorg/db/communication/blog/a_post_data/cog/templates/w3remove.py
 collorg/db/communication/blog/a_post_data/cog/templates/__init__.py
 collorg/db/communication/blog/a_post_data/cog/templates/w3list.py
 collorg/db/communication/blog/a_post_data/cog/relational.py
+collorg/db/communication/blog/view/children/__init__.py
+collorg/db/communication/blog/view/children/cog/__init__.py
+collorg/db/communication/blog/view/children/cog/templates/__init__.py
+collorg/db/communication/blog/view/children/cog/templates/w3list.py
 collorg/db/communication/blog/view/__init__.py
 collorg/db/communication/blog/view/by_post/__init__.py
 collorg/db/communication/blog/view/by_post/cog/__init__.py
