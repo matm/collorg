@@ -17,7 +17,7 @@ if('cog_default_order' in self.__class__.__dict__ and
    not self._cog_order_by):
     self.cog_default_order
 css_class = kwargs.pop('css_class', 'none')
-if self.exists():
+if not self.is_empty():
     ul = '<ul class="{}">{{}}</ul>'.format(css_class)
     if kwargs.get('cog_separator'):
         ul = '{}'

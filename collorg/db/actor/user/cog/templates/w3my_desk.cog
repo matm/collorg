@@ -11,7 +11,7 @@ post.cog_modif_date_.set_descending_order()
 post.order_by(post.cog_modif_date_)
 # +++ bookmarked_posts
 # >>>
-if post.exists():
+if not post.is_empty():
     # ---
     <span>To remove a post from your desk, click on it, then click on
     the bookmark icon.</span>

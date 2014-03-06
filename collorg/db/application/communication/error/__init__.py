@@ -68,7 +68,7 @@ class Error(Ticket):
         author = self.db.table("collorg.actor.user")
         author.email_.value = self.db._cog_params['error_report_to']
         self._author_ = author
-        if not self.exists():
+        if self.is_empty():
             self.insert()
             error_traceback = self._rev_error_traceback_
             error_traceback.hit(traceback)

@@ -385,13 +385,13 @@ class Test(TestCase):
     def less_than_test(self):
         a = self.set_1
         ab = self.subset_1_2
-        if ab.exists():
+        if not ab.is_empty():
             self.assertTrue(ab < a)
 
     def greater_than_test(self):
         a = self.set_1
         ab = self.subset_1_2
-        if ab.exists():
+        if not ab.is_empty():
             self.assertTrue(a > ab)
 
     def less_or_equal_than_test(self):

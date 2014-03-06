@@ -94,22 +94,6 @@ class Init():
                 host = self.host, user = self.user, port = self.port,
                 name = self.db_name)
 
-    def __create_cog_ini_file(self):
-        raise NotImplementedError
-        try:
-            open("/etc/collorg/%s" % (self.db_name))
-            return
-        except:
-            pass
-        charset = _input('charset', 'utf-8')
-        file_ = app_ini_file.format(
-            name = self.db_name,
-            user = user, password = password, host = host, port = port,
-            charset = charset)
-        open("/etc/collorg/%s" % (self.db_name), "w").write(file_)
-
-
-
     def __check_pg_extensions(self):
         pg_config_present = os.popen('which pg_config').read().strip()
         try:
@@ -176,28 +160,7 @@ class Init():
                               "got %s.%s instead. aborting\n" % (
                     self.pg_release, self.pg_sub_release))
             sys.exit(1)
-        if self.pg_release < 9 or self.pg_sub_release == 0:
-            # intarray et uuid-ossp sont-il installés
-            intarray = "%s/contrib/_int.sql" % (self.pg_sharedir)
-            uuid_ossp = "%s/contrib/uuid-ossp.sql" % (self.pg_sharedir)
-            if not os.path.exists(intarray):
-                sys.stderr.write(
-                    "can't find intarray extension\n"
-                    "unable to read %s" % (intarray))
-                sys.exit()
-            if not os.path.exists(uuid_ossp):
-                sys.stderr.write(
-                    "can't find uuid-ossp extension\n"
-                    "unable to read %s" % (uuid_ossp))
-                sys.exit()
-            cmd = sql_create_less_9_1 % (
-                    self.db_name, intarray,
-                    self.db_name, uuid_ossp,
-                    self.db_name)
-            os.system(cmd)
-        else:
-            os.popen("psql %s -qtc '%s'" % (
-                    self.db_name, sql_create_greater_9))
+        os.popen("psql %s -qtc '%s'" % (self.db_name, sql_create_greater_9))
         print("please, re-run 'cog init -d %s' to finish the installation" % (
                 self.db_name))
         sys.exit()
@@ -240,7 +203,7 @@ class Init():
                     'collorg.core.data_type',
                     fqtn_ = fqtn,
                     name_ = tablename)
-                if not module.exists():
+                if module.is_empty():
                     module.insert()
                 if not os.path.exists("%s.py" % (tablename)):
                     print("+ %s.%s" % (schema.name, tablename))

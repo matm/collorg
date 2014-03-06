@@ -1,0 +1,106 @@
+\documentclass[9pt,a4paper]{letter}
+\usepackage[landscape,vcentering,dvips]{geometry}
+\geometry{papersize={210mm,297mm},total={260mm,180mm}}
+\usepackage{lscape}
+\usepackage{multicol}
+\usepackage{fontspec}
+\pagenumbering{gobble}
+\columnsep 1cm
+\begin{document}
+\begin{multicols}{3}
+\begin{center}
+{\Large Programmation en Collorg}
+\end{center}
+\rule{0.5cm}{0.1pt} \textbf{\large La commande \texttt{cog}} \hrulefill
+
+Permet de gérer une application collorg (initialisation, mises à jour, ...).
+
+\rule{0.5cm}{0.1pt} Pour créer une nouvelle application \texttt{collorg}
+\begin{description}
+\item[\texttt{cog init -d my\_app}] Initialise une application. Crée un répertoire correspondant au dépôt \texttt{collorg} de l'application.
+\end{description}
+\rule{0.5cm}{0.1pt} Dans le dépôt \texttt{collorg} de l'application
+\begin{description}
+\item[\texttt{cog make}] Propage les modifications apportées à l'application.
+\item[\texttt{cog struct}] Affiche la structure de la base de donnée de l'application ou d'une table (\texttt{-t}).
+\item[\texttt{cog graph}] Affiche le graph de la base de donnée ou d'un schéma de la base de donnée (\texttt{-s}).
+\end{description}
+
+\rule{0.5cm}{0.1pt} \textbf{\large API \texttt{collorg}} \hrulefill
+
+\rule{0.5cm}{0.1pt} Le contrôleur
+
+Permet d'initialiser la connexion à la base de donnée. Exemple de script listant les \texttt{FQTNs} de la base:
+
+\begin{scriptsize}
+\begin{verbatim}
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+
+from collorg.controller.controller import Controller
+relation = Controller().model.relation
+
+types = relation('collorg.core.data_type')
+for type_ in types:
+	print(type_.fqtn_)
+\end{verbatim}
+\end{scriptsize}
+
+\rule{0.5cm}{0.1pt} Les relations
+
+\begin{description}
+\item[\texttt{relation.select()}] Déclenche l'extraction des données de la base. Une relation est itérable. L'invocation de \texttt{select} est implicite dans un contexte de liste (ex~: \texttt{for elt in relation:})
+\item[\texttt{relation.insert()}] Insert la donnée dans la base.
+\item[\texttt{relation.update(nval)}] Met à jour la donnée dans la base avec \texttt{nval}.
+\item[\texttt{relation.delete()}] Détruit l'ensemble référencé de la base.
+\item[\texttt{not relation.is_empty()}] retourne \texttt{True} si l'ensemble défini contient au moins un élément.
+\end{description}
+
+\rule{0.5cm}{0.1pt} Les opérateurs algébriques sur les relations
+
+Soient \texttt{rel\_a} et \texttt{rel\_b} deux relations portant sur un même ensemble.
+
+\begin{tabular}{|l|l|l|}
+\hline
+Python & & Set \\
+\hline
+$rel\_a + rel\_b$ & $\Longleftrightarrow$ & $rel\_a \cup rel\_b$ \\
+$rel\_a * rel\_b$ & $\Longleftrightarrow$ & $rel\_a \cap rel\_b$ \\
+$rel\_a - rel\_b$ & $\Longleftrightarrow$ & $rel\_a \backslash rel\_b$ \\
+\hline
+\end{tabular}
+
+\rule{0.5cm}{0.1pt} Les attributs
+
+\rule{0.5cm}{0.1pt} \textbf{\large Templates \texttt{collorg}} \hrulefill
+
+\rule{0.5cm}{0.1pt} Les balises du langage de templates
+
+\begin{description}
+\item[\texttt{\# >>>}] Entrée dans du code python.
+\item[\texttt{\# ---}] Zone d'affichage et marque d'indentation hors code python. Le code qui suit sera affiché tel quel.
+\item[\texttt{\# +++ <variable>}] Zone d'affichage. Le code qui suit (jusqu'à la balise \texttt{\# --- <variable>} est stocké tel quel (pour affichage) dans la variable \texttt{<variable>}
+\item[\texttt{\{\% code\_python \%\}}] Code embarqué dans une zone d'affichage.
+\end{description}
+
+\rule{0.5cm}{0.1pt} Exemple de template~:
+
+La template qui suit reçoit un argument \texttt{names} contenant une liste de noms. Si la liste n'est pas vide, elle l'affiche au format \texttt{HTML}.
+\begin{scriptsize}
+\begin{verbatim}
+# >>>
+names = kwargs['names']
+if len(names):
+    # ---
+    <ul>
+    # >>>
+    for name in names:
+        # ---
+        <li>{% name %}</li>
+    # ---
+    </ul>
+\end{verbatim}
+\end{scriptsize}
+
+\end{multicols}
+\end{document}

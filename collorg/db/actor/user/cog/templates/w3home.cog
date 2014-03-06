@@ -9,7 +9,7 @@ if cog_user and cog_user.cog_oid_.value == user_oid:
 <h3>{% self.w3groups_list_link() %}</h3>
 # >>>
 unit = self.get_granted_data('collorg.organization.unit')
-if unit.exists():
+if not unit.is_empty():
     pl_unit = unit.count() > 1 and "s" or ""
     # ---
     <h5>Unit{% pl_unit %}</h5>

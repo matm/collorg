@@ -9,7 +9,7 @@ package_link = html( package ).a( cog_method = 'w3listModules' )
 obj = self.db.table( self.fqtn_.value )
 inherits_from = obj._cog_inherits
 {#
-if inherits_from.exists():
+if not inherits_from.is_empty():
     links_inherited = []
     for elt in inherits_from:
         # ---

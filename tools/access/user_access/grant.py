@@ -19,7 +19,7 @@ def grant_access(accessed_data, user, write):
     user_access._user_ = user
     if write:
         user_access.write_.value = write
-    if not user_access.exists():
+    if user_access.is_empty():
         print("Grant access \n  for user: {}\n  to accessed object: {}".format(
             user.cog_label(), accessed_data.cog_label()))
         user_access.insert()

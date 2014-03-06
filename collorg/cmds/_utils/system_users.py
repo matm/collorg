@@ -49,14 +49,14 @@ class System_users():
             ('Anonymous navigation', 'Anonymous user')]:
             goal = self.__db.table('collorg.application.goal')
             goal.name_.value = label
-            if not goal.exists():
+            if goal.is_empty():
                 goal.insert()
             task = self.__db.table('collorg.application.task')
             task.name_.value = label
             atg = self.__db.table('collorg.application.a_task_goal')
             atg._task_ = task
             atg._goal_ = goal
-            if not atg.exists():
+            if atg.is_empty():
                 atg.insert()
 
     def __add_inst_group(self, value, data_type, advertise):
@@ -66,7 +66,7 @@ class System_users():
         i_group.name_.value = value
         i_group.long_name_.value = value
         i_group.data_type_.value = data_type
-        if not i_group.exists():
+        if i_group.is_empty():
             i_group.insert()
         return i_group
 
@@ -75,12 +75,12 @@ class System_users():
             return
         task = self.__db.table('collorg.application.task')
         task.name_.value = task_name
-        if not task.exists():
+        if task.is_empty():
             task.insert()
         rtf = function._rev_a_task_function_
         rtf._task_ = task
         rtf._task_ = task
-        if not rtf.exists():
+        if rtf.is_empty():
             print("+ Function<->Task: %s<->%s" % (
                 function.long_name_, task_name))
             rtf.insert()
@@ -92,7 +92,7 @@ class System_users():
         func.fname_.value = value
         func.long_name_.value = value
         func.data_type_.value = data_type
-        if not func.exists():
+        if func.is_empty():
             func.advertise_.value = advertise
             func.insert()
             afig = self.__db.table('collorg.actor.a_function_inst_group')
@@ -107,7 +107,7 @@ class System_users():
         role = self.__db.table('collorg.actor.role')
         role.function_.value = func.cog_oid_
         role.data_.value = user.cog_oid_
-        if not role.exists():
+        if role.is_empty():
             super(role.__class__, role).insert()
         return role
 
@@ -115,7 +115,7 @@ class System_users():
         access = self.__db.table('collorg.access.access')
         access.role_.value = role.cog_oid_
         access.user_.value = user.cog_oid_
-        if not access.exists():
+        if access.is_empty():
             access.insert()
 
     def __add_user(self, pseudo, function, data_type, task_name, advertise):

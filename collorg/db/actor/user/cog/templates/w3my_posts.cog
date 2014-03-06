@@ -15,7 +15,7 @@ posts.order_by(posts.cog_modif_date_)
 tags_list = ''
 text = ''
 tags = posts._rev_a_tag_post_._tag_
-if tags.exists():
+if not tags.is_empty():
     has_text = True
     tags_list = '<div class="bottom_tags">{}</div>'.format(tags.w3list(
         raw=False, author_oid=self.cog_oid_.value, target=tl_target))

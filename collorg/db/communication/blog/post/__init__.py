@@ -76,12 +76,12 @@ class Post(Base_table):
         """
         tag_t = self.db.table('collorg.communication.tag')
         tag_t.tag_.value = tag
-        if not tag_t.exists():
+        if tag_t.is_empty():
             tag_t.insert()
         atp = self._rev_a_tag_post_
         order = atp.count() + 1
         atp.tag_.value = tag
-        if not atp.exists():
+        if atp.is_empty():
             atp.data_type_.value = ref_data.fqtn
             atp.order_.value = order
             atp.status_.value = status
@@ -101,14 +101,14 @@ class Post(Base_table):
             atp.delete()
             tag_t = self.db.table('collorg.communication.tag')
             tag_t.tag_.value = tag
-            if not tag_t._rev_a_tag_post_.exists():
+            if tag_t._rev_a_tag_post_.is_empty():
                 tag_t.delete()
 
     def has_tag(self, tag):
         atp = self._rev_a_tag_post_
         atp.data_type_.set_not_null()
         atp.tag_.value = tag
-        return atp.exists()
+        return not atp.is_empty()
 
     def is_owned_by(self, user):
         if user is None:
@@ -285,7 +285,7 @@ class Post(Base_table):
         apd = self._rev_a_post_data_data_
         post = self.db.get_elt_by_oid(kwargs['data_oid'])
         apd._post_ = post
-        if not apd.exists():
+        if apd.is_empty():
             apd.see_also_.value = True
             apd.insert()
 
@@ -350,7 +350,7 @@ class Post(Base_table):
         apd._data_ = self
         see_also = self()
         see_also.cog_oid_.set_null()
-        if apd.exists():
+        if not apd.is_empty():
             see_also.cog_oid_.value = apd._post_.cog_oid_
             user = self._cog_controller.user
             if user:

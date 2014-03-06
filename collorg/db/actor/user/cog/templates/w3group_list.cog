@@ -10,7 +10,7 @@ i18n_no_group = _("You don't have any personnal group.")
 my_groups = self.db.table('collorg.group.group')
 my_groups.data_.value = self.cog_oid_.value
 my_groups.order_by(my_groups.name_)
-if not my_groups.exists():
+if my_groups.is_empty():
     # ---
     {% i18n_no_group %}
 # >>>

@@ -10,7 +10,7 @@ bookmark = self.db.table('collorg.communication.bookmark')
 bookmark.user_.value = user_oid
 bookmark.post_.value = post_oid
 your_home_page = html(cog_user).a(label = 'your home page')
-if not bookmark.exists():
+if bookmark.is_empty():
     bookmark.insert()
     # ---
     Bookmarked. Check the bookmarked post on the desk of {% your_home_page %}.

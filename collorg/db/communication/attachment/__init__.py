@@ -40,7 +40,7 @@ class Attachment(Base_table):
     def attach(self, elt, data, author, description):
         self.ref_.value = elt.cog_oid_.value
         self._data_ = data
-        if self.exists():
+        if not self.is_empty():
             time.sleep(1)
             return "document already attached"
         data._wipe_cache()

@@ -117,10 +117,10 @@ class Cmd():
             sca = ca_()
             sca.data_type_.value = ca_.data_type_.value
             sca.name_.value = ca_.name_.value
-            if not sca.exists():
+            if sca.is_empty():
                 print("- {}.{} missing".format(ca_.data_type_, ca_.name_))
                 rat = action._rev_a_action_task_
-                if rat.exists():
+                if not rat.is_empty():
                     rat.delete()
                 action.delete()
         for action in ca_():
@@ -129,20 +129,20 @@ class Cmd():
             saa = aa_()
             saa.data_type_.value = aa_.data_type_.value
             saa.name_.value = aa_.name_.value
-            if not saa.exists():
+            if saa.is_empty():
                 print("++ action {}.{}".format(aa_.data_type_, aa_.name_))
                 aa_.insert()
                 aa_.get()
                 for task in tasks:
                     ta_ = self.db_.table('collorg.application.task')
                     ta_.name_.value = task.name_.value
-                    if not ta_.exists():
+                    if ta_.is_empty():
                         # XXX  mettre une méthode pour faire ce qui suit
                         ta_.delegable_.value = task.delegable_.value
                         ta_.description_.value = task.description_.value
                         ta_.insert()
                         orig_goal = task._rev_a_task_goal_._goal_
-                        if orig_goal.exists():
+                        if not orig_goal.is_empty():
                             orig_goal.get()
                             goal = self.db_.table('collorg.application.goal')
                             goal.name_.value = orig_goal.name_.value
@@ -154,7 +154,7 @@ class Cmd():
                         orig_function.get()
                         function = self.db_.table('collorg.actor.function')
                         function.name_.value = orig_function.name_.value
-                        if not function.exists():
+                        if function.is_empty():
                             function.fname_.value = orig_function.fname_.value
                             function.long_name_.value = \
                                 orig_function.long_name_.value
@@ -218,7 +218,7 @@ class Cmd():
                 fqtn = "{}.{}".format(schema.name, tablename)
                 module = self.db_.table(
                     'collorg.core.data_type', fqtn_ = fqtn, name_ = tablename)
-                if not module.exists():
+                if module.is_empty():
                     module.insert()
                 if not os.path.exists("{}/__init__.py".format(tablename)):
                     print("+ adding package {}.{}".format(
@@ -311,7 +311,7 @@ class Cmd():
                     'collorg.application.task', name_ = 'Anonymous navigation')
                 aat = task._rev_a_action_task_
                 aat._action_ = action
-                if not aat.exists():
+                if aat.is_empty():
                     aat.insert()
             for goal_ in goals:
                 for task_ in tasks:
@@ -319,15 +319,15 @@ class Cmd():
                         'collorg.application.goal', name_=goal_)
                     task = self.db_.table(
                         'collorg.application.task', name_=task_)
-                    if not goal.exists():
+                    if goal.is_empty():
                         print("+ new goal {}".format(goal.name_.value))
                         goal.insert()
-                    if not task.exists():
+                    if task.is_empty():
                         print("+ new task {}".format(task.name_.value))
                         task.insert()
                     atg = task._rev_a_task_goal_
                     atg._goal_ = goal
-                    if not atg.exists():
+                    if atg.is_empty():
                         atg.insert()
                     try:
                         action.link_to_task(task)
@@ -336,7 +336,7 @@ class Cmd():
             for task_ in tasks:
                 task = self.db_.table(
                     'collorg.application.task', name_=task_)
-                if not task.exists():
+                if task.is_empty():
                     print("+ new task {}".format(task.name_.value))
                     task.insert()
                 for function_ in functions:
@@ -344,13 +344,13 @@ class Cmd():
                         'collorg.actor.function', long_name_=function_)
                     atf = task._rev_a_task_function_
                     atf._function_ = function
-                    if not atf.exists():
+                    if atf.is_empty():
                         print("+ task<->function: {}<->{}".format(
                             task.name_, function.long_name_))
                         atf.insert()
                 aat = task._rev_a_action_task_
                 aat._action_ = action
-                if not aat.exists():
+                if aat.is_empty():
                     aat.insert()
 
     def __set_template_module_string(
@@ -375,11 +375,11 @@ class Cmd():
         fqtn = "{}.{}".format(schemaname, tablename)
         module = self.db_.table(
             'collorg.core.data_type', fqtn_ = fqtn)
-        if not module.exists():
+        if module.is_empty():
             module.insert()
         action = self.db_.table('collorg.application.action', name_ = tsn)
         action._data_type_ = module
-        if not action.exists():
+        if action.is_empty():
             print("+ new action {}.{} {}".format(schemaname, tablename, tsn))
             action.source_.value = template_code
             self.__treat_pragmas(action)
@@ -416,7 +416,7 @@ class Cmd():
                 act_cog = self.__collorg_db.table('collorg.application.action')
                 act_cog.name_.value = act.name_.value
                 act_cog.data_type_.value = data_type
-                if not act_cog.exists():
+                if act_cog.is_empty():
                     print("MISSING: {}, {}".format(data_type, act.name_))
                     missing = True
             if missing:

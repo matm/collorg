@@ -118,7 +118,7 @@ class Base_table(Oid_table):
         group_access = self.\
             _rev_group_access_accessed_data_._group_data_._rev_access_.granted()
         users = access._user_ + group_access._user_
-        if self._rev_hierarchy_parent_.exists():
+        if not self._rev_hierarchy_parent_.is_empty():
             for child in self._rev_hierarchy_parent_._child_:
                 users += child.members
         return users

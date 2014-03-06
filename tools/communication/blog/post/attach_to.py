@@ -16,5 +16,5 @@ data = data.get()
 apd = table('collorg.communication.blog.a_post_data')
 apd._post_ = post
 apd._data_ = data
-if not apd.exists():
+if apd.is_empty():
     apd.insert()

@@ -51,14 +51,14 @@ class Role(Base_table, Duration):
             self.insert()
 
     def is_granted(self):
-        if not self.exists():
+        if self.is_empty():
             return False
         role = self()
         role.cog_oid_.value = self.cog_oid_
         role.cog_from_.value = datetime.now(), '<='
         role.cog_to_.set_null()
         role.cog_to_ += (datetime.now(), '>')
-        return role.exists()
+        return not role.is_empty()
 
     def revoke(self, no_access = False, no_function = False):
         assert no_access or self.access_.is_constrained

@@ -28,5 +28,5 @@ class Bookmark(Table):
         assert kwargs['user_oid'] and kwargs['post_oid']
         self.user_.value = kwargs['user_oid']
         self.post_.value = kwargs['post_oid']
-        if not self.exists():
+        if self.is_empty():
             self.insert()

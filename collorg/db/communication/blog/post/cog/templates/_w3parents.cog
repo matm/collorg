@@ -12,7 +12,7 @@ if cog_user:
     apdw._who_ = cog_user
     apdw.private_reference_.value = True
     apd += apdw
-if apd.exists():
+if not apd.is_empty():
     l_paths = []
     for data in apd._data_:
         data = data.get()

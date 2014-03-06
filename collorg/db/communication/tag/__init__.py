@@ -65,11 +65,11 @@ class Tag(Base_table):
             order += 1
             this_kw = self()
             this_kw.tag_.value = kw
-            if not this_kw.exists():
+            if this_kw.is_empty():
                 this_kw.insert()
             atp = data._rev_a_tag_post_
             atp._tag_ = this_kw
-            if not atp.exists():
+            if atp.is_empty():
                 atp.order_.value = order
                 atp.insert()
 #        return data._rev_a_tag_post_._tag_.w3list(post=data)

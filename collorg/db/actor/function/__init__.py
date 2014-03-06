@@ -50,5 +50,5 @@ class Function( Actor ):
         access = self._rev_role_._access_
         access._data_ = data
         access.granted()
-        if access.exists():
+        if not access.is_empty():
             return access._user_

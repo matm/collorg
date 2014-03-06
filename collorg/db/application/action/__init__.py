@@ -83,7 +83,7 @@ class Action(Base_table):
         aat = self.db.table( 'collorg.application.a_action_task' )
         aat.action_ = self
         aat.task_ = task
-        if not aat.exists():
+        if aat.is_empty():
             print("+ new assoc action<->task: %s<->%s" % (
                 self.name_.value, task.name_.value))
             aat.insert()
@@ -94,7 +94,7 @@ class Action(Base_table):
         """
         return True
 #        atf = obj.get_a_topic_function()
-#        if not atf.exists():
+#        if atf.is_empty():
 #            return True
 #        if self.write_.value or self.moderate_.value or self.admin_.value:
 #            atf.write_.value = self.write_.value
@@ -102,5 +102,5 @@ class Action(Base_table):
 #            atf.admin_.value = self.admin_.value
 #            atf *= self._cog_controller.user._rev_access_.\
 #                _rev_role_._function_._rev_a_topic_function_
-#            return atf.exists()
+#            return not atf.is_empty()
 #        return True

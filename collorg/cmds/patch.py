@@ -212,7 +212,7 @@ class Cmd():
                 fqtn = "%s.%s" % (schema.name, tablename)
                 module = self.db.table(
                     'collorg.core.data_type', fqtn_ = fqtn, name_ = tablename)
-                if not module.exists():
+                if module.is_empty():
                     module.insert()
                 if not os.path.exists("%s/__init__.py" % (tablename)):
                     print("+ adding package %s.%s" % (schema.name, tablename))

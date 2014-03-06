@@ -8,7 +8,7 @@ if rss_key:
     this_rss = rss()
     this_rss.key_.value = rss_key
     this_rss = this_rss.get()
-    assert (rss * this_rss).exists()
+    assert not (rss * this_rss).is_empty()
 rss = cog_user._rev_rss_
 # ---
 {% kwargs %} {% rss_key %}

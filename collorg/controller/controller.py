@@ -199,7 +199,7 @@ class Controller(object):
         for in_obj in self._cog_inherits(obj):
             action.data_type_ += (in_obj.fqtn, '=')
         try:
-            assert action.exists()
+            assert not action.is_empty()
         except:
             raise RuntimeError("{}.{} not accessible<br>{}".format(
                 obj.fqtn, method, action.select(just_return_sql = True)))
@@ -288,7 +288,7 @@ class Controller(object):
             av.data_oid_ += (data_oid, '=')
         av.name_.value = method_name
         av.session_key_.value = session_key
-        return av.exists()
+        return not av.is_empty()
 
     def _cog_inherits(self, obj):
         # pb with table._cog_inherits

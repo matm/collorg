@@ -82,6 +82,6 @@ class Action_requirement(object):
             check = self.__table('collorg.application.check')
             check._requires_ = mrs
             check._required_ = mrd
-            if not check.exists():
+            if check.is_empty():
                 print("+ adding action requirement {}".format(key))
                 check.insert()

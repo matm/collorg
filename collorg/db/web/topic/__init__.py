@@ -80,7 +80,7 @@ class Topic(Post):
         tg._post_ = self
         tg.see_also_.value = False
         parent = tg._data_
-        if parent.exists():
+        if not parent.is_empty():
             return parent.get() # 1 and only 1 parent
         return None
 
@@ -101,14 +101,14 @@ class Topic(Post):
         self.path_info_.value = ''
         self.title_.value = obj.cog_label()
         self._author_ = author
-        assert not self.exists()
+        assert self.is_empty()
         self.insert()
 
     def get_root(self, obj):
         site = self._cog_controller.site
         self.site_.value = site.cog_oid_.value
         self.cog_environment_.value = obj.cog_oid_
-        if self.exists():
+        if not self.is_empty():
             self.order_by(self.path_info_)
             self.cog_limit(1)
             return self.get()
@@ -128,10 +128,10 @@ class Topic(Post):
 
     def insert_in(self, parent, sub_path_info):
         self._site_ = parent._site_
-        if self.exists():
+        if not self.is_empty():
             raise ValueError("Topic already present for this site")
         self.path_info_.value = "{}/{}".format(parent.path_info_, sub_path_info)
-        if not self.exists():
+        if self.is_empty():
             self.insert()
             self.link_to(parent)
 
@@ -140,7 +140,7 @@ class Topic(Post):
         attach self to parent
         """
         raise NotImplementedError
-        assert self.exists()
+        assert not self.is_empty()
         assert self.site_.value == parent.site_.value
         old_path_info = self.path_info_.value
         rel_path_info = self.__get_rel_path_info()

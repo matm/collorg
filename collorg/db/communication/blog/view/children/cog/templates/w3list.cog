@@ -12,7 +12,7 @@ posts_types = [
 d_posts_types = {}
 for pt in posts_types:
     d_posts_types[pt] = self.db.table(pt)
-if self.exists():
+if not self.is_empty():
     # ---
     <ul class="none inline">
     # >>>

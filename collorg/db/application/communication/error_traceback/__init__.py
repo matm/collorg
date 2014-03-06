@@ -38,7 +38,7 @@ class Error_traceback(Base_table):
     def hit(self, traceback):
         self.trace_.value = traceback
         self.trace_md5_.value = hashlib.md5(traceback).hexdigest()
-        if not self.exists():
+        if self.is_empty():
             self.insert()
         else:
             nself = self()

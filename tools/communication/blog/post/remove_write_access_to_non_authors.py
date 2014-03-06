@@ -10,7 +10,7 @@ posts = table('collorg.communication.blog.post')
 posts.cog_fqtn = 'collorg.communication.blog.post'
 for post in posts:
     author = post._author_
-    if author.exists():
+    if not author.is_empty():
         author = author.get()
     else:
         continue

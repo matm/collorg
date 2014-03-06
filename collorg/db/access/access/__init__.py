@@ -109,7 +109,7 @@ class Access( Base_table ):
         if function:
             role = self._rev_role_
             role._function_ = function
-            if not role.exists():
+            if role.is_empty():
                 role.insert()
         #self.db.commit()
 
@@ -165,7 +165,7 @@ class Access( Base_table ):
         access = self()
         access.cog_oid_.value = self.cog_oid_
         access.granted()
-        return access.exists()
+        return not access.is_empty()
 
     def revoke_write(self):
         new_acc = self()

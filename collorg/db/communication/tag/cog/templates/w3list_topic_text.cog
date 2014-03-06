@@ -3,7 +3,7 @@ data = kwargs['data']
 target = kwargs['target']
 env_oid = data.cog_oid_.value
 env_fqtn = data.cog_fqtn_.value
-if self.exists():
+if not self.is_empty():
     has_text = True
     tags_list = '<div class="bottom_tags">{}</div>'.format(self.w3list(
         raw=False, env_oid=self.cog_oid_.value,

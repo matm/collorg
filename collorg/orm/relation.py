@@ -383,14 +383,14 @@ class Relation(object):
         return self._cog_count(
             orig = self, fields = fields, just_return_sql = just_return_sql)
 
-    def exists(self):
+    def is_empty(self):
         auto_commit = self.db.get_auto_commit()
         self.db.set_auto_commit(True)
         sql = self.select(just_return_sql = True)
         sql += "\nLIMIT 1"
         exists = self.db.fetchone(sql) and True or False
         self.db.set_auto_commit(auto_commit)
-        return exists
+        return not exists
 
     def __min_max(self, min_max, field):
         req = []
@@ -513,10 +513,10 @@ class Relation(object):
         return not(self == other)
 
     def __lt__(self, other):
-        return self in other and (other - self).exists()
+        return self in other and not (other - self).is_empty()
 
     def __gt__(self, other):
-        return other in self and (self - other).exists()
+        return other in self and not (self - other).is_empty()
 
     def __le__(self, other):
         return self in other
@@ -525,7 +525,7 @@ class Relation(object):
         return other in self
 
     def __contains__(self, other):
-        return not (other - self).exists()
+        return (other - self).is_empty()
 
     @staticmethod
     def __inherited_fqtns(cls):

@@ -42,7 +42,7 @@ class Site( Base_table ):
             path_info = '/'
         if url:
             self.url_.value = url
-        if not self.exists():
+        if self.is_empty():
             url = self.db._cog_params['url']
             self.url_.value = url
         self = self.get() # 1 site !!!!

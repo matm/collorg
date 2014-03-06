@@ -19,7 +19,7 @@ def grant_access(accessed_data, group_data):
     group_access = table('collorg.access.group_access')
     group_access._accessed_data_ = accessed_data
     group_access._group_data_ = group_data
-    if not group_access.exists():
+    if group_access.is_empty():
         group_access.insert()
 
 try:

@@ -338,14 +338,14 @@ class Cmd():
         db.update(ndb)
         site = table('collorg.web.site')
         site.url_.value = '{}/collorg'.format(self.db.name)
-        if not site.exists():
+        if site.is_empty():
             site.insert()
         assert site.count() == 1
         unit = table('collorg.organization.unit')
         unit.acronym_.value = 'Collorg'
         unit.name_.value = 'Collorg unit'
         unit.cog_fqtn_.value = 'collorg.organization.unit'
-        if not unit.exists():
+        if unit.is_empty():
             unit.insert()
         assert unit.count() == 1
         topic = table('collorg.web.topic')
@@ -355,7 +355,7 @@ class Cmd():
         topic.title_.value = 'Home'
         topic.path_info_.value = '/'
         topic.author_.value = user.cog_oid_.value
-        if not topic.exists():
+        if topic.is_empty():
             topic.insert()
         assert topic.count() == 1
         topic.get()

@@ -122,7 +122,7 @@ class User(Actor, Groupable):
         self.db.set_auto_commit(False)
         new = self()
         new.email_.value = kwargs['email_'] or None
-        if new.exists():
+        if not new.is_empty():
             raise RuntimeError("an account already exists for this email")
         new.pseudo_.value = kwargs.get('pseudo_', None)
         new.first_name_.value = kwargs['first_name_'] or " "
@@ -183,7 +183,7 @@ class User(Actor, Groupable):
         self._cog_controller._user = None
         if key is not None:
             sess.key_.value = key
-            if sess.exists():
+            if not sess.is_empty():
                 sess.delete()
                 self._cog_controller.del_user(key)
             f_ = self.db.table('collorg.communication.file')
@@ -226,7 +226,7 @@ class User(Actor, Groupable):
                 user_info, domain = self.__ldap_auth(login, password, domain)
             except:
                 return False
-            if user_info and not self.exists():
+            if user_info and self.is_empty():
                 new = self.new_account(
                     pseudo_ = login,
                     first_name_ = user_info[domain['first_name_attr_']][0],
@@ -282,7 +282,7 @@ class User(Actor, Groupable):
         if write:
             group_access.write_.value = write
         group_access.accessed_data_.value = data_oid.value
-        return group_access.exists() and self.has_access(
+        return not group_access.is_empty() and self.has_access(
             group_access._group_data_, write)
 
     def has_write_access(self, data):
@@ -336,7 +336,7 @@ class User(Actor, Groupable):
         if function is not None:
             role = access._rev_role_
             role._function_ = function
-            if not role.exists():
+            if role.is_empty():
                 role.insert()
         self.__wait_granted_access(data)
         return access

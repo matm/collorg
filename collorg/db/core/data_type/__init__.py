@@ -61,7 +61,7 @@ class Data_type( Base_table ):
     def insert( self, **kwargs ):
         namespace = self.db.table( 'collorg.core.namespace' )
         namespace.name_.value = self.fqtn_.value.rsplit( '.', 1 )[0]
-        if not namespace.exists():
+        if namespace.is_empty():
             self.db.set_auto_commit( False )
             namespace.insert()
         self._namespace_ = namespace
@@ -77,7 +77,7 @@ class Data_type( Base_table ):
         data_type = self.db.table(fqtn)
         data_type.fqtn_.value = fqtn
         data_type.name_.value = fqtn.split(".")[-1]
-        if not data_type.exists():
+        if data_type.is_empty():
             print("+ adding %s in data_type" % fqtn)
             data_type.insert()
         self._rev_field_.add_new(fqtn)

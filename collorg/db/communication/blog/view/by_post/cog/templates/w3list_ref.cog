@@ -12,7 +12,7 @@ post = self.db.table('collorg.communication.blog.post')
 self.cog_light = True
 self.cog_distinct = True
 l_refs = []
-if self.exists():
+if not self.is_empty():
     # +++ article
     # >>>
     for se in self:

@@ -72,7 +72,7 @@ class Oid_table( TClass ):
         #XXX TIME EXPENSIVE we store the queries in a class dictionary
         if not self.cog_oid_.value in Oid_table.__d_members_queries:
             users = self._rev_access_._user_
-            if self._rev_hierarchy_parent_.exists():
+            if not self._rev_hierarchy_parent_.is_empty():
                 for child in self._rev_hierarchy_parent_._child_:
                     users += child.members
             Oid_table.__d_members_queries[self.cog_oid_.value] = users

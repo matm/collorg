@@ -26,7 +26,7 @@ self.order_by(self.post_order_, self.post_creat_date_)
 post = self.db.table('collorg.communication.blog.post')
 self.cog_light = True
 # data_oid is used as reference object for sort
-if self.exists():
+if not self.is_empty():
     # +++ article
     # >>>
     for se in self:

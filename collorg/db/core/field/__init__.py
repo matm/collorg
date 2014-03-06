@@ -47,6 +47,6 @@ class Field( Base_table ):
             self.reset()
             self.data_type_.value = fqtn
             self.fqfn_.value = "%s.%s"%(fqtn, field.name)
-            if not self.exists():
+            if self.is_empty():
                 print("+ %s.%s" % (fqtn, field.name))
                 self.insert()

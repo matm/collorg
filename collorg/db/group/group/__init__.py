@@ -65,26 +65,26 @@ class Group( Base_table ):
 
     def grant_access(self, data, write=False):
         ga = self.__set_group_access(data, write)
-        if not ga.exists():
+        if ga.is_empty():
             ga.insert()
 
     def revoke_access(self, data):
         ga = self.__set_group_access(data, None)
-        if ga.exists():
+        if not ga.is_empty():
             ga.delete()
 
     def grant_write_access(self, data):
         ga = self.__set_group_access(data, False)
         nga = ga()
         nga.write_.value = True
-        if ga.exists():
+        if not ga.is_empty():
             ga.update(nga)
 
     def revoke_write_access(self, data):
         ga = self.__set_group_access(data, True)
         nga = ga()
         nga.write_.value = False
-        if ga.exists():
+        if not ga.is_empty():
             ga.update(nga)
 
     def insert(self, user):
