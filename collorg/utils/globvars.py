@@ -10,7 +10,7 @@ def cog_pkg_path(db_name):
         return "collorg_app/%s/db" % db_name
     return "collorg/db"
 
-templates_dir = "cog/templates"
+templates_dir = "templates"
 
 cog_config_template = """[core]
     database = %s

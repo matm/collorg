@@ -48,7 +48,7 @@ class Table(Relation):
 
     def __import_templates(self):
         """
-        Imports the templates (see <fqtn>/cog/templates) as methods of
+        Imports the templates (see <fqtn>/templates) as methods of
         the class.
         Collorg templates can be overloaded by the application.
         """
@@ -56,7 +56,7 @@ class Table(Relation):
         for super_class in self.db._sql_inherits(self.fqtn):
             self.db.table(super_class)
         dirname = os.path.dirname(os.path.abspath(inspect.getfile(cls)))
-        templates_dir = "{}/cog/templates".format(dirname)
+        templates_dir = "{}/templates".format(dirname)
         ltd = []
         if templates_dir.find('/collorg/db/') != -1:
             rel_templates_dir = templates_dir.split('/collorg/db')[1]

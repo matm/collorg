@@ -17,26 +17,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: collorg/db/actor/user/cog/templates/w3login_form.py:22
-#: collorg/db/actor/user/cog/templates/w3login_form.py:21
+#: collorg/db/actor/user/templates/w3login_form.py:22
+#: collorg/db/actor/user/templates/w3login_form.py:21
 msgid "Connection"
 msgstr "Connection"
 
-#: collorg/db/actor/user/cog/templates/w3login_form.py:33
-#: collorg/db/actor/user/cog/templates/w3login_form.py:31
+#: collorg/db/actor/user/templates/w3login_form.py:33
+#: collorg/db/actor/user/templates/w3login_form.py:31
 msgid "login"
 msgstr "login"
 
-#: collorg/db/actor/user/cog/templates/w3login_form.py:34
-#: collorg/db/actor/user/cog/templates/w3login_form.py:33
+#: collorg/db/actor/user/templates/w3login_form.py:34
+#: collorg/db/actor/user/templates/w3login_form.py:33
 msgid "password"
 msgstr "password"
 
-#: collorg/db/actor/user/cog/templates/w3login_form.py:38
-#: collorg/db/actor/user/cog/templates/w3login_form.py:37
+#: collorg/db/actor/user/templates/w3login_form.py:38
+#: collorg/db/actor/user/templates/w3login_form.py:37
 msgid "Connect"
 msgstr "Connect"
 
-#: collorg/db/actor/user/cog/templates/w3login_link.py:22
+#: collorg/db/actor/user/templates/w3login_link.py:22
 msgid "connection"
 msgstr ""

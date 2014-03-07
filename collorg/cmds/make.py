@@ -36,7 +36,7 @@ class Cmd():
         self.__repos_base_dir = self.__ctrl.repos_path
         sys.path.insert(0, self.__repos_base_dir)
         sys.path.insert(0, ".")
-        self.__rerun = False
+        self.__rerun = 0
         self.__parse_args()
         #XXX recopie brute de collorg.utils.make.py # REMOVE ME WHEN DONE
         self.template_module = None
@@ -61,7 +61,7 @@ class Cmd():
             ";sudo python setup.py -q install".format(
                 self.__repos_base_dir))
 #        os.system("sudo service apache2 restart")
-        if self.__rerun:
+        if self.__rerun and self.__rerun < 2:
             os.system("cog make")
 #            print("Please rerun cog make to finish install.")
         if self.db_.name != 'collorg_db':
@@ -278,9 +278,9 @@ class Cmd():
                 self.template_module, globals(), locals(), [action.name_], -1)
         except:
             # the module is not installed yet. cog make is to be run again
-#            print("Unable to load {}. Please, rerun cog make." %
-#                self.template_module)
-            self.__rerun = True
+            print("Unable to load {}. Please, rerun cog make.".format(
+                self.template_module))
+            self.__rerun += 1
             print("ERR", self.template_module)
             return
         if hasattr(module, 'PRAGMA'):
@@ -363,10 +363,10 @@ class Cmd():
         self.this_application and schemaname.find('collorg.') == 0)):
             schemaname = schemaname.replace('collorg.', '')
             self.template_module = \
-                "collorg.db.{}.{}.cog.templates.{}".format(
+                "collorg.db.{}.{}.templates.{}".format(
                     schemaname, tablename, template_name)
         else:
-            self.template_module = "{}.{}.{}.cog.templates.{}".format(
+            self.template_module = "{}.{}.{}.templates.{}".format(
                 self.mod_path, schemaname, tablename, template_name)
 
     def __add_action(self, schemaname, tablename, tsn, template_code = None):
@@ -399,9 +399,9 @@ class Cmd():
             data_type = act.data_type_.value
             data_type_path = self.__get_pkg_path(
                 data_type.replace('.', '/'))
-            src_path = "{}/{}/cog/templates/__src/{}".format(
+            src_path = "{}/{}/templates/__src/{}".format(
                 cog_app_pkg_dir, data_type_path, act.name_)
-            src_path_cog = "{}/{}/cog/templates/{}.cog".format(
+            src_path_cog = "{}/{}/templates/{}.cog".format(
                 cog_app_pkg_dir, data_type_path, act.name_)
             if((data_type.find("collorg.") == 0 and
                 self.db_.name == "collorg_db") or
@@ -421,11 +421,11 @@ class Cmd():
                     missing = True
             if missing:
                 module_path = [
-                    "{}/{}/cog/templates/{}".format(
+                    "{}/{}/templates/{}".format(
                         cog_app_pkg_dir, data_type_path, act.name_),
-                    "{}/db/{}/cog/templates/{}*".format(
+                    "{}/db/{}/templates/{}*".format(
                     cog_base_dir, data_type_path, act.name_),
-                    "{}/build/*/db/{}/cog/templates/{}".format(
+                    "{}/build/*/db/{}/templates/{}".format(
                         self.__repos_base_dir, data_type_path, act.name_)]
                 for mp_ in module_path:
                     for ext in ["py", "pyc", "pyo"]:
@@ -464,9 +464,9 @@ class Cmd():
 
     def __gen_templates(self):
         """
-        Check les rép. <db>/<schema>/<module>/cog/templates/__src/<fichier>
+        Check les rép. <db>/<schema>/<module>/templates/__src/<fichier>
         Parse chaque fichier et génère un module "<fichier>.py" dans le rép.
-        <db>/<schema>/cog/templates/<module>/.
+        <db>/<schema>/templates/<module>/.
         Insert dans la table action la réf. à la template
         """
         self.this_application = True
@@ -481,7 +481,7 @@ class Cmd():
                 continue
             os.chdir(schema_path)
             for tablename in schema.tables:
-                # parcours du rép. <tablename>/cog/templates/
+                # parcours du rép. <tablename>/templates/
                 path = "{}/{}".format(tablename, glob.templates_dir)
                 init_content = []
                 init_file = "{}/__init__.py".format(path)

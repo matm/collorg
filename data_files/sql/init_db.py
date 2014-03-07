@@ -196,6 +196,7 @@ schemas += [ 'after' ]
 if __name__ == '__main__':
     db_name = sys.argv[1]
     path = '/'.join( sys.argv[0].split( '/' )[:-1] )
+    os.system("psql {} -f {}/extensions.sql".format(db_name, path))
     res = os.system(
         "psql %s -c 'SELECT idx(array[11], 22)' > /dev/null 2>& 1" % (
             db_name ) )

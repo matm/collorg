@@ -15,8 +15,8 @@ tmp.*/.*
 cog_db_test/.*
 cog_cog_test/.*
 collorg/_cog_web_site/.*\.py$
-collorg/.*/cog/templates/.*[^_]\.py$
-collorg/.*/cog/templates/.*\.readme$
+collorg/.*/templates/.*[^_]\.py$
+collorg/.*/templates/.*\.readme$
 cog_.*\.png$
 .*~$
 .*\.pyc$

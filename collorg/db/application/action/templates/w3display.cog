@@ -20,7 +20,7 @@ dirname = os.path.dirname(
 mod_name = cls.__name__.lower()
 method_name = self.name_.value
 source = self.source_.value
-template_src = "%s/cog/templates/%s.py" % (dirname, method_name)
+template_src = "%s/templates/%s.py" % (dirname, method_name)
 # ---
 <h1>{% cls.__name__ %}.{% method_name %}</h1>
 <table>

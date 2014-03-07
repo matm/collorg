@@ -15,7 +15,7 @@ install_requires = [
 if python_version < (3, 0):
     install_requires += ["configparser>=3.2"]
 
-scripts = ['bin/cog', 'bin/ocog']
+scripts = ['bin/cog']
 data_files_dir = 'data_files'
 def walk(the_dir, sql_files = None):
     global data_files_dir

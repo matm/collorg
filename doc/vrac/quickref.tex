@@ -1,36 +1,146 @@
-\documentclass[9pt,a4paper]{letter}
+\documentclass[a4paper]{letter}
 \usepackage[landscape,vcentering,dvips]{geometry}
 \geometry{papersize={210mm,297mm},total={260mm,180mm}}
 \usepackage{lscape}
 \usepackage{multicol}
 \usepackage{fontspec}
+\usepackage{amssymb}
+\newcommand{\section}[1]{
+\rule{0.5cm}{0.1pt} \textbf{\large {#1}} \hrulefill
+}
+\newcommand{\subsection}[2]{
+\rule{0.5cm}{0.1pt} {\scriptsize [{#1}]} {#2}
+}
+\newcommand{\collorg}{\texttt{\textit{collorg}}}
+\newcommand{\cog}{\texttt{cog}}
+\newcommand{\API}{\texttt{API}}
+\newcommand{\attributs}{\texttt{attributs}}
+\newcommand{\relations}{\texttt{relations}}
+\newcommand{\controller}{\texttt{controller}}
+\newcommand{\templates}{\texttt{templates}}
+\newcommand{\argument}{\texttt{argument}}
+\newcommand{\ctrlarg}{\texttt{controller argument}}
 \pagenumbering{gobble}
 \columnsep 1cm
+
+
+
+
+
 \begin{document}
 \begin{multicols}{3}
+
+
 \begin{center}
-{\Large Programmation en Collorg}
+{\Large Manuel de programmation \collorg}
 \end{center}
-\rule{0.5cm}{0.1pt} \textbf{\large La commande \texttt{cog}} \hrulefill
 
-Permet de gérer une application collorg (initialisation, mises à jour, ...).
 
-\rule{0.5cm}{0.1pt} Pour créer une nouvelle application \texttt{collorg}
+
+
+
+\section{La commande \texttt{cog}}
+
+Permet de gérer une application \collorg\ (initialisation, mises à jour, ...).
+
+\subsection{\cog}{Créer une nouvelle application \collorg}
+
 \begin{description}
-\item[\texttt{cog init -d my\_app}] Initialise une application. Crée un répertoire correspondant au dépôt \texttt{collorg} de l'application.
+\item[\texttt{cog init}] Initialise une application. Crée un répertoire correspondant au dépôt \collorg\ de l'application.
+\begin{scriptsize}
+\begin{verbatim}
+# cog init -d my_app
+[...]
+# tree -a my_app/
+my_app/
+├── .cog
+│   └── config
+├── collorg_app
+│   ├── __init__.py
+│   └── my_app
+│       ├── db
+│       │   └── __init__.py
+│       └── __init__.py
+├── __init__.py
+├── Makefile
+├── scripts
+├── setup.py
+└── sql
+\end{verbatim}
+\end{scriptsize}
 \end{description}
-\rule{0.5cm}{0.1pt} Dans le dépôt \texttt{collorg} de l'application
+\subsection{\cog}{Dans un dépôt \collorg}
 \begin{description}
 \item[\texttt{cog make}] Propage les modifications apportées à l'application.
-\item[\texttt{cog struct}] Affiche la structure de la base de donnée de l'application ou d'une table (\texttt{-t}).
-\item[\texttt{cog graph}] Affiche le graph de la base de donnée ou d'un schéma de la base de donnée (\texttt{-s}).
+\item[\texttt{cog struct}] Affiche la structure de la base de donnée de l'application, d'un schéma (-s) ou d'une table (\texttt{-t}).
+
+\begin{scriptsize}
+\begin{verbatim}
+# cog struct
+# cog struct -s collorg.core
+# cog struct -t collorg.core.base_table
+\end{verbatim}
+\end{scriptsize}
+\item[\texttt{cog graph}] Affiche le graphe de la base de donnée ou d'un schéma de la base de donnée (\texttt{-s}).
+
+\begin{scriptsize}
+\begin{verbatim}
+# cog graph
+# cog graph -s collorg.access
+\end{verbatim}
+\end{scriptsize}
 \end{description}
 
-\rule{0.5cm}{0.1pt} \textbf{\large API \texttt{collorg}} \hrulefill
 
-\rule{0.5cm}{0.1pt} Le contrôleur
 
-Permet d'initialiser la connexion à la base de donnée. Exemple de script listant les \texttt{FQTNs} de la base:
+
+
+\section{Création d'un type de données}
+
+La création d'un nouveau type de données passe par la création d'une nouvelle table dans la base de données.
+
+\begin{scriptsize}
+\begin{verbatim}
+CREATE SCHEMA new_schema;
+CREATE TABLE new_schema.new_table (
+   attr1 TEXT PRIMARY KEY,
+   attr2 int
+);
+\end{verbatim}
+\end{scriptsize}
+
+Une fois la table créée, la commande \texttt{cog make}, génère le code nécessaire à son utilisation avec l'API \collorg.
+
+\begin{scriptsize}
+\begin{verbatim}
+# cog make
+[...]
+# tree collorg_app/my_app/db/
+collorg_app/my_app/db/
+├── __init__.py
+└── new_schema
+    ├── __init__.py
+    └── new_table
+        ├── cog
+        │   └── __init__.py
+        ├── templates
+        │   └── __init__.py
+        └── __init__.py
+\end{verbatim}
+\end{scriptsize}
+
+Un nouveau module est créé par la commande \texttt{cog make} dans le répertoire~:\\
+\texttt{collorg\_app/my\_app/db/new\_schema/new\_table}. Le fichier \texttt{\_\_init\_\_.py} contient la définition de la classe \texttt{New\_table}. Le FQTN (\textit{fully qualified table name}) de cette table est la chaîne \texttt{'new\_schema.new\_table'} (concaténation du nom du schéma et du nom de la table, cf. \texttt{CREATE TABLE}).
+
+
+
+\section{L'API de \collorg}
+
+\texttt{Controller.Model.Relation.Attribute}
+
+\subsection{\API}{Le contrôleur}
+
+Il permet entre autres d'initialiser la connexion à la base de données. Les lignes suivantes seront toujours présentes au début d'un script \collorg.
 
 \begin{scriptsize}
 \begin{verbatim}
@@ -38,69 +148,220 @@ Permet d'initialiser la connexion à la base de donnée. Exemple de script lista
 #-*- coding: utf-8 -*-
 
 from collorg.controller.controller import Controller
-relation = Controller().model.relation
-
-types = relation('collorg.core.data_type')
-for type_ in types:
-	print(type_.fqtn_)
+model = Controller().model
+relation  = model.relation
 \end{verbatim}
 \end{scriptsize}
 
-\rule{0.5cm}{0.1pt} Les relations
+L'instanciation d'un contrôleur sans argument (\texttt{Controller()}) sous entend que l'exécution du script est toujours faite à partir d'un dépôt \collorg. \texttt{Controller('my\_app')} en revanche, établit explicitement une connexion sur la base de donnée/application \texttt{my\_app}.
+
+
+\subsection{API}{Les relations}
+
+Une relation est le type d'objet de base permettant de manipuler une table dans l'API \collorg. Pour instancier un objet de ce type, on utilise la méthode~:\\ \texttt{relation = Controller().model.relation}\\ (cf. script de base contrôleur).
+
+\begin{scriptsize}
+\begin{verbatim}
+nt1 = relation('new_schema.new_table')
+nt2 = relation('new_schema.new_table')
+\end{verbatim}
+\end{scriptsize}
+
+Cinq méthodes sont disponibles pour interagir avec la base de données~:
 
 \begin{description}
-\item[\texttt{relation.select()}] Déclenche l'extraction des données de la base. Une relation est itérable. L'invocation de \texttt{select} est implicite dans un contexte de liste (ex~: \texttt{for elt in relation:})
-\item[\texttt{relation.insert()}] Insert la donnée dans la base.
-\item[\texttt{relation.update(nval)}] Met à jour la donnée dans la base avec \texttt{nval}.
-\item[\texttt{relation.delete()}] Détruit l'ensemble référencé de la base.
-\item[\texttt{not relation.is_empty()}] retourne \texttt{True} si l'ensemble défini contient au moins un élément.
+\item[\texttt{Relation.select()}] Déclenche l'extraction des données de la base. Une relation est itérable. L'invocation de \texttt{select} est implicite dans un contexte de liste~:
+
+\begin{scriptsize}
+\begin{verbatim}
+for elt in relation.select():
+\end{verbatim}
+\end{scriptsize}
+s'écrit
+\begin{scriptsize}
+\begin{verbatim}
+for elt in relation:
+\end{verbatim}
+\end{scriptsize}
+\item[\texttt{Relation.insert()}] Insert la donnée dans la base.
+\item[\texttt{Relation.update(nval)}] Met à jour la donnée dans la base avec \texttt{nval}.
+\item[\texttt{Relation.delete()}] Détruit l'ensemble référencé de la base.
+\item[\texttt{Relation.is\_empty()}] Retourne \texttt{True} si la contrainte posée sur l'objet \texttt{relation} definit un ensemble vide.
+
+\begin{scriptsize}
+\begin{verbatim}
+obj = relation(Type)
+obj.attr_.value = 'a value'
+if obj.is_empty():
+    obj.insert()
+\end{verbatim}
+\end{scriptsize}
 \end{description}
 
-\rule{0.5cm}{0.1pt} Les opérateurs algébriques sur les relations
 
-Soient \texttt{rel\_a} et \texttt{rel\_b} deux relations portant sur un même ensemble.
 
-\begin{tabular}{|l|l|l|}
+\subsection{\API:\relations}{Les opérateurs algébriques}
+
+Soient \texttt{a1} et \texttt{a2} deux relations d'un même type \texttt{FQTN}.
+
+\begin{scriptsize}
+\begin{verbatim}
+a1 = relation(FQTN)
+a2 = relation(FQTN)
+\end{verbatim}
+\end{scriptsize}
+Notons $A_{1}$ et $A_{2}$ les ensembles correspondants. Alors~:
+
+\begin{center}
+\begin{scriptsize}
+\begin{tabular}{|c|c|}
 \hline
-Python & & Set \\
+Python & Set \\
 \hline
-$rel\_a + rel\_b$ & $\Longleftrightarrow$ & $rel\_a \cup rel\_b$ \\
-$rel\_a * rel\_b$ & $\Longleftrightarrow$ & $rel\_a \cap rel\_b$ \\
-$rel\_a - rel\_b$ & $\Longleftrightarrow$ & $rel\_a \backslash rel\_b$ \\
+$a1\ + a2$ & $A_{1} \cup A_{2}$ \\
+$a1\ *\ a2$ & $A_{1} \cap A_{2}$ \\
+$a1\ - a2$ & $A_{1}\ \backslash\ A_{2}$ \\
+$-a1$ & $A_{1}^\complement$ \\
+$a1\ in\ a2$ & $A_{1} \subset A_{2}$ \\
+$a1\ ==\ a2$ & $A_{1} = A_{2}$ \\
 \hline
 \end{tabular}
+\end{scriptsize}
+\end{center}
 
-\rule{0.5cm}{0.1pt} Les attributs
+\subsection{\API}{Les attributs}
 
-\rule{0.5cm}{0.1pt} \textbf{\large Templates \texttt{collorg}} \hrulefill
+Les attributs d'une relation correpondent aux attributs de la table. Ils portent les mêmes noms suffixés par \_. Reprenant notre relation de type \texttt{new\_schema.new\_table}, si \texttt{nt1~=~relation('new\_schema.new\_table')}, alors les attributs \texttt{nt1.attr1\_} et \texttt{nt1.attr2\_} représentent les champs correspondants.
 
-\rule{0.5cm}{0.1pt} Les balises du langage de templates
+\subsection{\API:\attributs}{La propriété \texttt{value}}
 
+La propriété \texttt{value} d'un attribut permet de récupérer sa valeur ou de la positionner.
+
+Récupération d'une valeur (exemples) :
+
+\begin{scriptsize}
+\begin{verbatim}
+valeur = nt1.attr2_.value
+if nt1.attr1_.value == 'une valeur':
+    # faire quelque chose
+\end{verbatim}
+\end{scriptsize}
+
+Positionnement d'une valeur (exemples) :
+
+\begin{scriptsize}
+\begin{verbatim}
+nt1.attr1_.value = 'abc'
+nt2.attr1_.value = ('xyz', 'tuv'), 'in'
+\end{verbatim}
+\end{scriptsize}
+
+Le postionnement d'une valeur peut être accompagné d'un opérateur de comparaison \texttt{SQL}. Les opérateurs reconnus sont :
+
+\begin{scriptsize}
+'=', '!=', '>', '>=', '<', '<=', 'is', 'is not', 'like', 'not like',
+'ilike', 'not ilike', '~', '~*', '!~', '!~*', 'in', 'not in'
+\end{scriptsize}
+
+\section{Les templates}
+
+Les templates sont des fichiers suffixés \texttt{.cog} et utilisant le langage de templates de \collorg. Ces templates sont systématiquement positionnées dans le sous répertoire \texttt{templates} du module correpondant.
+
+\begin{scriptsize}
+\begin{verbatim}
+collorg_app/my_app/db/
+└── new_schema
+    └── new_table
+        └── templates
+            └── __init__.py
+\end{verbatim}
+\end{scriptsize}
+
+
+Les templates utilisent un langage de templates propre à \collorg. Ce langage permet de conserver la richesse de Python tout y en ajoutant des zones d'affichage.
+
+\subsection{\templates}{Les balises du langage}
+
+Le caractère $_{\smallsmile}$ représente un espace.
 \begin{description}
-\item[\texttt{\# >>>}] Entrée dans du code python.
-\item[\texttt{\# ---}] Zone d'affichage et marque d'indentation hors code python. Le code qui suit sera affiché tel quel.
-\item[\texttt{\# +++ <variable>}] Zone d'affichage. Le code qui suit (jusqu'à la balise \texttt{\# --- <variable>} est stocké tel quel (pour affichage) dans la variable \texttt{<variable>}
+\item[\texttt{\#$_{\smallsmile}$>>>}] Entrée dans du code Python.
+\item[\texttt{\#$_{\smallsmile}$---}] Zone d'affichage et marque d'indentation hors code Python. Le code qui suit sera affiché tel quel.
+\item[\texttt{\#$_{\smallsmile}$+++ <variable>}] Zone d'affichage. Le code qui suit (jusqu'à la balise \texttt{\#$_{\smallsmile}$--- <variable>} est stocké tel quel (pour affichage) dans la variable \texttt{<variable>}
 \item[\texttt{\{\% code\_python \%\}}] Code embarqué dans une zone d'affichage.
 \end{description}
 
-\rule{0.5cm}{0.1pt} Exemple de template~:
+\subsection{\templates}{Les variables}
 
-La template qui suit reçoit un argument \texttt{names} contenant une liste de noms. Si la liste n'est pas vide, elle l'affiche au format \texttt{HTML}.
+Un certain nombre de variables sont accessibles au niveau d'une template. Les variables notées \ctrlarg\ sont mises en place par le \controller.
+
+\begin{description}
+\item[self] \argument\\ l'objet d'appel (objet de type \texttt{Relation}),
+\item[cog\_charset] \ctrlarg\\ le charset à utiliser pour la template,
+\item[cog\_user] \ctrlarg\\ l'utilisateur ayant appelé la template,
+\item[cog\_environment] \ctrlarg\\ l'environnement d'appel de la template (!= self),
+\item[kwargs] \argument\\ le dictionnaire contenant les arguments \textit{clefvaleur} passés,
+\item[\_] la fonction d'i18n,
+\item[html] le module de génération de code HTML à partir des relations \collorg.
+\end{description}
+
+\subsection{\templates}{Exemple}
+
+
+Appelons la template dont le script suit \texttt{w3list.cog}. Elle reçoit un argument nommé \texttt{title}.
+
+\begin{scriptsize}
+\texttt{new\_schema/new\_table/templates/w3list.cog}
+\end{scriptsize}
+
 \begin{scriptsize}
 \begin{verbatim}
 # >>>
-names = kwargs['names']
-if len(names):
+"""
+New_table.w3list(title='A title')
+"""
+title = kwargs['title']
+# +++ output
+# >>>
+for elt in self:
     # ---
-    <ul>
-    # >>>
-    for name in names:
-        # ---
-        <li>{% name %}</li>
+    <li>{% elt.attr1_ %} <em>{% elt.attr2_ %}</em></li>
+# --- output
+# >>>
+if output:
     # ---
-    </ul>
+    <h2>{% title %}</h2>
+    <ul>{% output %}</ul>
 \end{verbatim}
 \end{scriptsize}
 
+\texttt{self} est un objet de type \texttt{'new\_schema.new\_table'}. S'il n'est pas vide, la liste des objets est affichée au format \texttt{HTML}.
+
+La commande \texttt{cog make} génère pour chaque fichier \texttt{.cog} un fichier \texttt{.py}. Chaque fichier template correspond à une nouvelle méthode de la classe correspondant au type. Le nom de la méthode est celui du fichier sans l'extension \texttt{.cog}.
+
+Exemple d'appel de cette template~:
+\begin{scriptsize}
+\begin{verbatim}
+nt = relation('new_schema.new_table')
+nt.w3list(title='The list')
+\end{verbatim}
+\end{scriptsize}
+
+
+\hrulefill
+\begin{scriptsize}
+2014 Joël Maïzi\\
+http://www.collorg.org/\\
+GNU Free Document License, extend for your own use
+\end{scriptsize}
+
+\begin{scriptsize}
+\begin{verbatim}
+\end{verbatim}
+\end{scriptsize}
+
+
+
+
+\newpage
 \end{multicols}
 \end{document}

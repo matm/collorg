@@ -14,13 +14,12 @@ nbproject/
 dist
 tmp
 w3display.py
-collorg/db/*/*/cog/templates/[a-z]*.py
-collorg/db/*/*/*/cog/templates/[a-z]*.py
-collorg/db/*/*/*/*/cog/templates/[a-z]*.py
-collorg/db/*/*/cog/templates/_[a-z]*.py
-collorg/db/*/*/*/cog/templates/_[a-z]*.py
-collorg/db/*/*/*/*/cog/templates/_[a-z]*.py
-collorg/_cog_web_site/collorg
+collorg/db/*/*/templates/[a-z]*.py
+collorg/db/*/*/*/templates/[a-z]*.py
+collorg/db/*/*/*/*/templates/[a-z]*.py
+collorg/db/*/*/templates/_[a-z]*.py
+collorg/db/*/*/*/templates/_[a-z]*.py
+collorg/db/*/*/*/*/templates/_[a-z]*.py
 graph_*.png
 *~
 *.pyc
@@ -31,6 +30,7 @@ graph_*.png
 *.toc
 *.orig
 *.tmp
+*.pdf
 *#*
 .*.swp
 js.tgz
