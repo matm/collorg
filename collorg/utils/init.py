@@ -82,18 +82,6 @@ class Init():
         self.__make_cog_tree()
         self.db.table('collorg.core.data_type')._populate()
 
-    def __get_db_connection_params(self):
-        self.host = _input('host', 'localhost')
-        self.port = _input('port', '5432')
-        self.user = _input('user', 'collorg')
-        self.password = input('password: ')
-        self.__psql_cmd = "psql -h {host} -U {user} -p {port} -w".format(
-            host = self.host, user = self.user, port = self.port)
-        self.__db_psql_cmd = "psql -h {host} -U {user} -p {port} {name} -w"\
-            .format(
-                host = self.host, user = self.user, port = self.port,
-                name = self.db_name)
-
     def __check_pg_extensions(self):
         pg_config_present = os.popen('which pg_config').read().strip()
         try:
