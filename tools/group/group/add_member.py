@@ -39,4 +39,5 @@ while True:
         continue
     user = db.get_elt_by_oid(user_oid)
     access._user_ = user
+    access.write_.value = True
     access.insert()
