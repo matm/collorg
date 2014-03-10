@@ -6,7 +6,7 @@
 i18n_grant_write_access = _("Grant write access")
 i18n_read_only = _("read only")
 callback = kwargs['callback']
-target = kwargs.get('target', '_page_article_')
+target = kwargs.get('target', '_page_article_') or '_page_article_'
 label = """<img
  class="bigicon" src="/collorg/images/grant_write_access.svg"
  title="{}"

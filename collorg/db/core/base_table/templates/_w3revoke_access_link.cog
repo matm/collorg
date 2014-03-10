@@ -5,7 +5,7 @@
 # >>>
 i18n_revoke_user_access = _("Revoke user access")
 callback = kwargs['callback']
-target = kwargs.get('target', '_page_article')
+target = kwargs.get('target', '_page_article_') or '_page_article_'
 label = """<img
  class="bigicon" src="/collorg/images/user_del.svg"
  title="{}"
