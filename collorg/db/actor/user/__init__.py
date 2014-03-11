@@ -286,8 +286,7 @@ class User(Actor, Groupable):
             group_access._group_data_, write)
 
     def has_write_access(self, data):
-        data1 = self._rev_access_.granted()._data_
-        group = data1._rev_group_access_group_data_.granted(
+        group = data._rev_group_access_group_data_.granted(
             write=True)._group_data_
         return self.has_access(data, True) or self.has_access(group)
 

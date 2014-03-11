@@ -91,8 +91,7 @@ class Cmd():
         self.__major, self.__minor, self.__revision = \
             self.__args.revision.split('.')
         self.__check_revision()
-        os.path.abspath(
-            os.path.dirname(self.__cfg_file))
+        os.path.abspath(os.path.dirname(self.__cfg_file))
         sys.argv = []
 
     def __execute(self):

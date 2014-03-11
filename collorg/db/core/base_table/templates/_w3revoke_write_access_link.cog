@@ -6,7 +6,7 @@
 i18n_revoke_write_access = _("Revoke write access")
 i18n_write_access = _("write access")
 callback = kwargs['callback']
-target = kwargs.get('target', '_page_article_')
+target = kwargs.get('target', '_page_article_') or '_page_article_'
 label = """<img
  class="bigicon" src="/collorg/images/revoke_write_access.svg"
  title="{}"
