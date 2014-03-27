@@ -26,7 +26,7 @@ if cog_user.has_write_access(self):
         $("#{%a_id%}").attr("data-href", href).trigger(
             "click").attr("data-href", ohref);
      }
-     $( ".{% article_id %}" ).droppable({
+     $("#{% article_id %}").droppable({
         activeClass: "ui-state-default",
         hoverClass: "ui-state-hover",
         tolerance: "touch",
