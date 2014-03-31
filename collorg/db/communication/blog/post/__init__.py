@@ -370,11 +370,9 @@ class Post(Base_table):
         return children
 
     def get_accessible_children(self, user):
-        if not user:
-            children = self.__get_not_private_children()
-        else:
-            children = self.__get_not_private_children() + \
-                self.__get_private_children(user)
+        children = self.__get_not_private_children()
+        if user:
+            children += self.__get_private_children(user)
         children.order_by(children.order_)
         return children
 
