@@ -255,13 +255,15 @@ class Post(Base_table):
 
     def mail(self, **kwargs):
         sender = self._cog_controller.user.email_.value
-        recipients = self.relation('collorg.actor.user')
-        recipients.cog_oid_.value = kwargs['recipient_oid']
+        recipient_oid = kwargs.get('recipient_oid')
         emails = [sender]
-        for elt in recipients:
-            email = elt.email_.value
-            if not email in emails:
-                emails.append(email)
+        if recipient_oid:
+            recipients = self.relation('collorg.actor.user')
+            recipients.cog_oid_.value = recipient_oid
+            for elt in recipients:
+                email = elt.email_.value
+                if not email in emails:
+                    emails.append(email)
         other_recipient = kwargs.get('other_recipient', [])
         other_emails = [elt.strip() for elt in other_recipient.split(',')]
         emails += other_emails

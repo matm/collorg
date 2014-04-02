@@ -51,7 +51,7 @@ if self.visibility_.value == 'private':
 <button
     id="{% bid %}"
     disabled="disabled"
-    class="action" target="_page_"
+    class="action" target="_page_article_"
     data-form-id="{% fid %}">
     {% i18n_sm %}
 </button>
@@ -59,7 +59,7 @@ if self.visibility_.value == 'private':
 </article>
 <script type="text/javascript">
 $(document).ready(function(){
-    var pattern = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}\b/;
+    var pattern = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,3}\b/;
     $("#sel_{% recipient_id %}").on('change', function(){
         $("#{% bid %}").removeAttr("disabled").next().hide();
     });
