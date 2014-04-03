@@ -3,7 +3,7 @@
 #PRAGMA 'label':'List of members'
 # >>>
 __doc__ = """
-Displays the list of the members of the group group_oid
+Displays the list of the members of a post (kwargs['data'])
 """
 data_link = (
     """<a href="?cog_method=w3display&amp;cog_fqtn_=%s&amp;"""

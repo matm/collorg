@@ -69,6 +69,7 @@ class Oid_table( TClass ):
 
     @property
     def members(self):
+        raise NotImplementedError
         #XXX TIME EXPENSIVE we store the queries in a class dictionary
         if not self.cog_oid_.value in Oid_table.__d_members_queries:
             users = self._rev_access_._user_

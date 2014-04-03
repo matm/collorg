@@ -47,7 +47,7 @@ for ga in groups_accesses:
                 group=group, callback="w3list_members")
     # ---
     <h3>{% revoke_link %} {% group.cog_label() %} {% wa_link %}</h3>
-    {% group.root_topic().get().members.w3list() %}
+    {% group.members.w3list() %}
 # --- article
 # >>>
 output = self.db.table('collorg.core.base_table').w3display_base(
