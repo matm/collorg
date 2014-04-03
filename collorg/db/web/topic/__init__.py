@@ -198,7 +198,7 @@ class Topic(Post):
                 if data.path_info_.value and data.path_info_.value[-1:] == '/':
                     path_info = "{}{}".format(data.path_info_, kwargs['title_'])
         self.path_info_.value = path_info
-        self.cog_environment_.value = kwargs['env_oid']
+        #self.cog_environment_.value = kwargs['env_oid']
         super(self.__class__, self).winsert(user, **kwargs)
         self._cog_controller.site._d_topics = None
         self._cog_controller.site.load_topics()
