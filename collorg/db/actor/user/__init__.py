@@ -290,7 +290,7 @@ class User(Actor, Groupable):
             write=True)._group_data_
         return self.has_access(data, True) or self.has_access(group)
 
-    def get_granted_data(self, fqtn = None):
+    def get_granted_data(self, fqtn=None):
         data = self._rev_access_.granted()._data_
         data1 = self._rev_access_.granted()._data_
         gdata = data1._rev_group_access_group_data_.granted()._accessed_data_
@@ -298,6 +298,10 @@ class User(Actor, Groupable):
             data.cog_restrict_to_type(fqtn)
             gdata.cog_restrict_to_type(fqtn)
         data += gdata
+        if fqtn:
+            fdata = self.db.table(fqtn)
+            fdata.cog_oid_.value = data.cog_oid_
+            return fdata
         return data
 
     def has_function(self, function_long_name):
